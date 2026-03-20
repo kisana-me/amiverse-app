@@ -1,28 +1,35 @@
-import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-import { SymbolWeight, SymbolViewProps } from 'expo-symbols';
-import React, { ComponentProps } from 'react';
-import { OpaqueColorValue, type StyleProp, type TextStyle, type ViewStyle } from 'react-native';
-import Svg, { Path, Mask, G } from 'react-native-svg';
-
-type IconMapping = Record<SymbolViewProps['name'], ComponentProps<typeof MaterialIcons>['name']>;
-type IconSymbolName = keyof typeof MAPPING;
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import { SymbolWeight } from "expo-symbols";
+import React, { ComponentProps } from "react";
+import {
+  OpaqueColorValue,
+  type StyleProp,
+  type TextStyle,
+  type ViewStyle,
+} from "react-native";
+import Svg, { G, Mask, Path } from "react-native-svg";
 
 const MAPPING = {
-  'house.fill': 'home',
-  'paperplane.fill': 'send',
-  'chevron.left.forwardslash.chevron.right': 'code',
-  'chevron.right': 'chevron-right',
-  'index': 'home',
-  'index.fill': 'home',
-  'discovery': 'explore',
-  'discovery.fill': 'explore',
-  'dashboard': 'dashboard',
-  'dashboard.fill': 'dashboard',
-  'notifications': 'notifications',
-  'notifications.fill': 'notifications',
-  'communities': 'people',
-  'communities.fill': 'people',
-} as IconMapping;
+  "house.fill": "home",
+  "paperplane.fill": "send",
+  "chevron.left.forwardslash.chevron.right": "code",
+  "chevron.right": "chevron-right",
+  index: "home",
+  "index.fill": "home",
+  discovery: "explore",
+  "discovery.fill": "explore",
+  dashboard: "dashboard",
+  "dashboard.fill": "dashboard",
+  notifications: "notifications",
+  "notifications.fill": "notifications",
+  communities: "people",
+  "communities.fill": "people",
+} as const satisfies Record<
+  string,
+  ComponentProps<typeof MaterialIcons>["name"]
+>;
+
+type IconSymbolName = keyof typeof MAPPING;
 
 export function IconSymbol({
   name,
@@ -36,10 +43,17 @@ export function IconSymbol({
   style?: StyleProp<ViewStyle>;
   weight?: SymbolWeight;
 }) {
-  if (name === 'index') {
+  if (name === "index") {
     return (
       <Svg width={size} height={size} viewBox="0 0 100 100" style={style}>
-        <Mask id="mask0_43_16" maskUnits="userSpaceOnUse" x="14" y="11" width="72" height="78">
+        <Mask
+          id="mask0_43_16"
+          maskUnits="userSpaceOnUse"
+          x="14"
+          y="11"
+          width="72"
+          height="78"
+        >
           <Path
             fillRule="evenodd"
             clipRule="evenodd"
@@ -56,7 +70,7 @@ export function IconSymbol({
       </Svg>
     );
   }
-  if (name === 'index.fill') {
+  if (name === "index.fill") {
     return (
       <Svg width={size} height={size} viewBox="0 0 100 100" style={style}>
         <Path
@@ -68,7 +82,7 @@ export function IconSymbol({
       </Svg>
     );
   }
-  if (name === 'discovery') {
+  if (name === "discovery") {
     return (
       <Svg width={size} height={size} viewBox="0 0 100 100" style={style}>
         <Path
@@ -80,7 +94,7 @@ export function IconSymbol({
       </Svg>
     );
   }
-  if (name === 'discovery.fill') {
+  if (name === "discovery.fill") {
     return (
       <Svg width={size} height={size} viewBox="0 0 100 100" style={style}>
         <Path
@@ -92,7 +106,7 @@ export function IconSymbol({
       </Svg>
     );
   }
-  if (name === 'dashboard') {
+  if (name === "dashboard") {
     return (
       <Svg width={size} height={size} viewBox="0 0 100 100" style={style}>
         <Mask id="path-1-inside-1_43_10">
@@ -111,7 +125,7 @@ export function IconSymbol({
       </Svg>
     );
   }
-  if (name === 'dashboard.fill') {
+  if (name === "dashboard.fill") {
     return (
       <Svg width={size} height={size} viewBox="0 0 100 100" style={style}>
         <Path
@@ -123,7 +137,7 @@ export function IconSymbol({
       </Svg>
     );
   }
-  if (name === 'notifications') {
+  if (name === "notifications") {
     return (
       <Svg width={size} height={size} viewBox="0 0 100 100" style={style}>
         <Path
@@ -135,7 +149,7 @@ export function IconSymbol({
       </Svg>
     );
   }
-  if (name === 'notifications.fill') {
+  if (name === "notifications.fill") {
     return (
       <Svg width={size} height={size} viewBox="0 0 100 100" style={style}>
         <Path
@@ -147,7 +161,7 @@ export function IconSymbol({
       </Svg>
     );
   }
-  if (name === 'communities') {
+  if (name === "communities") {
     return (
       <Svg width={size} height={size} viewBox="0 0 100 100" style={style}>
         <Path
@@ -159,7 +173,7 @@ export function IconSymbol({
       </Svg>
     );
   }
-  if (name === 'communities.fill') {
+  if (name === "communities.fill") {
     return (
       <Svg width={size} height={size} viewBox="0 0 100 100" style={style}>
         <Path
@@ -171,5 +185,12 @@ export function IconSymbol({
       </Svg>
     );
   }
-  return <MaterialIcons color={color} size={size} name={MAPPING[name]} style={style as StyleProp<TextStyle>} />;
+  return (
+    <MaterialIcons
+      color={color}
+      size={size}
+      name={MAPPING[name]}
+      style={style as StyleProp<TextStyle>}
+    />
+  );
 }

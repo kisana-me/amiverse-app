@@ -1,10 +1,10 @@
-import { Image } from 'expo-image';
-import { Link } from 'expo-router';
-import React from 'react';
-import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { Image } from "expo-image";
+import { Link } from "expo-router";
+import React from "react";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
 
-import { ThemedText } from '@/components/themed-text';
-import { PostType } from './post';
+import { ThemedText } from "@/components/themed-text";
+import { PostType } from "@/types/post";
 
 export default function ItemQuote({ quote }: { quote?: PostType }) {
   if (!quote) return null;
@@ -17,10 +17,16 @@ export default function ItemQuote({ quote }: { quote?: PostType }) {
         <TouchableOpacity style={styles.content}>
           <View style={styles.header}>
             <Image
-              source={{ uri: account.icon_url || 'https://github.com/shadcn.png' }}
+              source={{
+                uri: account.icon_url || "https://github.com/shadcn.png",
+              }}
               style={styles.icon}
             />
-            <ThemedText type="defaultSemiBold" style={styles.name} numberOfLines={1}>
+            <ThemedText
+              type="defaultSemiBold"
+              style={styles.name}
+              numberOfLines={1}
+            >
               {account.name}
             </ThemedText>
             <ThemedText style={styles.nameId} numberOfLines={1}>
@@ -42,18 +48,18 @@ export default function ItemQuote({ quote }: { quote?: PostType }) {
 const styles = StyleSheet.create({
   container: {
     marginTop: 8,
-    marginLeft: 50,
+    marginLeft: 0,
     borderWidth: 1,
-    borderColor: '#ccc',
+    borderColor: "#ccc",
     borderRadius: 12,
-    overflow: 'hidden',
+    overflow: "hidden",
   },
   content: {
     padding: 12,
   },
   header: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     marginBottom: 4,
   },
   icon: {
@@ -68,12 +74,12 @@ const styles = StyleSheet.create({
   },
   nameId: {
     fontSize: 12,
-    color: '#666',
+    color: "#666",
     marginRight: 4,
   },
   date: {
     fontSize: 12,
-    color: '#888',
+    color: "#888",
   },
   text: {
     fontSize: 14,

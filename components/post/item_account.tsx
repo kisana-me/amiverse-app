@@ -1,25 +1,40 @@
-import { Image } from 'expo-image';
-import { Link } from 'expo-router';
-import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { Image } from "expo-image";
+import { Link } from "expo-router";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
 
-import { ThemedText } from '@/components/themed-text';
-import { PostType } from './post';
+import { ThemedText } from "@/components/themed-text";
+import { PostType } from "@/types/post";
 
-export default function ItemAccount({ account }: { account: PostType['account'] }) {
+export default function ItemAccount({
+  account,
+}: {
+  account: PostType["account"];
+}) {
   if (!account) return null;
 
   return (
     <View style={styles.container}>
-      <Link href={`/`} asChild>
+      <Link href={`/account/${account.name_id}`} asChild>
         <TouchableOpacity style={styles.plate}>
-          <View style={[styles.iconWrap, { borderColor: account.ring_color || 'transparent' }]}>
+          <View
+            style={[
+              styles.iconWrap,
+              { borderColor: account.ring_color || "transparent" },
+            ]}
+          >
             <Image
-              source={{ uri: account.icon_url || 'https://github.com/shadcn.png' }}
+              source={{
+                uri: account.icon_url || "https://github.com/shadcn.png",
+              }}
               style={styles.icon}
             />
           </View>
           <View style={styles.nameplate}>
-            <ThemedText type="defaultSemiBold" style={styles.name} numberOfLines={1}>
+            <ThemedText
+              type="defaultSemiBold"
+              style={styles.name}
+              numberOfLines={1}
+            >
               {account.name}
             </ThemedText>
             <ThemedText style={styles.nameId} numberOfLines={1}>
@@ -34,13 +49,13 @@ export default function ItemAccount({ account }: { account: PostType['account'] 
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     marginBottom: 8,
   },
   plate: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     flex: 1,
   },
   iconWrap: {
@@ -55,13 +70,13 @@ const styles = StyleSheet.create({
   },
   nameplate: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: "center",
   },
   name: {
     fontSize: 15,
   },
   nameId: {
     fontSize: 13,
-    color: '#666',
+    color: "#666",
   },
 });
