@@ -1,19 +1,16 @@
 import { Image } from "expo-image";
 import { Pressable, StyleSheet, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
-import { useThemeColor } from "@/hooks/use-theme-color";
 import { useOverlay } from "@/providers/OverlayProvider";
 import type { ReactNode } from "react";
 
 export default function MainHeader({ children }: { children?: ReactNode }) {
   const { headerMenuTrigger, asideMenuTrigger } = useOverlay();
-  const backgroundColor = useThemeColor({}, "background");
 
   return (
-    <SafeAreaView edges={["top"]} style={[styles.safe, { backgroundColor }]}>
+    <>
       <ThemedView style={styles.root}>
         <View style={styles.side}>
           <Pressable
@@ -45,15 +42,11 @@ export default function MainHeader({ children }: { children?: ReactNode }) {
           </Pressable>
         </View>
       </ThemedView>
-    </SafeAreaView>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
-  safe: {
-    width: "100%",
-    zIndex: 80,
-  },
   root: {
     height: 50,
     width: "100%",

@@ -6,13 +6,14 @@ import {
 import { router, Stack, usePathname } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { useEffect, useRef } from "react";
-import { BackHandler, Platform } from "react-native";
+import { BackHandler, Platform, StyleSheet } from "react-native";
 import "react-native-reanimated";
-import { SafeAreaProvider } from "react-native-safe-area-context";
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 import { InitOverlay } from "@/components/init-overlay";
 import { SideMenus } from "@/components/side-menus";
 import { useColorScheme } from "@/hooks/use-color-scheme";
+import { useThemeColor } from "@/hooks/use-theme-color";
 import { emitHomeRefresh } from "@/lib/home-refresh";
 import { AccountsProvider } from "@/providers/AccountsProvider";
 import { CurrentAccountProvider } from "@/providers/CurrentAccountProvider";
@@ -31,6 +32,7 @@ export default function RootLayout() {
   const colorScheme = useColorScheme();
   const pathname = usePathname();
   const pathnameRef = useRef(pathname);
+  const backgroundColor = useThemeColor({}, "background");
 
   useEffect(() => {
     pathnameRef.current = pathname;
@@ -70,20 +72,32 @@ export default function RootLayout() {
                   <TrendsProvider>
                     <PostsProvider>
                       <FeedsProvider>
-                        <Stack>
-                          <Stack.Screen
-                            name="(tabs)"
-                            options={{ headerShown: false }}
+                        <SafeAreaView
+                          style={[styles.safe, { backgroundColor }]}
+                          edges={["top", "left", "right"]}
+                        >
+                          <Stack>
+                            <Stack.Screen
+                              name="(tabs)"
+                              options={{ headerShown: false }}
+                            />
+                            <Stack.Screen
+                              name="modal"
+                              options={{
+                                presentation: "modal",
+                                title: "Modal",
+                              }}
+                            />
+                          </Stack>
+                          <SideMenus />
+                          <InitOverlay />
+                          <ToastViewport />
+                          <StatusBar
+                            style="auto"
+                            animated={true}
+                            translucent={false}
                           />
-                          <Stack.Screen
-                            name="modal"
-                            options={{ presentation: "modal", title: "Modal" }}
-                          />
-                        </Stack>
-                        <SideMenus />
-                        <InitOverlay />
-                        <ToastViewport />
-                        <StatusBar style="auto" />
+                        </SafeAreaView>
                       </FeedsProvider>
                     </PostsProvider>
                   </TrendsProvider>
@@ -96,3 +110,9 @@ export default function RootLayout() {
     </SafeAreaProvider>
   );
 }
+
+const styles = StyleSheet.create({
+  safe: {
+    flex: 1,
+  },
+});

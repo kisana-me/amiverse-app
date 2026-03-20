@@ -3,7 +3,6 @@ import { Image } from "expo-image";
 import { router } from "expo-router";
 import React, { useCallback, useMemo, useRef, useState } from "react";
 import { Modal, Pressable, ScrollView, StyleSheet, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 
 import MainHeader from "@/components/main_header/MainHeader";
 import { ThemedText } from "@/components/themed-text";
@@ -82,7 +81,7 @@ export default function DashboardScreen() {
   }, [addToast, isSignedIn, setCurrentAccount, setCurrentAccountStatus]);
 
   return (
-    <SafeAreaView style={styles.safe} edges={["bottom"]}>
+    <>
       <MainHeader>
         <ThemedText type="defaultSemiBold">ダッシュボード</ThemedText>
       </MainHeader>
@@ -252,12 +251,11 @@ export default function DashboardScreen() {
           </ThemedView>
         </View>
       </Modal>
-    </SafeAreaView>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
-  safe: { flex: 1 },
   scroll: { flex: 1 },
   scrollContent: { padding: 16, paddingBottom: 28 },
   profileCard: {

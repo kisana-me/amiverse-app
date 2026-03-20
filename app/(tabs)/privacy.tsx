@@ -1,7 +1,6 @@
 import { openBrowserAsync } from "expo-web-browser";
 import React from "react";
 import { Pressable, StyleSheet } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 
 import MainHeader from "@/components/main_header/MainHeader";
 import { ThemedText } from "@/components/themed-text";
@@ -11,7 +10,7 @@ import { useThemeColor } from "@/hooks/use-theme-color";
 export default function PrivacyScreen() {
   const borderColor = useThemeColor({}, "icon");
   return (
-    <SafeAreaView style={styles.safe} edges={["bottom"]}>
+    <>
       <MainHeader>
         <ThemedText type="defaultSemiBold">プライバシーポリシー</ThemedText>
       </MainHeader>
@@ -24,12 +23,11 @@ export default function PrivacyScreen() {
           <ThemedText>Webページを開く</ThemedText>
         </Pressable>
       </ThemedView>
-    </SafeAreaView>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
-  safe: { flex: 1 },
   container: { flex: 1, padding: 16 },
   button: {
     borderWidth: StyleSheet.hairlineWidth,

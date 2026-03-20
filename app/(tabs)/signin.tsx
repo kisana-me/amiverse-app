@@ -3,7 +3,6 @@ import { router } from "expo-router";
 import * as WebBrowser from "expo-web-browser";
 import React, { useCallback } from "react";
 import { Pressable, StyleSheet } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 
 import MainHeader from "@/components/main_header/MainHeader";
 import { ThemedText } from "@/components/themed-text";
@@ -33,7 +32,7 @@ export default function SigninScreen() {
   }, []);
 
   return (
-    <SafeAreaView style={styles.safe} edges={["bottom"]}>
+    <>
       <MainHeader>
         <ThemedText type="defaultSemiBold">サインイン</ThemedText>
       </MainHeader>
@@ -49,12 +48,11 @@ export default function SigninScreen() {
           <ThemedText>サインインを開く</ThemedText>
         </Pressable>
       </ThemedView>
-    </SafeAreaView>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
-  safe: { flex: 1 },
   container: { flex: 1, padding: 16, gap: 12 },
   button: {
     borderWidth: StyleSheet.hairlineWidth,

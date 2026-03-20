@@ -1,22 +1,22 @@
+import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 import { useScrollToTop } from "@react-navigation/native";
 import * as Linking from "expo-linking";
 import * as WebBrowser from "expo-web-browser";
 import React, {
-    useCallback,
-    useEffect,
-    useMemo,
-    useRef,
-    useState,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
 } from "react";
 import {
-    ActivityIndicator,
-    FlatList,
-    Modal,
-    Pressable,
-    StyleSheet,
-    View,
+  ActivityIndicator,
+  FlatList,
+  Modal,
+  Pressable,
+  StyleSheet,
+  View,
 } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 
 import MainHeader from "@/components/main_header/MainHeader";
 import Post from "@/components/post/post";
@@ -36,6 +36,7 @@ type FeedTab = "index" | "follow" | "current";
 
 export default function HomeScreen() {
   const listRef = useRef<FlatList<PostType> | null>(null);
+  const tabBarHeight = useBottomTabBarHeight();
   useScrollToTop(listRef);
 
   const { addToast } = useToast();
@@ -241,7 +242,7 @@ export default function HomeScreen() {
   };
 
   return (
-    <SafeAreaView style={styles.safe} edges={["bottom"]}>
+    <>
       <MainHeader>
         <View style={styles.tabs}>
           {renderTabButton("index", "人気")}
@@ -256,6 +257,7 @@ export default function HomeScreen() {
           data={posts}
           keyExtractor={(item) => item.aid}
           renderItem={({ item }) => <Post {...item} />}
+          contentContainerStyle={{ paddingBottom: tabBarHeight + 12 }}
           refreshing={isRefetching}
           onRefresh={fetchPost}
           ListHeaderComponent={
@@ -345,14 +347,11 @@ export default function HomeScreen() {
           </ThemedView>
         </View>
       </Modal>
-    </SafeAreaView>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
-  safe: {
-    flex: 1,
-  },
   container: {
     flex: 1,
   },

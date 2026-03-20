@@ -3,13 +3,12 @@ import { Image } from "expo-image";
 import { router } from "expo-router";
 import React, { useEffect, useMemo, useRef } from "react";
 import {
-    ActivityIndicator,
-    FlatList,
-    Pressable,
-    StyleSheet,
-    View,
+  ActivityIndicator,
+  FlatList,
+  Pressable,
+  StyleSheet,
+  View,
 } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 
 import MainHeader from "@/components/main_header/MainHeader";
 import { ThemedText } from "@/components/themed-text";
@@ -191,7 +190,7 @@ export default function NotificationsScreen() {
   }, [markAsRead]);
 
   return (
-    <SafeAreaView style={styles.safe} edges={["bottom"]}>
+    <>
       <MainHeader>
         <ThemedText type="defaultSemiBold">通知</ThemedText>
       </MainHeader>
@@ -260,12 +259,11 @@ export default function NotificationsScreen() {
           )
         }
       />
-    </SafeAreaView>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
-  safe: { flex: 1 },
   itemPressable: {},
   metaRow: {
     paddingHorizontal: 12,

@@ -2,7 +2,6 @@ import { router } from "expo-router";
 import { openBrowserAsync } from "expo-web-browser";
 import React, { useCallback } from "react";
 import { Pressable, StyleSheet, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 
 import MainHeader from "@/components/main_header/MainHeader";
 import { ThemedText } from "@/components/themed-text";
@@ -65,7 +64,7 @@ export default function SettingsScreen() {
   }, [addToast, isSignedIn, setCurrentAccount, setCurrentAccountStatus]);
 
   return (
-    <SafeAreaView style={styles.safe} edges={["bottom"]}>
+    <>
       <MainHeader>
         <ThemedText type="defaultSemiBold">設定</ThemedText>
       </MainHeader>
@@ -136,12 +135,11 @@ export default function SettingsScreen() {
           </Pressable>
         </View>
       </ThemedView>
-    </SafeAreaView>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
-  safe: { flex: 1 },
   container: { flex: 1, padding: 16, gap: 16 },
   section: { gap: 10 },
   subtle: { opacity: 0.7 },

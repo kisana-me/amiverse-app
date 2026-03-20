@@ -1,7 +1,6 @@
 import { router, useLocalSearchParams } from "expo-router";
 import React, { useEffect, useMemo, useState } from "react";
 import { ActivityIndicator, StyleSheet, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 
 import MainHeader from "@/components/main_header/MainHeader";
 import { ThemedText } from "@/components/themed-text";
@@ -100,7 +99,7 @@ export default function AuthCallbackScreen() {
   }, [accessToken, addToast, reloadCurrentAccount]);
 
   return (
-    <SafeAreaView style={styles.safe} edges={["bottom"]}>
+    <>
       <MainHeader>
         <ThemedText type="defaultSemiBold">サインイン</ThemedText>
       </MainHeader>
@@ -112,12 +111,11 @@ export default function AuthCallbackScreen() {
           </ThemedText>
         </View>
       </ThemedView>
-    </SafeAreaView>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
-  safe: { flex: 1 },
   container: { flex: 1, padding: 16 },
   row: { flexDirection: "row", alignItems: "center", gap: 12 },
 });
