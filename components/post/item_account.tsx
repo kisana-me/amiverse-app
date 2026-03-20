@@ -51,7 +51,6 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 8,
   },
   plate: {
     flexDirection: "row",

@@ -1,18 +1,85 @@
 import { useThemeColor } from "@/hooks/use-theme-color";
-import React from "react";
-import { ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
+import React, { useMemo, useState } from "react";
+import {
+  Modal,
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import Svg, { Path } from "react-native-svg";
 
 import { ThemedText } from "@/components/themed-text";
+import { usePosts } from "@/providers/PostsProvider";
 import { EmojiType } from "@/types/emoji";
 import { PostType } from "@/types/post";
+import {
+  handleEmojiReactionPress,
+  processReaction,
+  ReactionInput,
+} from "./reaction-actions/emoji-reaction-press";
+import { handlePrimaryReactionPress } from "./reaction-actions/primary-reaction-press";
 
 export default function PostReactions({ post }: { post: PostType }) {
   const tintColor = useThemeColor({}, "tint");
+  const modalCardBackground = useThemeColor({}, "background");
+  const modalText = useThemeColor({}, "text");
+  const { addPosts } = usePosts();
+
+  const [isEmojiMenuOpen, setIsEmojiMenuOpen] = useState(false);
+  const [isReactionConfirmOpen, setIsReactionConfirmOpen] = useState(false);
+  const [pendingReactionInput, setPendingReactionInput] =
+    useState<ReactionInput | null>(null);
+  const [confirmModalState, setConfirmModalState] = useState({
+    title: "リアクションを解除",
+    message: "リアクションを解除しますか？",
+    actionText: "解除する",
+  });
+
+  const defaultEmojis = useMemo<EmojiType[]>(
+    () => [
+      { aid: "default-like", name: "👍", name_id: "thumbs_up" },
+      { aid: "default-love", name: "❤️", name_id: "heart" },
+      { aid: "default-laugh", name: "😂", name_id: "joy" },
+      { aid: "default-wow", name: "😮", name_id: "open_mouth" },
+      { aid: "default-sad", name: "😢", name_id: "cry" },
+      { aid: "default-fire", name: "🔥", name_id: "fire" },
+    ],
+    [],
+  );
+
+  const emojiMenuItems = useMemo(() => {
+    const merged = new Map<string, EmojiType>();
+
+    defaultEmojis.forEach((emoji) => {
+      merged.set(emoji.name_id, emoji);
+    });
+
+    post.reactions?.forEach((emoji) => {
+      merged.set(emoji.name_id, {
+        aid: emoji.aid,
+        name: emoji.name,
+        name_id: emoji.name_id,
+      });
+    });
+
+    return Array.from(merged.values());
+  }, [defaultEmojis, post.reactions]);
+
+  const runProcessReaction = async (emojiInput: ReactionInput) => {
+    await processReaction({
+      emojiInput,
+      post,
+      setPost: () => undefined,
+      addPosts,
+    });
+  };
 
   return (
     <View style={styles.container}>
       <TouchableOpacity
+        onPress={() => handlePrimaryReactionPress(setIsEmojiMenuOpen)}
         style={[
           styles.reactionButton,
           post.is_reacted && styles.reactedButton,
@@ -46,6 +113,17 @@ export default function PostReactions({ post }: { post: PostType }) {
       >
         {post.reactions?.map((reaction: EmojiType) => (
           <TouchableOpacity
+            onPress={() =>
+              handleEmojiReactionPress({
+                emojiInput: reaction.name_id,
+                post,
+                setIsEmojiMenuOpen,
+                setPendingReactionInput,
+                setConfirmModalState,
+                setIsReactionConfirmOpen,
+                processReaction: runProcessReaction,
+              })
+            }
             key={reaction.aid}
             style={[
               styles.reactionButton,
@@ -60,6 +138,100 @@ export default function PostReactions({ post }: { post: PostType }) {
           </TouchableOpacity>
         ))}
       </ScrollView>
+
+      <Modal
+        visible={isEmojiMenuOpen}
+        transparent
+        animationType="fade"
+        onRequestClose={() => setIsEmojiMenuOpen(false)}
+      >
+        <Pressable
+          style={styles.modalBackdrop}
+          onPress={() => setIsEmojiMenuOpen(false)}
+        >
+          <Pressable
+            style={[styles.modalCard, { backgroundColor: modalCardBackground }]}
+            onPress={() => undefined}
+          >
+            <ThemedText style={styles.modalTitle}>
+              リアクションを選択
+            </ThemedText>
+            <View style={styles.emojiMenuList}>
+              {emojiMenuItems.map((emoji) => (
+                <TouchableOpacity
+                  key={emoji.aid}
+                  style={styles.emojiMenuButton}
+                  onPress={() =>
+                    handleEmojiReactionPress({
+                      emojiInput: emoji,
+                      post,
+                      setIsEmojiMenuOpen,
+                      setPendingReactionInput,
+                      setConfirmModalState,
+                      setIsReactionConfirmOpen,
+                      processReaction: runProcessReaction,
+                    })
+                  }
+                >
+                  <ThemedText style={styles.emoji}>{emoji.name}</ThemedText>
+                  <ThemedText style={styles.emojiLabel}>
+                    {emoji.name_id}
+                  </ThemedText>
+                </TouchableOpacity>
+              ))}
+            </View>
+          </Pressable>
+        </Pressable>
+      </Modal>
+
+      <Modal
+        visible={isReactionConfirmOpen}
+        transparent
+        animationType="fade"
+        onRequestClose={() => setIsReactionConfirmOpen(false)}
+      >
+        <Pressable
+          style={styles.modalBackdrop}
+          onPress={() => setIsReactionConfirmOpen(false)}
+        >
+          <Pressable
+            style={[styles.modalCard, { backgroundColor: modalCardBackground }]}
+            onPress={() => undefined}
+          >
+            <ThemedText style={styles.modalTitle}>
+              {confirmModalState.title}
+            </ThemedText>
+            <ThemedText style={[styles.modalMessage, { color: modalText }]}>
+              {confirmModalState.message}
+            </ThemedText>
+            <View style={styles.modalActions}>
+              <TouchableOpacity
+                style={styles.modalButton}
+                onPress={() => {
+                  setIsReactionConfirmOpen(false);
+                  setPendingReactionInput(null);
+                }}
+              >
+                <ThemedText>キャンセル</ThemedText>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={[styles.modalButton, styles.modalPrimaryButton]}
+                onPress={async () => {
+                  if (pendingReactionInput) {
+                    await runProcessReaction(pendingReactionInput);
+                  }
+                  setIsReactionConfirmOpen(false);
+                  setPendingReactionInput(null);
+                }}
+              >
+                <ThemedText style={styles.modalPrimaryText}>
+                  {confirmModalState.actionText}
+                </ThemedText>
+              </TouchableOpacity>
+            </View>
+          </Pressable>
+        </Pressable>
+      </Modal>
     </View>
   );
 }
@@ -73,13 +245,13 @@ const styles = StyleSheet.create({
   reactionButton: {
     flexDirection: "row",
     alignItems: "center",
-    padding: 4,
-    borderWidth: 2,
+    paddingVertical: 0,
+    paddingHorizontal: 4,
+    borderWidth: 1,
     borderRadius: 6,
     marginRight: 8,
   },
   reactedButton: {
-    borderWidth: 1,
     borderColor: "transparent",
   },
   icon: {
@@ -95,5 +267,65 @@ const styles = StyleSheet.create({
   emoji: {
     fontSize: 14,
     marginRight: 4,
+  },
+  modalBackdrop: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "rgba(0,0,0,0.35)",
+    padding: 20,
+  },
+  modalCard: {
+    width: "100%",
+    maxWidth: 360,
+    borderRadius: 12,
+    padding: 16,
+    gap: 12,
+  },
+  modalTitle: {
+    fontSize: 16,
+    fontWeight: "700",
+  },
+  modalMessage: {
+    fontSize: 14,
+  },
+  emojiMenuList: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 8,
+  },
+  emojiMenuButton: {
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: "#999",
+    borderRadius: 8,
+    paddingVertical: 8,
+    paddingHorizontal: 10,
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 6,
+  },
+  emojiLabel: {
+    fontSize: 10,
+    opacity: 0.6,
+  },
+  modalActions: {
+    marginTop: 4,
+    flexDirection: "row",
+    justifyContent: "flex-end",
+    gap: 8,
+  },
+  modalButton: {
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    borderRadius: 8,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: "#999",
+  },
+  modalPrimaryButton: {
+    backgroundColor: "#d93838",
+    borderColor: "#d93838",
+  },
+  modalPrimaryText: {
+    color: "#fff",
   },
 });

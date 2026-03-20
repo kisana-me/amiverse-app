@@ -10,7 +10,7 @@ import { formatRelativeTime } from "@/lib/format_time";
 
 import { PostType } from "@/types/post";
 import PostAccount from "./item_account";
-import PostConsole from "./item_console";
+import PostConsole from "./post_console";
 import PostContent from "./post_content";
 import PostQuote from "./post_quote";
 import PostReactions from "./post_reactions";

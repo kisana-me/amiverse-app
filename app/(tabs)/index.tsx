@@ -1,6 +1,8 @@
 import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 import { useScrollToTop } from "@react-navigation/native";
+import { BlurView } from "expo-blur";
 import * as Linking from "expo-linking";
+import { router } from "expo-router";
 import * as WebBrowser from "expo-web-browser";
 import React, {
   useCallback,
@@ -13,6 +15,7 @@ import {
   ActivityIndicator,
   FlatList,
   Modal,
+  Platform,
   Pressable,
   StyleSheet,
   View,
@@ -22,6 +25,7 @@ import MainHeader from "@/components/main_header/MainHeader";
 import Post from "@/components/post/post";
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
+import { useColorScheme } from "@/hooks/use-color-scheme";
 import { useThemeColor } from "@/hooks/use-theme-color";
 import { api } from "@/lib/axios";
 import { addHomeRefreshListener } from "@/lib/home-refresh";
@@ -35,6 +39,7 @@ import { PostType } from "@/types/post";
 type FeedTab = "index" | "follow" | "current";
 
 export default function HomeScreen() {
+  const colorScheme = useColorScheme();
   const listRef = useRef<FlatList<PostType> | null>(null);
   const tabBarHeight = useBottomTabBarHeight();
   useScrollToTop(listRef);
@@ -312,6 +317,39 @@ export default function HomeScreen() {
             ) : null
           }
         />
+
+        <Pressable
+          style={[
+            styles.fab,
+            {
+              bottom: tabBarHeight + 20,
+            },
+          ]}
+          onPress={() => router.push("/create")}
+          accessibilityRole="button"
+          accessibilityLabel="新規投稿"
+        >
+          <BlurView
+            tint={colorScheme === "dark" ? "dark" : "light"}
+            intensity={7}
+            experimentalBlurMethod={
+              Platform.OS === "android" ? "dimezisBlurView" : undefined
+            }
+            style={StyleSheet.absoluteFillObject}
+          />
+          <View
+            style={[
+              StyleSheet.absoluteFillObject,
+              {
+                backgroundColor:
+                  colorScheme === "dark"
+                    ? "rgba(20,20,20,0.28)"
+                    : "rgba(255,255,255,0.18)",
+              },
+            ]}
+          />
+          <ThemedText style={styles.fabText}>+</ThemedText>
+        </Pressable>
       </ThemedView>
 
       <Modal
@@ -434,5 +472,26 @@ const styles = StyleSheet.create({
   modalPrimary: {
     borderWidth: StyleSheet.hairlineWidth,
     borderRadius: 8,
+  },
+  fab: {
+    position: "absolute",
+    right: 16,
+    width: 54,
+    height: 54,
+    borderRadius: 27,
+    overflow: "hidden",
+    alignItems: "center",
+    justifyContent: "center",
+    elevation: 4,
+    shadowColor: "#000",
+    shadowOpacity: 0.25,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 4 },
+  },
+  fabText: {
+    color: "#fff",
+    fontSize: 28,
+    lineHeight: 30,
+    fontWeight: "700",
   },
 });

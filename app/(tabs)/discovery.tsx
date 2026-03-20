@@ -70,7 +70,7 @@ export default function DiscoveryScreen() {
         keyboardShouldPersistTaps="handled"
       >
         {trendsLoading ? (
-          <SkeletonTrendList />
+          <>{<SkeletonTrendList />}</>
         ) : (
           <>
             {trends.map((trend, index) => (
