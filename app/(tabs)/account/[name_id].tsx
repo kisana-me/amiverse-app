@@ -11,8 +11,8 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import MainHeader from "@/components/main_header/MainHeader";
-import ItemContent from "@/components/post/item_content";
 import Post from "@/components/post/post";
+import ItemContent from "@/components/post/post_content";
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
 import { useThemeColor } from "@/hooks/use-theme-color";

@@ -8,13 +8,12 @@ import { ThemedView } from "@/components/themed-view";
 import { useThemeColor } from "@/hooks/use-theme-color";
 import { formatRelativeTime } from "@/lib/format_time";
 
-import ItemAccount from "./item_account";
-import ItemConsole from "./item_console";
-import ItemContent from "./item_content";
-import ItemQuote from "./item_quote";
-import ItemReactions from "./item_reactions";
-
 import { PostType } from "@/types/post";
+import PostAccount from "./item_account";
+import PostConsole from "./item_console";
+import PostContent from "./post_content";
+import PostQuote from "./post_quote";
+import PostReactions from "./post_reactions";
 
 export default function Post(post: PostType) {
   const tint = useThemeColor({}, "tint");
@@ -74,18 +73,35 @@ export default function Post(post: PostType) {
     };
   }, [drawingUrls, drawingAspectRatios]);
 
-  return (
-    <ThemedView style={styles.item}>
-      <ItemAccount account={post.account} />
+  const strVisibility = (v: string) =>
+    ({
+      opened: "全体公開",
+      closed: "非公開",
+      limited: "限定公開",
+      followers_only: "フォロワー公開",
+      direct_only: "直接公開",
+    })[v] ?? "公開状態不明";
 
-      <View style={styles.timeRow}>
-        <ThemedText style={styles.timeText}>
-          {formatRelativeTime(new Date(post.created_at))}
-        </ThemedText>
+  return (
+    <ThemedView style={styles.post}>
+      <PostAccount account={post.account} />
+
+      <View style={styles.postInfo}>
+        <View>
+          <ThemedText style={styles.infoText}>
+            {post.reply_presence ? "返信" : ""}
+            {post.quote_presence && (post.reply_presence ? "・引用" : "引用")}
+          </ThemedText>
+        </View>
+        <View>
+          <ThemedText style={styles.infoText}>
+            {formatRelativeTime(new Date(post.created_at))}
+          </ThemedText>
+        </View>
       </View>
 
       <View style={styles.content}>
-        <ItemContent content={post.content} />
+        <PostContent content={post.content} />
 
         {post.media && post.media.length > 0 && (
           <View style={styles.mediaContainer}>
@@ -131,31 +147,43 @@ export default function Post(post: PostType) {
         )}
       </View>
 
-      <ItemQuote quote={post.quote} />
-      <ItemReactions post={post} />
-      <ItemConsole post={post} />
+      <PostQuote quote={post.quote} />
+
+      <View style={styles.postInfo}>
+        <View>
+          <ThemedText style={styles.infoText}>
+            {strVisibility(post.visibility)}
+          </ThemedText>
+        </View>
+        <View>
+          <ThemedText style={styles.infoText}>
+            {post.views_count}回表示
+          </ThemedText>
+        </View>
+      </View>
+
+      <PostReactions post={post} />
+      <PostConsole post={post} />
     </ThemedView>
   );
 }
 
 const styles = StyleSheet.create({
-  item: {
-    padding: 16,
+  post: {
+    padding: 7,
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderBottomColor: "#ccc",
   },
-  timeRow: {
-    marginTop: 0,
+  postInfo: {
     width: "100%",
-    alignItems: "flex-end",
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
-  timeText: {
-    fontSize: 12,
-    opacity: 0.7,
+  infoText: {
+    fontSize: 10,
+    opacity: 0.5,
   },
-  content: {
-    marginLeft: 0,
-  },
+  content: {},
   mediaContainer: {
     marginTop: 8,
     flexDirection: "row",

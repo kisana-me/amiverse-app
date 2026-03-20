@@ -4,12 +4,18 @@ import React from "react";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
 
 import { ThemedText } from "@/components/themed-text";
+import { formatRelativeTime } from "@/lib/format_time";
 import { PostType } from "@/types/post";
 
-export default function ItemQuote({ quote }: { quote?: PostType }) {
+export default function PostQuote({ quote }: { quote?: PostType }) {
   if (!quote) return null;
 
   const { account } = quote;
+  const previewContent = (() => {
+    const lines = (quote.content ?? "").split(/\r?\n/);
+    if (lines.length <= 3) return quote.content;
+    return `${lines.slice(0, 3).join("\n")}...`;
+  })();
 
   return (
     <View style={styles.container}>
@@ -18,7 +24,9 @@ export default function ItemQuote({ quote }: { quote?: PostType }) {
           <View style={styles.header}>
             <Image
               source={{
-                uri: account.icon_url || "https://github.com/shadcn.png",
+                uri:
+                  account.icon_url ||
+                  "https://api.amiverse.net/static_assets/images/amiverse-logo.webp",
               }}
               style={styles.icon}
             />
@@ -33,11 +41,15 @@ export default function ItemQuote({ quote }: { quote?: PostType }) {
               @{account.name_id}
             </ThemedText>
             <ThemedText style={styles.date}>
-              • {new Date(quote.created_at).toLocaleDateString()}
+              • {formatRelativeTime(new Date(quote.created_at))}
             </ThemedText>
           </View>
-          <ThemedText style={styles.text} numberOfLines={3}>
-            {quote.content}
+          <ThemedText
+            style={styles.text}
+            numberOfLines={3}
+            ellipsizeMode="tail"
+          >
+            {previewContent}
           </ThemedText>
         </TouchableOpacity>
       </Link>
@@ -47,11 +59,10 @@ export default function ItemQuote({ quote }: { quote?: PostType }) {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 8,
-    marginLeft: 0,
+    margin: 0,
     borderWidth: 1,
     borderColor: "#ccc",
-    borderRadius: 12,
+    borderRadius: 8,
     overflow: "hidden",
   },
   content: {

@@ -49,7 +49,7 @@ export default function ItemConsole({ post }: { post: PostType }) {
       </TouchableOpacity>
 
       {/* Rating (Left/Right) */}
-      <View style={styles.ratingGroup}>
+      {/* <View style={styles.ratingGroup}>
         <TouchableOpacity style={styles.button}>
           <Svg
             viewBox="0 0 100 100"
@@ -72,7 +72,7 @@ export default function ItemConsole({ post }: { post: PostType }) {
             <Path d="M51.7889 82.4223C51.0518 83.8964 48.9482 83.8964 48.2111 82.4223L16.0701 18.1402C15.2862 16.5725 16.7548 14.8264 18.4336 15.3301L49.4253 24.6276C49.8002 24.7401 50.1998 24.74 50.5747 24.6276L81.5664 15.3301C83.2452 14.8264 84.7138 16.5725 83.9299 18.1402L51.7889 82.4223Z" />
           </Svg>
         </TouchableOpacity>
-      </View>
+      </View> */}
 
       {/* Reply */}
       <TouchableOpacity style={styles.button}>
@@ -116,9 +116,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginTop: 8,
-    marginLeft: 0,
-    paddingRight: 16,
+    margin: 0,
   },
   button: {
     flexDirection: "row",
