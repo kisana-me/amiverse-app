@@ -2,7 +2,7 @@ import MainHeader from "@/components/main_header/MainHeader";
 import { ThemedText } from "@/components/themed-text";
 import SkeletonTrendList from "@/components/trend/skeleton_trend";
 import TrendList from "@/components/trend/trend_list";
-import { useThemeColor } from "@/hooks/use-theme-color";
+import { useColors } from "@/providers/UIProvider";
 import { useTrends } from "@/providers/TrendsProvider";
 import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 import { useScrollToTop } from "@react-navigation/native";
@@ -23,8 +23,8 @@ export default function DiscoveryScreen() {
   useScrollToTop(scrollRef);
   const tabBarHeight = useBottomTabBarHeight();
 
-  const borderColor = useThemeColor({}, "icon");
-  const textColor = useThemeColor({}, "text");
+  const borderColor = useColors().border_color;
+  const textColor = useColors().font_color;
 
   const handleSearchClick = useCallback(() => {
     const q = searchInput.trim();

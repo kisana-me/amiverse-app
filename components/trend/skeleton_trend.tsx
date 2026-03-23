@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 
 import { ThemedView } from "@/components/themed-view";
-import { useThemeColor } from "@/hooks/use-theme-color";
+import { useColors } from "@/providers/UIProvider";
 
 function hexToRgba(hex: string, alpha: number) {
   const h = hex.replace("#", "");
@@ -14,7 +14,7 @@ function hexToRgba(hex: string, alpha: number) {
 }
 
 export default function SkeletonTrendList() {
-  const icon = useThemeColor({}, "icon");
+  const icon = useColors().border_color;
   const skeleton = hexToRgba(icon, 0.18);
 
   return (

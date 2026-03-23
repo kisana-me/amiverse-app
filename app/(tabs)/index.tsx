@@ -23,8 +23,7 @@ import MainHeader from "@/components/main_header/MainHeader";
 import Post from "@/components/post/post";
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
-import { useColorScheme } from "@/hooks/use-color-scheme";
-import { useThemeColor } from "@/hooks/use-theme-color";
+import { useColors } from "@/providers/UIProvider";
 import { api } from "@/lib/axios";
 import { addHomeRefreshListener } from "@/lib/home-refresh";
 import { useCurrentAccount } from "@/providers/CurrentAccountProvider";
@@ -37,7 +36,7 @@ import { PostType } from "@/types/post";
 type FeedTab = "index" | "follow" | "current";
 
 export default function HomeScreen() {
-  const colorScheme = useColorScheme();
+  const colors = useColors();
   const listRef = useRef<FlatList<PostType> | null>(null);
   const tabBarHeight = useBottomTabBarHeight();
   useScrollToTop(listRef);
@@ -54,8 +53,9 @@ export default function HomeScreen() {
   } = useFeeds();
   const { currentAccountStatus } = useCurrentAccount();
 
-  const borderColor = useThemeColor({}, "icon");
-  const tintColor = useThemeColor({}, "tint");
+  const borderColor = colors.border_color;
+  const tintColor = colors.link_color;
+  const tabBackgroundColor = colors.inactive_background_color;
 
   const [isFeedLoading, setIsFeedLoading] = useState(false);
   const [isRefetching, setIsRefetching] = useState(false);
@@ -321,24 +321,17 @@ export default function HomeScreen() {
             styles.fab,
             {
               bottom: tabBarHeight + 20,
+              backgroundColor: tabBackgroundColor,
+              borderColor,
             },
           ]}
           onPress={() => router.push("/create")}
           accessibilityRole="button"
           accessibilityLabel="新規投稿"
         >
-          <View
-            style={[
-              StyleSheet.absoluteFillObject,
-              {
-                backgroundColor:
-                  colorScheme === "dark"
-                    ? "rgba(20,20,20,0.82)"
-                    : "rgba(255,255,255,0.86)",
-              },
-            ]}
-          />
-          <ThemedText style={styles.fabText}>+</ThemedText>
+          <ThemedText style={[styles.fabText, { color: colors.font_color }]}>
+            +
+          </ThemedText>
         </Pressable>
       </ThemedView>
 
@@ -469,9 +462,9 @@ const styles = StyleSheet.create({
     width: 54,
     height: 54,
     borderRadius: 27,
-    overflow: "hidden",
     alignItems: "center",
     justifyContent: "center",
+    borderWidth: StyleSheet.hairlineWidth,
     elevation: 4,
     shadowColor: "#000",
     shadowOpacity: 0.25,
@@ -479,7 +472,6 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 4 },
   },
   fabText: {
-    color: "#fff",
     fontSize: 28,
     lineHeight: 30,
     fontWeight: "700",

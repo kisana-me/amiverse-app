@@ -5,14 +5,14 @@ import { Pressable, StyleSheet, View } from "react-native";
 
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
-import { useThemeColor } from "@/hooks/use-theme-color";
+import { useColors } from "@/providers/UIProvider";
 import { formatRelativeTime } from "@/lib/format_time";
 import { TrendType } from "@/types/trend";
 
 export default function TrendList(trend: TrendType) {
-  const backgroundColor = useThemeColor({}, "background");
-  const textColor = useThemeColor({}, "text");
-  const secondaryColor = useThemeColor({}, "icon");
+  const backgroundColor = useColors().background_color;
+  const textColor = useColors().font_color;
+  const secondaryColor = useColors().border_color;
 
   const onPressWord = useCallback((word: string) => {
     const q = word.trim();

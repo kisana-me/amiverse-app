@@ -2,10 +2,10 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 
 import { ThemedView } from "@/components/themed-view";
-import { useThemeColor } from "@/hooks/use-theme-color";
+import { useColors } from "@/providers/UIProvider";
 
 export default function Item() {
-  const skeletonColor = useThemeColor({}, "icon");
+  const skeletonColor = useColors().border_color;
 
   return (
     <ThemedView style={styles.item}>

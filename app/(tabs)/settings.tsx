@@ -6,16 +6,16 @@ import { Pressable, StyleSheet, View } from "react-native";
 import MainHeader from "@/components/main_header/MainHeader";
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
-import { useThemeColor } from "@/hooks/use-theme-color";
+import { useColors } from "@/providers/UIProvider";
 import { clearAccessToken } from "@/lib/access-token";
 import { api } from "@/lib/axios";
 import { useCurrentAccount } from "@/providers/CurrentAccountProvider";
 import { useToast } from "@/providers/ToastProvider";
 
 export default function SettingsScreen() {
-  const borderColor = useThemeColor({}, "icon");
-  const backgroundColor = useThemeColor({}, "background");
-  const tintColor = useThemeColor({}, "tint");
+  const borderColor = useColors().border_color;
+  const backgroundColor = useColors().background_color;
+  const tintColor = useColors().link_color;
   const { addToast } = useToast();
   const {
     currentAccount,

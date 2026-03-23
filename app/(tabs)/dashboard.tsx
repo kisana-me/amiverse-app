@@ -7,7 +7,7 @@ import { Modal, Pressable, ScrollView, StyleSheet, View } from "react-native";
 import MainHeader from "@/components/main_header/MainHeader";
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
-import { useThemeColor } from "@/hooks/use-theme-color";
+import { useColors } from "@/providers/UIProvider";
 import { clearAccessToken } from "@/lib/access-token";
 import { api } from "@/lib/axios";
 import { useCurrentAccount } from "@/providers/CurrentAccountProvider";
@@ -22,7 +22,7 @@ function ActionCard({
   description: string;
   onPress?: () => void;
 }) {
-  const borderColor = useThemeColor({}, "icon");
+  const borderColor = useColors().border_color;
   return (
     <Pressable
       onPress={onPress}
@@ -39,8 +39,8 @@ export default function DashboardScreen() {
   const scrollRef = useRef<ScrollView | null>(null);
   useScrollToTop(scrollRef);
 
-  const borderColor = useThemeColor({}, "icon");
-  const backgroundColor = useThemeColor({}, "background");
+  const borderColor = useColors().border_color;
+  const backgroundColor = useColors().background_color;
   const { addToast } = useToast();
   const {
     currentAccount,

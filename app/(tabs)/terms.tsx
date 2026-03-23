@@ -5,10 +5,10 @@ import { Pressable, StyleSheet } from "react-native";
 import MainHeader from "@/components/main_header/MainHeader";
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
-import { useThemeColor } from "@/hooks/use-theme-color";
+import { useColors } from "@/providers/UIProvider";
 
 export default function TermsScreen() {
-  const borderColor = useThemeColor({}, "icon");
+  const borderColor = useColors().border_color;
   return (
     <>
       <MainHeader>

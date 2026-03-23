@@ -1,31 +1,31 @@
 import { Image } from "expo-image";
 import { router, usePathname } from "expo-router";
 import React, {
-    useCallback,
-    useEffect,
-    useMemo,
-    useRef,
-    useState,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
 } from "react";
 import {
-    Animated,
-    Modal,
-    Pressable,
-    ScrollView,
-    StyleSheet,
-    useWindowDimensions,
-    View,
+  Animated,
+  Modal,
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  useWindowDimensions,
+  View,
 } from "react-native";
 
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
-import { useThemeColor } from "@/hooks/use-theme-color";
+import { useColors } from "@/providers/UIProvider";
 import { useCurrentAccount } from "@/providers/CurrentAccountProvider";
 import { useOverlay } from "@/providers/OverlayProvider";
 import { useTrends } from "@/providers/TrendsProvider";
 
 function MenuItem({ label, onPress }: { label: string; onPress: () => void }) {
-  const borderColor = useThemeColor({}, "icon");
+  const borderColor = useColors().border_color;
   return (
     <Pressable
       onPress={onPress}
@@ -43,8 +43,8 @@ export function SideMenus() {
   const drawerWidth = Math.min(340, Math.round(windowWidth * 0.86));
 
   const backdropColor = "rgba(0,0,0,0.4)";
-  const borderColor = useThemeColor({}, "icon");
-  const backgroundColor = useThemeColor({}, "background");
+  const borderColor = useColors().border_color;
+  const backgroundColor = useColors().background_color;
 
   const { currentAccount, currentAccountStatus } = useCurrentAccount();
   const { trends, trendsLoading } = useTrends();

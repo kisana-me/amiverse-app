@@ -20,7 +20,7 @@ import {
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { ThemedText } from "@/components/themed-text";
-import { useThemeColor } from "@/hooks/use-theme-color";
+import { useColors } from "@/providers/UIProvider";
 import { ToastType } from "@/types/toast";
 
 type ToastContextType = {
@@ -145,10 +145,10 @@ function hexToRgba(hex: string, alpha: number) {
 export function ToastViewport() {
   const { toasts, dismissToast, setToastPaused } = useToast();
   const insets = useSafeAreaInsets();
-  const backgroundColor = useThemeColor({}, "background");
-  const borderColor = useThemeColor({}, "icon");
-  const tintColor = useThemeColor({}, "tint");
-  const textColor = useThemeColor({}, "text");
+  const backgroundColor = useColors().background_color;
+  const borderColor = useColors().border_color;
+  const tintColor = useColors().link_color;
+  const textColor = useColors().font_color;
 
   const visibleToasts = useMemo(
     () => toasts.filter((t) => t.status === "show"),

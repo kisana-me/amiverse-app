@@ -7,7 +7,7 @@ import { Pressable, StyleSheet } from "react-native";
 import MainHeader from "@/components/main_header/MainHeader";
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
-import { useThemeColor } from "@/hooks/use-theme-color";
+import { useColors } from "@/providers/UIProvider";
 import { useToast } from "@/providers/ToastProvider";
 
 WebBrowser.maybeCompleteAuthSession();
@@ -15,7 +15,7 @@ WebBrowser.maybeCompleteAuthSession();
 const SIGNIN_URL = "https://amiverse.net/app/signin";
 
 export default function SigninScreen() {
-  const borderColor = useThemeColor({}, "icon");
+  const borderColor = useColors().border_color;
   useToast();
 
   const openSignin = useCallback(async () => {

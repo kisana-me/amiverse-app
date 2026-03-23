@@ -1,4 +1,4 @@
-import { useThemeColor } from "@/hooks/use-theme-color";
+import { useColors } from "@/providers/UIProvider";
 import React, { useMemo, useState } from "react";
 import {
   Modal,
@@ -22,9 +22,9 @@ import {
 import { handlePrimaryReactionPress } from "./reaction-actions/primary-reaction-press";
 
 export default function PostReactions({ post }: { post: PostType }) {
-  const tintColor = useThemeColor({}, "tint");
-  const modalCardBackground = useThemeColor({}, "background");
-  const modalText = useThemeColor({}, "text");
+  const tintColor = useColors().link_color;
+  const modalCardBackground = useColors().background_color;
+  const modalText = useColors().font_color;
   const { addPosts } = usePosts();
 
   const [isEmojiMenuOpen, setIsEmojiMenuOpen] = useState(false);

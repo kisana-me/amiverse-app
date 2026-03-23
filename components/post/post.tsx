@@ -5,7 +5,7 @@ import { Image as RNImage, StyleSheet, View } from "react-native";
 
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
-import { useThemeColor } from "@/hooks/use-theme-color";
+import { useColors } from "@/providers/UIProvider";
 import { formatRelativeTime } from "@/lib/format_time";
 
 import { PostType } from "@/types/post";
@@ -16,8 +16,8 @@ import PostQuote from "./post_quote";
 import PostReactions from "./post_reactions";
 
 export default function Post(post: PostType) {
-  const tint = useThemeColor({}, "tint");
-  const backgroundColor = useThemeColor({}, "background");
+  const tint = useColors().link_color;
+  const backgroundColor = useColors().background_color;
   const drawingBorderColor = tint;
 
   const drawingBorderColors = useMemo(

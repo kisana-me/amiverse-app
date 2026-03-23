@@ -15,7 +15,7 @@ import Post from "@/components/post/post";
 import ItemContent from "@/components/post/post_content";
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
-import { useThemeColor } from "@/hooks/use-theme-color";
+import { useColors } from "@/providers/UIProvider";
 import { api } from "@/lib/axios";
 import { formatFullDate } from "@/lib/format_time";
 import { useAccounts } from "@/providers/AccountsProvider";
@@ -44,9 +44,9 @@ export default function AccountDetailScreen() {
   const params = useLocalSearchParams<{ name_id?: string }>();
   const nameId = (params.name_id ?? "").toString();
 
-  const borderColor = useThemeColor({}, "icon");
-  const backgroundColor = useThemeColor({}, "background");
-  const tintColor = useThemeColor({}, "tint");
+  const borderColor = useColors().border_color;
+  const backgroundColor = useColors().background_color;
+  const tintColor = useColors().link_color;
 
   const { addToast } = useToast();
   const { currentAccount, currentAccountStatus } = useCurrentAccount();

@@ -12,7 +12,7 @@ import {
 } from "react-native";
 
 import { ThemedText } from "@/components/themed-text";
-import { useThemeColor } from "@/hooks/use-theme-color";
+import { useColors } from "@/providers/UIProvider";
 import { api } from "@/lib/axios";
 import { useFeeds } from "@/providers/FeedsProvider";
 import { usePosts } from "@/providers/PostsProvider";
@@ -37,10 +37,10 @@ export default function PostForm({
   const { addPosts } = usePosts();
   const { addToast } = useToast();
 
-  const backgroundColor = useThemeColor({}, "background");
-  const borderColor = useThemeColor({}, "icon");
-  const textColor = useThemeColor({}, "text");
-  const tintColor = useThemeColor({}, "tint");
+  const backgroundColor = useColors().background_color;
+  const borderColor = useColors().border_color;
+  const textColor = useColors().font_color;
+  const tintColor = useColors().link_color;
 
   const [content, setContent] = useState("");
   const [visibility, setVisibility] = useState("opened");

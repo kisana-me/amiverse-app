@@ -13,7 +13,7 @@ import {
 import MainHeader from "@/components/main_header/MainHeader";
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
-import { useThemeColor } from "@/hooks/use-theme-color";
+import { useColors } from "@/providers/UIProvider";
 import { formatRelativeTime } from "@/lib/format_time";
 import { useCurrentAccount } from "@/providers/CurrentAccountProvider";
 import { useNotifications } from "@/providers/NotificationsProvider";
@@ -62,8 +62,8 @@ function NotificationItem({
 }: {
   notification: NotificationType;
 }) {
-  const borderColor = useThemeColor({}, "icon");
-  const backgroundColor = useThemeColor({}, "background");
+  const borderColor = useColors().border_color;
+  const backgroundColor = useColors().background_color;
 
   const { title, message, icon } = useMemo(
     () => getNotificationText(notification),
@@ -167,7 +167,7 @@ export default function NotificationsScreen() {
   const listRef = useRef<FlatList<NotificationType> | null>(null);
   useScrollToTop(listRef);
 
-  const borderColor = useThemeColor({}, "icon");
+  const borderColor = useColors().border_color;
   const { currentAccountStatus } = useCurrentAccount();
   const {
     notifications,

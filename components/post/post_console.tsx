@@ -12,7 +12,7 @@ import {
 import Svg, { Path } from "react-native-svg";
 
 import { ThemedText } from "@/components/themed-text";
-import { useThemeColor } from "@/hooks/use-theme-color";
+import { useColors } from "@/providers/UIProvider";
 import { useCurrentAccount } from "@/providers/CurrentAccountProvider";
 import { usePosts } from "@/providers/PostsProvider";
 import { useToast } from "@/providers/ToastProvider";
@@ -29,10 +29,10 @@ import {
 import PostForm from "./post_form";
 
 export default function PostConsole({ post }: { post: PostType }) {
-  const cardBackground = useThemeColor({}, "background");
-  const borderColor = useThemeColor({}, "icon");
-  const textColor = useThemeColor({}, "text");
-  const tintColor = useThemeColor({}, "tint");
+  const cardBackground = useColors().background_color;
+  const borderColor = useColors().border_color;
+  const textColor = useColors().font_color;
+  const tintColor = useColors().link_color;
 
   const { currentAccountStatus, currentAccount } = useCurrentAccount();
   const { addPosts, removePost } = usePosts();

@@ -12,9 +12,8 @@ import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 import { InitOverlay } from "@/components/init-overlay";
 import { SideMenus } from "@/components/side-menus";
-import { useColorScheme } from "@/hooks/use-color-scheme";
-import { useThemeColor } from "@/hooks/use-theme-color";
 import { emitHomeRefresh } from "@/lib/home-refresh";
+import { UIProvider, useColors, useUI } from "@/providers/UIProvider";
 import { AccountsProvider } from "@/providers/AccountsProvider";
 import { CurrentAccountProvider } from "@/providers/CurrentAccountProvider";
 import { FeedsProvider } from "@/providers/FeedsProvider";
@@ -29,10 +28,21 @@ export const unstable_settings = {
 };
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
+  return (
+    <SafeAreaProvider>
+      <UIProvider>
+        <RootLayoutContent />
+      </UIProvider>
+    </SafeAreaProvider>
+  );
+}
+
+function RootLayoutContent() {
+  const { effectiveTheme } = useUI();
+  const colors = useColors();
   const pathname = usePathname();
   const pathnameRef = useRef(pathname);
-  const backgroundColor = useThemeColor({}, "background");
+  const backgroundColor = colors.background_color;
 
   useEffect(() => {
     pathnameRef.current = pathname;
@@ -62,45 +72,43 @@ export default function RootLayout() {
   }, []);
 
   return (
-    <SafeAreaProvider>
-      <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-        <OverlayProvider>
-          <ToastProvider>
-            <CurrentAccountProvider>
-              <AccountsProvider>
-                <NotificationsProvider>
-                  <TrendsProvider>
-                    <PostsProvider>
-                      <FeedsProvider>
-                        <SafeAreaView
-                          style={[styles.safe, { backgroundColor }]}
-                          edges={["top", "left", "right"]}
-                        >
-                          <Stack>
-                            <Stack.Screen
-                              name="(tabs)"
-                              options={{ headerShown: false }}
-                            />
-                          </Stack>
-                          <SideMenus />
-                          <InitOverlay />
-                          <ToastViewport />
-                          <StatusBar
-                            style="auto"
-                            animated={true}
-                            translucent={false}
+    <ThemeProvider value={effectiveTheme === "dark" ? DarkTheme : DefaultTheme}>
+      <OverlayProvider>
+        <ToastProvider>
+          <CurrentAccountProvider>
+            <AccountsProvider>
+              <NotificationsProvider>
+                <TrendsProvider>
+                  <PostsProvider>
+                    <FeedsProvider>
+                      <SafeAreaView
+                        style={[styles.safe, { backgroundColor }]}
+                        edges={["top", "left", "right"]}
+                      >
+                        <Stack>
+                          <Stack.Screen
+                            name="(tabs)"
+                            options={{ headerShown: false }}
                           />
-                        </SafeAreaView>
-                      </FeedsProvider>
-                    </PostsProvider>
-                  </TrendsProvider>
-                </NotificationsProvider>
-              </AccountsProvider>
-            </CurrentAccountProvider>
-          </ToastProvider>
-        </OverlayProvider>
-      </ThemeProvider>
-    </SafeAreaProvider>
+                        </Stack>
+                        <SideMenus />
+                        <InitOverlay />
+                        <ToastViewport />
+                        <StatusBar
+                          style={effectiveTheme === "dark" ? "light" : "dark"}
+                          animated={true}
+                          translucent={false}
+                        />
+                      </SafeAreaView>
+                    </FeedsProvider>
+                  </PostsProvider>
+                </TrendsProvider>
+              </NotificationsProvider>
+            </AccountsProvider>
+          </CurrentAccountProvider>
+        </ToastProvider>
+      </OverlayProvider>
+    </ThemeProvider>
   );
 }
 

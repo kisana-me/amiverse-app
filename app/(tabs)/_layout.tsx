@@ -2,21 +2,20 @@ import { Tabs } from "expo-router";
 import React from "react";
 import { View } from "react-native";
 
-import { IconSymbol } from "@/components/ui/icon-symbol";
-import { Colors } from "@/constants/theme";
-import { useColorScheme } from "@/hooks/use-color-scheme";
+import { IconSymbol } from "@/components/icons";
+import { useColors } from "@/providers/UIProvider";
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
-  const themeKey = colorScheme === "dark" ? "dark" : "light";
+  const colors = useColors();
   const iconSize = 32;
+  const tabBackgroundColor = colors.inactive_background_color;
 
   return (
     <Tabs
       backBehavior="history"
       screenOptions={{
-        tabBarActiveTintColor: Colors[themeKey].text,
-        tabBarInactiveTintColor: Colors[themeKey].text,
+        tabBarActiveTintColor: colors.font_color,
+        tabBarInactiveTintColor: colors.font_color,
         headerShown: false,
         tabBarShowLabel: false,
         tabBarItemStyle: {
@@ -24,7 +23,7 @@ export default function TabLayout() {
         },
         tabBarStyle: {
           position: "absolute",
-          backgroundColor: "#000000",
+          backgroundColor: tabBackgroundColor,
           borderTopWidth: 0,
           elevation: 0,
           height: 82,
@@ -34,7 +33,10 @@ export default function TabLayout() {
           zIndex: 10,
         },
         tabBarBackground: () => (
-          <View pointerEvents="none" style={styles.tabBackgroundSolid} />
+          <View
+            pointerEvents="none"
+            style={{ flex: 1, backgroundColor: tabBackgroundColor }}
+          />
         ),
       }}
     >
@@ -117,10 +119,3 @@ export default function TabLayout() {
     </Tabs>
   );
 }
-
-const styles = {
-  tabBackgroundSolid: {
-    flex: 1,
-    backgroundColor: "#000000",
-  },
-};

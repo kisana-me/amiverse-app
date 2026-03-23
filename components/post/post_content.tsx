@@ -9,7 +9,7 @@ import {
 } from "react-native";
 
 import { ThemedText } from "@/components/themed-text";
-import { useThemeColor } from "@/hooks/use-theme-color";
+import { useColors } from "@/providers/UIProvider";
 
 interface PostContentProps {
   content: string;
@@ -17,7 +17,7 @@ interface PostContentProps {
 
 export default function PostContent({ content }: PostContentProps) {
   const [isExpanded, setIsExpanded] = useState(false);
-  const tintColor = useThemeColor({}, "tint");
+  const tintColor = useColors().link_color;
   const normalizedContent = content ?? "";
   const lines = useMemo(
     () => normalizedContent.split(/\r?\n/),
