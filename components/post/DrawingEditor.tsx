@@ -1,23 +1,44 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
 import {
-  Alert,
-  Modal,
-  Pressable,
-  ScrollView,
-  StyleSheet,
-  TextInput,
-  View,
+	AlphaType,
+	Canvas,
+	ColorType,
+	FilterMode,
+	Group,
+	ImageFormat,
+	MipmapMode,
+	Skia,
+	Image as SkiaImage,
+} from "@shopify/react-native-skia";
+import React, { useEffect, useRef, useState } from "react";
+import {
+	Alert,
+	Modal,
+	StyleSheet,
+	Text,
+	TextInput,
+	TouchableOpacity,
+	View,
+	type GestureResponderEvent,
+	type LayoutChangeEvent,
+	type NativeSyntheticEvent,
+	type TextInputChangeEventData,
 } from "react-native";
-import Svg, { Path } from "react-native-svg";
-
-import { ThemedText } from "@/components/themed-text";
-import { useThemeColor } from "@/hooks/use-theme-color";
 
 export type DrawingDraft = {
   packed: string;
   name: string;
   description: string;
-  previewUri?: string;
+  previewPngBase64?: string;
+};
+
+type Tool = "pen" | "eraser" | "hand";
+type BrushShape = "square" | "circle";
+
+type EditorTouch = {
+  locationX: number;
+  locationY: number;
+  pageX: number;
+  pageY: number;
 };
 
 type DrawingEditorProps = {
@@ -29,561 +50,652 @@ type DrawingEditorProps = {
   initialDescription?: string;
 };
 
-const W = 320;
-const H = 120;
-const BYTE_LEN = Math.ceil((W * H) / 8);
-const B64 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
-const MIN_SCALE = 1;
+const CANVAS_WIDTH = 320;
+const CANVAS_HEIGHT = 120;
+const MIN_SCALE = 0.5;
 const MAX_SCALE = 10;
-const MAX_STROKE_JUMP = 24;
+const MAX_HISTORY = 50;
+const BYTES_PER_ROW = CANVAS_WIDTH * 4;
+const PERF_ENABLED = __DEV__;
+const PERF_LOG_INTERVAL_MS = 600;
 
-function encodeBase64(bytes: Uint8Array) {
-  let out = "";
-  for (let i = 0; i < bytes.length; i += 3) {
-    const a = bytes[i] ?? 0;
-    const b = bytes[i + 1] ?? 0;
-    const c = bytes[i + 2] ?? 0;
-    const n = (a << 16) | (b << 8) | c;
-
-    out += B64[(n >> 18) & 63];
-    out += B64[(n >> 12) & 63];
-    out += i + 1 < bytes.length ? B64[(n >> 6) & 63] : "=";
-    out += i + 2 < bytes.length ? B64[n & 63] : "=";
+const BASE64_CHARS =
+  "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+const BASE64_LOOKUP: number[] = (() => {
+  const table = new Array<number>(256).fill(-1);
+  for (let i = 0; i < BASE64_CHARS.length; i += 1) {
+    table[BASE64_CHARS.charCodeAt(i)] = i;
   }
-  return out;
-}
+  return table;
+})();
 
-function decodeBase64(input: string) {
-  const clean = input.replace(/[^A-Za-z0-9+/=]/g, "");
-  const out: number[] = [];
+const clamp = (value: number, min: number, max: number) =>
+  Math.min(max, Math.max(min, value));
 
+const nowMs = () =>
+  typeof performance !== "undefined" && typeof performance.now === "function"
+    ? performance.now()
+    : Date.now();
+
+const encodeBase64 = (bytes: Uint8Array): string => {
+  let output = "";
+  let i = 0;
+  while (i < bytes.length) {
+    const b0 = bytes[i] ?? 0;
+    const b1 = bytes[i + 1] ?? 0;
+    const b2 = bytes[i + 2] ?? 0;
+
+    const triplet = (b0 << 16) | (b1 << 8) | b2;
+    output += BASE64_CHARS[(triplet >> 18) & 63];
+    output += BASE64_CHARS[(triplet >> 12) & 63];
+    output += i + 1 < bytes.length ? BASE64_CHARS[(triplet >> 6) & 63] : "=";
+    output += i + 2 < bytes.length ? BASE64_CHARS[triplet & 63] : "=";
+
+    i += 3;
+  }
+  return output;
+};
+
+const decodeBase64 = (encoded: string): Uint8Array | null => {
+  const clean = encoded.replace(/\s/g, "");
+  if (!clean.length || clean.length % 4 !== 0) {
+    return null;
+  }
+
+  const padding = clean.endsWith("==") ? 2 : clean.endsWith("=") ? 1 : 0;
+  const outputLength = (clean.length / 4) * 3 - padding;
+  const output = new Uint8Array(outputLength);
+
+  let outIndex = 0;
   for (let i = 0; i < clean.length; i += 4) {
-    const c1 = B64.indexOf(clean[i] || "A");
-    const c2 = B64.indexOf(clean[i + 1] || "A");
-    const c3ch = clean[i + 2] || "=";
-    const c4ch = clean[i + 3] || "=";
-    const c3 = c3ch === "=" ? -1 : B64.indexOf(c3ch);
-    const c4 = c4ch === "=" ? -1 : B64.indexOf(c4ch);
+    const c0 = clean.charCodeAt(i);
+    const c1 = clean.charCodeAt(i + 1);
+    const c2 = clean.charCodeAt(i + 2);
+    const c3 = clean.charCodeAt(i + 3);
 
-    const n =
-      ((c1 & 63) << 18) |
-      ((c2 & 63) << 12) |
-      (((c3 < 0 ? 0 : c3) & 63) << 6) |
-      ((c4 < 0 ? 0 : c4) & 63);
+    const v0 = BASE64_LOOKUP[c0];
+    const v1 = BASE64_LOOKUP[c1];
+    const v2 = c2 === 61 ? 0 : BASE64_LOOKUP[c2];
+    const v3 = c3 === 61 ? 0 : BASE64_LOOKUP[c3];
 
-    out.push((n >> 16) & 255);
-    if (c3 >= 0) out.push((n >> 8) & 255);
-    if (c4 >= 0) out.push(n & 255);
+    if (v0 < 0 || v1 < 0 || (c2 !== 61 && v2 < 0) || (c3 !== 61 && v3 < 0)) {
+      return null;
+    }
+
+    const group = (v0 << 18) | (v1 << 12) | (v2 << 6) | v3;
+    if (outIndex < outputLength) output[outIndex++] = (group >> 16) & 255;
+    if (outIndex < outputLength) output[outIndex++] = (group >> 8) & 255;
+    if (outIndex < outputLength) output[outIndex++] = group & 255;
   }
 
-  return new Uint8Array(out);
-}
+  return output;
+};
+
+const bitmapToPacked = (bitmap: Uint8Array): string => {
+  const packedLength = Math.ceil((CANVAS_WIDTH * CANVAS_HEIGHT) / 8);
+  const packed = new Uint8Array(packedLength);
+
+  for (let i = 0; i < CANVAS_WIDTH * CANVAS_HEIGHT; i += 1) {
+    if (bitmap[i] === 1) {
+      const byteIndex = Math.floor(i / 8);
+      const bitIndex = 7 - (i % 8);
+      packed[byteIndex] |= 1 << bitIndex;
+    }
+  }
+
+  return encodeBase64(packed);
+};
+
+const packedToBitmap = (packed?: string): Uint8Array => {
+  const bitmap = new Uint8Array(CANVAS_WIDTH * CANVAS_HEIGHT);
+  bitmap.fill(1);
+
+  if (!packed) {
+    return bitmap;
+  }
+
+  const decoded = decodeBase64(packed);
+  if (!decoded) {
+    return bitmap;
+  }
+
+  const maxPixels = CANVAS_WIDTH * CANVAS_HEIGHT;
+  for (let i = 0; i < maxPixels; i += 1) {
+    const byteIndex = Math.floor(i / 8);
+    if (byteIndex >= decoded.length) {
+      break;
+    }
+    const bitIndex = 7 - (i % 8);
+    bitmap[i] = (decoded[byteIndex] >> bitIndex) & 1;
+  }
+
+  return bitmap;
+};
+
+const createSkImageFromBitmap = (bitmap: Uint8Array) => {
+  const pixels = new Uint8Array(CANVAS_WIDTH * CANVAS_HEIGHT * 4);
+  for (let i = 0; i < bitmap.length; i += 1) {
+    const color = bitmap[i] ? 255 : 0;
+    const offset = i * 4;
+    pixels[offset] = color;
+    pixels[offset + 1] = color;
+    pixels[offset + 2] = color;
+    pixels[offset + 3] = 255;
+  }
+
+  return Skia.Image.MakeImage(
+    {
+      width: CANVAS_WIDTH,
+      height: CANVAS_HEIGHT,
+      alphaType: AlphaType.Unpremul,
+      colorType: ColorType.RGBA_8888,
+    },
+    Skia.Data.fromBytes(pixels),
+    BYTES_PER_ROW,
+  );
+};
 
 export default function DrawingEditor({
   visible,
   onClose,
   onSave,
   initialData,
-  initialName,
-  initialDescription,
+  initialName = "",
+  initialDescription = "",
 }: DrawingEditorProps) {
-  const backgroundColor = useThemeColor({}, "background");
-  const textColor = useThemeColor({}, "text");
-  const borderColor = useThemeColor({}, "icon");
-  const tintColor = useThemeColor({}, "tint");
-
-  const [name, setName] = useState(initialName ?? "");
-  const [description, setDescription] = useState(initialDescription ?? "");
-  const [tool, setTool] = useState<"pen" | "eraser" | "hand">("pen");
-  const [shape, setShape] = useState<"square" | "circle">("circle");
-  const [size, setSize] = useState(1);
-  const [zoom, setZoom] = useState(1);
-  const [viewTick, setViewTick] = useState(0);
-  const [bitmapTick, setBitmapTick] = useState(0);
+  const [tool, setTool] = useState<Tool>("pen");
+  const [brushSize, setBrushSize] = useState(1);
+  const [brushShape, setBrushShape] = useState<BrushShape>("circle");
+  const [name, setName] = useState(initialName);
+  const [description, setDescription] = useState(initialDescription);
   const [historyIndex, setHistoryIndex] = useState(0);
+  const [viewport, setViewport] = useState({ width: 0, height: 0 });
+  const [transform, setTransform] = useState({ scale: 1, panX: 0, panY: 0 });
+  const [skImage, setSkImage] = useState(() =>
+    createSkImageFromBitmap(
+      new Uint8Array(CANVAS_WIDTH * CANVAS_HEIGHT).fill(1),
+    ),
+  );
 
-  const bitmapRef = useRef(new Uint8Array(BYTE_LEN));
+  const bitmapRef = useRef<Uint8Array>(
+    new Uint8Array(CANVAS_WIDTH * CANVAS_HEIGHT).fill(1),
+  );
   const historyRef = useRef<Uint8Array[]>([]);
-  const rafRef = useRef<number | null>(null);
+  const didCenterRef = useRef(false);
 
-  const viewportElRef = useRef<View | null>(null);
-  const viewportRef = useRef({ width: 0, height: 0 });
-  const viewportPageRef = useRef({ x: 0, y: 0 });
-  const pendingRenderRef = useRef({ view: false, bitmap: false });
-  const gestureRef = useRef({
-    scale: 1,
-    panX: 0,
-    panY: 0,
-    drawing: false,
-    panning: false,
-    pinching: false,
-    touched: false,
-    pinchDist: 0,
-    pinchScale: 1,
-    pinchWorldX: 0,
-    pinchWorldY: 0,
+  const interactionRef = useRef({
+    isDrawing: false,
+    hasDrawn: false,
+    isPanning: false,
+    isPinching: false,
     lastX: 0,
     lastY: 0,
     lastTouchX: 0,
     lastTouchY: 0,
-    activeTouchId: null as number | null,
-    points: [] as { x: number; y: number }[],
+    pinchStartDist: 0,
+    pinchStartScale: 1,
+    pinchCenterWorldX: 0,
+    pinchCenterWorldY: 0,
   });
 
-  const refreshViewportOrigin = () => {
-    if (!viewportElRef.current) return;
-    viewportElRef.current.measureInWindow((x, y) => {
-      viewportPageRef.current.x = x;
-      viewportPageRef.current.y = y;
-    });
+  const perfRef = useRef({
+    strokeStartAt: 0,
+    lastLogAt: 0,
+    moveCount: 0,
+    lineCallCount: 0,
+    linePointCount: 0,
+    lineMsTotal: 0,
+    imageBuildCount: 0,
+    imageBuildMsTotal: 0,
+    imageBuildReason: "",
+  });
+
+  const resetPerfStroke = () => {
+    perfRef.current.strokeStartAt = nowMs();
+    perfRef.current.lastLogAt = 0;
+    perfRef.current.moveCount = 0;
+    perfRef.current.lineCallCount = 0;
+    perfRef.current.linePointCount = 0;
+    perfRef.current.lineMsTotal = 0;
+    perfRef.current.imageBuildCount = 0;
+    perfRef.current.imageBuildMsTotal = 0;
+    perfRef.current.imageBuildReason = "";
   };
 
-  const requestRender = ({
-    view = false,
-    bitmap = false,
-    stroke = false,
-  }: {
-    view?: boolean;
-    bitmap?: boolean;
-    stroke?: boolean;
-  }) => {
-    pendingRenderRef.current.view = pendingRenderRef.current.view || view;
-    pendingRenderRef.current.bitmap = pendingRenderRef.current.bitmap || bitmap;
+  const notifyBitmapChanged = (reason = "unknown") => {
+    const t0 = PERF_ENABLED ? nowMs() : 0;
+    setSkImage(createSkImageFromBitmap(bitmapRef.current));
 
-    if (rafRef.current !== null) return;
-    rafRef.current = requestAnimationFrame(() => {
-      rafRef.current = null;
-      const pending = pendingRenderRef.current;
-      pendingRenderRef.current = { view: false, bitmap: false };
-
-      if (pending.view) {
-        setZoom(gestureRef.current.scale);
-        setViewTick((v) => v + 1);
-      }
-
-      if (pending.bitmap) {
-        setBitmapTick((v) => v + 1);
-      }
-    });
-  };
-
-  const clearBitmap = () => {
-    // white background: bit=1 means white
-    bitmapRef.current = new Uint8Array(BYTE_LEN).fill(255);
-  };
-
-  const setPixel = (x: number, y: number, black: boolean) => {
-    if (x < 0 || y < 0 || x >= W || y >= H) return;
-    const i = y * W + x;
-    const bi = Math.floor(i / 8);
-    const bit = 7 - (i % 8);
-    const mask = 1 << bit;
-    if (black) {
-      bitmapRef.current[bi] &= ~mask;
-    } else {
-      bitmapRef.current[bi] |= mask;
+    if (PERF_ENABLED) {
+      const dt = nowMs() - t0;
+      perfRef.current.imageBuildCount += 1;
+      perfRef.current.imageBuildMsTotal += dt;
+      perfRef.current.imageBuildReason = reason;
     }
   };
 
-  const isWhite = (x: number, y: number) => {
-    const i = y * W + x;
-    const bi = Math.floor(i / 8);
-    const bit = 7 - (i % 8);
-    return ((bitmapRef.current[bi] >> bit) & 1) === 1;
-  };
-
-  const drawPoint = (cx: number, cy: number) => {
-    const left = Math.ceil(cx - size / 2);
-    const top = Math.ceil(cy - size / 2);
-
-    if (shape === "square" || size <= 2) {
-      for (let dy = 0; dy < size; dy++) {
-        for (let dx = 0; dx < size; dx++) {
-          setPixel(left + dx, top + dy, tool === "pen");
-        }
-      }
-      return;
-    }
-
-    const r2 = (size / 2) * (size / 2);
-    for (let dy = 0; dy < size; dy++) {
-      for (let dx = 0; dx < size; dx++) {
-        const ox = dx - size / 2 + 0.5;
-        const oy = dy - size / 2 + 0.5;
-        if (ox * ox + oy * oy <= r2) {
-          setPixel(left + dx, top + dy, tool === "pen");
-        }
-      }
-    }
-  };
-
-  const drawLine = (
-    x0raw: number,
-    y0raw: number,
-    x1raw: number,
-    y1raw: number,
-  ) => {
-    let x0 = Math.floor(x0raw);
-    let y0 = Math.floor(y0raw);
-    const x1 = Math.floor(x1raw);
-    const y1 = Math.floor(y1raw);
-
-    const dx = Math.abs(x1 - x0);
-    const dy = Math.abs(y1 - y0);
-    const sx = x0 < x1 ? 1 : -1;
-    const sy = y0 < y1 ? 1 : -1;
-    let err = dx - dy;
-
-    while (true) {
-      drawPoint(x0, y0);
-      if (x0 === x1 && y0 === y1) break;
-      const e2 = err * 2;
-      if (e2 > -dy) {
-        err -= dy;
-        x0 += sx;
-      }
-      if (e2 < dx) {
-        err += dx;
-        y0 += sy;
-      }
-    }
-  };
-
-  const drawQuadCurve = (
-    x0: number,
-    y0: number,
-    cx: number,
-    cy: number,
-    x1: number,
-    y1: number,
-  ) => {
-    const dist = Math.hypot(x0 - cx, y0 - cy) + Math.hypot(cx - x1, cy - y1);
-    const steps = Math.max(1, Math.ceil(dist / 2));
-
-    let lx = x0;
-    let ly = y0;
-    for (let i = 1; i <= steps; i++) {
-      const t = i / steps;
-      const mt = 1 - t;
-      const nx = mt * mt * x0 + 2 * mt * t * cx + t * t * x1;
-      const ny = mt * mt * y0 + 2 * mt * t * cy + t * t * y1;
-      drawLine(lx, ly, nx, ny);
-      lx = nx;
-      ly = ny;
-    }
-  };
+  const cloneBitmap = () => new Uint8Array(bitmapRef.current);
 
   const saveHistory = () => {
-    const copy = new Uint8Array(bitmapRef.current);
     const next = historyRef.current.slice(0, historyIndex + 1);
-    next.push(copy);
-    if (next.length > 50) next.shift();
+    next.push(cloneBitmap());
+    if (next.length > MAX_HISTORY) {
+      next.shift();
+    }
     historyRef.current = next;
     setHistoryIndex(next.length - 1);
   };
 
-  const restoreHistory = (idx: number) => {
-    const snap = historyRef.current[idx];
-    if (!snap) return;
-    bitmapRef.current = new Uint8Array(snap);
-    setHistoryIndex(idx);
-    requestRender({ bitmap: true });
+  const restoreFromHistory = (index: number) => {
+    const snapshot = historyRef.current[index];
+    if (!snapshot) {
+      return;
+    }
+    bitmapRef.current = new Uint8Array(snapshot);
+    setHistoryIndex(index);
+    notifyBitmapChanged("restore-history");
   };
 
   const undo = () => {
-    if (historyIndex <= 0) return;
-    restoreHistory(historyIndex - 1);
+    if (historyIndex <= 0) {
+      return;
+    }
+    restoreFromHistory(historyIndex - 1);
   };
 
   const redo = () => {
-    if (historyIndex >= historyRef.current.length - 1) return;
-    restoreHistory(historyIndex + 1);
-  };
-
-  const worldFromLocal = (localX: number, localY: number) => {
-    const s = gestureRef.current.scale;
-    return {
-      x: (localX - gestureRef.current.panX) / s,
-      y: (localY - gestureRef.current.panY) / s,
-    };
-  };
-
-  const centerCanvas = () => {
-    const vw = viewportRef.current.width;
-    const vh = viewportRef.current.height;
-    if (!vw || !vh) return;
-
-    let nextScale = Math.min((vw - 20) / W, (vh - 20) / H, 3);
-    if (nextScale < MIN_SCALE) nextScale = MIN_SCALE;
-
-    gestureRef.current.scale = nextScale;
-    gestureRef.current.panX = (vw - W * nextScale) / 2;
-    gestureRef.current.panY = (vh - H * nextScale) / 2;
-    requestRender({ view: true });
-  };
-
-  const applyZoom = (delta: number, x?: number, y?: number) => {
-    const oldScale = gestureRef.current.scale;
-    let newScale = oldScale + delta;
-    newScale = Math.max(MIN_SCALE, Math.min(newScale, MAX_SCALE));
-
-    const fx = x ?? viewportRef.current.width / 2;
-    const fy = y ?? viewportRef.current.height / 2;
-
-    const worldX = (fx - gestureRef.current.panX) / oldScale;
-    const worldY = (fy - gestureRef.current.panY) / oldScale;
-
-    gestureRef.current.scale = newScale;
-    gestureRef.current.panX = fx - worldX * newScale;
-    gestureRef.current.panY = fy - worldY * newScale;
-    requestRender({ view: true });
-  };
-
-  const decodePacked = (packed?: string) => {
-    clearBitmap();
-    if (!packed) return;
-    try {
-      const decoded = decodeBase64(packed);
-      const next = new Uint8Array(BYTE_LEN);
-      next.set(decoded.slice(0, BYTE_LEN));
-      bitmapRef.current = next;
-    } catch (error) {
-      console.error("decode failed", error);
-      clearBitmap();
+    if (historyIndex >= historyRef.current.length - 1) {
+      return;
     }
+    restoreFromHistory(historyIndex + 1);
   };
 
-  const onTouchStart = (event: any) => {
-    refreshViewportOrigin();
-    const touches = event.nativeEvent.touches ?? [];
-    const changedTouches = event.nativeEvent.changedTouches ?? [];
-    if (touches.length === 0) return;
+  const centerCanvas = (width: number, height: number) => {
+    if (width <= 0 || height <= 0) {
+      return;
+    }
+    const margin = 20;
+    const scaleW = (width - margin) / CANVAS_WIDTH;
+    const scaleH = (height - margin) / CANVAS_HEIGHT;
+    const nextScale = clamp(Math.min(scaleW, scaleH, 2), MIN_SCALE, MAX_SCALE);
 
-    if (tool === "hand" && touches.length >= 2) {
-      const a = touches[0];
-      const b = touches[1];
-      gestureRef.current.pinching = true;
-      gestureRef.current.drawing = false;
-      gestureRef.current.panning = false;
-      gestureRef.current.pinchDist = Math.hypot(
-        a.locationX - b.locationX,
-        a.locationY - b.locationY,
-      );
-      gestureRef.current.pinchScale = gestureRef.current.scale;
+    setTransform({
+      scale: nextScale,
+      panX: (width - CANVAS_WIDTH * nextScale) / 2,
+      panY: (height - CANVAS_HEIGHT * nextScale) / 2,
+    });
+  };
 
-      const cx = (a.locationX + b.locationX) / 2;
-      const cy = (a.locationY + b.locationY) / 2;
-      const world = worldFromLocal(cx, cy);
-      gestureRef.current.pinchWorldX = world.x;
-      gestureRef.current.pinchWorldY = world.y;
+  useEffect(() => {
+    if (!visible) {
       return;
     }
 
-    const t = changedTouches[0] ?? touches[0];
+    bitmapRef.current = packedToBitmap(initialData);
+    historyRef.current = [cloneBitmap()];
+    setHistoryIndex(0);
+    setTool("pen");
+    setBrushSize(1);
+    setBrushShape("circle");
+    setName(initialName);
+    setDescription(initialDescription);
+    notifyBitmapChanged("initialize");
+    didCenterRef.current = false;
 
+    if (viewport.width > 0 && viewport.height > 0) {
+      centerCanvas(viewport.width, viewport.height);
+      didCenterRef.current = true;
+    }
+  }, [
+    visible,
+    initialData,
+    initialName,
+    initialDescription,
+    viewport.width,
+    viewport.height,
+  ]);
+
+  const setPixel = (x: number, y: number, isWhite: boolean) => {
+    if (x < 0 || y < 0 || x >= CANVAS_WIDTH || y >= CANVAS_HEIGHT) {
+      return;
+    }
+    bitmapRef.current[y * CANVAS_WIDTH + x] = isWhite ? 1 : 0;
+  };
+
+  const drawPoint = (
+    cx: number,
+    cy: number,
+    size: number,
+    shape: BrushShape,
+    paintWhite: boolean,
+  ) => {
+    const startX = Math.ceil(cx - size / 2);
+    const startY = Math.ceil(cy - size / 2);
+
+    if (shape === "square" || size <= 2) {
+      for (let y = 0; y < size; y += 1) {
+        for (let x = 0; x < size; x += 1) {
+          setPixel(startX + x, startY + y, paintWhite);
+        }
+      }
+      return;
+    }
+
+    const radiusSq = (size / 2) * (size / 2);
+    for (let y = 0; y < size; y += 1) {
+      for (let x = 0; x < size; x += 1) {
+        const dx = x - size / 2 + 0.5;
+        const dy = y - size / 2 + 0.5;
+        if (dx * dx + dy * dy <= radiusSq) {
+          setPixel(startX + x, startY + y, paintWhite);
+        }
+      }
+    }
+  };
+
+  const plotLine = (x0: number, y0: number, x1: number, y1: number) => {
+    let sx0 = Math.floor(x0);
+    let sy0 = Math.floor(y0);
+    const sx1 = Math.floor(x1);
+    const sy1 = Math.floor(y1);
+
+    const dx = Math.abs(sx1 - sx0);
+    const dy = Math.abs(sy1 - sy0);
+    const stepX = sx0 < sx1 ? 1 : -1;
+    const stepY = sy0 < sy1 ? 1 : -1;
+    let err = dx - dy;
+    let points = 0;
+
+    const paintWhite = tool === "eraser";
+
+    while (true) {
+      drawPoint(sx0, sy0, brushSize, brushShape, paintWhite);
+      points += 1;
+
+      if (sx0 === sx1 && sy0 === sy1) {
+        break;
+      }
+
+      const e2 = err * 2;
+      if (e2 > -dy) {
+        err -= dy;
+        sx0 += stepX;
+      }
+      if (e2 < dx) {
+        err += dx;
+        sy0 += stepY;
+      }
+    }
+
+    return points;
+  };
+
+  const screenToWorld = (x: number, y: number) => ({
+    x: (x - transform.panX) / transform.scale,
+    y: (y - transform.panY) / transform.scale,
+  });
+
+  const applyZoom = (delta: number, anchorX?: number, anchorY?: number) => {
+    const oldScale = transform.scale;
+    const newScale = clamp(oldScale + delta, MIN_SCALE, MAX_SCALE);
+    const centerX = anchorX ?? viewport.width / 2;
+    const centerY = anchorY ?? viewport.height / 2;
+
+    const worldX = (centerX - transform.panX) / oldScale;
+    const worldY = (centerY - transform.panY) / oldScale;
+
+    setTransform({
+      scale: newScale,
+      panX: centerX - worldX * newScale,
+      panY: centerY - worldY * newScale,
+    });
+  };
+
+  const endCurrentStroke = () => {
+    const interaction = interactionRef.current;
+    if (interaction.isDrawing) {
+      if (!interaction.hasDrawn) {
+        const t0 = PERF_ENABLED ? nowMs() : 0;
+        const points = plotLine(
+          interaction.lastX,
+          interaction.lastY,
+          interaction.lastX,
+          interaction.lastY,
+        );
+        if (PERF_ENABLED) {
+          perfRef.current.lineCallCount += 1;
+          perfRef.current.linePointCount += points;
+          perfRef.current.lineMsTotal += nowMs() - t0;
+        }
+      }
+      saveHistory();
+      notifyBitmapChanged("stroke-end");
+
+      if (PERF_ENABLED) {
+        const elapsed = Math.max(1, nowMs() - perfRef.current.strokeStartAt);
+        const moves = Math.max(1, perfRef.current.moveCount);
+        console.log(
+          `[DrawingEditor][stroke] duration=${elapsed.toFixed(1)}ms moves=${perfRef.current.moveCount} lineCalls=${perfRef.current.lineCallCount} points=${perfRef.current.linePointCount} lineAvg=${(perfRef.current.lineMsTotal / Math.max(1, perfRef.current.lineCallCount)).toFixed(3)}ms moveAvg=${(elapsed / moves).toFixed(3)}ms imageBuilds=${perfRef.current.imageBuildCount} imageAvg=${(perfRef.current.imageBuildMsTotal / Math.max(1, perfRef.current.imageBuildCount)).toFixed(3)}ms lastReason=${perfRef.current.imageBuildReason}`,
+        );
+      }
+    }
+
+    interaction.isDrawing = false;
+    interaction.hasDrawn = false;
+  };
+
+  const beginPinch = (a: EditorTouch, b: EditorTouch) => {
+    endCurrentStroke();
+    const interaction = interactionRef.current;
+    interaction.isPinching = true;
+    interaction.isPanning = false;
+    interaction.isDrawing = false;
+
+    const dx = a.pageX - b.pageX;
+    const dy = a.pageY - b.pageY;
+    const centerX = (a.locationX + b.locationX) / 2;
+    const centerY = (a.locationY + b.locationY) / 2;
+
+    interaction.pinchStartDist = Math.hypot(dx, dy);
+    interaction.pinchStartScale = transform.scale;
+    const world = screenToWorld(centerX, centerY);
+    interaction.pinchCenterWorldX = world.x;
+    interaction.pinchCenterWorldY = world.y;
+  };
+
+  const handleTouchStart = (e: GestureResponderEvent) => {
+    const touches = e.nativeEvent.touches;
+    const interaction = interactionRef.current;
+
+    if (touches.length === 2) {
+      beginPinch(touches[0], touches[1]);
+      return;
+    }
+
+    if (touches.length !== 1 || interaction.isPinching) {
+      return;
+    }
+
+    const touch = touches[0];
     if (tool === "hand") {
-      gestureRef.current.panning = true;
-      gestureRef.current.lastTouchX = t.locationX;
-      gestureRef.current.lastTouchY = t.locationY;
-      gestureRef.current.activeTouchId = null;
+      interaction.isPanning = true;
+      interaction.lastTouchX = touch.locationX;
+      interaction.lastTouchY = touch.locationY;
       return;
     }
 
-    if (touches.length > 1) return;
-
-    gestureRef.current.drawing = true;
-    gestureRef.current.touched = false;
-    gestureRef.current.activeTouchId = t.identifier ?? null;
-    const world = worldFromLocal(t.locationX, t.locationY);
-    gestureRef.current.lastX = world.x;
-    gestureRef.current.lastY = world.y;
-    gestureRef.current.points = [{ x: world.x, y: world.y }];
+    const pos = screenToWorld(touch.locationX, touch.locationY);
+    interaction.isDrawing = true;
+    interaction.hasDrawn = false;
+    interaction.lastX = pos.x;
+    interaction.lastY = pos.y;
+    if (PERF_ENABLED) {
+      resetPerfStroke();
+    }
   };
 
-  const onTouchMove = (event: any) => {
-    const touches = event.nativeEvent.touches ?? [];
-    if (touches.length === 0) return;
+  const handleTouchMove = (e: GestureResponderEvent) => {
+    const touches = e.nativeEvent.touches;
+    const interaction = interactionRef.current;
 
-    if (tool === "hand" && gestureRef.current.pinching && touches.length >= 2) {
-      const a = touches[0];
-      const b = touches[1];
-      const dist = Math.hypot(
-        a.locationX - b.locationX,
-        a.locationY - b.locationY,
-      );
-      const ratio = dist / Math.max(1, gestureRef.current.pinchDist);
-      let nextScale = gestureRef.current.pinchScale * ratio;
-      nextScale = Math.max(MIN_SCALE, Math.min(nextScale, MAX_SCALE));
-
-      const cx = (a.locationX + b.locationX) / 2;
-      const cy = (a.locationY + b.locationY) / 2;
-
-      gestureRef.current.scale = nextScale;
-      gestureRef.current.panX = cx - gestureRef.current.pinchWorldX * nextScale;
-      gestureRef.current.panY = cy - gestureRef.current.pinchWorldY * nextScale;
-      requestRender({ view: true });
-      return;
-    }
-
-    const t =
-      gestureRef.current.activeTouchId === null
-        ? touches[0]
-        : touches.find(
-            (touch: any) =>
-              touch.identifier === gestureRef.current.activeTouchId,
-          );
-
-    if (!t) return;
-
-    if (gestureRef.current.panning) {
-      const dx = t.locationX - gestureRef.current.lastTouchX;
-      const dy = t.locationY - gestureRef.current.lastTouchY;
-      gestureRef.current.panX += dx;
-      gestureRef.current.panY += dy;
-      gestureRef.current.lastTouchX = t.locationX;
-      gestureRef.current.lastTouchY = t.locationY;
-      requestRender({ view: true });
-      return;
-    }
-
-    if (gestureRef.current.drawing) {
-      if (touches.length > 1) return;
-
-      const world = worldFromLocal(t.locationX, t.locationY);
-      const pts = gestureRef.current.points;
-
-      // Ignore zero-distance moves
-      const lastPt = pts[pts.length - 1];
-      if (lastPt && lastPt.x === world.x && lastPt.y === world.y) {
+    if (interaction.isPinching) {
+      if (touches.length < 2) {
+        interaction.isPinching = false;
         return;
       }
 
-      pts.push({ x: world.x, y: world.y });
+      const a = touches[0];
+      const b = touches[1];
+      const currentDist = Math.hypot(a.pageX - b.pageX, a.pageY - b.pageY);
+      if (interaction.pinchStartDist <= 0) {
+        return;
+      }
 
-      if (pts.length >= 3) {
-        const p0 = pts[pts.length - 3];
-        const p1 = pts[pts.length - 2];
-        const p2 = pts[pts.length - 1];
+      const scaleRatio = currentDist / interaction.pinchStartDist;
+      const nextScale = clamp(
+        interaction.pinchStartScale * scaleRatio,
+        MIN_SCALE,
+        MAX_SCALE,
+      );
 
-        const mid1 = { x: (p0.x + p1.x) / 2, y: (p0.y + p1.y) / 2 };
-        const mid2 = { x: (p1.x + p2.x) / 2, y: (p1.y + p2.y) / 2 };
+      const centerX = (a.locationX + b.locationX) / 2;
+      const centerY = (a.locationY + b.locationY) / 2;
 
-        let startX = pts.length === 3 ? p0.x : mid1.x;
-        let startY = pts.length === 3 ? p0.y : mid1.y;
+      setTransform({
+        scale: nextScale,
+        panX: centerX - interaction.pinchCenterWorldX * nextScale,
+        panY: centerY - interaction.pinchCenterWorldY * nextScale,
+      });
+      return;
+    }
 
-        drawQuadCurve(startX, startY, p1.x, p1.y, mid2.x, mid2.y);
+    if (touches.length !== 1) {
+      return;
+    }
 
-        gestureRef.current.touched = true;
-        requestRender({ bitmap: true });
+    const touch = touches[0];
+    if (interaction.isPanning) {
+      const dx = touch.locationX - interaction.lastTouchX;
+      const dy = touch.locationY - interaction.lastTouchY;
+      interaction.lastTouchX = touch.locationX;
+      interaction.lastTouchY = touch.locationY;
+
+      setTransform((prev) => ({
+        ...prev,
+        panX: prev.panX + dx,
+        panY: prev.panY + dy,
+      }));
+      return;
+    }
+
+    if (interaction.isDrawing) {
+      const moveStart = PERF_ENABLED ? nowMs() : 0;
+      const pos = screenToWorld(touch.locationX, touch.locationY);
+      const lineStart = PERF_ENABLED ? nowMs() : 0;
+      const points = plotLine(
+        interaction.lastX,
+        interaction.lastY,
+        pos.x,
+        pos.y,
+      );
+      if (PERF_ENABLED) {
+        perfRef.current.lineCallCount += 1;
+        perfRef.current.linePointCount += points;
+        perfRef.current.lineMsTotal += nowMs() - lineStart;
+      }
+      interaction.lastX = pos.x;
+      interaction.lastY = pos.y;
+      interaction.hasDrawn = true;
+      notifyBitmapChanged("move-draw");
+
+      if (PERF_ENABLED) {
+        perfRef.current.moveCount += 1;
+        const now = nowMs();
+        if (perfRef.current.lastLogAt === 0) {
+          perfRef.current.lastLogAt = now;
+        }
+        if (now - perfRef.current.lastLogAt >= PERF_LOG_INTERVAL_MS) {
+          const elapsed = Math.max(1, now - perfRef.current.strokeStartAt);
+          console.log(
+            `[DrawingEditor][move] elapsed=${elapsed.toFixed(1)}ms moves=${perfRef.current.moveCount} lineCalls=${perfRef.current.lineCallCount} points=${perfRef.current.linePointCount} lineTotal=${perfRef.current.lineMsTotal.toFixed(1)}ms imageTotal=${perfRef.current.imageBuildMsTotal.toFixed(1)}ms moveLoop=${(now - moveStart).toFixed(3)}ms`,
+          );
+          perfRef.current.lastLogAt = now;
+        }
       }
     }
   };
 
-  const onTouchEnd = () => {
-    const g = gestureRef.current;
+  const handleTouchEnd = (e: GestureResponderEvent) => {
+    const touches = e.nativeEvent.touches;
+    const interaction = interactionRef.current;
 
-    if (gestureRef.current.drawing) {
-      const pts = g.points;
-      if (pts.length === 1) {
-        drawPoint(pts[0].x, pts[0].y);
-      } else if (pts.length === 2) {
-        drawLine(pts[0].x, pts[0].y, pts[1].x, pts[1].y);
-      } else if (pts.length >= 3) {
-        const p1 = pts[pts.length - 2];
-        const p2 = pts[pts.length - 1];
-        const mid2 = { x: (p1.x + p2.x) / 2, y: (p1.y + p2.y) / 2 };
-        drawLine(mid2.x, mid2.y, p2.x, p2.y);
-      }
-
-      saveHistory();
-      requestRender({ bitmap: true });
+    if (touches.length === 0) {
+      endCurrentStroke();
+      interaction.isPanning = false;
+      interaction.isPinching = false;
+      return;
     }
 
-    g.drawing = false;
-    g.panning = false;
-    g.pinching = false;
-    g.activeTouchId = null;
-    g.points = [];
+    if (touches.length === 1 && interaction.isPinching) {
+      interaction.isPinching = false;
+      const touch = touches[0];
+      if (tool === "hand") {
+        interaction.isPanning = true;
+        interaction.lastTouchX = touch.locationX;
+        interaction.lastTouchY = touch.locationY;
+      }
+    }
   };
 
-  const onClear = () => {
-    Alert.alert("全消去", "全消去しますか？", [
+  const clearCanvas = () => {
+    Alert.alert("全消去", "キャンバスを全て消去しますか？", [
       { text: "キャンセル", style: "cancel" },
       {
-        text: "全消去",
+        text: "消去",
         style: "destructive",
         onPress: () => {
-          clearBitmap();
+          bitmapRef.current.fill(1);
           saveHistory();
-          requestRender({ bitmap: true });
+          notifyBitmapChanged("clear");
         },
       },
     ]);
   };
 
-  const onDone = () => {
+  const handleSave = () => {
+    const packed = bitmapToPacked(bitmapRef.current);
+    const image = createSkImageFromBitmap(bitmapRef.current);
+    const previewPngBase64 = image?.encodeToBase64(ImageFormat.PNG);
     onSave({
-      packed: encodeBase64(bitmapRef.current),
+      packed,
       name,
       description,
+      previewPngBase64,
     });
-    onClose();
   };
 
-  useEffect(() => {
-    if (!visible) return;
-
-    setName(initialName ?? "");
-    setDescription(initialDescription ?? "");
-    decodePacked(initialData);
-
-    historyRef.current = [new Uint8Array(bitmapRef.current)];
-    setHistoryIndex(0);
-
-    gestureRef.current.scale = 1;
-    gestureRef.current.panX = 0;
-    gestureRef.current.panY = 0;
-    requestRender({ view: true, bitmap: true });
-
-    const id = requestAnimationFrame(() => {
-      refreshViewportOrigin();
-      centerCanvas();
-    });
-
-    return () => cancelAnimationFrame(id);
-  }, [visible, initialData, initialName, initialDescription]);
-
-  useEffect(() => {
-    return () => {
-      if (rafRef.current !== null) {
-        cancelAnimationFrame(rafRef.current);
-      }
-    };
-  }, []);
-
-  const pathData = useMemo(() => {
-    const parts: string[] = [];
-
-    for (let y = 0; y < H; y++) {
-      let start = -1;
-      for (let x = 0; x < W; x++) {
-        const black = !isWhite(x, y);
-
-        if (black && start < 0) start = x;
-
-        if ((!black || x === W - 1) && start >= 0) {
-          const end = black && x === W - 1 ? x : x - 1;
-          const width = end - start + 1;
-          parts.push(`M${start} ${y}h${width}v1h-${width}z`);
-          start = -1;
-        }
-      }
+  const handleViewportLayout = (e: LayoutChangeEvent) => {
+    const { width, height } = e.nativeEvent.layout;
+    setViewport({ width, height });
+    if (!didCenterRef.current) {
+      centerCanvas(width, height);
+      didCenterRef.current = true;
     }
+  };
 
-    return parts.join("");
-  }, [bitmapTick]);
+  const onNameChange = (e: NativeSyntheticEvent<TextInputChangeEventData>) => {
+    setName(e.nativeEvent.text);
+  };
 
-  if (!visible) return null;
+  const onDescriptionChange = (
+    e: NativeSyntheticEvent<TextInputChangeEventData>,
+  ) => {
+    setDescription(e.nativeEvent.text);
+  };
+
+  if (!visible) {
+    return null;
+  }
 
   return (
     <Modal
@@ -592,237 +704,238 @@ export default function DrawingEditor({
       animationType="fade"
       onRequestClose={onClose}
     >
-      <Pressable style={styles.backdrop} onPress={onClose}>
-        <Pressable
-          style={[styles.card, { backgroundColor }]}
-          onPress={() => undefined}
-        >
-          <View style={[styles.header, { borderBottomColor: borderColor }]}>
-            <ThemedText style={styles.title}>Drawing Editor</ThemedText>
+      <View style={styles.backdrop}>
+        <View style={styles.sheet}>
+          <View style={styles.header}>
+            <Text style={styles.title}>Drawing Editor</Text>
             <View style={styles.headerActions}>
-              <Pressable
-                style={[styles.actionBtn, { borderColor }]}
-                onPress={onClose}
-              >
-                <ThemedText>キャンセル</ThemedText>
-              </Pressable>
-              <Pressable
-                style={[
-                  styles.actionBtn,
-                  { borderColor: tintColor, backgroundColor: tintColor },
-                ]}
-                onPress={onDone}
-              >
-                <ThemedText style={styles.actionPrimaryText}>完了</ThemedText>
-              </Pressable>
+              <TouchableOpacity onPress={onClose} style={styles.cancelButton}>
+                <Text style={styles.cancelButtonText}>キャンセル</Text>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={handleSave} style={styles.saveButton}>
+                <Text style={styles.saveButtonText}>完了</Text>
+              </TouchableOpacity>
             </View>
           </View>
 
-          <View style={styles.metaRow}>
+          <View style={styles.inputsRow}>
             <TextInput
               placeholder="タイトル (任意)"
-              placeholderTextColor="#888"
+              placeholderTextColor="#8a8a8a"
               value={name}
-              onChangeText={setName}
-              style={[styles.input, { borderColor, color: textColor }]}
+              onChange={onNameChange}
+              style={styles.input}
             />
             <TextInput
               placeholder="説明 (任意)"
-              placeholderTextColor="#888"
+              placeholderTextColor="#8a8a8a"
               value={description}
-              onChangeText={setDescription}
-              style={[styles.input, { borderColor, color: textColor }]}
+              onChange={onDescriptionChange}
+              style={styles.input}
             />
           </View>
 
-          <View style={styles.main}>
+          <View style={styles.mainArea}>
             <View
-              ref={viewportElRef}
               style={styles.viewport}
-              onLayout={(e) => {
-                viewportRef.current = {
-                  width: e.nativeEvent.layout.width,
-                  height: e.nativeEvent.layout.height,
-                };
-                refreshViewportOrigin();
-                centerCanvas();
-              }}
-              onStartShouldSetResponder={() => true}
-              onMoveShouldSetResponder={() => true}
-              onResponderGrant={onTouchStart}
-              onResponderMove={onTouchMove}
-              onResponderRelease={onTouchEnd}
-              onResponderTerminate={onTouchEnd}
+              onLayout={handleViewportLayout}
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+              onTouchCancel={handleTouchEnd}
             >
-              <View
-                pointerEvents="none"
-                style={[
-                  styles.canvas,
-                  {
-                    transformOrigin: "top left",
-                    transform: [
-                      { translateX: gestureRef.current.panX },
-                      { translateY: gestureRef.current.panY },
-                      { scale: gestureRef.current.scale },
-                    ],
-                  },
-                ]}
-              >
-                <Svg pointerEvents="none" width={W} height={H}>
-                  <Path d={pathData} fill="#000" />
-                </Svg>
-              </View>
+              <View style={styles.checkerboard} />
+              <Canvas style={StyleSheet.absoluteFill}>
+                <Group
+                  transform={[
+                    { translateX: transform.panX },
+                    { translateY: transform.panY },
+                    { scale: transform.scale },
+                  ]}
+                >
+                  {skImage ? (
+                    <SkiaImage
+                      image={skImage}
+                      x={0}
+                      y={0}
+                      width={CANVAS_WIDTH}
+                      height={CANVAS_HEIGHT}
+                      sampling={{
+                        filter: FilterMode.Nearest,
+                        mipmap: MipmapMode.None,
+                      }}
+                    />
+                  ) : null}
+                </Group>
+              </Canvas>
 
-              <View style={styles.zoomBox}>
-                <Pressable
-                  style={styles.zoomBtn}
+              <View style={styles.zoomControls}>
+                <TouchableOpacity
+                  style={styles.zoomButton}
                   onPress={() => applyZoom(0.5)}
                 >
-                  <ThemedText style={styles.zoomText}>+</ThemedText>
-                </Pressable>
-                <ThemedText style={styles.zoomPercent}>
-                  {Math.round(zoom * 100)}%
-                </ThemedText>
-                <Pressable
-                  style={styles.zoomBtn}
+                  <Text style={styles.zoomButtonText}>+</Text>
+                </TouchableOpacity>
+                <Text style={styles.zoomText}>
+                  {Math.round(transform.scale * 100)}%
+                </Text>
+                <TouchableOpacity
+                  style={styles.zoomButton}
                   onPress={() => applyZoom(-0.5)}
                 >
-                  <ThemedText style={styles.zoomText}>-</ThemedText>
-                </Pressable>
+                  <Text style={styles.zoomButtonText}>-</Text>
+                </TouchableOpacity>
               </View>
             </View>
 
-            <View style={[styles.bottomBar, { borderTopColor: borderColor }]}>
-              <ScrollView
-                horizontal
-                showsHorizontalScrollIndicator={false}
-                contentContainerStyle={styles.bottomBarContent}
-              >
-                <ToolButton
-                  label="ペン"
-                  active={tool === "pen"}
+            <View style={styles.toolbar}>
+              <View style={styles.toolRow}>
+                <TouchableOpacity
                   onPress={() => setTool("pen")}
-                />
-                <ToolButton
-                  label="消しゴム"
-                  active={tool === "eraser"}
+                  style={[
+                    styles.toolButton,
+                    tool === "pen" && styles.toolButtonActive,
+                  ]}
+                >
+                  <Text style={styles.toolButtonText}>ペン</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
                   onPress={() => setTool("eraser")}
-                />
-                <ToolButton
-                  label="移動"
-                  active={tool === "hand"}
+                  style={[
+                    styles.toolButton,
+                    tool === "eraser" && styles.toolButtonActive,
+                  ]}
+                >
+                  <Text style={styles.toolButtonText}>消</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
                   onPress={() => setTool("hand")}
-                />
+                  style={[
+                    styles.toolButton,
+                    tool === "hand" && styles.toolButtonActive,
+                  ]}
+                >
+                  <Text style={styles.toolButtonText}>手</Text>
+                </TouchableOpacity>
+              </View>
 
-                <ToolButton
-                  label="Undo"
-                  active={false}
-                  disabled={historyIndex <= 0}
+              <View style={styles.toolRow}>
+                <TouchableOpacity
                   onPress={undo}
-                />
-                <ToolButton
-                  label="Redo"
-                  active={false}
-                  disabled={historyIndex >= historyRef.current.length - 1}
+                  disabled={historyIndex <= 0}
+                  style={[
+                    styles.toolButton,
+                    historyIndex <= 0 && styles.toolButtonDisabled,
+                  ]}
+                >
+                  <Text style={styles.toolButtonText}>戻</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
                   onPress={redo}
-                />
+                  disabled={historyIndex >= historyRef.current.length - 1}
+                  style={[
+                    styles.toolButton,
+                    historyIndex >= historyRef.current.length - 1 &&
+                      styles.toolButtonDisabled,
+                  ]}
+                >
+                  <Text style={styles.toolButtonText}>進</Text>
+                </TouchableOpacity>
+              </View>
 
-                <ToolButton
-                  label={shape === "square" ? "四角" : "丸"}
-                  active={false}
+              <View style={styles.toolRow}>
+                <TouchableOpacity
                   onPress={() =>
-                    setShape((prev) =>
+                    setBrushShape((prev) =>
                       prev === "square" ? "circle" : "square",
                     )
                   }
-                />
+                  style={styles.toolButton}
+                >
+                  <Text style={styles.toolButtonText}>
+                    {brushShape === "square" ? "■" : "●"}
+                  </Text>
+                </TouchableOpacity>
+              </View>
 
-                <View style={styles.inlineRow}>
-                  <ThemedText style={styles.brushLabel}>{size}px</ThemedText>
-                  {[1, 2, 3, 4, 5, 6, 8, 10].map((value) => (
-                    <Pressable
-                      key={value}
-                      onPress={() => setSize(value)}
-                      style={[
-                        styles.brushChip,
-                        {
-                          borderColor: size === value ? tintColor : borderColor,
-                          backgroundColor:
-                            size === value ? tintColor : "transparent",
-                        },
-                      ]}
-                    >
-                      <ThemedText
-                        style={{ color: size === value ? "#fff" : textColor }}
-                      >
-                        {value}
-                      </ThemedText>
-                    </Pressable>
-                  ))}
+              <View style={styles.brushSection}>
+                <Text style={styles.brushLabel}>サイズ {brushSize}px</Text>
+                <View style={styles.sizeRow}>
+                  <TouchableOpacity
+                    onPress={() =>
+                      setBrushSize((prev) => clamp(prev - 1, 1, 10))
+                    }
+                    style={styles.sizeButton}
+                  >
+                    <Text style={styles.sizeButtonText}>-</Text>
+                  </TouchableOpacity>
+                  <View
+                    style={[
+                      styles.brushPreview,
+                      {
+                        width: brushSize,
+                        height: brushSize,
+                        borderRadius:
+                          brushShape === "circle" && brushSize > 2
+                            ? brushSize / 2
+                            : 0,
+                        backgroundColor: tool === "eraser" ? "#fff" : "#000",
+                      },
+                    ]}
+                  />
+                  <TouchableOpacity
+                    onPress={() =>
+                      setBrushSize((prev) => clamp(prev + 1, 1, 10))
+                    }
+                    style={styles.sizeButton}
+                  >
+                    <Text style={styles.sizeButtonText}>+</Text>
+                  </TouchableOpacity>
                 </View>
+              </View>
 
-                <Pressable style={styles.clearBtn} onPress={onClear}>
-                  <ThemedText style={styles.clearText}>全消去</ThemedText>
-                </Pressable>
-              </ScrollView>
+              <TouchableOpacity
+                onPress={clearCanvas}
+                style={styles.clearButton}
+              >
+                <Text style={styles.clearButtonText}>全消去</Text>
+              </TouchableOpacity>
             </View>
           </View>
-        </Pressable>
-      </Pressable>
+        </View>
+      </View>
     </Modal>
-  );
-}
-
-function ToolButton({
-  label,
-  active,
-  disabled,
-  onPress,
-}: {
-  label: string;
-  active: boolean;
-  disabled?: boolean;
-  onPress: () => void;
-}) {
-  return (
-    <Pressable
-      onPress={onPress}
-      disabled={disabled}
-      style={[
-        styles.toolBtn,
-        active && styles.toolBtnActive,
-        disabled && styles.toolBtnDisabled,
-      ]}
-    >
-      <ThemedText style={active ? styles.toolBtnTextActive : undefined}>
-        {label}
-      </ThemedText>
-    </Pressable>
   );
 }
 
 const styles = StyleSheet.create({
   backdrop: {
     flex: 1,
+    backgroundColor: "rgba(0,0,0,0.75)",
     justifyContent: "center",
-    backgroundColor: "rgba(0,0,0,0.65)",
-    padding: 8,
+    padding: 10,
   },
-  card: {
-    width: "100%",
-    height: "95%",
+  sheet: {
+    flex: 1,
+    backgroundColor: "#111",
     borderRadius: 12,
     overflow: "hidden",
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: "#303030",
   },
   header: {
-    borderBottomWidth: StyleSheet.hairlineWidth,
     paddingHorizontal: 12,
-    paddingVertical: 10,
+    paddingTop: 12,
+    paddingBottom: 8,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderColor: "#303030",
     flexDirection: "row",
-    justifyContent: "space-between",
     alignItems: "center",
+    justifyContent: "space-between",
+    gap: 8,
   },
   title: {
+    color: "#fff",
     fontSize: 16,
     fontWeight: "700",
   },
@@ -830,130 +943,164 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     gap: 8,
   },
-  actionBtn: {
-    borderWidth: StyleSheet.hairlineWidth,
+  cancelButton: {
+    paddingVertical: 8,
+    paddingHorizontal: 10,
     borderRadius: 8,
+    backgroundColor: "#282828",
+  },
+  cancelButtonText: {
+    color: "#ddd",
+    fontWeight: "600",
+  },
+  saveButton: {
     paddingVertical: 8,
     paddingHorizontal: 12,
+    borderRadius: 8,
+    backgroundColor: "#2b6fff",
   },
-  actionPrimaryText: {
+  saveButtonText: {
     color: "#fff",
     fontWeight: "700",
   },
-  metaRow: {
+  inputsRow: {
     paddingHorizontal: 12,
-    paddingTop: 8,
+    paddingVertical: 8,
     gap: 8,
   },
   input: {
+    backgroundColor: "#1e1e1e",
+    color: "#fff",
     borderWidth: StyleSheet.hairlineWidth,
+    borderColor: "#3a3a3a",
     borderRadius: 8,
     paddingHorizontal: 10,
     paddingVertical: 8,
   },
-  main: {
+  mainArea: {
     flex: 1,
     flexDirection: "column",
-    paddingTop: 8,
   },
   viewport: {
     flex: 1,
     overflow: "hidden",
+    position: "relative",
     backgroundColor: "#1a1a1a",
   },
-  canvas: {
-    position: "absolute",
-    left: 0,
-    top: 0,
-    width: W,
-    height: H,
-    backgroundColor: "#fff",
+  checkerboard: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: "#1a1a1a",
   },
-  zoomBox: {
+  zoomControls: {
     position: "absolute",
-    right: 10,
-    bottom: 10,
-    backgroundColor: "rgba(0,0,0,0.6)",
-    borderRadius: 8,
-    padding: 8,
+    right: 12,
+    bottom: 12,
+    backgroundColor: "rgba(17,17,17,0.92)",
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: "#434343",
+    borderRadius: 10,
+    padding: 6,
     alignItems: "center",
     gap: 6,
   },
-  zoomBtn: {
-    width: 28,
-    height: 28,
-    borderRadius: 14,
+  zoomButton: {
+    width: 32,
+    height: 32,
+    borderRadius: 8,
+    backgroundColor: "#292929",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "rgba(255,255,255,0.2)",
+  },
+  zoomButtonText: {
+    color: "#eee",
+    fontSize: 17,
+    fontWeight: "700",
   },
   zoomText: {
-    color: "#fff",
+    color: "#77adff",
+    fontSize: 12,
     fontWeight: "700",
+    minWidth: 44,
+    textAlign: "center",
   },
-  zoomPercent: {
-    color: "#fff",
-    fontSize: 11,
-    fontWeight: "700",
-  },
-  bottomBar: {
+  toolbar: {
     borderTopWidth: StyleSheet.hairlineWidth,
-    minHeight: 68,
-  },
-  bottomBarContent: {
-    paddingHorizontal: 8,
-    paddingVertical: 10,
-    alignItems: "center",
+    borderColor: "#303030",
+    backgroundColor: "#171717",
+    padding: 8,
     gap: 8,
   },
-  toolBtn: {
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: "#666",
+  toolRow: {
+    flexDirection: "row",
+    gap: 8,
+  },
+  toolButton: {
+    width: 44,
+    height: 40,
     borderRadius: 8,
-    backgroundColor: "#2a2a2a",
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: "#3d3d3d",
     alignItems: "center",
     justifyContent: "center",
-    paddingVertical: 7,
-    paddingHorizontal: 10,
+    backgroundColor: "#242424",
   },
-  toolBtnActive: {
-    backgroundColor: "#1d7ef5",
-    borderColor: "#1d7ef5",
+  toolButtonActive: {
+    backgroundColor: "#2b6fff",
+    borderColor: "#2b6fff",
   },
-  toolBtnDisabled: {
-    opacity: 0.4,
+  toolButtonDisabled: {
+    opacity: 0.45,
   },
-  toolBtnTextActive: {
+  toolButtonText: {
     color: "#fff",
+    fontWeight: "700",
+    fontSize: 13,
   },
-  inlineRow: {
-    flexDirection: "row",
-    alignItems: "center",
+  brushSection: {
     gap: 6,
+    paddingTop: 2,
   },
   brushLabel: {
+    color: "#b8b8b8",
     fontSize: 12,
-    opacity: 0.8,
+    fontWeight: "600",
   },
-  brushChip: {
-    minWidth: 22,
-    borderWidth: StyleSheet.hairlineWidth,
-    borderRadius: 6,
-    paddingHorizontal: 5,
-    paddingVertical: 3,
+  sizeRow: {
+    flexDirection: "row",
     alignItems: "center",
+    gap: 10,
   },
-  clearBtn: {
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: "#d93838",
+  sizeButton: {
+    width: 36,
+    height: 32,
     borderRadius: 8,
-    backgroundColor: "rgba(217,56,56,0.15)",
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: "#3d3d3d",
     alignItems: "center",
-    paddingVertical: 7,
-    paddingHorizontal: 10,
+    justifyContent: "center",
+    backgroundColor: "#242424",
   },
-  clearText: {
-    color: "#d93838",
+  sizeButtonText: {
+    color: "#fff",
+    fontSize: 17,
+    fontWeight: "700",
+  },
+  brushPreview: {
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: "#7a7a7a",
+  },
+  clearButton: {
+    marginTop: 2,
+    paddingVertical: 10,
+    borderRadius: 8,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: "#8f2f2f",
+    backgroundColor: "rgba(180,45,45,0.18)",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  clearButtonText: {
+    color: "#ff8484",
     fontWeight: "700",
   },
 });

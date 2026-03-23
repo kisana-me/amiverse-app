@@ -1,7 +1,6 @@
-import { BlurView } from "expo-blur";
 import { Tabs } from "expo-router";
 import React from "react";
-import { Platform, StyleSheet, View } from "react-native";
+import { View } from "react-native";
 
 import { IconSymbol } from "@/components/ui/icon-symbol";
 import { Colors } from "@/constants/theme";
@@ -9,50 +8,33 @@ import { useColorScheme } from "@/hooks/use-color-scheme";
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
+  const themeKey = colorScheme === "dark" ? "dark" : "light";
+  const iconSize = 32;
 
   return (
     <Tabs
       backBehavior="history"
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? "light"].text,
-        tabBarInactiveTintColor: Colors[colorScheme ?? "light"].text,
+        tabBarActiveTintColor: Colors[themeKey].text,
+        tabBarInactiveTintColor: Colors[themeKey].text,
         headerShown: false,
         tabBarShowLabel: false,
         tabBarItemStyle: {
-          paddingVertical: 0,
+          paddingVertical: 2,
         },
         tabBarStyle: {
           position: "absolute",
-          backgroundColor: "transparent",
+          backgroundColor: "#000000",
           borderTopWidth: 0,
           elevation: 0,
-          paddingTop: 6,
-          paddingBottom: 6,
+          height: 82,
+          paddingTop: 8,
+          paddingBottom: 12,
           overflow: "hidden",
           zIndex: 10,
         },
         tabBarBackground: () => (
-          <View style={styles.tabBackground}>
-            <BlurView
-              tint={colorScheme === "dark" ? "dark" : "light"}
-              intensity={7}
-              experimentalBlurMethod={
-                Platform.OS === "android" ? "dimezisBlurView" : undefined
-              }
-              style={StyleSheet.absoluteFillObject}
-            />
-            <View
-              style={[
-                StyleSheet.absoluteFillObject,
-                {
-                  backgroundColor:
-                    colorScheme === "dark"
-                      ? "rgba(20,20,20,0.28)"
-                      : "rgba(255,255,255,0.18)",
-                },
-              ]}
-            />
-          </View>
+          <View pointerEvents="none" style={styles.tabBackgroundSolid} />
         ),
       }}
     >
@@ -62,7 +44,7 @@ export default function TabLayout() {
           title: "Index",
           tabBarIcon: ({ color, focused }) => (
             <IconSymbol
-              size={28}
+              size={iconSize}
               name={focused ? "index.fill" : "index"}
               color={color}
             />
@@ -75,7 +57,7 @@ export default function TabLayout() {
           title: "Discovery",
           tabBarIcon: ({ color, focused }) => (
             <IconSymbol
-              size={28}
+              size={iconSize}
               name={focused ? "discovery.fill" : "discovery"}
               color={color}
             />
@@ -88,7 +70,7 @@ export default function TabLayout() {
           title: "Dashboard",
           tabBarIcon: ({ color, focused }) => (
             <IconSymbol
-              size={28}
+              size={iconSize}
               name={focused ? "dashboard.fill" : "dashboard"}
               color={color}
             />
@@ -101,7 +83,7 @@ export default function TabLayout() {
           title: "Notifications",
           tabBarIcon: ({ color, focused }) => (
             <IconSymbol
-              size={28}
+              size={iconSize}
               name={focused ? "notifications.fill" : "notifications"}
               color={color}
             />
@@ -114,7 +96,7 @@ export default function TabLayout() {
           title: "Communities",
           tabBarIcon: ({ color, focused }) => (
             <IconSymbol
-              size={28}
+              size={iconSize}
               name={focused ? "communities.fill" : "communities"}
               color={color}
             />
@@ -136,9 +118,9 @@ export default function TabLayout() {
   );
 }
 
-const styles = StyleSheet.create({
-  tabBackground: {
-    ...StyleSheet.absoluteFillObject,
-    overflow: "hidden",
+const styles = {
+  tabBackgroundSolid: {
+    flex: 1,
+    backgroundColor: "#000000",
   },
-});
+};

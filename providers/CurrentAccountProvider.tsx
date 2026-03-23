@@ -1,4 +1,4 @@
-import { api } from "@/lib/axios";
+import { api, apiConfigError } from "@/lib/axios";
 import {
   createContext,
   Dispatch,
@@ -55,6 +55,16 @@ export function CurrentAccountProvider({
       loading_progress: 50,
     });
     try {
+      if (apiConfigError) {
+        addToast({
+          message: "環境設定エラー",
+          detail: apiConfigError,
+        });
+        setCurrentAccount(null);
+        setCurrentAccountStatus("signed_out");
+        return;
+      }
+
       const res = await api.get("/start");
       if (res.data?.account) {
         setCurrentAccount(res.data.account);

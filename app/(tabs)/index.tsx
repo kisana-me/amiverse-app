@@ -1,6 +1,5 @@
 import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 import { useScrollToTop } from "@react-navigation/native";
-import { BlurView } from "expo-blur";
 import * as Linking from "expo-linking";
 import { router } from "expo-router";
 import * as WebBrowser from "expo-web-browser";
@@ -15,7 +14,6 @@ import {
   ActivityIndicator,
   FlatList,
   Modal,
-  Platform,
   Pressable,
   StyleSheet,
   View,
@@ -329,22 +327,14 @@ export default function HomeScreen() {
           accessibilityRole="button"
           accessibilityLabel="新規投稿"
         >
-          <BlurView
-            tint={colorScheme === "dark" ? "dark" : "light"}
-            intensity={7}
-            experimentalBlurMethod={
-              Platform.OS === "android" ? "dimezisBlurView" : undefined
-            }
-            style={StyleSheet.absoluteFillObject}
-          />
           <View
             style={[
               StyleSheet.absoluteFillObject,
               {
                 backgroundColor:
                   colorScheme === "dark"
-                    ? "rgba(20,20,20,0.28)"
-                    : "rgba(255,255,255,0.18)",
+                    ? "rgba(20,20,20,0.82)"
+                    : "rgba(255,255,255,0.86)",
               },
             ]}
           />

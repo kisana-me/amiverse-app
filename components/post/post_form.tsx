@@ -318,7 +318,7 @@ const styles = StyleSheet.create({
   },
   textarea: {
     minHeight: 120,
-    borderWidth: StyleSheet.hairlineWidth,
+    borderWidth: 1,
     borderRadius: 10,
     paddingHorizontal: 10,
     paddingVertical: 8,

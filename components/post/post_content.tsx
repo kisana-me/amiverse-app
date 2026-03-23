@@ -1,11 +1,11 @@
 import { router } from "expo-router";
 import React, { useMemo, useState } from "react";
 import {
-  Linking,
-  StyleSheet,
-  Text,
-  View,
-  type GestureResponderEvent,
+    Linking,
+    StyleSheet,
+    Text,
+    View,
+    type GestureResponderEvent,
 } from "react-native";
 
 import { ThemedText } from "@/components/themed-text";
@@ -18,18 +18,19 @@ interface PostContentProps {
 export default function PostContent({ content }: PostContentProps) {
   const [isExpanded, setIsExpanded] = useState(false);
   const tintColor = useThemeColor({}, "tint");
-
-  if (!content) return null;
-
-  const lines = useMemo(() => content.split(/\r?\n/), [content]);
-  const isLongContent = content.length > 600;
+  const normalizedContent = content ?? "";
+  const lines = useMemo(
+    () => normalizedContent.split(/\r?\n/),
+    [normalizedContent],
+  );
+  const isLongContent = normalizedContent.length > 600;
   const isManyLines = lines.length > 16;
   const shouldTruncate = isLongContent || isManyLines;
 
   const displayLines = useMemo(() => {
     if (!shouldTruncate || isExpanded) return lines;
 
-    let textToShow = content;
+    let textToShow = normalizedContent;
 
     if (isManyLines) {
       textToShow = lines.slice(0, 16).join("\n");
@@ -40,7 +41,9 @@ export default function PostContent({ content }: PostContentProps) {
     }
 
     return textToShow.split(/\r?\n/);
-  }, [content, isExpanded, isManyLines, lines, shouldTruncate]);
+  }, [isExpanded, isManyLines, lines, normalizedContent, shouldTruncate]);
+
+  if (!normalizedContent) return null;
 
   const handleLinkPress = async (url: string, e?: GestureResponderEvent) => {
     e?.stopPropagation();
@@ -86,7 +89,7 @@ export default function PostContent({ content }: PostContentProps) {
 
     const regex =
       /(https?:\/\/[^\s]+)|((?:^|\s)(?:@)?[a-zA-Z0-9_]+@[a-zA-Z0-9.-]+)|((?:^|\s)@[a-zA-Z0-9_]{1,100})|((?:^|\s)#[^\s]{1,250})/g;
-    const parts: Array<string | React.ReactElement> = [];
+    const parts: (string | React.ReactElement)[] = [];
     let lastIndex = 0;
     let match: RegExpExecArray | null;
 
