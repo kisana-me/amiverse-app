@@ -8,11 +8,12 @@ import { useColors } from "@/providers/UIProvider";
 export default function TabLayout() {
   const colors = useColors();
   const iconSize = 32;
-  const tabBackgroundColor = colors.inactive_background_color;
+  const tabBackgroundColor = colors.background_color;
 
   return (
     <Tabs
       backBehavior="history"
+      safeAreaInsets={{ bottom: 0 }}
       screenOptions={{
         tabBarActiveTintColor: colors.font_color,
         tabBarInactiveTintColor: colors.font_color,
@@ -26,11 +27,8 @@ export default function TabLayout() {
           backgroundColor: tabBackgroundColor,
           borderTopWidth: 0,
           elevation: 0,
-          height: 82,
-          paddingTop: 8,
-          paddingBottom: 12,
+          paddingTop: 3,
           overflow: "hidden",
-          zIndex: 10,
         },
         tabBarBackground: () => (
           <View

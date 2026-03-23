@@ -83,7 +83,7 @@ function RootLayoutContent() {
                     <FeedsProvider>
                       <SafeAreaView
                         style={[styles.safe, { backgroundColor }]}
-                        edges={["top", "left", "right"]}
+                        edges={["top", "left", "right", "bottom"]}
                       >
                         <Stack>
                           <Stack.Screen
