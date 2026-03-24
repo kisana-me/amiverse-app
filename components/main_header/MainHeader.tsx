@@ -21,7 +21,7 @@ export default function MainHeader({ children }: { children?: ReactNode }) {
             hitSlop={8}
           >
             <Image
-              source={require("../../assets/images/icon.png")}
+              source={require("../../assets/images/icon-tp.png")}
               style={styles.logo}
               contentFit="contain"
             />

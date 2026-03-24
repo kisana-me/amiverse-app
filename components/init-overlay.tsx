@@ -14,7 +14,7 @@ export function InitOverlay() {
     <ThemedView style={styles.overlay} pointerEvents="auto">
       <View style={styles.content}>
         <Image
-          source={require("../assets/images/icon.png")}
+          source={require("../assets/images/icon-tp.png")}
           style={styles.icon}
           contentFit="contain"
         />
@@ -23,7 +23,9 @@ export function InitOverlay() {
           {initOverlay.loading_message}
         </ThemedText>
 
-        <ThemedText style={styles.progress}>{initOverlay.loading_progress}%</ThemedText>
+        <ThemedText style={styles.progress}>
+          {initOverlay.loading_progress}%
+        </ThemedText>
       </View>
     </ThemedView>
   );
