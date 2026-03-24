@@ -12,15 +12,23 @@ import {
 } from "react-native";
 
 import { ThemedText } from "@/components/themed-text";
-import { useColors } from "@/providers/UIProvider";
-import { api } from "@/lib/axios";
+import {
+  DRAWING_HEIGHT,
+  DRAWING_WIDTH,
+  DrawingDraft,
+  DrawingEditor,
+  DrawingViewer,
+} from "@/features/drawing";
 import { useFeeds } from "@/providers/FeedsProvider";
 import { usePosts } from "@/providers/PostsProvider";
 import { useToast } from "@/providers/ToastProvider";
+import { useColors } from "@/providers/UIProvider";
 import { PostType } from "@/types/post";
-import DrawingEditor, { DrawingDraft } from "./DrawingEditor";
+import { buildPostFormData } from "./actions/build-post-form-data";
+import { pickMedia } from "./actions/pick-media";
+import { submitPost } from "./actions/submit-post";
 
-type PostFormProps = {
+export type PostFormProps = {
   replyPost?: PostType;
   quotePost?: PostType;
   onSuccess?: () => void;
@@ -64,45 +72,21 @@ export default function PostForm({
     setDrawingData(null);
   };
 
-  const pickMedia = async () => {
+  const handlePickMedia = async () => {
     if (isSubmitting) return;
 
-    const remaining = 8 - mediaFiles.length;
-    if (remaining <= 0) {
-      addToast({ message: "エラー", detail: "画像・動画は最大8個までです" });
-      return;
-    }
-
-    const result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.All,
-      allowsMultipleSelection: true,
-      selectionLimit: remaining,
-      quality: 1,
+    const nextMediaFiles = await pickMedia({
+      existingFiles: mediaFiles,
+      onLimitReached: () => {
+        addToast({ message: "エラー", detail: "画像・動画は最大8個までです" });
+      },
     });
 
-    if (result.canceled) return;
-    const selected = result.assets ?? [];
-    setMediaFiles((prev) => [...prev, ...selected].slice(0, 8));
+    setMediaFiles(nextMediaFiles);
   };
 
   const removeFile = (index: number) => {
     setMediaFiles((prev) => prev.filter((_, i) => i !== index));
-  };
-
-  const appendMediaToFormData = (
-    formData: FormData,
-    files: ImagePicker.ImagePickerAsset[],
-  ) => {
-    files.forEach((file, index) => {
-      const fileName = file.fileName ?? `media-${Date.now()}-${index}`;
-      const mimeType = file.mimeType ?? "application/octet-stream";
-
-      formData.append("post[media_files][]", {
-        uri: file.uri,
-        name: fileName,
-        type: mimeType,
-      } as unknown as Blob);
-    });
   };
 
   const handleSubmit = async () => {
@@ -110,36 +94,18 @@ export default function PostForm({
 
     setIsSubmitting(true);
 
-    const formData = new FormData();
-    formData.append("post[content]", content);
-    formData.append("post[visibility]", visibility);
-
-    if (replyPost) {
-      formData.append("post[reply_aid]", replyPost.aid);
-    }
-    if (quotePost) {
-      formData.append("post[quote_aid]", quotePost.aid);
-    }
-
-    if (drawingData) {
-      formData.append("post[drawing_attributes][data]", drawingData.packed);
-      formData.append("post[drawing_attributes][name]", drawingData.name || "");
-      formData.append(
-        "post[drawing_attributes][description]",
-        drawingData.description || "",
-      );
-    }
-
-    appendMediaToFormData(formData, mediaFiles);
+    const formData = buildPostFormData({
+      content,
+      visibility,
+      mediaFiles,
+      drawingData,
+      replyAid: replyPost?.aid,
+      quoteAid: quotePost?.aid,
+    });
 
     try {
-      const res = await api.post("/posts", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      const newPost = await submitPost(formData);
 
-      const newPost = (res.data?.data ?? res.data) as PostType;
       if (newPost?.aid) {
         addPosts([newPost]);
         prependFeedItem("current", { type: "post", post_aid: newPost.aid });
@@ -166,7 +132,6 @@ export default function PostForm({
 
   const targetPost = replyPost ?? quotePost;
   const targetLabel = replyPost ? "返信先" : quotePost ? "引用元" : null;
-
   return (
     <View style={styles.container}>
       {targetPost && targetLabel ? (
@@ -216,7 +181,7 @@ export default function PostForm({
                     style={styles.removeMediaButton}
                     onPress={() => removeFile(index)}
                   >
-                    <ThemedText style={styles.removeMediaText}>x</ThemedText>
+                    <ThemedText style={styles.removeMediaText}>×</ThemedText>
                   </Pressable>
                 </View>
               );
@@ -227,18 +192,21 @@ export default function PostForm({
 
       {drawingData ? (
         <View style={[styles.drawingPreview, { borderColor }]}>
-          <ThemedText style={styles.targetMeta}>
-            お絵描きデータを添付中
-          </ThemedText>
+          <View style={[styles.drawingMediaItem, { borderColor }]}>
+            <DrawingViewer
+              packed={drawingData.packed}
+              style={styles.drawingCanvas}
+            />
+            <Pressable
+              style={styles.removeMediaButton}
+              onPress={handleRemoveDrawing}
+            >
+              <ThemedText style={styles.removeMediaText}>×</ThemedText>
+            </Pressable>
+          </View>
           <ThemedText numberOfLines={1}>
             {drawingData.name || "(名前なし)"}
           </ThemedText>
-          <Pressable
-            style={styles.removeTextButton}
-            onPress={handleRemoveDrawing}
-          >
-            <ThemedText style={styles.removeText}>削除</ThemedText>
-          </Pressable>
         </View>
       ) : null}
 
@@ -246,7 +214,7 @@ export default function PostForm({
         <View style={styles.leftControls}>
           <TouchableOpacity
             style={[styles.controlButton, { borderColor }]}
-            onPress={pickMedia}
+            onPress={handlePickMedia}
             disabled={isSubmitting}
           >
             <ThemedText>画像/動画</ThemedText>
@@ -300,7 +268,7 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   targetCard: {
-    borderWidth: StyleSheet.hairlineWidth,
+    borderWidth: 1,
     borderRadius: 8,
     padding: 8,
     gap: 4,
@@ -342,7 +310,7 @@ const styles = StyleSheet.create({
   videoPlaceholder: {
     width: "100%",
     height: "100%",
-    borderWidth: StyleSheet.hairlineWidth,
+    borderWidth: 1,
     alignItems: "center",
     justifyContent: "center",
   },
@@ -366,16 +334,23 @@ const styles = StyleSheet.create({
     fontSize: 11,
   },
   drawingPreview: {
-    borderWidth: StyleSheet.hairlineWidth,
+    borderWidth: 1,
     borderRadius: 8,
     padding: 8,
     gap: 6,
   },
-  removeTextButton: {
-    alignSelf: "flex-start",
+  drawingMediaItem: {
+    width: DRAWING_WIDTH,
+    maxWidth: "100%",
+    aspectRatio: DRAWING_WIDTH / DRAWING_HEIGHT,
+    borderWidth: 1,
+    overflow: "hidden",
+    position: "relative",
+    backgroundColor: "#111",
+    alignSelf: "center",
   },
-  removeText: {
-    color: "#d93838",
+  drawingCanvas: {
+    ...StyleSheet.absoluteFillObject,
   },
   controls: {
     flexDirection: "row",
@@ -390,7 +365,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   controlButton: {
-    borderWidth: StyleSheet.hairlineWidth,
+    borderWidth: 1,
     borderRadius: 8,
     paddingVertical: 6,
     paddingHorizontal: 8,

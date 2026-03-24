@@ -12,10 +12,11 @@ import {
 import Svg, { Path } from "react-native-svg";
 
 import { ThemedText } from "@/components/themed-text";
-import { useColors } from "@/providers/UIProvider";
+import PostForm from "@/features/post/form";
 import { useCurrentAccount } from "@/providers/CurrentAccountProvider";
 import { usePosts } from "@/providers/PostsProvider";
 import { useToast } from "@/providers/ToastProvider";
+import { useColors } from "@/providers/UIProvider";
 import { PostType } from "@/types/post";
 import { runSignedInAction } from "./console-actions/auth-guard";
 import { executeDiffuseToggle } from "./console-actions/diffuse-action";
@@ -26,7 +27,6 @@ import {
   REPORT_CATEGORIES,
   submitPostReport,
 } from "./console-actions/menu-action";
-import PostForm from "./post_form";
 
 export default function PostConsole({ post }: { post: PostType }) {
   const cardBackground = useColors().background_color;

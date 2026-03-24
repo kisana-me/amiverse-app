@@ -3,9 +3,9 @@ import { StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import MainHeader from "@/components/main_header/MainHeader";
-import PostForm from "@/components/post/post_form";
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
+import PostForm from "@/features/post/form";
 
 export default function CreatePostScreen() {
   return (
