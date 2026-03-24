@@ -12,7 +12,7 @@ import {
 import Svg, { Path } from "react-native-svg";
 
 import { ThemedText } from "@/components/themed-text";
-import PostForm from "@/features/post/form";
+import { PostForm } from "@/features/post";
 import { useCurrentAccount } from "@/providers/CurrentAccountProvider";
 import { usePosts } from "@/providers/PostsProvider";
 import { useToast } from "@/providers/ToastProvider";
