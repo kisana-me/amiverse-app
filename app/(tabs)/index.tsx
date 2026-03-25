@@ -231,6 +231,21 @@ export default function HomeScreen() {
     [currentAccountStatus, openSignInModal, openSignin, setCurrentFeedType],
   );
 
+  const handleCreatePress = useCallback(() => {
+    if (currentAccountStatus !== "signed_in") {
+      openSignInModal({
+        title: "サインインが必要です",
+        message: "新規投稿を作成するにはサインインが必要です。",
+        closeLabel: "キャンセル",
+        signInLabel: "サインイン",
+        onSignIn: openSignin,
+      });
+      return;
+    }
+
+    router.push("/create");
+  }, [currentAccountStatus, openSignInModal, openSignin]);
+
   const renderTabButton = (type: FeedTab, label: string) => {
     const isActive = currentFeedType === type;
     return (
@@ -331,7 +346,7 @@ export default function HomeScreen() {
               borderColor,
             },
           ]}
-          onPress={() => router.push("/create")}
+          onPress={handleCreatePress}
           accessibilityRole="button"
           accessibilityLabel="新規投稿"
         >
