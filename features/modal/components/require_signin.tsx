@@ -19,6 +19,7 @@ export type RequireSignInModalProps = {
   closeLabel?: string;
   signInLabel?: string;
   signInPath?: Href;
+  onSignIn?: () => void | Promise<void>;
 };
 
 export function RequireSignInModal({
@@ -29,6 +30,7 @@ export function RequireSignInModal({
   closeLabel = "閉じる",
   signInLabel = "サインインする",
   signInPath = "/signin",
+  onSignIn,
 }: RequireSignInModalProps) {
   const cardBackground = useColors().background_color;
   const borderColor = useColors().border_color;
@@ -63,6 +65,10 @@ export function RequireSignInModal({
               style={[styles.modalButton, { borderColor: tintColor }]}
               onPress={() => {
                 onClose();
+                if (onSignIn) {
+                  void Promise.resolve(onSignIn());
+                  return;
+                }
                 router.push(signInPath);
               }}
             >

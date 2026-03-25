@@ -11,9 +11,9 @@ import {
 import Svg, { Path } from "react-native-svg";
 
 import { ThemedText } from "@/components/themed-text";
-import { RequireSignInModal } from "@/features/modal";
 import { PostForm } from "@/features/post_form";
 import { useCurrentAccount } from "@/providers/CurrentAccountProvider";
+import { useModal } from "@/providers/ModalProvider";
 import { usePosts } from "@/providers/PostsProvider";
 import { useToast } from "@/providers/ToastProvider";
 import { useColors } from "@/providers/UIProvider";
@@ -35,13 +35,13 @@ export default function PostConsole({ post }: { post: PostType }) {
   const tintColor = useColors().link_color;
 
   const { currentAccountStatus, currentAccount } = useCurrentAccount();
+  const { openSignInModal } = useModal();
   const { addPosts, removePost } = usePosts();
   const { addToast } = useToast();
 
   const [isPostMenuOpen, setIsPostMenuOpen] = useState(false);
   const [isReplyModalOpen, setIsReplyModalOpen] = useState(false);
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
-  const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
   const [isDiffuseConfirmOpen, setIsDiffuseConfirmOpen] = useState(false);
   const [isReportModalOpen, setIsReportModalOpen] = useState(false);
   const [reportCategory, setReportCategory] =
@@ -51,21 +51,21 @@ export default function PostConsole({ post }: { post: PostType }) {
 
   const handleQuotePress = () => {
     if (post.is_busy) return;
-    runSignedInAction(currentAccountStatus, setIsSignInModalOpen, () => {
+    runSignedInAction(currentAccountStatus, openSignInModal, () => {
       setIsQuoteModalOpen(true);
     });
   };
 
   const handleReplyPress = () => {
     if (post.is_busy) return;
-    runSignedInAction(currentAccountStatus, setIsSignInModalOpen, () => {
+    runSignedInAction(currentAccountStatus, openSignInModal, () => {
       setIsReplyModalOpen(true);
     });
   };
 
   const handleDiffusePress = () => {
     if (post.is_busy) return;
-    runSignedInAction(currentAccountStatus, setIsSignInModalOpen, () => {
+    runSignedInAction(currentAccountStatus, openSignInModal, () => {
       if (post.is_diffused) {
         setIsDiffuseConfirmOpen(true);
         return;
@@ -76,7 +76,7 @@ export default function PostConsole({ post }: { post: PostType }) {
   };
 
   const handleReportPress = () => {
-    runSignedInAction(currentAccountStatus, setIsSignInModalOpen, () => {
+    runSignedInAction(currentAccountStatus, openSignInModal, () => {
       setIsReportModalOpen(true);
     });
   };
@@ -357,12 +357,6 @@ export default function PostConsole({ post }: { post: PostType }) {
           </Pressable>
         </Pressable>
       </Modal>
-
-      <RequireSignInModal
-        visible={isSignInModalOpen}
-        onClose={() => setIsSignInModalOpen(false)}
-      />
-
       <Modal
         visible={isReportModalOpen}
         transparent

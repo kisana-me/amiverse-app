@@ -13,7 +13,6 @@ import React, {
 import {
   ActivityIndicator,
   FlatList,
-  Modal,
   Pressable,
   StyleSheet,
   View,
@@ -27,6 +26,7 @@ import { api } from "@/lib/axios";
 import { addHomeRefreshListener } from "@/lib/home-refresh";
 import { useCurrentAccount } from "@/providers/CurrentAccountProvider";
 import { useFeeds } from "@/providers/FeedsProvider";
+import { useModal } from "@/providers/ModalProvider";
 import { CachedPost, usePosts } from "@/providers/PostsProvider";
 import { useToast } from "@/providers/ToastProvider";
 import { useColors } from "@/providers/UIProvider";
@@ -43,6 +43,7 @@ export default function HomeScreen() {
 
   const { addToast } = useToast();
   const { addPosts, getPost } = usePosts();
+  const { openSignInModal } = useModal();
   const {
     addFeed,
     appendFeed,
@@ -59,7 +60,6 @@ export default function HomeScreen() {
 
   const [isFeedLoading, setIsFeedLoading] = useState(false);
   const [isRefetching, setIsRefetching] = useState(false);
-  const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
   const [hasMore, setHasMore] = useState(true);
 
@@ -200,17 +200,6 @@ export default function HomeScreen() {
     return () => sub.remove();
   }, [fetchPost]);
 
-  const handleTabChange = useCallback(
-    (type: FeedTab) => {
-      if (type === "follow" && currentAccountStatus !== "signed_in") {
-        setIsSignInModalOpen(true);
-        return;
-      }
-      setCurrentFeedType(type);
-    },
-    [currentAccountStatus, setCurrentFeedType],
-  );
-
   const openSignin = useCallback(async () => {
     const authUrl = process.env.EXPO_PUBLIC_AUTH_URL;
     if (!authUrl) {
@@ -224,6 +213,23 @@ export default function HomeScreen() {
     const url = `${authUrl}?redirect_uri=${encodeURIComponent(redirectUri)}`;
     await WebBrowser.openBrowserAsync(url);
   }, [addToast]);
+
+  const handleTabChange = useCallback(
+    (type: FeedTab) => {
+      if (type === "follow" && currentAccountStatus !== "signed_in") {
+        openSignInModal({
+          title: "サインインが必要です",
+          message: "フォロー中の投稿を見るにはサインインが必要です。",
+          closeLabel: "キャンセル",
+          signInLabel: "サインイン",
+          onSignIn: openSignin,
+        });
+        return;
+      }
+      setCurrentFeedType(type);
+    },
+    [currentAccountStatus, openSignInModal, openSignin, setCurrentFeedType],
+  );
 
   const renderTabButton = (type: FeedTab, label: string) => {
     const isActive = currentFeedType === type;
@@ -334,40 +340,6 @@ export default function HomeScreen() {
           </ThemedText>
         </Pressable>
       </ThemedView>
-
-      <Modal
-        visible={isSignInModalOpen}
-        transparent
-        animationType="fade"
-        onRequestClose={() => setIsSignInModalOpen(false)}
-      >
-        <View style={styles.modalBackdrop}>
-          <ThemedView style={styles.modalCard}>
-            <ThemedText type="subtitle">サインインが必要です</ThemedText>
-            <ThemedText style={styles.modalBody}>
-              フォロー中の投稿を見るにはサインインが必要です。
-            </ThemedText>
-
-            <View style={styles.modalActions}>
-              <Pressable
-                onPress={() => setIsSignInModalOpen(false)}
-                style={styles.modalButton}
-              >
-                <ThemedText>キャンセル</ThemedText>
-              </Pressable>
-              <Pressable
-                onPress={async () => {
-                  setIsSignInModalOpen(false);
-                  await openSignin();
-                }}
-                style={[styles.modalButton, styles.modalPrimary]}
-              >
-                <ThemedText>サインイン</ThemedText>
-              </Pressable>
-            </View>
-          </ThemedView>
-        </View>
-      </Modal>
     </>
   );
 }
@@ -424,37 +396,6 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     paddingVertical: 10,
     paddingHorizontal: 24,
-  },
-  modalBackdrop: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    padding: 24,
-    backgroundColor: "rgba(0,0,0,0.4)",
-  },
-  modalCard: {
-    width: "100%",
-    maxWidth: 420,
-    padding: 16,
-    borderRadius: 12,
-  },
-  modalBody: {
-    marginTop: 8,
-    opacity: 0.8,
-  },
-  modalActions: {
-    marginTop: 16,
-    flexDirection: "row",
-    justifyContent: "flex-end",
-    gap: 12,
-  },
-  modalButton: {
-    paddingVertical: 8,
-    paddingHorizontal: 12,
-  },
-  modalPrimary: {
-    borderWidth: StyleSheet.hairlineWidth,
-    borderRadius: 8,
   },
   fab: {
     position: "absolute",

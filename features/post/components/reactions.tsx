@@ -11,8 +11,8 @@ import {
 import Svg, { Path } from "react-native-svg";
 
 import { ThemedText } from "@/components/themed-text";
-import { RequireSignInModal } from "@/features/modal";
 import { useCurrentAccount } from "@/providers/CurrentAccountProvider";
+import { useModal } from "@/providers/ModalProvider";
 import { usePosts } from "@/providers/PostsProvider";
 import { EmojiType } from "@/types/emoji";
 import { PostType } from "@/types/post";
@@ -29,8 +29,8 @@ export default function PostReactions({ post }: { post: PostType }) {
   const modalText = useColors().font_color;
   const { addPosts } = usePosts();
   const { currentAccountStatus } = useCurrentAccount();
+  const { openSignInModal } = useModal();
 
-  const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
   const [isEmojiMenuOpen, setIsEmojiMenuOpen] = useState(false);
   const [isReactionConfirmOpen, setIsReactionConfirmOpen] = useState(false);
   const [pendingReactionInput, setPendingReactionInput] =
@@ -82,8 +82,23 @@ export default function PostReactions({ post }: { post: PostType }) {
 
   const handlePrimaryReactionPress = () => {
     if (post.is_busy) return;
-    runSignedInAction(currentAccountStatus, setIsSignInModalOpen, () => {
+    runSignedInAction(currentAccountStatus, openSignInModal, () => {
       setIsEmojiMenuOpen(true);
+    });
+  };
+
+  const handleEmojiReactionPressWithAuth = (emojiInput: ReactionInput) => {
+    if (post.is_busy) return;
+    runSignedInAction(currentAccountStatus, openSignInModal, () => {
+      handleEmojiReactionPress({
+        emojiInput,
+        post,
+        setIsEmojiMenuOpen,
+        setPendingReactionInput,
+        setConfirmModalState,
+        setIsReactionConfirmOpen,
+        processReaction: runProcessReaction,
+      });
     });
   };
 
@@ -124,17 +139,7 @@ export default function PostReactions({ post }: { post: PostType }) {
       >
         {post.reactions?.map((reaction: EmojiType) => (
           <TouchableOpacity
-            onPress={() =>
-              handleEmojiReactionPress({
-                emojiInput: reaction.name_id,
-                post,
-                setIsEmojiMenuOpen,
-                setPendingReactionInput,
-                setConfirmModalState,
-                setIsReactionConfirmOpen,
-                processReaction: runProcessReaction,
-              })
-            }
+            onPress={() => handleEmojiReactionPressWithAuth(reaction.name_id)}
             key={reaction.aid}
             style={[
               styles.reactionButton,
@@ -172,17 +177,7 @@ export default function PostReactions({ post }: { post: PostType }) {
                 <TouchableOpacity
                   key={emoji.aid}
                   style={styles.emojiMenuButton}
-                  onPress={() =>
-                    handleEmojiReactionPress({
-                      emojiInput: emoji,
-                      post,
-                      setIsEmojiMenuOpen,
-                      setPendingReactionInput,
-                      setConfirmModalState,
-                      setIsReactionConfirmOpen,
-                      processReaction: runProcessReaction,
-                    })
-                  }
+                  onPress={() => handleEmojiReactionPressWithAuth(emoji)}
                 >
                   <ThemedText style={styles.emoji}>{emoji.name}</ThemedText>
                   <ThemedText style={styles.emojiLabel}>
@@ -243,11 +238,6 @@ export default function PostReactions({ post }: { post: PostType }) {
           </Pressable>
         </Pressable>
       </Modal>
-
-      <RequireSignInModal
-        visible={isSignInModalOpen}
-        onClose={() => setIsSignInModalOpen(false)}
-      />
     </View>
   );
 }
