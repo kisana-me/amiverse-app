@@ -1,4 +1,3 @@
-import { router } from "expo-router";
 import React, { useState } from "react";
 import {
   Modal,
@@ -12,21 +11,22 @@ import {
 import Svg, { Path } from "react-native-svg";
 
 import { ThemedText } from "@/components/themed-text";
-import { PostForm } from "@/features/post";
+import { RequireSignInModal } from "@/features/modal";
+import { PostForm } from "@/features/post_form";
 import { useCurrentAccount } from "@/providers/CurrentAccountProvider";
 import { usePosts } from "@/providers/PostsProvider";
 import { useToast } from "@/providers/ToastProvider";
 import { useColors } from "@/providers/UIProvider";
 import { PostType } from "@/types/post";
-import { runSignedInAction } from "./console-actions/auth-guard";
-import { executeDiffuseToggle } from "./console-actions/diffuse-action";
+import { executeDiffuseToggle } from "../actions/diffuse";
 import {
   handleDeletePost,
   isPostOwner,
   openPostMenu,
   REPORT_CATEGORIES,
   submitPostReport,
-} from "./console-actions/menu-action";
+} from "../actions/menu";
+import { runSignedInAction } from "../actions/signed_in";
 
 export default function PostConsole({ post }: { post: PostType }) {
   const cardBackground = useColors().background_color;
@@ -358,50 +358,10 @@ export default function PostConsole({ post }: { post: PostType }) {
         </Pressable>
       </Modal>
 
-      <Modal
+      <RequireSignInModal
         visible={isSignInModalOpen}
-        transparent
-        animationType="fade"
-        onRequestClose={() => setIsSignInModalOpen(false)}
-      >
-        <Pressable
-          style={styles.modalBackdrop}
-          onPress={() => setIsSignInModalOpen(false)}
-        >
-          <Pressable
-            style={[styles.modalCard, { backgroundColor: cardBackground }]}
-            onPress={() => undefined}
-          >
-            <ThemedText style={styles.modalTitle}>
-              サインインが必要です
-            </ThemedText>
-            <ThemedText>この操作を行うにはサインインしてください。</ThemedText>
-            <View style={styles.modalActions}>
-              <TouchableOpacity
-                style={[styles.modalButton, { borderColor }]}
-                onPress={() => setIsSignInModalOpen(false)}
-              >
-                <ThemedText>閉じる</ThemedText>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={[
-                  styles.modalButton,
-                  styles.primaryButton,
-                  { backgroundColor: tintColor, borderColor: tintColor },
-                ]}
-                onPress={() => {
-                  setIsSignInModalOpen(false);
-                  router.push("/signin");
-                }}
-              >
-                <ThemedText style={styles.primaryButtonText}>
-                  サインインする
-                </ThemedText>
-              </TouchableOpacity>
-            </View>
-          </Pressable>
-        </Pressable>
-      </Modal>
+        onClose={() => setIsSignInModalOpen(false)}
+      />
 
       <Modal
         visible={isReportModalOpen}

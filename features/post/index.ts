@@ -1,3 +1,2 @@
-export { default as PostForm } from "./form";
-export type { PostFormProps } from "./form";
+export { default as ListedPost } from "./components/listed_post";
 

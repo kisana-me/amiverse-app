@@ -11,6 +11,8 @@ import {
 import Svg, { Path } from "react-native-svg";
 
 import { ThemedText } from "@/components/themed-text";
+import { RequireSignInModal } from "@/features/modal";
+import { useCurrentAccount } from "@/providers/CurrentAccountProvider";
 import { usePosts } from "@/providers/PostsProvider";
 import { EmojiType } from "@/types/emoji";
 import { PostType } from "@/types/post";
@@ -18,15 +20,17 @@ import {
   handleEmojiReactionPress,
   processReaction,
   ReactionInput,
-} from "./reaction-actions/emoji-reaction-press";
-import { handlePrimaryReactionPress } from "./reaction-actions/primary-reaction-press";
+} from "../actions/reaction";
+import { runSignedInAction } from "../actions/signed_in";
 
 export default function PostReactions({ post }: { post: PostType }) {
   const tintColor = useColors().link_color;
   const modalCardBackground = useColors().background_color;
   const modalText = useColors().font_color;
   const { addPosts } = usePosts();
+  const { currentAccountStatus } = useCurrentAccount();
 
+  const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
   const [isEmojiMenuOpen, setIsEmojiMenuOpen] = useState(false);
   const [isReactionConfirmOpen, setIsReactionConfirmOpen] = useState(false);
   const [pendingReactionInput, setPendingReactionInput] =
@@ -76,10 +80,17 @@ export default function PostReactions({ post }: { post: PostType }) {
     });
   };
 
+  const handlePrimaryReactionPress = () => {
+    if (post.is_busy) return;
+    runSignedInAction(currentAccountStatus, setIsSignInModalOpen, () => {
+      setIsEmojiMenuOpen(true);
+    });
+  };
+
   return (
     <View style={styles.container}>
       <TouchableOpacity
-        onPress={() => handlePrimaryReactionPress(setIsEmojiMenuOpen)}
+        onPress={handlePrimaryReactionPress}
         style={[
           styles.reactionButton,
           post.is_reacted && styles.reactedButton,
@@ -232,6 +243,11 @@ export default function PostReactions({ post }: { post: PostType }) {
           </Pressable>
         </Pressable>
       </Modal>
+
+      <RequireSignInModal
+        visible={isSignInModalOpen}
+        onClose={() => setIsSignInModalOpen(false)}
+      />
     </View>
   );
 }

@@ -40,16 +40,9 @@ const CANVAS_HEIGHT = DRAWING_HEIGHT;
 const MIN_SCALE = 0.5;
 const MAX_SCALE = 10;
 const MAX_HISTORY = 50;
-const PERF_ENABLED = __DEV__;
-const PERF_LOG_INTERVAL_MS = 600;
 
 const clamp = (value: number, min: number, max: number) =>
   Math.min(max, Math.max(min, value));
-
-const nowMs = () =>
-  typeof performance !== "undefined" && typeof performance.now === "function"
-    ? performance.now()
-    : Date.now();
 
 export default function DrawingEditor({
   visible,
@@ -94,40 +87,8 @@ export default function DrawingEditor({
     pinchCenterWorldY: 0,
   });
 
-  const perfRef = useRef({
-    strokeStartAt: 0,
-    lastLogAt: 0,
-    moveCount: 0,
-    lineCallCount: 0,
-    linePointCount: 0,
-    lineMsTotal: 0,
-    imageBuildCount: 0,
-    imageBuildMsTotal: 0,
-    imageBuildReason: "",
-  });
-
-  const resetPerfStroke = () => {
-    perfRef.current.strokeStartAt = nowMs();
-    perfRef.current.lastLogAt = 0;
-    perfRef.current.moveCount = 0;
-    perfRef.current.lineCallCount = 0;
-    perfRef.current.linePointCount = 0;
-    perfRef.current.lineMsTotal = 0;
-    perfRef.current.imageBuildCount = 0;
-    perfRef.current.imageBuildMsTotal = 0;
-    perfRef.current.imageBuildReason = "";
-  };
-
-  const notifyBitmapChanged = (reason = "unknown") => {
-    const t0 = PERF_ENABLED ? nowMs() : 0;
+  const notifyBitmapChanged = () => {
     setSkImage(createSkImageFromBitmap(bitmapRef.current));
-
-    if (PERF_ENABLED) {
-      const dt = nowMs() - t0;
-      perfRef.current.imageBuildCount += 1;
-      perfRef.current.imageBuildMsTotal += dt;
-      perfRef.current.imageBuildReason = reason;
-    }
   };
 
   const cloneBitmap = () => new Uint8Array(bitmapRef.current);
@@ -149,7 +110,7 @@ export default function DrawingEditor({
     }
     bitmapRef.current = new Uint8Array(snapshot);
     setHistoryIndex(index);
-    notifyBitmapChanged("restore-history");
+    notifyBitmapChanged();
   };
 
   const undo = () => {
@@ -195,7 +156,7 @@ export default function DrawingEditor({
     setBrushShape("circle");
     setName(initialName);
     setDescription(initialDescription);
-    notifyBitmapChanged("initialize");
+    notifyBitmapChanged();
     didCenterRef.current = false;
 
     if (viewport.width > 0 && viewport.height > 0) {
@@ -311,29 +272,15 @@ export default function DrawingEditor({
     const interaction = interactionRef.current;
     if (interaction.isDrawing) {
       if (!interaction.hasDrawn) {
-        const t0 = PERF_ENABLED ? nowMs() : 0;
-        const points = plotLine(
+        plotLine(
           interaction.lastX,
           interaction.lastY,
           interaction.lastX,
           interaction.lastY,
         );
-        if (PERF_ENABLED) {
-          perfRef.current.lineCallCount += 1;
-          perfRef.current.linePointCount += points;
-          perfRef.current.lineMsTotal += nowMs() - t0;
-        }
       }
       saveHistory();
-      notifyBitmapChanged("stroke-end");
-
-      if (PERF_ENABLED) {
-        const elapsed = Math.max(1, nowMs() - perfRef.current.strokeStartAt);
-        const moves = Math.max(1, perfRef.current.moveCount);
-        console.log(
-          `[DrawingEditor][stroke] duration=${elapsed.toFixed(1)}ms moves=${perfRef.current.moveCount} lineCalls=${perfRef.current.lineCallCount} points=${perfRef.current.linePointCount} lineAvg=${(perfRef.current.lineMsTotal / Math.max(1, perfRef.current.lineCallCount)).toFixed(3)}ms moveAvg=${(elapsed / moves).toFixed(3)}ms imageBuilds=${perfRef.current.imageBuildCount} imageAvg=${(perfRef.current.imageBuildMsTotal / Math.max(1, perfRef.current.imageBuildCount)).toFixed(3)}ms lastReason=${perfRef.current.imageBuildReason}`,
-        );
-      }
+      notifyBitmapChanged();
     }
 
     interaction.isDrawing = false;
@@ -385,9 +332,6 @@ export default function DrawingEditor({
     interaction.hasDrawn = false;
     interaction.lastX = pos.x;
     interaction.lastY = pos.y;
-    if (PERF_ENABLED) {
-      resetPerfStroke();
-    }
   };
 
   const handleTouchMove = (e: GestureResponderEvent) => {
@@ -445,39 +389,12 @@ export default function DrawingEditor({
     }
 
     if (interaction.isDrawing) {
-      const moveStart = PERF_ENABLED ? nowMs() : 0;
       const pos = screenToWorld(touch.locationX, touch.locationY);
-      const lineStart = PERF_ENABLED ? nowMs() : 0;
-      const points = plotLine(
-        interaction.lastX,
-        interaction.lastY,
-        pos.x,
-        pos.y,
-      );
-      if (PERF_ENABLED) {
-        perfRef.current.lineCallCount += 1;
-        perfRef.current.linePointCount += points;
-        perfRef.current.lineMsTotal += nowMs() - lineStart;
-      }
+      plotLine(interaction.lastX, interaction.lastY, pos.x, pos.y);
       interaction.lastX = pos.x;
       interaction.lastY = pos.y;
       interaction.hasDrawn = true;
-      notifyBitmapChanged("move-draw");
-
-      if (PERF_ENABLED) {
-        perfRef.current.moveCount += 1;
-        const now = nowMs();
-        if (perfRef.current.lastLogAt === 0) {
-          perfRef.current.lastLogAt = now;
-        }
-        if (now - perfRef.current.lastLogAt >= PERF_LOG_INTERVAL_MS) {
-          const elapsed = Math.max(1, now - perfRef.current.strokeStartAt);
-          console.log(
-            `[DrawingEditor][move] elapsed=${elapsed.toFixed(1)}ms moves=${perfRef.current.moveCount} lineCalls=${perfRef.current.lineCallCount} points=${perfRef.current.linePointCount} lineTotal=${perfRef.current.lineMsTotal.toFixed(1)}ms imageTotal=${perfRef.current.imageBuildMsTotal.toFixed(1)}ms moveLoop=${(now - moveStart).toFixed(3)}ms`,
-          );
-          perfRef.current.lastLogAt = now;
-        }
-      }
+      notifyBitmapChanged();
     }
   };
 
@@ -512,7 +429,7 @@ export default function DrawingEditor({
         onPress: () => {
           bitmapRef.current.fill(1);
           saveHistory();
-          notifyBitmapChanged("clear");
+          notifyBitmapChanged();
         },
       },
     ]);

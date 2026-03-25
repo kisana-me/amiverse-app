@@ -5,15 +5,15 @@ import { Image as RNImage, StyleSheet, View } from "react-native";
 
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
-import { useColors } from "@/providers/UIProvider";
 import { formatRelativeTime } from "@/lib/format_time";
+import { useColors } from "@/providers/UIProvider";
 
 import { PostType } from "@/types/post";
-import PostAccount from "./item_account";
-import PostConsole from "./post_console";
-import PostContent from "./post_content";
-import PostQuote from "./post_quote";
-import PostReactions from "./post_reactions";
+import PostAccount from "./account";
+import PostConsole from "./console";
+import PostContent from "./content";
+import PostQuote from "./quote";
+import PostReactions from "./reactions";
 
 export default function Post(post: PostType) {
   const tint = useColors().link_color;

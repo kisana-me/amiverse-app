@@ -1,4 +1,3 @@
-import { Alert } from "react-native";
 
 import { api } from "@/lib/axios";
 import { PostType } from "@/types/post";
@@ -39,8 +38,10 @@ export async function executeDiffuseToggle({
     await api.post(`/posts/${post.aid}/diffuse`);
     addToast({ message: "拡散しました" });
   } catch (error) {
-    console.error("Diffuse failed", error);
     addPosts([prevPost]);
-    Alert.alert("エラー", "拡散の更新に失敗しました。");
+    addToast({
+      message: "拡散に失敗しました",
+      detail: error instanceof Error ? error.message : String(error),
+    });
   }
 }

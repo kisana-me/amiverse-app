@@ -20,16 +20,16 @@ import {
 } from "react-native";
 
 import MainHeader from "@/components/main_header/MainHeader";
-import Post from "@/components/post/post";
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
-import { useColors } from "@/providers/UIProvider";
+import { ListedPost as Post } from "@/features/post";
 import { api } from "@/lib/axios";
 import { addHomeRefreshListener } from "@/lib/home-refresh";
 import { useCurrentAccount } from "@/providers/CurrentAccountProvider";
 import { useFeeds } from "@/providers/FeedsProvider";
 import { CachedPost, usePosts } from "@/providers/PostsProvider";
 import { useToast } from "@/providers/ToastProvider";
+import { useColors } from "@/providers/UIProvider";
 import { FeedItemType } from "@/types/feed";
 import { PostType } from "@/types/post";
 
