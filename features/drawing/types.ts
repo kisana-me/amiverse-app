@@ -22,6 +22,7 @@ export type DrawingEditorProps = {
 
 export type DrawingViewerProps = {
   packed?: string;
+  uri?: string;
   style?: StyleProp<ViewStyle>;
 };
 
