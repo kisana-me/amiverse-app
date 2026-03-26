@@ -100,3 +100,15 @@ export const formatFullDate = (date: Date) => {
   const seconds = ("0" + date.getSeconds()).slice(-2);
   return `${year}年 ${month}月 ${day}日 ${hours}時 ${minutes}分 ${seconds}秒`;
 };
+
+export const formatAbsoluteDateTime = (value: Date | string | number) => {
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return "----/--/-- --:--";
+
+  const year = date.getFullYear();
+  const month = `${date.getMonth() + 1}`.padStart(2, "0");
+  const day = `${date.getDate()}`.padStart(2, "0");
+  const hours = `${date.getHours()}`.padStart(2, "0");
+  const minutes = `${date.getMinutes()}`.padStart(2, "0");
+  return `${year}/${month}/${day} ${hours}:${minutes}`;
+};

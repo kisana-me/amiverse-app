@@ -13,10 +13,10 @@ import {
 import MainHeader from "@/components/main_header/MainHeader";
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
-import { useColors } from "@/providers/UIProvider";
 import { formatRelativeTime } from "@/lib/format_time";
 import { useCurrentAccount } from "@/providers/CurrentAccountProvider";
 import { useNotifications } from "@/providers/NotificationsProvider";
+import { useColors } from "@/providers/UIProvider";
 import { NotificationType } from "@/types/notification";
 
 function getNotificationText(notification: NotificationType): {
@@ -74,7 +74,10 @@ function NotificationItem({
 
   const onPress = () => {
     if (notification.post?.aid) {
-      router.push(`/post/${notification.post.aid}`);
+      router.replace({
+        pathname: "/post/[aid]",
+        params: { aid: notification.post.aid, from: "timeline" },
+      } as any);
       return;
     }
     if (notification.actor?.name_id) {
@@ -169,6 +172,7 @@ export default function NotificationsScreen() {
 
   const borderColor = useColors().border_color;
   const { currentAccountStatus } = useCurrentAccount();
+  const canFetchNotifications = currentAccountStatus === "signed_in";
   const {
     notifications,
     isLoading,
@@ -179,9 +183,9 @@ export default function NotificationsScreen() {
   } = useNotifications();
 
   useEffect(() => {
-    if (currentAccountStatus === "loading") return;
+    if (!canFetchNotifications) return;
     fetchNotifications(true);
-  }, [currentAccountStatus, fetchNotifications]);
+  }, [canFetchNotifications, fetchNotifications]);
 
   useEffect(() => {
     return () => {
@@ -200,8 +204,11 @@ export default function NotificationsScreen() {
         data={notifications}
         keyExtractor={(item) => item.aid}
         renderItem={({ item }) => <NotificationItem notification={item} />}
-        onRefresh={() => fetchNotifications(true)}
-        refreshing={isLoading}
+        onRefresh={() => {
+          if (!canFetchNotifications) return;
+          fetchNotifications(true);
+        }}
+        refreshing={canFetchNotifications && isLoading}
         ListHeaderComponent={
           <ThemedView
             style={[styles.metaRow, { borderBottomColor: borderColor }]}
@@ -212,11 +219,17 @@ export default function NotificationsScreen() {
                 : "未取得"}
             </ThemedText>
             <Pressable
-              onPress={() => fetchNotifications(true)}
-              disabled={isLoading}
+              onPress={() => {
+                if (!canFetchNotifications) return;
+                fetchNotifications(true);
+              }}
+              disabled={!canFetchNotifications || isLoading}
               style={[
                 styles.reloadButton,
-                { borderColor, opacity: isLoading ? 0.5 : 1 },
+                {
+                  borderColor,
+                  opacity: !canFetchNotifications || isLoading ? 0.5 : 1,
+                },
               ]}
             >
               <ThemedText style={styles.reloadText}>
@@ -241,10 +254,13 @@ export default function NotificationsScreen() {
             <View style={styles.loading}>
               <ActivityIndicator />
             </View>
-          ) : hasMore ? (
+          ) : canFetchNotifications && hasMore ? (
             <View style={styles.footer}>
               <Pressable
-                onPress={() => fetchNotifications(false)}
+                onPress={() => {
+                  if (!canFetchNotifications) return;
+                  fetchNotifications(false);
+                }}
                 style={[styles.loadMore, { borderColor }]}
               >
                 <ThemedText>もっと見る</ThemedText>

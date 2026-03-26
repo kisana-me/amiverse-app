@@ -8,7 +8,7 @@ import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
 import { DrawingViewer } from "@/features/drawing";
 import { MediaViewer, type MediaViewerItem } from "@/features/media_viewer";
-import { formatRelativeTime } from "@/lib/format_time";
+import { formatAbsoluteDateTime } from "@/lib/format_time";
 import { useColors } from "@/providers/UIProvider";
 
 import { PostType } from "@/types/post";
@@ -18,14 +18,7 @@ import PostContent from "./content";
 import PostQuote from "./quote";
 import PostReactions from "./reactions";
 
-type ListedPostProps = PostType & {
-  navigationMode?: "replace" | "push";
-};
-
-export default function Post({
-  navigationMode = "replace",
-  ...post
-}: ListedPostProps) {
+export default function Post(post: PostType) {
   const tint = useColors().link_color;
   const backgroundColor = useColors().background_color;
   const drawingBorderColor = tint;
@@ -122,24 +115,12 @@ export default function Post({
     setViewerVisible(true);
   };
 
-  const openPost = () => {
-    const href = {
-      pathname: "/post/[aid]" as const,
-      params: {
-        aid: post.aid,
-        from: navigationMode === "push" ? "thread" : "timeline",
-      },
-    };
-
-    if (navigationMode === "push") {
-      router.push(href as any);
-      return;
-    }
-    router.replace(href as any);
+  const navigateUsers = (type: "quotes" | "diffuses" | "reactions") => {
+    router.push(`/post/${post.aid}/${type}`);
   };
 
   return (
-    <Pressable onPress={openPost}>
+    <>
       <ThemedView style={styles.post}>
         <PostAccount account={post.account} />
 
@@ -152,7 +133,7 @@ export default function Post({
           </View>
           <View>
             <ThemedText style={styles.infoText}>
-              {formatRelativeTime(new Date(post.created_at))}
+              {formatAbsoluteDateTime(post.created_at)}
             </ThemedText>
           </View>
         </View>
@@ -166,8 +147,7 @@ export default function Post({
                 <Pressable
                   key={media.aid}
                   style={styles.mediaPressable}
-                  onPress={(event) => {
-                    event.stopPropagation();
+                  onPress={() => {
                     const index = mediaViewerItems.findIndex(
                       (item) => item.id === `media-${media.aid}`,
                     );
@@ -190,8 +170,7 @@ export default function Post({
               {post.drawings.map((drawing) => (
                 <Pressable
                   key={drawing.aid}
-                  onPress={(event) => {
-                    event.stopPropagation();
+                  onPress={() => {
                     const drawingIndex = drawingViewerItems.findIndex(
                       (item) => item.id === `drawing-${drawing.aid}`,
                     );
@@ -245,6 +224,47 @@ export default function Post({
 
         <PostReactions post={post} />
         <PostConsole post={post} />
+
+        <View style={styles.countRow}>
+          <Pressable
+            style={styles.countButton}
+            onPress={() => {
+              navigateUsers("quotes");
+            }}
+          >
+            <ThemedText style={styles.countText}>
+              引用数: {post.quotes_count ?? 0}
+            </ThemedText>
+          </Pressable>
+
+          <Pressable
+            style={styles.countButton}
+            onPress={() => {
+              navigateUsers("diffuses");
+            }}
+          >
+            <ThemedText style={styles.countText}>
+              拡散数: {post.diffuses_count ?? 0}
+            </ThemedText>
+          </Pressable>
+
+          <View style={styles.countPlain}>
+            <ThemedText style={styles.countText}>
+              返信数: {post.replies_count ?? 0}
+            </ThemedText>
+          </View>
+
+          <Pressable
+            style={styles.countButton}
+            onPress={() => {
+              navigateUsers("reactions");
+            }}
+          >
+            <ThemedText style={styles.countText}>
+              リアクション数: {post.reactions_count ?? 0}
+            </ThemedText>
+          </Pressable>
+        </View>
       </ThemedView>
 
       <MediaViewer
@@ -255,7 +275,7 @@ export default function Post({
           setViewerVisible(false);
         }}
       />
-    </Pressable>
+    </>
   );
 }
 
@@ -307,6 +327,29 @@ const styles = StyleSheet.create({
   drawingImage: {
     width: "100%",
     borderRadius: 0,
+  },
+  countRow: {
+    marginTop: 8,
+    paddingTop: 8,
+    borderTopWidth: StyleSheet.hairlineWidth,
+    borderTopColor: "#666",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 8,
+  },
+  countButton: {
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: "#888",
+    borderRadius: 8,
+    paddingVertical: 4,
+    paddingHorizontal: 8,
+  },
+  countPlain: {
+    paddingVertical: 4,
+    paddingHorizontal: 8,
+  },
+  countText: {
+    fontSize: 12,
   },
   footer: {
     marginTop: 8,

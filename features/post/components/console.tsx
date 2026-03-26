@@ -232,7 +232,10 @@ export default function PostConsole({ post }: { post: PostType }) {
           onPress={() => setIsQuoteModalOpen(false)}
         >
           <Pressable
-            style={[styles.modalCard, { backgroundColor: cardBackground }]}
+            style={[
+              styles.modalCard,
+              { backgroundColor: cardBackground, borderColor },
+            ]}
             onPress={() => undefined}
           >
             <ThemedText style={styles.modalTitle}>引用</ThemedText>
@@ -256,7 +259,10 @@ export default function PostConsole({ post }: { post: PostType }) {
           onPress={() => setIsReplyModalOpen(false)}
         >
           <Pressable
-            style={[styles.modalCard, { backgroundColor: cardBackground }]}
+            style={[
+              styles.modalCard,
+              { backgroundColor: cardBackground, borderColor },
+            ]}
             onPress={() => undefined}
           >
             <ThemedText style={styles.modalTitle}>返信</ThemedText>
@@ -280,7 +286,10 @@ export default function PostConsole({ post }: { post: PostType }) {
           onPress={() => setIsDiffuseConfirmOpen(false)}
         >
           <Pressable
-            style={[styles.modalCard, { backgroundColor: cardBackground }]}
+            style={[
+              styles.modalCard,
+              { backgroundColor: cardBackground, borderColor },
+            ]}
             onPress={() => undefined}
           >
             <ThemedText style={styles.modalTitle}>拡散を取り消す</ThemedText>
@@ -323,7 +332,10 @@ export default function PostConsole({ post }: { post: PostType }) {
           onPress={() => setIsPostMenuOpen(false)}
         >
           <Pressable
-            style={[styles.modalCard, { backgroundColor: cardBackground }]}
+            style={[
+              styles.modalCard,
+              { backgroundColor: cardBackground, borderColor },
+            ]}
             onPress={() => undefined}
           >
             <ThemedText style={styles.modalTitle}>投稿メニュー</ThemedText>
@@ -368,7 +380,10 @@ export default function PostConsole({ post }: { post: PostType }) {
           onPress={() => setIsReportModalOpen(false)}
         >
           <Pressable
-            style={[styles.modalCard, { backgroundColor: cardBackground }]}
+            style={[
+              styles.modalCard,
+              { backgroundColor: cardBackground, borderColor },
+            ]}
             onPress={() => undefined}
           >
             <ThemedText style={styles.modalTitle}>投稿を通報</ThemedText>
@@ -473,6 +488,7 @@ const styles = StyleSheet.create({
   modalCard: {
     width: "100%",
     maxWidth: 380,
+    borderWidth: 1,
     borderRadius: 12,
     padding: 16,
     gap: 10,

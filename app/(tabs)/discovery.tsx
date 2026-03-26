@@ -2,8 +2,8 @@ import MainHeader from "@/components/main_header/MainHeader";
 import { ThemedText } from "@/components/themed-text";
 import SkeletonTrendList from "@/components/trend/skeleton_trend";
 import TrendList from "@/components/trend/trend_list";
-import { useColors } from "@/providers/UIProvider";
 import { useTrends } from "@/providers/TrendsProvider";
+import { useColors } from "@/providers/UIProvider";
 import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 import { useScrollToTop } from "@react-navigation/native";
 import { router } from "expo-router";
@@ -29,7 +29,7 @@ export default function DiscoveryScreen() {
   const handleSearchClick = useCallback(() => {
     const q = searchInput.trim();
     if (!q) return;
-    router.push({ pathname: "/search", params: { query: q } });
+    router.push({ pathname: "/search", params: { query: '"' + q + '"' } });
   }, [searchInput]);
 
   return (
@@ -63,10 +63,7 @@ export default function DiscoveryScreen() {
       <ScrollView
         ref={scrollRef}
         style={styles.body}
-        contentContainerStyle={[
-          styles.bodyContent,
-          { paddingBottom: tabBarHeight + 12 },
-        ]}
+        contentContainerStyle={[styles.bodyContent, { paddingBottom: 36 }]}
         keyboardShouldPersistTaps="handled"
       >
         {trendsLoading ? (
@@ -104,31 +101,30 @@ const styles = StyleSheet.create({
   searchInput: {
     flexGrow: 1,
     flexShrink: 1,
-    height: 32,
+    height: 36,
     borderWidth: 1,
-    borderRadius: 7,
-    paddingHorizontal: 7,
+    borderRadius: 8,
+    paddingHorizontal: 10,
+    paddingVertical: 0,
+    fontSize: 16,
+    lineHeight: 16,
   },
   searchButton: {
-    width: 32,
-    height: 32,
+    width: 36,
+    height: 36,
     borderWidth: 1,
-    borderRadius: 7,
+    borderRadius: 8,
     alignItems: "center",
     justifyContent: "center",
   },
   searchIcon: {
-    fontSize: 14,
-    lineHeight: 14,
+    fontSize: 16,
+    lineHeight: 16,
   },
   body: {
     flex: 1,
-    paddingHorizontal: 8,
-    paddingTop: 8,
   },
-  bodyContent: {
-    paddingBottom: 24,
-  },
+  bodyContent: {},
   noTrends: {
     paddingVertical: 16,
     alignItems: "center",

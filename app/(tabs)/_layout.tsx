@@ -103,6 +103,16 @@ export default function TabLayout() {
           ),
         }}
       />
+      <Tabs.Screen
+        name="post"
+        options={
+          {
+            href: null,
+            popToTopOnBlur: true,
+            unmountOnBlur: true,
+          } as any
+        }
+      />
       <Tabs.Screen name="settings" options={{ href: null }} />
       <Tabs.Screen name="settings/account" options={{ href: null }} />
       <Tabs.Screen name="signin" options={{ href: null }} />
@@ -112,7 +122,6 @@ export default function TabLayout() {
       <Tabs.Screen name="contact" options={{ href: null }} />
       <Tabs.Screen name="search" options={{ href: null }} />
       <Tabs.Screen name="create" options={{ href: null }} />
-      <Tabs.Screen name="post/[aid]" options={{ href: null }} />
       <Tabs.Screen name="account/[name_id]" options={{ href: null }} />
     </Tabs>
   );

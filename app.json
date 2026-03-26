@@ -11,11 +11,12 @@
       "supportsTablet": true
     },
     "android": {
+      "icon": "./assets/images/android-icon.png",
       "adaptiveIcon": {
         "backgroundColor": "#3B3B3B",
-        "foregroundImage": "./assets/images/icon-tp.png",
+        "foregroundImage": "./assets/images/android-icon-tp.png",
         "backgroundImage": "./assets/images/icon-bg.png",
-        "monochromeImage": "./assets/images/icon-mc.png"
+        "monochromeImage": "./assets/images/android-icon-mc.png"
       },
       "predictiveBackGestureEnabled": false,
       "permissions": [],

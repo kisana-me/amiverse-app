@@ -24,9 +24,9 @@ import { usePosts } from "@/providers/PostsProvider";
 import { useToast } from "@/providers/ToastProvider";
 import { useColors } from "@/providers/UIProvider";
 import { PostType } from "@/types/post";
-export { buildPostFormData } from "./actions/build_post_form_data";
-export { pickMedia } from "./actions/pick_media";
-export { submitPost } from "./actions/submit_post";
+import { buildPostFormData } from "./actions/build_post_form_data";
+import { pickMedia } from "./actions/pick_media";
+import { submitPost } from "./actions/submit_post";
 
 export type PostFormProps = {
   replyPost?: PostType;

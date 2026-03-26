@@ -8,14 +8,12 @@ import {
   StyleSheet,
   View,
 } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 
 import MainHeader from "@/components/main_header/MainHeader";
-import Post from "@/components/post/post";
-import ItemContent from "@/components/post/post_content";
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
-import { useColors } from "@/providers/UIProvider";
+import { ListedPost as Post } from "@/features/post";
+import ItemContent from "@/features/post/components/content";
 import { api } from "@/lib/axios";
 import { formatFullDate } from "@/lib/format_time";
 import { useAccounts } from "@/providers/AccountsProvider";
@@ -23,6 +21,7 @@ import { useCurrentAccount } from "@/providers/CurrentAccountProvider";
 import { useFeeds } from "@/providers/FeedsProvider";
 import { CachedPost, usePosts } from "@/providers/PostsProvider";
 import { useToast } from "@/providers/ToastProvider";
+import { useColors } from "@/providers/UIProvider";
 import { FeedItemType } from "@/types/feed";
 import { PostType } from "@/types/post";
 
@@ -482,7 +481,7 @@ export default function AccountDetailScreen() {
   ]);
 
   return (
-    <SafeAreaView style={styles.safe} edges={["bottom"]}>
+    <View style={{ flex: 1, paddingBottom: 50 }}>
       <MainHeader>
         <ThemedText type="defaultSemiBold" numberOfLines={1}>
           {headerTitle}
@@ -533,7 +532,7 @@ export default function AccountDetailScreen() {
           )
         }
       />
-    </SafeAreaView>
+    </View>
   );
 }
 

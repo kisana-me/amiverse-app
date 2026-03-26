@@ -7,11 +7,11 @@ import { Modal, Pressable, ScrollView, StyleSheet, View } from "react-native";
 import MainHeader from "@/components/main_header/MainHeader";
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
-import { useColors } from "@/providers/UIProvider";
 import { clearAccessToken } from "@/lib/access-token";
 import { api } from "@/lib/axios";
 import { useCurrentAccount } from "@/providers/CurrentAccountProvider";
 import { useToast } from "@/providers/ToastProvider";
+import { useColors } from "@/providers/UIProvider";
 
 function ActionCard({
   title,
@@ -257,7 +257,7 @@ export default function DashboardScreen() {
 
 const styles = StyleSheet.create({
   scroll: { flex: 1 },
-  scrollContent: { padding: 16, paddingBottom: 28 },
+  scrollContent: { padding: 16, paddingBottom: 36 + 16 },
   profileCard: {
     borderWidth: StyleSheet.hairlineWidth,
     borderRadius: 18,
