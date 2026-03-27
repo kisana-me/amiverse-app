@@ -113,22 +113,15 @@ function NotificationItem({
         </View>
 
         <View style={styles.itemRight}>
-          <View style={styles.headerRow}>
-            {notification.actor?.icon_url ? (
+          {notification.actor?.icon_url ? (
+            <View style={styles.headerRow}>
               <Image
                 source={{ uri: notification.actor.icon_url }}
                 style={styles.actorIcon}
                 contentFit="cover"
               />
-            ) : (
-              <View
-                style={[
-                  styles.actorIcon,
-                  { backgroundColor: borderColor, opacity: 0.2 },
-                ]}
-              />
-            )}
-          </View>
+            </View>
+          ) : null}
 
           <View style={styles.body}>
             {!!title && (
