@@ -39,6 +39,9 @@ function normalizeFeedResponse(data: unknown): {
   };
 }
 
+const FEED_CACHE_TTL_MS = 7000;
+const ACCOUNT_CACHE_TTL_MS = 7000;
+
 export default function AccountDetailScreen() {
   const params = useLocalSearchParams<{ name_id?: string }>();
   const nameId = (params.name_id ?? "").toString();
@@ -81,61 +84,80 @@ export default function AccountDetailScreen() {
   const [isLoadingMore, setIsLoadingMore] = useState(false);
   const [hasMore, setHasMore] = useState(true);
 
-  useEffect(() => {
+  const fetchAccountWithCacheControl = useCallback(async () => {
     if (!nameId) return;
     if (currentAccountStatus === "loading") return;
 
-    if (accounts[nameId]) {
+    const cachedAccount = accounts[nameId];
+    const isCacheFresh =
+      !!cachedAccount &&
+      Date.now() - cachedAccount.fetched_at < ACCOUNT_CACHE_TTL_MS;
+    if (isCacheFresh) {
       setIsAccountLoading(false);
       return;
     }
 
     setIsAccountLoading(true);
-    fetchAccount(nameId)
-      .finally(() => setIsAccountLoading(false))
-      .catch(() => {
-        // ignore
-      });
-  }, [nameId, accounts, currentAccountStatus, fetchAccount]);
-
-  const fetchFeed = useCallback(async () => {
-    if (currentAccountStatus === "loading") return;
-    if (!account?.aid) return;
-    if (feeds[account.aid]) return;
-
-    setIsFeedLoading(true);
     try {
-      const res = await api.post("/feeds/account", {
-        aid: account.aid,
-        cursor: null,
-      });
-      const data = normalizeFeedResponse(res.data);
-
-      const newPosts = data.posts ?? [];
-      const newFeedItems = data.feed;
-
-      if (newPosts.length > 0) addPosts(newPosts);
-
-      if (Array.isArray(newFeedItems) && newFeedItems.length > 0) {
-        addFeed({ type: account.aid, objects: newFeedItems });
-      } else if (newPosts.length > 0) {
-        const generatedFeed: FeedItemType[] = newPosts.map((post) => ({
-          type: "post",
-          post_aid: post.aid,
-        }));
-        addFeed({ type: account.aid, objects: generatedFeed });
-      } else {
-        addFeed({ type: account.aid, objects: [] });
-      }
-    } catch (error) {
-      addToast({
-        message: "投稿取得エラー",
-        detail: error instanceof Error ? error.message : String(error),
-      });
+      await fetchAccount(nameId, true);
     } finally {
-      setIsFeedLoading(false);
+      setIsAccountLoading(false);
     }
-  }, [account?.aid, addFeed, addPosts, addToast, currentAccountStatus, feeds]);
+  }, [nameId, currentAccountStatus, accounts, fetchAccount]);
+
+  useEffect(() => {
+    void fetchAccountWithCacheControl();
+  }, [fetchAccountWithCacheControl]);
+
+  const fetchFeed = useCallback(
+    async (force = false) => {
+      if (currentAccountStatus === "loading") return;
+      if (!account?.aid) return;
+
+      const cachedFeed = feeds[account.aid];
+      const isCacheFresh =
+        !!cachedFeed && Date.now() - cachedFeed.fetched_at < FEED_CACHE_TTL_MS;
+      if (!force && isCacheFresh) return;
+
+      setIsFeedLoading(true);
+      try {
+        const res = await api.post("/feeds/account", {
+          aid: account.aid,
+          cursor: null,
+        });
+        const data = normalizeFeedResponse(res.data);
+
+        const newPosts = data.posts ?? [];
+        const newFeedItems = data.feed;
+
+        if (newPosts.length > 0) addPosts(newPosts);
+
+        if (Array.isArray(newFeedItems) && newFeedItems.length > 0) {
+          addFeed({ type: account.aid, objects: newFeedItems });
+        } else if (newPosts.length > 0) {
+          const generatedFeed: FeedItemType[] = newPosts.map((post) => ({
+            type: "post",
+            post_aid: post.aid,
+          }));
+          addFeed({ type: account.aid, objects: generatedFeed });
+        } else {
+          addFeed({ type: account.aid, objects: [] });
+        }
+      } catch (error) {
+        addToast({
+          message: "投稿取得エラー",
+          detail: error instanceof Error ? error.message : String(error),
+        });
+      } finally {
+        setIsFeedLoading(false);
+      }
+    },
+    [account?.aid, addFeed, addPosts, addToast, currentAccountStatus, feeds],
+  );
+
+  const refreshAccountAndFeed = useCallback(async () => {
+    await Promise.all([fetchAccountWithCacheControl(), fetchFeed()]);
+  }, [fetchAccountWithCacheControl, fetchFeed]);
 
   useEffect(() => {
     if (currentAccountStatus === "loading") return;
@@ -493,8 +515,8 @@ export default function AccountDetailScreen() {
         keyExtractor={(item) => item.aid}
         renderItem={({ item }) => <Post {...item} />}
         ListHeaderComponent={headerElement}
-        onRefresh={fetchFeed}
-        refreshing={isFeedLoading}
+        onRefresh={refreshAccountAndFeed}
+        refreshing={isFeedLoading || isAccountLoading}
         ListEmptyComponent={
           account && (isFeedLoading || isAccountLoading) ? (
             <View style={styles.centerPad}>

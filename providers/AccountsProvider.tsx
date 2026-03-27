@@ -17,7 +17,10 @@ export type CachedAccount = AccountType & {
 
 type AccountsContextType = {
   accounts: Record<string, CachedAccount>;
-  fetchAccount: (name_id: string) => Promise<AccountType | null>;
+  fetchAccount: (
+    name_id: string,
+    force?: boolean,
+  ) => Promise<AccountType | null>;
   getAccount: (name_id: string) => CachedAccount | undefined;
   updateAccount: (name_id: string, data: Partial<AccountType>) => void;
 };
@@ -53,8 +56,8 @@ export const AccountsProvider = ({ children }: { children: ReactNode }) => {
     [],
   );
 
-  const fetchAccount = useCallback(async (name_id: string) => {
-    if (accountsRef.current[name_id]) {
+  const fetchAccount = useCallback(async (name_id: string, force = false) => {
+    if (!force && accountsRef.current[name_id]) {
       return accountsRef.current[name_id];
     }
 
