@@ -16,13 +16,14 @@ import {
   useWindowDimensions,
   View,
 } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
-import { useColors } from "@/providers/UIProvider";
 import { useCurrentAccount } from "@/providers/CurrentAccountProvider";
 import { useOverlay } from "@/providers/OverlayProvider";
 import { useTrends } from "@/providers/TrendsProvider";
+import { useColors } from "@/providers/UIProvider";
 
 function MenuItem({ label, onPress }: { label: string; onPress: () => void }) {
   const borderColor = useColors().border_color;
@@ -150,42 +151,50 @@ export function SideMenus() {
               },
             ]}
           >
-            <ThemedView style={styles.drawerHeader}>
-              {currentAccountStatus === "signed_in" && currentAccount ? (
-                <View style={styles.profileRow}>
-                  <Image
-                    source={{ uri: currentAccount.icon_url }}
-                    style={styles.avatar}
-                    contentFit="cover"
-                  />
-                  <View style={styles.profileText}>
-                    <ThemedText type="defaultSemiBold" numberOfLines={1}>
-                      {currentAccount.name}
-                    </ThemedText>
-                    <ThemedText style={styles.subtle} numberOfLines={1}>
-                      @{currentAccount.name_id}
-                    </ThemedText>
+            <SafeAreaView
+              style={styles.drawerSafeArea}
+              edges={["top", "bottom"]}
+            >
+              <ThemedView style={styles.drawerHeader}>
+                {currentAccountStatus === "signed_in" && currentAccount ? (
+                  <View style={styles.profileRow}>
+                    <Image
+                      source={{ uri: currentAccount.icon_url }}
+                      style={styles.avatar}
+                      contentFit="cover"
+                    />
+                    <View style={styles.profileText}>
+                      <ThemedText type="defaultSemiBold" numberOfLines={1}>
+                        {currentAccount.name}
+                      </ThemedText>
+                      <ThemedText style={styles.subtle} numberOfLines={1}>
+                        @{currentAccount.name_id}
+                      </ThemedText>
+                    </View>
                   </View>
-                </View>
-              ) : (
-                <ThemedText type="defaultSemiBold">ゲスト</ThemedText>
-              )}
-            </ThemedView>
+                ) : (
+                  <ThemedText type="defaultSemiBold">ゲスト</ThemedText>
+                )}
+              </ThemedView>
 
-            <ScrollView contentContainerStyle={styles.drawerBody}>
-              {currentAccountStatus === "signed_in" && currentAccount ? (
+              <ScrollView contentContainerStyle={styles.drawerBody}>
+                {currentAccountStatus === "signed_in" && currentAccount ? (
+                  <MenuItem
+                    label="プロフィール編集"
+                    onPress={() => router.push("/settings/account" as any)}
+                  />
+                ) : (
+                  <MenuItem
+                    label="サインイン"
+                    onPress={() => router.push("/signin")}
+                  />
+                )}
                 <MenuItem
-                  label="プロフィール編集"
-                  onPress={() => router.push("/settings/account" as any)}
+                  label="設定"
+                  onPress={() => router.push("/settings")}
                 />
-              ) : (
-                <MenuItem
-                  label="サインイン"
-                  onPress={() => router.push("/signin")}
-                />
-              )}
-              <MenuItem label="設定" onPress={() => router.push("/settings")} />
-            </ScrollView>
+              </ScrollView>
+            </SafeAreaView>
           </Animated.View>
         </View>
       </Modal>
@@ -214,42 +223,47 @@ export function SideMenus() {
               },
             ]}
           >
-            <ThemedView style={styles.drawerHeader}>
-              <ThemedText type="defaultSemiBold">トレンド</ThemedText>
-              <ThemedText style={styles.subtle}>
-                {trendsLoading ? "取得中..." : "上位5位"}
-              </ThemedText>
-            </ThemedView>
+            <SafeAreaView
+              style={styles.drawerSafeArea}
+              edges={["top", "bottom"]}
+            >
+              <ThemedView style={styles.drawerHeader}>
+                <ThemedText type="defaultSemiBold">トレンド</ThemedText>
+                <ThemedText style={styles.subtle}>
+                  {trendsLoading ? "取得中..." : "上位5位"}
+                </ThemedText>
+              </ThemedView>
 
-            <ScrollView contentContainerStyle={styles.drawerBody}>
-              {top5.map((t, index) => (
+              <ScrollView contentContainerStyle={styles.drawerBody}>
+                {top5.map((t, index) => (
+                  <MenuItem
+                    key={`${t.word}:${index}`}
+                    label={`${index + 1}位 ${t.word}`}
+                    onPress={() =>
+                      router.push({
+                        pathname: "/search",
+                        params: { query: t.word },
+                      })
+                    }
+                  />
+                ))}
+
+                <View style={[styles.sectionDivider, { borderColor }]} />
+
                 <MenuItem
-                  key={`${t.word}:${index}`}
-                  label={`${index + 1}位 ${t.word}`}
-                  onPress={() =>
-                    router.push({
-                      pathname: "/search",
-                      params: { query: t.word },
-                    })
-                  }
+                  label="利用規約"
+                  onPress={() => router.push("/terms")}
                 />
-              ))}
-
-              <View style={[styles.sectionDivider, { borderColor }]} />
-
-              <MenuItem
-                label="利用規約"
-                onPress={() => router.push("/terms")}
-              />
-              <MenuItem
-                label="プライバシーポリシー"
-                onPress={() => router.push("/privacy")}
-              />
-              <MenuItem
-                label="お問い合わせ"
-                onPress={() => router.push("/contact")}
-              />
-            </ScrollView>
+                <MenuItem
+                  label="プライバシーポリシー"
+                  onPress={() => router.push("/privacy")}
+                />
+                <MenuItem
+                  label="お問い合わせ"
+                  onPress={() => router.push("/contact")}
+                />
+              </ScrollView>
+            </SafeAreaView>
           </Animated.View>
         </View>
       </Modal>
@@ -270,6 +284,9 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     borderRightWidth: StyleSheet.hairlineWidth,
+  },
+  drawerSafeArea: {
+    flex: 1,
   },
   drawerRight: {
     left: undefined,
