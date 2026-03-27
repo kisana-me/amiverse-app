@@ -7,11 +7,17 @@ import { Modal, Pressable, ScrollView, StyleSheet, View } from "react-native";
 import MainHeader from "@/components/main_header/MainHeader";
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
+import { InfoModal } from "@/features/modal";
 import { clearAccessToken } from "@/lib/access-token";
 import { api } from "@/lib/axios";
 import { useCurrentAccount } from "@/providers/CurrentAccountProvider";
 import { useToast } from "@/providers/ToastProvider";
 import { useColors } from "@/providers/UIProvider";
+
+type FeatureInfoModalState = {
+  title: string;
+  message: string;
+};
 
 function ActionCard({
   title,
@@ -50,6 +56,8 @@ export default function DashboardScreen() {
   } = useCurrentAccount();
 
   const [isSignoutModalOpen, setIsSignoutModalOpen] = useState(false);
+  const [featureInfoModal, setFeatureInfoModal] =
+    useState<FeatureInfoModalState | null>(null);
 
   const isSignedIn = currentAccountStatus === "signed_in" && !!currentAccount;
   const displayName = useMemo(() => {
@@ -79,6 +87,10 @@ export default function DashboardScreen() {
       });
     }
   }, [addToast, isSignedIn, setCurrentAccount, setCurrentAccountStatus]);
+
+  const openFeatureInfoModal = useCallback((title: string, message: string) => {
+    setFeatureInfoModal({ title, message });
+  }, []);
 
   return (
     <>
@@ -187,18 +199,24 @@ export default function DashboardScreen() {
         <View style={styles.grid}>
           <ActionCard
             title="お絵かき"
-            description="みんなのを見る"
-            onPress={() => router.push("/")}
+            description="投稿時に絵を描いてみよう！"
+            onPress={() =>
+              openFeatureInfoModal(
+                "お絵かき",
+                "投稿時にペンのマーク「✒」を押すとお絵かきモードになります！320×120の白黒ドット絵キャンバスにオリジナルのイラストを描いてみよう！",
+              )
+            }
           />
           <ActionCard
             title="絵文字"
-            description="みんなのを見る"
-            onPress={() => router.push("/")}
+            description="投稿にリアクションしよう！"
+            onPress={() =>
+              openFeatureInfoModal(
+                "絵文字",
+                "一般的な絵文字を投稿のリアクションに使用できます！🍭🪄🔮🌟🫡👑🎉✈️🚀投稿にあったリアクションをつけてみよう！",
+              )
+            }
           />
-          <ActionCard title="お財布" description="実装予定" />
-          <ActionCard title="現在地" description="実装予定" />
-          <ActionCard title="コレクション" description="実装予定" />
-          <ActionCard title="アチーブメント" description="実装予定" />
         </View>
 
         <ThemedText type="defaultSemiBold" style={styles.sectionTitle}>
@@ -251,6 +269,13 @@ export default function DashboardScreen() {
           </ThemedView>
         </View>
       </Modal>
+
+      <InfoModal
+        visible={!!featureInfoModal}
+        title={featureInfoModal?.title || ""}
+        message={featureInfoModal?.message || ""}
+        onClose={() => setFeatureInfoModal(null)}
+      />
     </>
   );
 }
