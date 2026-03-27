@@ -116,6 +116,26 @@ export function SideMenus() {
     return ranking.slice(0, 5);
   }, [trends]);
 
+  const toQuotedQuery = useCallback((word: string) => {
+    const trimmed = word.trim();
+    if (!trimmed) return "";
+    const unwrapped = trimmed.replace(/^"(.*)"$/, "$1").trim();
+    if (!unwrapped) return "";
+    return `"${unwrapped}"`;
+  }, []);
+
+  const handlePressTrend = useCallback(
+    (word: string) => {
+      const query = toQuotedQuery(word);
+      if (!query) return;
+      router.push({
+        pathname: "/search",
+        params: { query },
+      });
+    },
+    [toQuotedQuery],
+  );
+
   const leftTranslateX = leftAnim.interpolate({
     inputRange: [0, 1],
     outputRange: [-drawerWidth, 0],
@@ -239,12 +259,7 @@ export function SideMenus() {
                   <MenuItem
                     key={`${t.word}:${index}`}
                     label={`${index + 1}位 ${t.word}`}
-                    onPress={() =>
-                      router.push({
-                        pathname: "/search",
-                        params: { query: t.word },
-                      })
-                    }
+                    onPress={() => handlePressTrend(t.word)}
                   />
                 ))}
 

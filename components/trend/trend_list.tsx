@@ -5,8 +5,8 @@ import { Pressable, StyleSheet, View } from "react-native";
 
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
-import { useColors } from "@/providers/UIProvider";
 import { formatRelativeTime } from "@/lib/format_time";
+import { useColors } from "@/providers/UIProvider";
 import { TrendType } from "@/types/trend";
 
 export default function TrendList(trend: TrendType) {
@@ -14,11 +14,22 @@ export default function TrendList(trend: TrendType) {
   const textColor = useColors().font_color;
   const secondaryColor = useColors().border_color;
 
-  const onPressWord = useCallback((word: string) => {
-    const q = word.trim();
-    if (!q) return;
-    router.push({ pathname: "/search", params: { query: q } });
+  const toQuotedQuery = useCallback((word: string) => {
+    const trimmed = word.trim();
+    if (!trimmed) return "";
+    const unwrapped = trimmed.replace(/^"(.*)"$/, "$1").trim();
+    if (!unwrapped) return "";
+    return `"${unwrapped}"`;
   }, []);
+
+  const onPressWord = useCallback(
+    (word: string) => {
+      const q = toQuotedQuery(word);
+      if (!q) return;
+      router.push({ pathname: "/search", params: { query: q } });
+    },
+    [toQuotedQuery],
+  );
 
   return (
     <ThemedView style={styles.card}>
