@@ -21,7 +21,11 @@ import {
 import MainHeader from "@/components/main_header/MainHeader";
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
-import { ListedPost as Post } from "@/features/post";
+import {
+  buildDisplayFeedPosts,
+  DisplayFeedPost,
+  ListedFeedPost,
+} from "@/features/feed";
 import { api } from "@/lib/axios";
 import { addHomeRefreshListener } from "@/lib/home-refresh";
 import { useCurrentAccount } from "@/providers/CurrentAccountProvider";
@@ -37,7 +41,7 @@ type FeedTab = "index" | "follow" | "current";
 
 export default function HomeScreen() {
   const colors = useColors();
-  const listRef = useRef<FlatList<PostType> | null>(null);
+  const listRef = useRef<FlatList<DisplayFeedPost> | null>(null);
   const tabBarHeight = useBottomTabBarHeight();
   useScrollToTop(listRef);
 
@@ -69,13 +73,17 @@ export default function HomeScreen() {
   const posts = useMemo<PostType[]>(() => {
     const feedObjects = getFeed(currentFeedType) ?? [];
     const cachedPosts = feedObjects
-      .map((item) =>
-        item.type === "post" ? getPost(item.post_aid) : undefined,
+      .map((post) =>
+        post.type === "post" ? getPost(post.post_aid) : undefined,
       )
       .filter((p): p is CachedPost => !!p);
 
     return cachedPosts.map(({ fetched_at: _fetchedAt, ...post }) => post);
   }, [currentFeedType, getFeed, getPost]);
+
+  const displayFeedPosts = useMemo<DisplayFeedPost[]>(() => {
+    return buildDisplayFeedPosts(posts, cachedFeed?.objects);
+  }, [cachedFeed?.objects, posts]);
 
   const fetchPost = useCallback(async () => {
     if (currentAccountStatus === "loading") return;
@@ -127,8 +135,8 @@ export default function HomeScreen() {
   ]);
 
   const loadMore = useCallback(async () => {
-    if (isLoadingMore || !hasMore || posts.length === 0) return;
-    const lastPost = posts[posts.length - 1];
+    if (isLoadingMore || !hasMore || displayFeedPosts.length === 0) return;
+    const lastPost = displayFeedPosts[displayFeedPosts.length - 1]?.post;
     if (!lastPost?.created_at) return;
 
     setIsLoadingMore(true);
@@ -174,7 +182,7 @@ export default function HomeScreen() {
     currentFeedType,
     hasMore,
     isLoadingMore,
-    posts,
+    displayFeedPosts,
   ]);
 
   useEffect(() => {
@@ -278,9 +286,13 @@ export default function HomeScreen() {
       <ThemedView style={styles.container}>
         <FlatList
           ref={listRef}
-          data={posts}
-          keyExtractor={(item) => item.aid}
-          renderItem={({ item }) => <Post {...item} />}
+          data={displayFeedPosts}
+          keyExtractor={(post, index) =>
+            `${post.post.aid}-${post.feedItem?.type ?? "post"}-${post.feedItem?.created_at ?? index}`
+          }
+          renderItem={({ item: post }) => (
+            <ListedFeedPost post={post.post} feedItem={post.feedItem} />
+          )}
           contentContainerStyle={{ paddingBottom: tabBarHeight + 12 }}
           refreshing={isRefetching}
           onRefresh={fetchPost}
@@ -318,7 +330,9 @@ export default function HomeScreen() {
             ) : null
           }
           ListFooterComponent={
-            currentFeedType !== "index" && hasMore && posts.length > 0 ? (
+            currentFeedType !== "index" &&
+            hasMore &&
+            displayFeedPosts.length > 0 ? (
               <View style={styles.footer}>
                 <Pressable
                   onPress={loadMore}
