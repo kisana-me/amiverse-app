@@ -4,7 +4,6 @@ import SkeletonTrendList from "@/components/trend/skeleton_trend";
 import TrendList from "@/components/trend/trend_list";
 import { useTrends } from "@/providers/TrendsProvider";
 import { useColors } from "@/providers/UIProvider";
-import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 import { useScrollToTop } from "@react-navigation/native";
 import { router } from "expo-router";
 import React, { useCallback, useRef, useState } from "react";
@@ -21,7 +20,6 @@ export default function DiscoveryScreen() {
   const [searchInput, setSearchInput] = useState("");
   const scrollRef = useRef<ScrollView | null>(null);
   useScrollToTop(scrollRef);
-  const tabBarHeight = useBottomTabBarHeight();
 
   const borderColor = useColors().border_color;
   const textColor = useColors().font_color;
@@ -63,7 +61,7 @@ export default function DiscoveryScreen() {
       <ScrollView
         ref={scrollRef}
         style={styles.body}
-        contentContainerStyle={[styles.bodyContent, { paddingBottom: 36 }]}
+        contentContainerStyle={styles.bodyContent}
         keyboardShouldPersistTaps="handled"
       >
         {trendsLoading ? (

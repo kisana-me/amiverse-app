@@ -23,12 +23,10 @@ export default function TabLayout() {
           paddingVertical: 2,
         },
         tabBarStyle: {
-          position: "absolute",
           backgroundColor: tabBackgroundColor,
           borderTopWidth: 0,
           elevation: 0,
           paddingTop: 3,
-          overflow: "hidden",
         },
         tabBarBackground: () => (
           <View

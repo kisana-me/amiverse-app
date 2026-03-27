@@ -257,7 +257,7 @@ export default function DashboardScreen() {
 
 const styles = StyleSheet.create({
   scroll: { flex: 1 },
-  scrollContent: { padding: 16, paddingBottom: 36 + 16 },
+  scrollContent: { padding: 16 },
   profileCard: {
     borderWidth: StyleSheet.hairlineWidth,
     borderRadius: 18,

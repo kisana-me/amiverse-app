@@ -1,4 +1,3 @@
-import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 import { useScrollToTop } from "@react-navigation/native";
 import * as Linking from "expo-linking";
 import { router } from "expo-router";
@@ -54,7 +53,6 @@ export default function HomeScreen() {
     current: 0,
   });
   const pendingRestoreTabRef = useRef<FeedTab | null>(null);
-  const tabBarHeight = useBottomTabBarHeight();
   useScrollToTop(listRef);
 
   const { addToast } = useToast();
@@ -339,7 +337,6 @@ export default function HomeScreen() {
           renderItem={({ item: post }) => (
             <ListedFeedPost post={post.post} feedItem={post.feedItem} />
           )}
-          contentContainerStyle={{ paddingBottom: tabBarHeight + 12 }}
           onScroll={handleListScroll}
           scrollEventThrottle={16}
           refreshing={isRefetching}
@@ -403,7 +400,7 @@ export default function HomeScreen() {
           style={[
             styles.fab,
             {
-              bottom: tabBarHeight + 20,
+              bottom: 20,
               backgroundColor: tabBackgroundColor,
               borderColor,
             },

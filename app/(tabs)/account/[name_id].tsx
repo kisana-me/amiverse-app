@@ -481,7 +481,7 @@ export default function AccountDetailScreen() {
   ]);
 
   return (
-    <View style={{ flex: 1, paddingBottom: 50 }}>
+    <View style={{ flex: 1 }}>
       <MainHeader>
         <ThemedText type="defaultSemiBold" numberOfLines={1}>
           {headerTitle}

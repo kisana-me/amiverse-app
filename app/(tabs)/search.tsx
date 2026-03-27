@@ -8,7 +8,6 @@ import { useColors } from "@/providers/UIProvider";
 import { AccountType } from "@/types/account";
 import { FeedItemType } from "@/types/feed";
 import { PostType } from "@/types/post";
-import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 import { router, useLocalSearchParams } from "expo-router";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import {
@@ -72,7 +71,6 @@ function normalizeSearchAccounts(data: unknown): AccountType[] {
 
 export default function SearchScreen() {
   const params = useLocalSearchParams<{ query?: string; tab?: SearchTab }>();
-  const tabBarHeight = useBottomTabBarHeight();
   const borderColor = useColors().border_color;
   const textColor = useColors().font_color;
   const tintColor = useColors().link_color;
@@ -269,7 +267,6 @@ export default function SearchScreen() {
           data={posts}
           keyExtractor={(item) => item.aid}
           renderItem={({ item }) => <ListedPost {...item} />}
-          contentContainerStyle={{ paddingBottom: tabBarHeight + 12 }}
           ListEmptyComponent={
             isLoading ? (
               <View style={styles.centerPad}>
@@ -307,7 +304,6 @@ export default function SearchScreen() {
           data={accounts}
           keyExtractor={(item) => item.aid}
           renderItem={({ item }) => <AccountOneLine account={item} />}
-          contentContainerStyle={{ paddingBottom: tabBarHeight + 12 }}
           ListEmptyComponent={
             isLoading ? (
               <View style={styles.centerPad}>
