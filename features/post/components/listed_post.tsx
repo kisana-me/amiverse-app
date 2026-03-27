@@ -1,4 +1,3 @@
-import { Image } from "expo-image";
 import { LinearGradient } from "expo-linear-gradient";
 import { router } from "expo-router";
 import React, { useEffect, useMemo, useState } from "react";
@@ -15,6 +14,7 @@ import { PostType } from "@/types/post";
 import PostAccount from "./account";
 import PostConsole from "./console";
 import PostContent from "./content";
+import PostMediaGrid from "./media_grid";
 import PostQuote from "./quote";
 import PostReactions from "./reactions";
 
@@ -161,28 +161,13 @@ export default function Post({
           <PostContent content={post.content} />
 
           {post.media && post.media.length > 0 && (
-            <View style={styles.mediaContainer}>
-              {post.media.map((media) => (
-                <Pressable
-                  key={media.aid}
-                  style={styles.mediaPressable}
-                  onPress={(event) => {
-                    event.stopPropagation();
-                    const index = mediaViewerItems.findIndex(
-                      (item) => item.id === `media-${media.aid}`,
-                    );
-                    if (index < 0) return;
-                    openViewer(index);
-                  }}
-                >
-                  <Image
-                    source={{ uri: media.url }}
-                    style={styles.mediaImage}
-                    contentFit="cover"
-                  />
-                </Pressable>
-              ))}
-            </View>
+            <PostMediaGrid
+              media={post.media}
+              stopPropagation
+              onPressMedia={(index) => {
+                openViewer(index);
+              }}
+            />
           )}
 
           {post.drawings && post.drawings.length > 0 && (
@@ -275,22 +260,6 @@ const styles = StyleSheet.create({
     opacity: 0.5,
   },
   content: {},
-  mediaContainer: {
-    marginTop: 8,
-    flexDirection: "row",
-    flexWrap: "wrap",
-    width: "100%",
-    gap: 8,
-  },
-  mediaPressable: {
-    width: "100%",
-  },
-  mediaImage: {
-    width: "100%",
-    height: 200,
-    borderRadius: 12,
-    backgroundColor: "#f0f0f0",
-  },
   drawingsContainer: {
     marginTop: 8,
     width: "100%",
