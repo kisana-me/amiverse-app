@@ -13,6 +13,8 @@ import React, {
 import {
   ActivityIndicator,
   FlatList,
+  NativeScrollEvent,
+  NativeSyntheticEvent,
   Pressable,
   StyleSheet,
   View,
@@ -39,9 +41,19 @@ import { PostType } from "@/types/post";
 
 type FeedTab = "index" | "follow" | "current";
 
+const MAIN_HEADER_HEIGHT = 50;
+const FEED_META_ROW_HEIGHT = 40;
+const REFRESH_INDICATOR_OFFSET = MAIN_HEADER_HEIGHT + FEED_META_ROW_HEIGHT;
+
 export default function HomeScreen() {
   const colors = useColors();
   const listRef = useRef<FlatList<DisplayFeedPost> | null>(null);
+  const scrollOffsetsRef = useRef<Record<FeedTab, number>>({
+    index: 0,
+    follow: 0,
+    current: 0,
+  });
+  const pendingRestoreTabRef = useRef<FeedTab | null>(null);
   const tabBarHeight = useBottomTabBarHeight();
   useScrollToTop(listRef);
 
@@ -199,6 +211,7 @@ export default function HomeScreen() {
   useEffect(() => {
     const sub = addHomeRefreshListener((payload) => {
       if (payload.scrollToTop) {
+        scrollOffsetsRef.current[currentFeedType] = 0;
         listRef.current?.scrollToOffset({ offset: 0, animated: true });
       }
       if (payload.reload) {
@@ -206,7 +219,29 @@ export default function HomeScreen() {
       }
     });
     return () => sub.remove();
-  }, [fetchPost]);
+  }, [currentFeedType, fetchPost]);
+
+  useEffect(() => {
+    if (pendingRestoreTabRef.current !== currentFeedType) return;
+
+    const offset = scrollOffsetsRef.current[currentFeedType] ?? 0;
+    if (displayFeedPosts.length === 0 && offset > 0) return;
+
+    const frame = requestAnimationFrame(() => {
+      listRef.current?.scrollToOffset({ offset, animated: false });
+      pendingRestoreTabRef.current = null;
+    });
+
+    return () => cancelAnimationFrame(frame);
+  }, [currentFeedType, displayFeedPosts.length]);
+
+  const handleListScroll = useCallback(
+    (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+      scrollOffsetsRef.current[currentFeedType] =
+        event.nativeEvent.contentOffset.y;
+    },
+    [currentFeedType],
+  );
 
   const openSignin = useCallback(async () => {
     const authUrl = process.env.EXPO_PUBLIC_AUTH_URL;
@@ -224,6 +259,8 @@ export default function HomeScreen() {
 
   const handleTabChange = useCallback(
     (type: FeedTab) => {
+      if (type === currentFeedType) return;
+
       if (type === "follow" && currentAccountStatus !== "signed_in") {
         openSignInModal({
           title: "サインインが必要です",
@@ -234,9 +271,17 @@ export default function HomeScreen() {
         });
         return;
       }
+
+      pendingRestoreTabRef.current = type;
       setCurrentFeedType(type);
     },
-    [currentAccountStatus, openSignInModal, openSignin, setCurrentFeedType],
+    [
+      currentAccountStatus,
+      currentFeedType,
+      openSignInModal,
+      openSignin,
+      setCurrentFeedType,
+    ],
   );
 
   const handleCreatePress = useCallback(() => {
@@ -287,6 +332,7 @@ export default function HomeScreen() {
         <FlatList
           ref={listRef}
           data={displayFeedPosts}
+          progressViewOffset={REFRESH_INDICATOR_OFFSET}
           keyExtractor={(post, index) =>
             `${post.post.aid}-${post.feedItem?.type ?? "post"}-${post.feedItem?.created_at ?? index}`
           }
@@ -294,6 +340,8 @@ export default function HomeScreen() {
             <ListedFeedPost post={post.post} feedItem={post.feedItem} />
           )}
           contentContainerStyle={{ paddingBottom: tabBarHeight + 12 }}
+          onScroll={handleListScroll}
+          scrollEventThrottle={16}
           refreshing={isRefetching}
           onRefresh={fetchPost}
           ListHeaderComponent={
