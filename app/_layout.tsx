@@ -6,11 +6,12 @@ import {
 import { router, Stack, usePathname } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { useEffect, useRef } from "react";
-import { BackHandler, Platform, StyleSheet } from "react-native";
+import { BackHandler, Platform, StyleSheet, View } from "react-native";
 import "react-native-reanimated";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 import { InitOverlay } from "@/components/init-overlay";
+import { MainNav } from "@/components/main_nav";
 import { SideMenus } from "@/components/side-menus";
 import { emitHomeRefresh } from "@/lib/home-refresh";
 import { AccountsProvider } from "@/providers/AccountsProvider";
@@ -23,10 +24,6 @@ import { PostsProvider } from "@/providers/PostsProvider";
 import { ToastProvider, ToastViewport } from "@/providers/ToastProvider";
 import { TrendsProvider } from "@/providers/TrendsProvider";
 import { UIProvider, useColors, useUI } from "@/providers/UIProvider";
-
-export const unstable_settings = {
-  anchor: "(tabs)",
-};
 
 export default function RootLayout() {
   return (
@@ -87,12 +84,10 @@ function RootLayoutContent() {
                           style={[styles.safe, { backgroundColor }]}
                           edges={["top", "left", "right", "bottom"]}
                         >
-                          <Stack>
-                            <Stack.Screen
-                              name="(tabs)"
-                              options={{ headerShown: false }}
-                            />
-                          </Stack>
+                          <View style={styles.contentWrap}>
+                            <Stack screenOptions={{ headerShown: false }} />
+                          </View>
+                          <MainNav />
                           <SideMenus />
                           <InitOverlay />
                           <ModalViewport />
@@ -118,6 +113,9 @@ function RootLayoutContent() {
 
 const styles = StyleSheet.create({
   safe: {
+    flex: 1,
+  },
+  contentWrap: {
     flex: 1,
   },
 });

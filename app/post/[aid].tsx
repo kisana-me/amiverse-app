@@ -1,4 +1,4 @@
-import { router, useLocalSearchParams, useNavigation } from "expo-router";
+import { useLocalSearchParams } from "expo-router";
 import React, {
   useCallback,
   useEffect,
@@ -69,10 +69,8 @@ function collectRelatedPosts(root: PostType): PostType[] {
 }
 
 export default function PostDetailScreen() {
-  const params = useLocalSearchParams<{ aid?: string; from?: string }>();
-  const navigation = useNavigation();
+  const params = useLocalSearchParams<{ aid?: string }>();
   const aid = (params.aid ?? "").toString();
-  const source = params.from === "thread" ? "thread" : "timeline";
   const { height: windowHeight } = useWindowDimensions();
   const { getPost, addPosts } = usePosts();
   const { addToast } = useToast();
@@ -82,7 +80,6 @@ export default function PostDetailScreen() {
   const [parentHeaderHeight, setParentHeaderHeight] = useState(0);
 
   const listRef = useRef<FlatList<PostType>>(null);
-  const skipNextBeforeRemoveRef = useRef(false);
   const currentOffsetRef = useRef(0);
   const appliedParentHeightRef = useRef(0);
 
@@ -123,32 +120,6 @@ export default function PostDetailScreen() {
       setLoading(false);
     }
   }, [aid, addPosts, addToast]);
-
-  useEffect(() => {
-    if (!aid) return;
-
-    const unsub = navigation.addListener("beforeRemove", (event) => {
-      if (skipNextBeforeRemoveRef.current) return;
-      if (source !== "timeline") return;
-
-      const actionType = event.data.action.type;
-      const isBackAction =
-        actionType === "GO_BACK" ||
-        actionType === "POP" ||
-        actionType === "POP_TO_TOP";
-
-      if (!isBackAction) return;
-
-      event.preventDefault();
-      skipNextBeforeRemoveRef.current = true;
-      router.replace("/");
-      requestAnimationFrame(() => {
-        skipNextBeforeRemoveRef.current = false;
-      });
-    });
-
-    return unsub;
-  }, [aid, navigation, source]);
 
   useEffect(() => {
     if (!aid) return;
@@ -213,9 +184,7 @@ export default function PostDetailScreen() {
             ref={listRef}
             data={replies}
             keyExtractor={(item) => item.aid}
-            renderItem={({ item }) => (
-              <ListedPost {...item} navigationMode="push" />
-            )}
+            renderItem={({ item }) => <ListedPost {...item} />}
             onScroll={(event) => {
               currentOffsetRef.current = event.nativeEvent.contentOffset.y;
             }}
@@ -233,7 +202,7 @@ export default function PostDetailScreen() {
                       );
                     }}
                   >
-                    <ListedPost {...parentReplyForView} navigationMode="push" />
+                    <ListedPost {...parentReplyForView} />
                   </View>
                 ) : null}
                 <FeaturedPost {...post} />

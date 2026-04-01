@@ -18,14 +18,7 @@ import PostMediaGrid from "./media_grid";
 import PostQuote from "./quote";
 import PostReactions from "./reactions";
 
-type ListedPostProps = PostType & {
-  navigationMode?: "replace" | "push";
-};
-
-export default function Post({
-  navigationMode = "replace",
-  ...post
-}: ListedPostProps) {
+export default function Post(post: PostType) {
   const tint = useColors().link_color;
   const backgroundColor = useColors().background_color;
   const drawingBorderColor = tint;
@@ -127,15 +120,9 @@ export default function Post({
       pathname: "/post/[aid]" as const,
       params: {
         aid: post.aid,
-        from: navigationMode === "push" ? "thread" : "timeline",
       },
     };
-
-    if (navigationMode === "push") {
-      router.push(href as any);
-      return;
-    }
-    router.replace(href as any);
+    router.push(href as any);
   };
 
   return (
