@@ -12,7 +12,11 @@ import {
 import MainHeader from "@/components/main_header/MainHeader";
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
-import { ListedPost as Post } from "@/features/post";
+import {
+  buildDisplayFeedPosts,
+  DisplayFeedPost,
+  ListedFeedPost,
+} from "@/features/feed";
 import ItemContent from "@/features/post/components/content";
 import { api } from "@/lib/axios";
 import { formatFullDate } from "@/lib/format_time";
@@ -77,6 +81,11 @@ export default function AccountDetailScreen() {
       .filter((p): p is CachedPost => !!p);
     return cachedPosts.map(({ fetched_at: _fetchedAt, ...post }) => post);
   }, [feedKey, getFeed, getPost]);
+
+  const displayFeedPosts = useMemo<DisplayFeedPost[]>(() => {
+    if (!feedKey) return [];
+    return buildDisplayFeedPosts(posts, feeds[feedKey]?.objects);
+  }, [feedKey, feeds, posts]);
 
   const [isFeedLoading, setIsFeedLoading] = useState<boolean>(
     !!account && !!feedKey && !feeds[feedKey],
@@ -169,9 +178,9 @@ export default function AccountDetailScreen() {
 
   const loadMore = useCallback(async () => {
     if (!account?.aid) return;
-    if (isLoadingMore || !hasMore || posts.length === 0) return;
+    if (isLoadingMore || !hasMore || displayFeedPosts.length === 0) return;
 
-    const lastPost = posts[posts.length - 1];
+    const lastPost = displayFeedPosts[displayFeedPosts.length - 1]?.post;
     if (!lastPost?.created_at) return;
 
     setIsLoadingMore(true);
@@ -217,7 +226,7 @@ export default function AccountDetailScreen() {
     appendFeed,
     hasMore,
     isLoadingMore,
-    posts,
+    displayFeedPosts,
   ]);
 
   const handleFollow = useCallback(async () => {
@@ -511,9 +520,13 @@ export default function AccountDetailScreen() {
       </MainHeader>
 
       <FlatList
-        data={posts}
-        keyExtractor={(item) => item.aid}
-        renderItem={({ item }) => <Post {...item} />}
+        data={displayFeedPosts}
+        keyExtractor={(item, index) =>
+          `${item.post.aid}-${item.feedItem?.type ?? "post"}-${item.feedItem?.created_at ?? index}`
+        }
+        renderItem={({ item }) => (
+          <ListedFeedPost post={item.post} feedItem={item.feedItem} />
+        )}
         ListHeaderComponent={headerElement}
         onRefresh={refreshAccountAndFeed}
         refreshing={isFeedLoading || isAccountLoading}
@@ -533,7 +546,7 @@ export default function AccountDetailScreen() {
             <View style={styles.centerPad}>
               <ActivityIndicator />
             </View>
-          ) : hasMore && posts.length > 0 ? (
+          ) : hasMore && displayFeedPosts.length > 0 ? (
             <View style={styles.footer}>
               <Pressable
                 onPress={loadMore}
