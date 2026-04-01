@@ -49,6 +49,7 @@ export default function Post(post: PostType) {
       uri: media.url,
       name: media.name,
       description: media.description,
+      mediaType: media.type,
     }));
   }, [post.media]);
 
@@ -59,6 +60,7 @@ export default function Post(post: PostType) {
       name: drawing.name,
       description: drawing.description,
       pixelPerfect: true,
+      mediaType: "image",
     }));
   }, [post.drawings]);
 

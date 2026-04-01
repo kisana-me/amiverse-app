@@ -1,3 +1,5 @@
+import { Ionicons } from "@expo/vector-icons";
+import Slider from "@react-native-community/slider";
 import {
   Canvas,
   FilterMode,
@@ -6,6 +8,7 @@ import {
   useImage,
 } from "@shopify/react-native-skia";
 import { Image as ExpoImage } from "expo-image";
+import { useVideoPlayer, VideoView } from "expo-video";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import {
   FlatList,
@@ -31,6 +34,7 @@ import Animated, {
 export type MediaViewerItem = {
   id: string;
   uri: string;
+  mediaType?: "image" | "video";
   name?: string;
   description?: string;
   pixelPerfect?: boolean;
@@ -56,10 +60,23 @@ const maxOffsetForScale = (scaleValue: number, size: number) => {
   return ((scaleValue - 1) * size) / 2 + PAN_EXTRA_MARGIN;
 };
 
+const clampValue = (value: number, min: number, max: number) => {
+  return Math.min(max, Math.max(min, value));
+};
+
+const formatDuration = (seconds: number) => {
+  const safe = Number.isFinite(seconds) ? Math.max(0, Math.floor(seconds)) : 0;
+  const minutes = Math.floor(safe / 60);
+  const rest = safe % 60;
+  return `${minutes}:${String(rest).padStart(2, "0")}`;
+};
+
 type ZoomableSlideProps = {
   item: MediaViewerItem;
   width: number;
   height: number;
+  uiVisible: boolean;
+  onToggleUi: () => void;
   onZoomStateChange: (itemId: string, zoomed: boolean) => void;
 };
 
@@ -67,6 +84,8 @@ function ZoomableSlide({
   item,
   width,
   height,
+  uiVisible,
+  onToggleUi,
   onZoomStateChange,
 }: ZoomableSlideProps) {
   const skImage = useImage(item.pixelPerfect ? item.uri : null);
@@ -268,9 +287,24 @@ function ZoomableSlide({
     ],
   );
 
+  const singleTap = useMemo(
+    () =>
+      Gesture.Tap()
+        .numberOfTaps(1)
+        .onEnd(() => {
+          runOnJS(onToggleUi)();
+        }),
+    [onToggleUi],
+  );
+
   const composedGesture = useMemo(
-    () => Gesture.Simultaneous(pinch, zoomPan, doubleTap),
-    [doubleTap, pinch, zoomPan],
+    () =>
+      Gesture.Simultaneous(
+        pinch,
+        zoomPan,
+        Gesture.Exclusive(doubleTap, singleTap),
+      ),
+    [doubleTap, pinch, singleTap, zoomPan],
   );
 
   const animatedStyle = useAnimatedStyle(() => {
@@ -321,6 +355,227 @@ function ZoomableSlide({
   );
 }
 
+type ActiveVideoUiState = {
+  currentTime: number;
+  duration: number;
+  isPlaying: boolean;
+};
+
+type ActiveVideoActions = {
+  seekBy: (seconds: number) => void;
+  togglePlayback: () => void;
+  seekTo: (seconds: number) => void;
+  setScrubbing: (scrubbing: boolean) => void;
+};
+
+type VideoSlideProps = {
+  item: MediaViewerItem;
+  width: number;
+  height: number;
+  active: boolean;
+  visible: boolean;
+  canAutoPlay: boolean;
+  uiVisible: boolean;
+  onToggleUi: () => void;
+  onZoomStateChange: (itemId: string, zoomed: boolean) => void;
+  onScrubbingChange: (scrubbing: boolean) => void;
+  onVideoUiStateChange: (state: ActiveVideoUiState | null) => void;
+  onVideoActionsChange: (actions: ActiveVideoActions | null) => void;
+};
+
+function VideoSlide({
+  item,
+  width,
+  height,
+  active,
+  visible,
+  canAutoPlay,
+  uiVisible,
+  onToggleUi,
+  onZoomStateChange,
+  onScrubbingChange,
+  onVideoUiStateChange,
+  onVideoActionsChange,
+}: VideoSlideProps) {
+  const player = useVideoPlayer(item.uri, (videoPlayer) => {
+    videoPlayer.loop = false;
+    videoPlayer.timeUpdateEventInterval = 0.25;
+  });
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isScrubbing, setIsScrubbing] = useState(false);
+  const [hasEnded, setHasEnded] = useState(false);
+  const reportedRef = useRef(false);
+
+  const safePause = () => {
+    try {
+      player.pause();
+    } catch {
+      // Ignore race conditions where native player was already released.
+    }
+  };
+
+  useEffect(() => {
+    onZoomStateChange(item.id, false);
+    return () => {
+      onScrubbingChange(false);
+      onZoomStateChange(item.id, false);
+    };
+  }, [item.id, onScrubbingChange, onZoomStateChange]);
+
+  useEffect(() => {
+    if (!visible || !active) {
+      setIsScrubbing(false);
+      onScrubbingChange(false);
+    }
+  }, [active, onScrubbingChange, visible]);
+
+  useEffect(() => {
+    setCurrentTime(player.currentTime ?? 0);
+    setDuration(player.duration ?? 0);
+    setIsPlaying(player.playing);
+
+    const timeSubscription = player.addListener("timeUpdate", (payload) => {
+      if (!isScrubbing) {
+        setCurrentTime(payload.currentTime);
+      }
+      if (Number.isFinite(player.duration) && player.duration > 0) {
+        setDuration(player.duration);
+      }
+    });
+
+    const playingSubscription = player.addListener(
+      "playingChange",
+      (payload) => {
+        setIsPlaying(payload.isPlaying);
+      },
+    );
+
+    const sourceSubscription = player.addListener("sourceLoad", (payload) => {
+      setDuration(payload.duration);
+    });
+
+    const playToEndSubscription = player.addListener("playToEnd", () => {
+      setHasEnded(true);
+      setIsPlaying(false);
+    });
+
+    return () => {
+      timeSubscription.remove();
+      playingSubscription.remove();
+      sourceSubscription.remove();
+      playToEndSubscription.remove();
+    };
+  }, [isScrubbing, player]);
+
+  useEffect(() => {
+    if (!visible || !active) {
+      safePause();
+      return;
+    }
+
+    if (!canAutoPlay) return;
+
+    setHasEnded(false);
+    player.play();
+  }, [active, canAutoPlay, player, visible]);
+
+  useEffect(() => {
+    if (!active || !visible) {
+      if (reportedRef.current) {
+        onVideoUiStateChange(null);
+        reportedRef.current = false;
+      }
+      return;
+    }
+
+    reportedRef.current = true;
+    onVideoUiStateChange({
+      currentTime,
+      duration,
+      isPlaying,
+    });
+  }, [active, currentTime, duration, isPlaying, onVideoUiStateChange, visible]);
+
+  const seekBy = (seconds: number) => {
+    const safeDuration =
+      Number.isFinite(duration) && duration > 0 ? duration : 0;
+    const next = clampValue(player.currentTime + seconds, 0, safeDuration || 0);
+    player.currentTime = next;
+    setCurrentTime(next);
+    setHasEnded(false);
+  };
+
+  const togglePlayback = () => {
+    if (isPlaying) {
+      player.pause();
+      return;
+    }
+
+    if (hasEnded) {
+      player.replay();
+      setCurrentTime(0);
+      setHasEnded(false);
+      return;
+    }
+
+    player.play();
+  };
+
+  const seekTo = (seconds: number) => {
+    const safeDuration =
+      Number.isFinite(duration) && duration > 0 ? duration : 0;
+    const next = clampValue(seconds, 0, safeDuration || 0);
+    player.currentTime = next;
+    setCurrentTime(next);
+    setHasEnded(false);
+  };
+
+  useEffect(() => {
+    if (!active || !visible) {
+      if (reportedRef.current) {
+        onVideoActionsChange(null);
+      }
+      return;
+    }
+
+    reportedRef.current = true;
+    onVideoActionsChange({
+      seekBy,
+      togglePlayback,
+      seekTo,
+      setScrubbing: (scrubbing: boolean) => {
+        setIsScrubbing(scrubbing);
+        onScrubbingChange(scrubbing);
+      },
+    });
+
+    return undefined;
+  }, [
+    active,
+    onScrubbingChange,
+    onVideoActionsChange,
+    seekBy,
+    togglePlayback,
+    visible,
+  ]);
+
+  return (
+    <View style={[styles.slide, { width, height }]}>
+      <VideoView
+        player={player}
+        style={styles.video}
+        contentFit="contain"
+        nativeControls={false}
+        allowsFullscreen
+      />
+
+      <Pressable style={styles.videoTapToShow} onPress={onToggleUi} />
+    </View>
+  );
+}
+
 export default function MediaViewer({
   visible,
   items,
@@ -331,6 +586,12 @@ export default function MediaViewer({
   const flatListRef = useRef<FlatList<MediaViewerItem> | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [zoomedById, setZoomedById] = useState<Record<string, boolean>>({});
+  const [videoScrubbing, setVideoScrubbing] = useState(false);
+  const [currentIndexReady, setCurrentIndexReady] = useState(false);
+  const [uiVisible, setUiVisible] = useState(true);
+  const [activeVideoUiState, setActiveVideoUiState] =
+    useState<ActiveVideoUiState | null>(null);
+  const videoActionsRef = useRef<ActiveVideoActions | null>(null);
 
   const dismissTranslateY = useSharedValue(0);
   const backdropOpacity = useSharedValue(1);
@@ -350,6 +611,11 @@ export default function MediaViewer({
     if (!visible) return;
 
     setZoomedById({});
+    setVideoScrubbing(false);
+    setUiVisible(true);
+    setActiveVideoUiState(null);
+    videoActionsRef.current = null;
+    setCurrentIndexReady(false);
     setCurrentIndex(safeInitialIndex);
     dismissTranslateY.value = 0;
     backdropOpacity.value = 1;
@@ -359,8 +625,22 @@ export default function MediaViewer({
         index: safeInitialIndex,
         animated: false,
       });
+      setCurrentIndexReady(true);
     });
   }, [backdropOpacity, dismissTranslateY, safeInitialIndex, visible]);
+
+  useEffect(() => {
+    if (visible) return;
+    setCurrentIndexReady(false);
+    setUiVisible(true);
+    setActiveVideoUiState(null);
+    videoActionsRef.current = null;
+    setVideoScrubbing(false);
+  }, [visible]);
+
+  const toggleUiVisibility = () => {
+    setUiVisible((prev) => !prev);
+  };
 
   const updateZoomState = (itemId: string, zoomed: boolean) => {
     setZoomedById((prev) => {
@@ -372,7 +652,7 @@ export default function MediaViewer({
   const dismissGesture = useMemo(
     () =>
       Gesture.Pan()
-        .enabled(visible && !isAnyZoomed)
+        .enabled(visible && !isAnyZoomed && !videoScrubbing)
         .activeOffsetY([-16, 16])
         .failOffsetX([-16, 16])
         .onUpdate((event) => {
@@ -401,7 +681,14 @@ export default function MediaViewer({
           dismissTranslateY.value = withTiming(0);
           backdropOpacity.value = withTiming(1);
         }),
-    [backdropOpacity, dismissTranslateY, isAnyZoomed, onClose, visible],
+    [
+      backdropOpacity,
+      dismissTranslateY,
+      isAnyZoomed,
+      onClose,
+      videoScrubbing,
+      visible,
+    ],
   );
 
   const backdropStyle = useAnimatedStyle(() => {
@@ -438,7 +725,7 @@ export default function MediaViewer({
               horizontal
               pagingEnabled
               showsHorizontalScrollIndicator={false}
-              scrollEnabled={!isAnyZoomed}
+              scrollEnabled={!isAnyZoomed && !videoScrubbing}
               initialScrollIndex={safeInitialIndex}
               getItemLayout={(_data, index) => ({
                 length: width,
@@ -454,35 +741,126 @@ export default function MediaViewer({
                   Math.max(0, Math.min(nextIndex, items.length - 1)),
                 );
               }}
-              renderItem={({ item }) => (
-                <ZoomableSlide
-                  item={item}
-                  width={width}
-                  height={height}
-                  onZoomStateChange={updateZoomState}
-                />
-              )}
+              renderItem={({ item, index }) =>
+                item.mediaType === "video" ? (
+                  <VideoSlide
+                    item={item}
+                    width={width}
+                    height={height}
+                    active={index === currentIndex}
+                    visible={visible}
+                    canAutoPlay={currentIndexReady}
+                    uiVisible={uiVisible}
+                    onToggleUi={toggleUiVisibility}
+                    onZoomStateChange={updateZoomState}
+                    onScrubbingChange={setVideoScrubbing}
+                    onVideoUiStateChange={setActiveVideoUiState}
+                    onVideoActionsChange={(actions) => {
+                      videoActionsRef.current = actions;
+                    }}
+                  />
+                ) : (
+                  <ZoomableSlide
+                    item={item}
+                    width={width}
+                    height={height}
+                    uiVisible={uiVisible}
+                    onToggleUi={toggleUiVisibility}
+                    onZoomStateChange={updateZoomState}
+                  />
+                )
+              }
             />
 
-            <Pressable style={styles.closeArea} onPress={onClose}>
-              <Text style={styles.closeText}>閉じる</Text>
-            </Pressable>
+            {uiVisible && (
+              <Pressable style={styles.closeArea} onPress={onClose}>
+                <Text style={styles.closeText}>閉じる</Text>
+              </Pressable>
+            )}
 
-            <View style={styles.footer} pointerEvents="none">
-              <Text style={styles.counterText}>
-                {currentIndex + 1} / {items.length}
-              </Text>
-              {currentItem?.name ? (
-                <Text numberOfLines={1} style={styles.nameText}>
-                  {currentItem.name}
+            {uiVisible ? (
+              <View style={styles.footer}>
+                <Text style={styles.counterText}>
+                  {currentIndex + 1} / {items.length}
                 </Text>
-              ) : null}
-              {currentItem?.description ? (
-                <Text numberOfLines={3} style={styles.descriptionText}>
-                  {currentItem.description}
-                </Text>
-              ) : null}
-            </View>
+                {currentItem?.mediaType === "video" ? (
+                  <Text style={styles.mediaTypeText}>動画</Text>
+                ) : null}
+                {currentItem?.name ? (
+                  <Text numberOfLines={1} style={styles.nameText}>
+                    {currentItem.name}
+                  </Text>
+                ) : null}
+                {currentItem?.description ? (
+                  <Text numberOfLines={3} style={styles.descriptionText}>
+                    {currentItem.description}
+                  </Text>
+                ) : null}
+
+                {currentItem?.mediaType === "video" && activeVideoUiState ? (
+                  <View style={styles.videoControlsInFooter}>
+                    <Slider
+                      style={styles.videoSeekBar}
+                      minimumValue={0}
+                      maximumValue={
+                        activeVideoUiState.duration > 0
+                          ? activeVideoUiState.duration
+                          : 1
+                      }
+                      value={activeVideoUiState.currentTime}
+                      minimumTrackTintColor="#f2f2f2"
+                      maximumTrackTintColor="rgba(255,255,255,0.36)"
+                      thumbTintColor="#ffffff"
+                      onSlidingStart={() => {
+                        videoActionsRef.current?.setScrubbing(true);
+                      }}
+                      onSlidingComplete={(value) => {
+                        videoActionsRef.current?.seekTo(value);
+                        videoActionsRef.current?.setScrubbing(false);
+                      }}
+                    />
+
+                    <View style={styles.videoControlRow}>
+                      <Pressable
+                        style={styles.seekButton}
+                        onPress={() => {
+                          videoActionsRef.current?.seekBy(-3);
+                        }}
+                      >
+                        <Text style={styles.seekButtonText}>-3s</Text>
+                      </Pressable>
+
+                      <Pressable
+                        style={styles.playButton}
+                        onPress={() => {
+                          videoActionsRef.current?.togglePlayback();
+                        }}
+                      >
+                        <Ionicons
+                          name={activeVideoUiState.isPlaying ? "pause" : "play"}
+                          size={18}
+                          color="#fff"
+                        />
+                      </Pressable>
+
+                      <Pressable
+                        style={styles.seekButton}
+                        onPress={() => {
+                          videoActionsRef.current?.seekBy(3);
+                        }}
+                      >
+                        <Text style={styles.seekButtonText}>+3s</Text>
+                      </Pressable>
+                    </View>
+
+                    <Text style={styles.videoTimeText}>
+                      {formatDuration(activeVideoUiState.currentTime)} /{" "}
+                      {formatDuration(activeVideoUiState.duration)}
+                    </Text>
+                  </View>
+                ) : null}
+              </View>
+            ) : null}
           </Animated.View>
         </GestureDetector>
       </GestureHandlerRootView>
@@ -516,6 +894,54 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
   },
+  video: {
+    width: "100%",
+    height: "100%",
+  },
+  videoTapToShow: {
+    ...StyleSheet.absoluteFillObject,
+  },
+  videoControlsInFooter: {
+    marginTop: 6,
+  },
+  videoSeekBar: {
+    width: "100%",
+    height: 28,
+  },
+  videoControlRow: {
+    marginTop: 4,
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 10,
+  },
+  seekButton: {
+    minWidth: 56,
+    paddingVertical: 7,
+    paddingHorizontal: 10,
+    borderRadius: 20,
+    alignItems: "center",
+    backgroundColor: "rgba(255,255,255,0.16)",
+  },
+  seekButtonText: {
+    color: "#fff",
+    fontSize: 13,
+    fontWeight: "700",
+  },
+  playButton: {
+    width: 38,
+    height: 38,
+    borderRadius: 19,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "rgba(255,255,255,0.22)",
+  },
+  videoTimeText: {
+    marginTop: 6,
+    textAlign: "center",
+    color: "#d9d9d9",
+    fontSize: 12,
+  },
   pixelPerfectLoading: {
     width: "100%",
     height: "100%",
@@ -547,6 +973,11 @@ const styles = StyleSheet.create({
   counterText: {
     color: "#ddd",
     fontSize: 12,
+  },
+  mediaTypeText: {
+    color: "#9fd3ff",
+    fontSize: 12,
+    fontWeight: "700",
   },
   nameText: {
     color: "#fff",
