@@ -19,7 +19,7 @@ export default function PostQuote({ quote }: { quote?: PostType }) {
 
   return (
     <View style={styles.container}>
-      <Link href={`/`} asChild>
+      <Link href={`/post/${quote.aid}`} asChild>
         <TouchableOpacity style={styles.content}>
           <View style={styles.header}>
             <Image
