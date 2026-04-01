@@ -83,9 +83,7 @@ export default function HomeScreen() {
   const posts = useMemo<PostType[]>(() => {
     const feedObjects = getFeed(currentFeedType) ?? [];
     const cachedPosts = feedObjects
-      .map((post) =>
-        post.type === "post" ? getPost(post.post_aid) : undefined,
-      )
+      .map((item) => getPost(item.post_aid))
       .filter((p): p is CachedPost => !!p);
 
     return cachedPosts.map(({ fetched_at: _fetchedAt, ...post }) => post);
