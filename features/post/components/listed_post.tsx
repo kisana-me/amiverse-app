@@ -1,11 +1,15 @@
 import { LinearGradient } from "expo-linear-gradient";
 import { router } from "expo-router";
-import React, { useEffect, useMemo, useState } from "react";
-import { Pressable, Image as RNImage, StyleSheet, View } from "react-native";
+import React, { useMemo, useState } from "react";
+import { Pressable, StyleSheet, View } from "react-native";
 
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
-import { DrawingViewer } from "@/features/drawing";
+import {
+  DRAWING_HEIGHT,
+  DRAWING_WIDTH,
+  DrawingViewer,
+} from "@/features/drawing";
 import { MediaViewer, type MediaViewerItem } from "@/features/media_viewer";
 import { formatRelativeTime } from "@/lib/format_time";
 import { useColors } from "@/providers/UIProvider";
@@ -37,9 +41,7 @@ export default function Post(post: PostType) {
     [],
   );
 
-  const [drawingAspectRatios, setDrawingAspectRatios] = useState<
-    Record<string, number>
-  >({});
+  const drawingAspectRatio = DRAWING_WIDTH / DRAWING_HEIGHT;
   const [viewerVisible, setViewerVisible] = useState(false);
   const [viewerIndex, setViewerIndex] = useState(0);
 
@@ -67,41 +69,6 @@ export default function Post(post: PostType) {
   const viewerItems = useMemo<MediaViewerItem[]>(() => {
     return [...mediaViewerItems, ...drawingViewerItems];
   }, [drawingViewerItems, mediaViewerItems]);
-
-  const drawingUrls = useMemo(
-    () => post.drawings?.map((d) => ({ aid: d.aid, url: d.image_url })) ?? [],
-    [post.drawings],
-  );
-
-  useEffect(() => {
-    let cancelled = false;
-
-    for (const { aid, url } of drawingUrls) {
-      if (!url) continue;
-      if (drawingAspectRatios[aid]) continue;
-
-      RNImage.getSize(
-        url,
-        (width, height) => {
-          if (cancelled) return;
-          const ratio = height > 0 ? width / height : 1;
-          setDrawingAspectRatios((prev) =>
-            prev[aid] ? prev : { ...prev, [aid]: ratio },
-          );
-        },
-        () => {
-          if (cancelled) return;
-          setDrawingAspectRatios((prev) =>
-            prev[aid] ? prev : { ...prev, [aid]: 1 },
-          );
-        },
-      );
-    }
-
-    return () => {
-      cancelled = true;
-    };
-  }, [drawingUrls, drawingAspectRatios]);
 
   const strVisibility = (v: string) =>
     ({
@@ -190,7 +157,7 @@ export default function Post(post: PostType) {
                         style={[
                           styles.drawingImage,
                           {
-                            aspectRatio: drawingAspectRatios[drawing.aid] ?? 1,
+                            aspectRatio: drawingAspectRatio,
                           },
                         ]}
                       />
