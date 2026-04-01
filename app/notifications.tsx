@@ -74,10 +74,7 @@ function NotificationItem({
 
   const onPress = () => {
     if (notification.post?.aid) {
-      router.replace({
-        pathname: "/post/[aid]",
-        params: { aid: notification.post.aid, from: "timeline" },
-      } as any);
+      router.push(`/post/${notification.post.aid}`);
       return;
     }
     if (notification.actor?.name_id) {
