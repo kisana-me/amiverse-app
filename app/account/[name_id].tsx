@@ -75,9 +75,7 @@ export default function AccountDetailScreen() {
     if (!feedKey) return [];
     const feedObjects = getFeed(feedKey) ?? [];
     const cachedPosts = feedObjects
-      .map((item) =>
-        item.type === "post" ? getPost(item.post_aid) : undefined,
-      )
+      .map((item) => getPost(item.post_aid))
       .filter((p): p is CachedPost => !!p);
     return cachedPosts.map(({ fetched_at: _fetchedAt, ...post }) => post);
   }, [feedKey, getFeed, getPost]);
@@ -165,7 +163,7 @@ export default function AccountDetailScreen() {
   );
 
   const refreshAccountAndFeed = useCallback(async () => {
-    await Promise.all([fetchAccountWithCacheControl(), fetchFeed()]);
+    await Promise.all([fetchAccountWithCacheControl(), fetchFeed(true)]);
   }, [fetchAccountWithCacheControl, fetchFeed]);
 
   useEffect(() => {
