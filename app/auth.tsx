@@ -10,65 +10,123 @@ import { api } from "@/lib/axios";
 import { useCurrentAccount } from "@/providers/CurrentAccountProvider";
 import { useToast } from "@/providers/ToastProvider";
 
-function extractTokenFromUrl(url: string): string {
-  // Supports both query (`?access_token=...`) and fragment (`#access_token=...`).
-  const parts = url.split("#");
-  const queryPart = parts[0] ?? "";
-  const fragmentPart = parts[1] ?? "";
+const SESSION_CREATE_ENDPOINT = "sessions/create";
+const MISSING_INPUT_GRACE_MS = 1200;
 
-  const queryToken = (() => {
-    try {
-      const parsed = new URL(queryPart);
-      return (
-        parsed.searchParams.get("access_token") ||
-        parsed.searchParams.get("token") ||
-        ""
-      );
-    } catch {
-      return "";
-    }
-  })();
-
-  if (queryToken) return queryToken;
-
-  const fragmentParams = new URLSearchParams(fragmentPart);
-  return (
-    fragmentParams.get("access_token") || fragmentParams.get("token") || ""
-  );
+function extractCodeAndStateFromUrl(url: string): {
+  code: string;
+  state: string;
+} {
+  try {
+    const parsed = new URL(url);
+    return {
+      code: parsed.searchParams.get("code") || "",
+      state: parsed.searchParams.get("state") || "",
+    };
+  } catch {
+    const query = url.split("?")[1]?.split("#")[0] ?? "";
+    const params = new URLSearchParams(query);
+    return {
+      code: params.get("code") || "",
+      state: params.get("state") || "",
+    };
+  }
 }
 
 export default function AuthCallbackScreen() {
   const params = useLocalSearchParams<{
-    access_token?: string;
-    token?: string;
+    code?: string;
+    state?: string;
+    code_verifier?: string;
+    expected_state?: string;
     redirected_url?: string;
   }>();
   const { addToast } = useToast();
   const { reloadCurrentAccount } = useCurrentAccount();
   const [isWorking, setIsWorking] = useState(true);
 
-  const accessToken = useMemo(() => {
-    const direct = (params.access_token ?? params.token)?.toString() ?? "";
-    if (direct) return direct;
-
+  const authPayload = useMemo(() => {
     const redirectedUrl = params.redirected_url?.toString() ?? "";
-    if (redirectedUrl) return extractTokenFromUrl(redirectedUrl);
 
-    return "";
-  }, [params.access_token, params.token, params.redirected_url]);
+    const extractedFromUrl = redirectedUrl
+      ? extractCodeAndStateFromUrl(redirectedUrl)
+      : { code: "", state: "" };
+
+    const code = (params.code?.toString() ?? "") || extractedFromUrl.code;
+    const returnedState =
+      (params.state?.toString() ?? "") || extractedFromUrl.state;
+    const codeVerifier = params.code_verifier?.toString() ?? "";
+    const expectedState = params.expected_state?.toString() ?? "";
+
+    return {
+      code,
+      returnedState,
+      expectedState,
+      codeVerifier,
+    };
+  }, [
+    params.code,
+    params.state,
+    params.code_verifier,
+    params.expected_state,
+    params.redirected_url,
+  ]);
 
   useEffect(() => {
     let isCancelled = false;
 
     const run = async () => {
       try {
-        if (!accessToken) {
+        if (!authPayload.code || !authPayload.codeVerifier) {
+          setTimeout(() => {
+            if (isCancelled) return;
+
+            addToast({
+              message: "サインインに失敗しました",
+              detail: "認可コードまたはcode_verifierが見つかりませんでした",
+            });
+            router.replace("/signin");
+          }, MISSING_INPUT_GRACE_MS);
+          return;
+        }
+
+        if (
+          authPayload.expectedState &&
+          authPayload.returnedState &&
+          authPayload.expectedState !== authPayload.returnedState
+        ) {
           addToast({
             message: "サインインに失敗しました",
-            detail: "アクセストークンが見つかりませんでした",
+            detail: "stateの検証に失敗しました",
           });
           router.replace("/signin");
           return;
+        }
+
+        const response = await api.post<{
+          status?: string;
+          access_token?: string;
+          expires_in?: number;
+          new_account?: boolean;
+        }>(SESSION_CREATE_ENDPOINT, {
+          code: authPayload.code,
+          code_verifier: authPayload.codeVerifier,
+        });
+
+        if (response.data.status !== "success") {
+          throw new Error("セッション作成に失敗しました");
+        }
+
+        const accessToken = response.data.access_token ?? "";
+        if (!accessToken) {
+          throw new Error("アクセストークンが返されませんでした");
+        }
+
+        if (response.data.new_account) {
+          addToast({
+            message: "アカウントを作成しました",
+            detail: "初回サインインとしてアカウントが自動作成されました",
+          });
         }
 
         await setAccessToken(accessToken);
@@ -82,10 +140,10 @@ export default function AuthCallbackScreen() {
         setTimeout(() => router.replace("/"), 0);
       } catch (error) {
         addToast({
-          message: "リロードに失敗しました",
+          message: "サインインに失敗しました",
           detail: error instanceof Error ? error.message : String(error),
         });
-        router.replace("/");
+        router.replace("/signin");
       } finally {
         // If navigation succeeds, this screen will unmount. If it fails, show completion state.
         if (!isCancelled) setIsWorking(false);
@@ -96,7 +154,7 @@ export default function AuthCallbackScreen() {
     return () => {
       isCancelled = true;
     };
-  }, [accessToken, addToast, reloadCurrentAccount]);
+  }, [authPayload, addToast, reloadCurrentAccount]);
 
   return (
     <>
