@@ -2,8 +2,9 @@ import * as Crypto from "expo-crypto";
 import { router } from "expo-router";
 import * as WebBrowser from "expo-web-browser";
 import React, { useCallback } from "react";
-import { Pressable, StyleSheet } from "react-native";
+import { Pressable, StyleSheet, View } from "react-native";
 
+import AnyurIcon from "@/components/anyur-icon";
 import MainHeader from "@/components/main_header/MainHeader";
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
@@ -70,7 +71,14 @@ function buildAuthorizeUrl(params: {
 }
 
 export default function SigninScreen() {
-  const borderColor = useColors().border_color;
+  const colors = useColors();
+  const borderColor = colors.border_color;
+  const contentColor = colors.content_color;
+  const shadowColor = colors.shadow_color;
+  const buttonColor = colors.button_color;
+  const buttonFontColor = colors.button_font_color;
+  const inconspicuousFontColor = colors.inconspicuous_font_color;
+  const inconspicuousBackgroundColor = colors.inconspicuous_background_color;
   const { addToast } = useToast();
 
   const openSignin = useCallback(async () => {
@@ -110,27 +118,159 @@ export default function SigninScreen() {
       </MainHeader>
 
       <ThemedView style={styles.container}>
-        <ThemedText>
-          ブラウザでサインインし、アプリに戻ってください。
+        <View
+          style={[
+            styles.heroCard,
+            {
+              borderColor,
+              backgroundColor: contentColor,
+              shadowColor,
+            },
+          ]}
+        >
+          <View
+            style={[
+              styles.badge,
+              {
+                borderColor,
+                backgroundColor: inconspicuousBackgroundColor,
+              },
+            ]}
+          >
+            <AnyurIcon size={14} />
+            <ThemedText
+              style={[styles.badgeText, { color: inconspicuousFontColor }]}
+            >
+              ANYUR
+            </ThemedText>
+          </View>
+
+          <ThemedText style={styles.heroTitle}>Amiverseに参加</ThemedText>
+
+          <ThemedText
+            style={[styles.heroDescription, { color: inconspicuousFontColor }]}
+          >
+            ANYURアカウントでAmiverseに参加できます。
+          </ThemedText>
+
+          <View style={styles.bulletList}>
+            <ThemedText
+              style={[styles.bulletItem, { color: inconspicuousFontColor }]}
+            >
+              - ここからサインイン(ログイン)できます
+            </ThemedText>
+            <ThemedText
+              style={[styles.bulletItem, { color: inconspicuousFontColor }]}
+            >
+              - 初めての場合、サインアップ(新規登録)されます
+            </ThemedText>
+            <ThemedText
+              style={[styles.bulletItem, { color: inconspicuousFontColor }]}
+            >
+              - ANYURアカウント(無料)が必須です
+            </ThemedText>
+          </View>
+        </View>
+
+        <ThemedText
+          style={[styles.hintText, { color: inconspicuousFontColor }]}
+        >
+          ボタンを押すとAmiverseの利用規約・プライバシーポリシーに同意したことになります。
         </ThemedText>
+
         <Pressable
           onPress={openSignin}
-          style={[styles.button, { borderColor }]}
+          style={({ pressed }) => [
+            styles.button,
+            {
+              borderColor,
+              backgroundColor: buttonColor,
+              opacity: pressed ? 0.9 : 1,
+            },
+          ]}
         >
-          <ThemedText>サインインを開く</ThemedText>
+          <AnyurIcon size={20} />
+          <ThemedText style={[styles.buttonText, { color: buttonFontColor }]}>
+            ANYURで続ける
+          </ThemedText>
         </Pressable>
+
+        <ThemedText
+          style={[styles.hintText, { color: inconspicuousFontColor }]}
+        >
+          認可完了後は自動でこのアプリに戻ります。
+        </ThemedText>
       </ThemedView>
     </>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 16, gap: 12 },
-  button: {
+  container: {
+    flex: 1,
+    padding: 16,
+    gap: 14,
+    justifyContent: "center",
+  },
+  heroCard: {
     borderWidth: StyleSheet.hairlineWidth,
-    borderRadius: 10,
-    paddingVertical: 10,
-    paddingHorizontal: 12,
+    borderRadius: 18,
+    padding: 16,
+    gap: 10,
+    shadowOpacity: 0.14,
+    shadowRadius: 14,
+    shadowOffset: { width: 0, height: 8 },
+    elevation: 5,
+  },
+  badge: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 6,
     alignSelf: "flex-start",
+    paddingVertical: 4,
+    paddingHorizontal: 10,
+    borderRadius: 999,
+    borderWidth: StyleSheet.hairlineWidth,
+  },
+  badgeText: {
+    fontSize: 12,
+    fontWeight: "600",
+    lineHeight: 16,
+  },
+  heroTitle: {
+    fontSize: 24,
+    fontWeight: "700",
+    lineHeight: 30,
+  },
+  heroDescription: {
+    fontSize: 15,
+    lineHeight: 22,
+  },
+  bulletList: {
+    gap: 6,
+  },
+  bulletItem: {
+    fontSize: 14,
+    lineHeight: 20,
+  },
+  button: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 10,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderRadius: 14,
+    paddingVertical: 13,
+    paddingHorizontal: 14,
+  },
+  buttonText: {
+    fontSize: 16,
+    lineHeight: 22,
+    fontWeight: "700",
+  },
+  hintText: {
+    fontSize: 13,
+    lineHeight: 18,
+    textAlign: "center",
   },
 });
