@@ -1,7 +1,5 @@
 import { useScrollToTop } from "@react-navigation/native";
-import * as Linking from "expo-linking";
 import { router } from "expo-router";
-import * as WebBrowser from "expo-web-browser";
 import React, {
   useCallback,
   useEffect,
@@ -239,31 +237,13 @@ export default function HomeScreen() {
     [currentFeedType],
   );
 
-  const openSignin = useCallback(async () => {
-    const authUrl = process.env.EXPO_PUBLIC_AUTH_URL;
-    if (!authUrl) {
-      addToast({
-        message: "サインインURL未設定",
-        detail: "EXPO_PUBLIC_AUTH_URL を設定してください",
-      });
-      return;
-    }
-    const redirectUri = Linking.createURL("auth");
-    const url = `${authUrl}?redirect_uri=${encodeURIComponent(redirectUri)}`;
-    await WebBrowser.openBrowserAsync(url);
-  }, [addToast]);
-
   const handleTabChange = useCallback(
     (type: FeedTab) => {
       if (type === currentFeedType) return;
 
       if (type === "follow" && currentAccountStatus !== "signed_in") {
         openSignInModal({
-          title: "サインインが必要です",
           message: "フォロー中の投稿を見るにはサインインが必要です。",
-          closeLabel: "キャンセル",
-          signInLabel: "サインイン",
-          onSignIn: openSignin,
         });
         return;
       }
@@ -275,7 +255,6 @@ export default function HomeScreen() {
       currentAccountStatus,
       currentFeedType,
       openSignInModal,
-      openSignin,
       setCurrentFeedType,
     ],
   );
@@ -283,17 +262,13 @@ export default function HomeScreen() {
   const handleCreatePress = useCallback(() => {
     if (currentAccountStatus !== "signed_in") {
       openSignInModal({
-        title: "サインインが必要です",
         message: "新規投稿を作成するにはサインインが必要です。",
-        closeLabel: "キャンセル",
-        signInLabel: "サインイン",
-        onSignIn: openSignin,
       });
       return;
     }
 
     router.push("/create");
-  }, [currentAccountStatus, openSignInModal, openSignin]);
+  }, [currentAccountStatus, openSignInModal]);
 
   const renderTabButton = (type: FeedTab, label: string) => {
     const isActive = currentFeedType === type;
