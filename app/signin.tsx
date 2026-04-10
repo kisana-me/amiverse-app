@@ -92,6 +92,7 @@ export default function SigninScreen() {
           redirected_url: result.url,
           code_verifier: codeVerifier,
           expected_state: state,
+          redirect_uri: OAUTH_REDIRECT_URI,
         },
       });
     } catch (error) {

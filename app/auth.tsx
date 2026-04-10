@@ -40,6 +40,7 @@ export default function AuthCallbackScreen() {
     code_verifier?: string;
     expected_state?: string;
     redirected_url?: string;
+    redirect_uri?: string;
   }>();
   const { addToast } = useToast();
   const { reloadCurrentAccount } = useCurrentAccount();
@@ -47,6 +48,7 @@ export default function AuthCallbackScreen() {
 
   const authPayload = useMemo(() => {
     const redirectedUrl = params.redirected_url?.toString() ?? "";
+    const redirectUri = params.redirect_uri?.toString() ?? "";
 
     const extractedFromUrl = redirectedUrl
       ? extractCodeAndStateFromUrl(redirectedUrl)
@@ -63,6 +65,7 @@ export default function AuthCallbackScreen() {
       returnedState,
       expectedState,
       codeVerifier,
+      redirectUri,
     };
   }, [
     params.code,
@@ -70,6 +73,7 @@ export default function AuthCallbackScreen() {
     params.code_verifier,
     params.expected_state,
     params.redirected_url,
+    params.redirect_uri,
   ]);
 
   useEffect(() => {
@@ -111,6 +115,7 @@ export default function AuthCallbackScreen() {
         }>(SESSION_CREATE_ENDPOINT, {
           code: authPayload.code,
           code_verifier: authPayload.codeVerifier,
+          redirect_uri: authPayload.redirectUri,
         });
 
         if (response.data.status !== "success") {
