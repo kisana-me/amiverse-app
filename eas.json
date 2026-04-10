@@ -24,6 +24,9 @@
       "autoIncrement": true,
       "env": {
         "EXPO_PUBLIC_BACK_URL": "https://api.amiverse.net"
+      },
+      "android": {
+        "buildType": "app-bundle"
       }
     }
   },
