@@ -14,7 +14,13 @@ import { useColors } from "@/providers/UIProvider";
 WebBrowser.maybeCompleteAuthSession();
 
 const ANYUR_AUTHORIZE_URL = "https://anyur.com/oauth/authorize";
-const OAUTH_REDIRECT_URI = "amiverse://auth";
+const PROD_OAUTH_REDIRECT_URI = "amiverse://auth";
+const DEV_OAUTH_REDIRECT_URI =
+  process.env.EXPO_PUBLIC_OAUTH_REDIRECT_URI?.trim();
+const OAUTH_REDIRECT_URI =
+  typeof __DEV__ !== "undefined" && __DEV__ && DEV_OAUTH_REDIRECT_URI
+    ? DEV_OAUTH_REDIRECT_URI
+    : PROD_OAUTH_REDIRECT_URI;
 const OAUTH_SCOPE =
   "persona_aid name name_id description birthdate subscription";
 const PKCE_CHALLENGE_METHOD = "S256";
