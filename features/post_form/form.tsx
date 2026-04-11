@@ -1,7 +1,7 @@
 import { Image } from "expo-image";
 import * as ImagePicker from "expo-image-picker";
 import { router } from "expo-router";
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import {
   Pressable,
   ScrollView,
@@ -19,6 +19,7 @@ import {
   DrawingEditor,
   DrawingViewer,
 } from "@/features/drawing";
+import { InfoModal } from "@/features/modal";
 import { useFeeds } from "@/providers/FeedsProvider";
 import { usePosts } from "@/providers/PostsProvider";
 import { useToast } from "@/providers/ToastProvider";
@@ -33,6 +34,7 @@ export type PostFormProps = {
   quotePost?: PostType;
   onSuccess?: () => void;
   redirectToCurrentFeed?: boolean;
+  onDraftStateChange?: (hasDraft: boolean) => void;
 };
 
 export default function PostForm({
@@ -40,6 +42,7 @@ export default function PostForm({
   quotePost,
   onSuccess,
   redirectToCurrentFeed = true,
+  onDraftStateChange,
 }: PostFormProps) {
   const { prependFeedItem } = useFeeds();
   const { addPosts } = usePosts();
@@ -58,10 +61,16 @@ export default function PostForm({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isDrawingOpen, setIsDrawingOpen] = useState(false);
   const [drawingData, setDrawingData] = useState<DrawingDraft | null>(null);
+  const [isRemoveDrawingConfirmOpen, setIsRemoveDrawingConfirmOpen] =
+    useState(false);
 
   const canSubmit = useMemo(() => {
     return Boolean(content.trim() || mediaFiles.length > 0 || drawingData);
   }, [content, mediaFiles.length, drawingData]);
+
+  useEffect(() => {
+    onDraftStateChange?.(canSubmit);
+  }, [canSubmit, onDraftStateChange]);
 
   const handleDrawingSave = (draft: DrawingDraft) => {
     setDrawingData(draft);
@@ -70,6 +79,12 @@ export default function PostForm({
 
   const handleRemoveDrawing = () => {
     setDrawingData(null);
+    setIsRemoveDrawingConfirmOpen(false);
+  };
+
+  const openRemoveDrawingConfirm = () => {
+    if (!drawingData) return;
+    setIsRemoveDrawingConfirmOpen(true);
   };
 
   const handlePickMedia = async () => {
@@ -199,7 +214,7 @@ export default function PostForm({
             />
             <Pressable
               style={styles.removeMediaButton}
-              onPress={handleRemoveDrawing}
+              onPress={openRemoveDrawingConfirm}
             >
               <ThemedText style={styles.removeMediaText}>×</ThemedText>
             </Pressable>
@@ -258,6 +273,18 @@ export default function PostForm({
         initialData={drawingData?.packed}
         initialName={drawingData?.name}
         initialDescription={drawingData?.description}
+      />
+
+      <InfoModal
+        visible={isRemoveDrawingConfirmOpen}
+        onClose={() => setIsRemoveDrawingConfirmOpen(false)}
+        title="お絵描き添付を削除"
+        message="添付中のお絵描きを削除しますか？"
+        closeLabel="キャンセル"
+        actionLabel="削除する"
+        onAction={handleRemoveDrawing}
+        actionVariant="destructive"
+        closeOnAction={false}
       />
     </View>
   );

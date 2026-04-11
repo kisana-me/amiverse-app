@@ -10,6 +10,8 @@ import {
 import { ThemedText } from "@/components/themed-text";
 import { useColors } from "@/providers/UIProvider";
 
+type ActionVariant = "default" | "destructive";
+
 export type InfoModalProps = {
   visible: boolean;
   onClose: () => void;
@@ -18,6 +20,9 @@ export type InfoModalProps = {
   closeLabel?: string;
   actionLabel?: string;
   onAction?: () => void | Promise<void>;
+  closeOnAction?: boolean;
+  actionVariant?: ActionVariant;
+  closeOnBackdropPress?: boolean;
 };
 
 export function InfoModal({
@@ -28,10 +33,21 @@ export function InfoModal({
   closeLabel = "閉じる",
   actionLabel,
   onAction,
+  closeOnAction = true,
+  actionVariant = "default",
+  closeOnBackdropPress = true,
 }: InfoModalProps) {
   const cardBackground = useColors().background_color;
   const borderColor = useColors().border_color;
   const tintColor = useColors().link_color;
+
+  const handleActionPress = () => {
+    if (!onAction) return;
+    void Promise.resolve(onAction());
+    if (closeOnAction) {
+      onClose();
+    }
+  };
 
   return (
     <Modal
@@ -40,7 +56,10 @@ export function InfoModal({
       animationType="fade"
       onRequestClose={onClose}
     >
-      <Pressable style={styles.modalBackdrop} onPress={onClose}>
+      <Pressable
+        style={styles.modalBackdrop}
+        onPress={closeOnBackdropPress ? onClose : undefined}
+      >
         <Pressable
           style={[
             styles.modalCard,
@@ -59,13 +78,23 @@ export function InfoModal({
             </TouchableOpacity>
             {actionLabel && onAction ? (
               <TouchableOpacity
-                style={[styles.modalButton, { borderColor: tintColor }]}
-                onPress={() => {
-                  onClose();
-                  void Promise.resolve(onAction());
-                }}
+                style={[
+                  styles.modalButton,
+                  actionVariant === "destructive"
+                    ? styles.modalButtonDestructive
+                    : { borderColor: tintColor },
+                ]}
+                onPress={handleActionPress}
               >
-                <ThemedText>{actionLabel}</ThemedText>
+                <ThemedText
+                  style={
+                    actionVariant === "destructive"
+                      ? styles.modalButtonDestructiveText
+                      : undefined
+                  }
+                >
+                  {actionLabel}
+                </ThemedText>
               </TouchableOpacity>
             ) : null}
           </View>
@@ -106,5 +135,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     borderRadius: 8,
     borderWidth: 1,
+  },
+  modalButtonDestructive: {
+    backgroundColor: "#d93838",
+    borderColor: "#d93838",
+  },
+  modalButtonDestructiveText: {
+    color: "#fff",
+    fontWeight: "700",
   },
 });

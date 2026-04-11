@@ -1,3 +1,4 @@
+import { InfoModal } from "@/features/modal";
 import {
   Canvas,
   FilterMode,
@@ -735,37 +736,18 @@ export default function DrawingEditor({
             </View>
           </View>
 
-          <Modal
+          <InfoModal
             visible={confirmDiscardVisible}
-            transparent
-            animationType="fade"
-            onRequestClose={closeDiscardConfirm}
-          >
-            <View style={styles.confirmBackdrop}>
-              <View style={styles.confirmCard}>
-                <Text style={styles.confirmTitle}>変更を破棄しますか？</Text>
-                <Text style={styles.confirmMessage}>
-                  保存していないお絵描き内容は失われます。
-                </Text>
-                <View style={styles.confirmActions}>
-                  <TouchableOpacity
-                    onPress={closeDiscardConfirm}
-                    style={styles.confirmKeepButton}
-                  >
-                    <Text style={styles.confirmKeepText}>編集を続ける</Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity
-                    onPress={handleDiscardAndClose}
-                    style={styles.confirmDiscardButton}
-                  >
-                    <Text style={styles.confirmDiscardText}>
-                      破棄して閉じる
-                    </Text>
-                  </TouchableOpacity>
-                </View>
-              </View>
-            </View>
-          </Modal>
+            onClose={closeDiscardConfirm}
+            title="変更を破棄しますか？"
+            message="保存していないお絵描き内容は失われます。"
+            closeLabel="編集を続ける"
+            actionLabel="破棄して閉じる"
+            onAction={handleDiscardAndClose}
+            actionVariant="destructive"
+            closeOnAction={false}
+            closeOnBackdropPress={false}
+          />
         </View>
       </SafeAreaView>
     </Modal>
@@ -964,58 +946,6 @@ const styles = StyleSheet.create({
   },
   clearButtonText: {
     color: "#ff8484",
-    fontWeight: "700",
-  },
-  confirmBackdrop: {
-    flex: 1,
-    backgroundColor: "rgba(0,0,0,0.56)",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: 20,
-  },
-  confirmCard: {
-    width: "100%",
-    maxWidth: 360,
-    borderRadius: 12,
-    padding: 14,
-    gap: 12,
-    backgroundColor: "#191919",
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: "#3a3a3a",
-  },
-  confirmTitle: {
-    color: "#fff",
-    fontSize: 16,
-    fontWeight: "700",
-  },
-  confirmMessage: {
-    color: "#cbcbcb",
-    fontSize: 13,
-    lineHeight: 19,
-  },
-  confirmActions: {
-    flexDirection: "row",
-    gap: 8,
-    justifyContent: "flex-end",
-  },
-  confirmKeepButton: {
-    paddingVertical: 10,
-    paddingHorizontal: 12,
-    borderRadius: 8,
-    backgroundColor: "#2c2c2c",
-  },
-  confirmKeepText: {
-    color: "#ddd",
-    fontWeight: "600",
-  },
-  confirmDiscardButton: {
-    paddingVertical: 10,
-    paddingHorizontal: 12,
-    borderRadius: 8,
-    backgroundColor: "#862f2f",
-  },
-  confirmDiscardText: {
-    color: "#fff",
     fontWeight: "700",
   },
 });
