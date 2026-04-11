@@ -10,6 +10,7 @@ import React, {
 import {
   Animated,
   Modal,
+  PanResponder,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -62,6 +63,14 @@ export function SideMenus() {
 
   const [leftVisible, setLeftVisible] = useState(false);
   const [rightVisible, setRightVisible] = useState(false);
+
+  const closeLeftMenu = useCallback(() => {
+    setIsHeaderMenuOpen(false);
+  }, [setIsHeaderMenuOpen]);
+
+  const closeRightMenu = useCallback(() => {
+    setIsAsideMenuOpen(false);
+  }, [setIsAsideMenuOpen]);
 
   const animateTo = useCallback(
     (anim: Animated.Value, toValue: number, onEnd?: () => void) => {
@@ -141,6 +150,38 @@ export function SideMenus() {
     outputRange: [-drawerWidth, 0],
   });
 
+  const leftSwipeResponder = useMemo(
+    () =>
+      PanResponder.create({
+        onMoveShouldSetPanResponder: (_, gesture) =>
+          gesture.dx < -8 &&
+          Math.abs(gesture.dx) > Math.abs(gesture.dy) &&
+          Math.abs(gesture.dx) > 12,
+        onPanResponderRelease: (_, gesture) => {
+          if (gesture.dx <= -40 || gesture.vx <= -0.35) {
+            closeLeftMenu();
+          }
+        },
+      }),
+    [closeLeftMenu],
+  );
+
+  const rightSwipeResponder = useMemo(
+    () =>
+      PanResponder.create({
+        onMoveShouldSetPanResponder: (_, gesture) =>
+          gesture.dx > 8 &&
+          Math.abs(gesture.dx) > Math.abs(gesture.dy) &&
+          Math.abs(gesture.dx) > 12,
+        onPanResponderRelease: (_, gesture) => {
+          if (gesture.dx >= 40 || gesture.vx >= 0.35) {
+            closeRightMenu();
+          }
+        },
+      }),
+    [closeRightMenu],
+  );
+
   const rightTranslateX = rightAnim.interpolate({
     inputRange: [0, 1],
     outputRange: [drawerWidth, 0],
@@ -152,15 +193,18 @@ export function SideMenus() {
         visible={leftVisible}
         transparent
         animationType="none"
-        onRequestClose={() => setIsHeaderMenuOpen(false)}
+        presentationStyle="overFullScreen"
+        onRequestClose={closeLeftMenu}
       >
         <View style={styles.modalRoot}>
-          <Pressable
+          <View
             style={[styles.backdrop, { backgroundColor: backdropColor }]}
-            onPress={() => setIsHeaderMenuOpen(false)}
+            onStartShouldSetResponder={() => true}
+            onResponderRelease={closeLeftMenu}
           />
 
           <Animated.View
+            {...leftSwipeResponder.panHandlers}
             style={[
               styles.drawer,
               {
@@ -223,15 +267,18 @@ export function SideMenus() {
         visible={rightVisible}
         transparent
         animationType="none"
-        onRequestClose={() => setIsAsideMenuOpen(false)}
+        presentationStyle="overFullScreen"
+        onRequestClose={closeRightMenu}
       >
         <View style={styles.modalRoot}>
-          <Pressable
+          <View
             style={[styles.backdrop, { backgroundColor: backdropColor }]}
-            onPress={() => setIsAsideMenuOpen(false)}
+            onStartShouldSetResponder={() => true}
+            onResponderRelease={closeRightMenu}
           />
 
           <Animated.View
+            {...rightSwipeResponder.panHandlers}
             style={[
               styles.drawer,
               styles.drawerRight,
