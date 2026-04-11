@@ -10,6 +10,7 @@ import React, { useEffect, useRef, useState } from "react";
 import {
   Alert,
   Modal,
+  ScrollView,
   StyleSheet,
   Text,
   TextInput,
@@ -20,6 +21,7 @@ import {
   type NativeSyntheticEvent,
   type TextInputChangeEventData,
 } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { DRAWING_HEIGHT, DRAWING_WIDTH } from "../constants";
 import { bitmapToPacked, packedToBitmap } from "../lib/packed_codec";
 import { createSkImageFromBitmap } from "../lib/skia_image";
@@ -58,6 +60,7 @@ export default function DrawingEditor({
   const [name, setName] = useState(initialName);
   const [description, setDescription] = useState(initialDescription);
   const [historyIndex, setHistoryIndex] = useState(0);
+  const [confirmDiscardVisible, setConfirmDiscardVisible] = useState(false);
   const [viewport, setViewport] = useState({ width: 0, height: 0 });
   const [transform, setTransform] = useState({ scale: 1, panX: 0, panY: 0 });
   const [skImage, setSkImage] = useState(() =>
@@ -85,6 +88,7 @@ export default function DrawingEditor({
     pinchStartScale: 1,
     pinchCenterWorldX: 0,
     pinchCenterWorldY: 0,
+    strokeStartBitmap: null as Uint8Array | null,
   });
 
   const notifyBitmapChanged = () => {
@@ -156,6 +160,7 @@ export default function DrawingEditor({
     setBrushShape("circle");
     setName(initialName);
     setDescription(initialDescription);
+    setConfirmDiscardVisible(false);
     notifyBitmapChanged();
     didCenterRef.current = false;
 
@@ -268,27 +273,47 @@ export default function DrawingEditor({
     });
   };
 
-  const endCurrentStroke = () => {
+  const endCurrentStroke = (options?: {
+    commitTap?: boolean;
+    discardStroke?: boolean;
+  }) => {
     const interaction = interactionRef.current;
     if (interaction.isDrawing) {
-      if (!interaction.hasDrawn) {
+      const shouldCommitTap = options?.commitTap ?? true;
+      const shouldDiscardStroke = options?.discardStroke ?? false;
+      let didMutate = false;
+
+      if (!interaction.hasDrawn && shouldCommitTap) {
         plotLine(
           interaction.lastX,
           interaction.lastY,
           interaction.lastX,
           interaction.lastY,
         );
+        didMutate = true;
       }
-      saveHistory();
-      notifyBitmapChanged();
+
+      if (shouldDiscardStroke) {
+        const snapshot = interaction.strokeStartBitmap;
+        if (snapshot) {
+          bitmapRef.current = new Uint8Array(snapshot);
+        }
+        if (interaction.hasDrawn || didMutate) {
+          notifyBitmapChanged();
+        }
+      } else if (interaction.hasDrawn || didMutate) {
+        saveHistory();
+        notifyBitmapChanged();
+      }
     }
 
     interaction.isDrawing = false;
     interaction.hasDrawn = false;
+    interaction.strokeStartBitmap = null;
   };
 
   const beginPinch = (a: EditorTouch, b: EditorTouch) => {
-    endCurrentStroke();
+    endCurrentStroke({ commitTap: false, discardStroke: true });
     const interaction = interactionRef.current;
     interaction.isPinching = true;
     interaction.isPanning = false;
@@ -324,6 +349,7 @@ export default function DrawingEditor({
       interaction.isPanning = true;
       interaction.lastTouchX = touch.locationX;
       interaction.lastTouchY = touch.locationY;
+      interaction.strokeStartBitmap = null;
       return;
     }
 
@@ -332,11 +358,16 @@ export default function DrawingEditor({
     interaction.hasDrawn = false;
     interaction.lastX = pos.x;
     interaction.lastY = pos.y;
+    interaction.strokeStartBitmap = cloneBitmap();
   };
 
   const handleTouchMove = (e: GestureResponderEvent) => {
     const touches = e.nativeEvent.touches;
     const interaction = interactionRef.current;
+
+    if (touches.length >= 2 && !interaction.isPinching) {
+      beginPinch(touches[0], touches[1]);
+    }
 
     if (interaction.isPinching) {
       if (touches.length < 2) {
@@ -466,6 +497,27 @@ export default function DrawingEditor({
     setDescription(e.nativeEvent.text);
   };
 
+  const closeDiscardConfirm = () => {
+    setConfirmDiscardVisible(false);
+  };
+
+  const handleCancelPress = () => {
+    setConfirmDiscardVisible(true);
+  };
+
+  const handleDiscardAndClose = () => {
+    setConfirmDiscardVisible(false);
+    onClose();
+  };
+
+  const handleModalRequestClose = () => {
+    if (confirmDiscardVisible) {
+      setConfirmDiscardVisible(false);
+      return;
+    }
+    setConfirmDiscardVisible(true);
+  };
+
   if (!visible) {
     return null;
   }
@@ -473,16 +525,24 @@ export default function DrawingEditor({
   return (
     <Modal
       visible={visible}
-      transparent
-      animationType="fade"
-      onRequestClose={onClose}
+      transparent={false}
+      animationType="slide"
+      presentationStyle="fullScreen"
+      statusBarTranslucent={false}
+      onRequestClose={handleModalRequestClose}
     >
-      <View style={styles.backdrop}>
-        <View style={styles.sheet}>
+      <SafeAreaView
+        style={styles.safeArea}
+        edges={["top", "bottom", "left", "right"]}
+      >
+        <View style={styles.screen}>
           <View style={styles.header}>
             <Text style={styles.title}>Drawing Editor</Text>
             <View style={styles.headerActions}>
-              <TouchableOpacity onPress={onClose} style={styles.cancelButton}>
+              <TouchableOpacity
+                onPress={handleCancelPress}
+                style={styles.cancelButton}
+              >
                 <Text style={styles.cancelButtonText}>キャンセル</Text>
               </TouchableOpacity>
               <TouchableOpacity onPress={handleSave} style={styles.saveButton}>
@@ -562,7 +622,12 @@ export default function DrawingEditor({
             </View>
 
             <View style={styles.toolbar}>
-              <View style={styles.toolRow}>
+              <ScrollView
+                horizontal
+                style={styles.primaryToolsScroller}
+                contentContainerStyle={styles.primaryToolsRow}
+                showsHorizontalScrollIndicator={false}
+              >
                 <TouchableOpacity
                   onPress={() => setTool("pen")}
                   style={[
@@ -590,9 +655,6 @@ export default function DrawingEditor({
                 >
                   <Text style={styles.toolButtonText}>手</Text>
                 </TouchableOpacity>
-              </View>
-
-              <View style={styles.toolRow}>
                 <TouchableOpacity
                   onPress={undo}
                   disabled={historyIndex <= 0}
@@ -614,9 +676,6 @@ export default function DrawingEditor({
                 >
                   <Text style={styles.toolButtonText}>進</Text>
                 </TouchableOpacity>
-              </View>
-
-              <View style={styles.toolRow}>
                 <TouchableOpacity
                   onPress={() =>
                     setBrushShape((prev) =>
@@ -629,7 +688,7 @@ export default function DrawingEditor({
                     {brushShape === "square" ? "■" : "●"}
                   </Text>
                 </TouchableOpacity>
-              </View>
+              </ScrollView>
 
               <View style={styles.brushSection}>
                 <Text style={styles.brushLabel}>サイズ {brushSize}px</Text>
@@ -675,30 +734,56 @@ export default function DrawingEditor({
               </TouchableOpacity>
             </View>
           </View>
+
+          <Modal
+            visible={confirmDiscardVisible}
+            transparent
+            animationType="fade"
+            onRequestClose={closeDiscardConfirm}
+          >
+            <View style={styles.confirmBackdrop}>
+              <View style={styles.confirmCard}>
+                <Text style={styles.confirmTitle}>変更を破棄しますか？</Text>
+                <Text style={styles.confirmMessage}>
+                  保存していないお絵描き内容は失われます。
+                </Text>
+                <View style={styles.confirmActions}>
+                  <TouchableOpacity
+                    onPress={closeDiscardConfirm}
+                    style={styles.confirmKeepButton}
+                  >
+                    <Text style={styles.confirmKeepText}>編集を続ける</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    onPress={handleDiscardAndClose}
+                    style={styles.confirmDiscardButton}
+                  >
+                    <Text style={styles.confirmDiscardText}>
+                      破棄して閉じる
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+            </View>
+          </Modal>
         </View>
-      </View>
+      </SafeAreaView>
     </Modal>
   );
 }
 
 const styles = StyleSheet.create({
-  backdrop: {
-    flex: 1,
-    backgroundColor: "rgba(0,0,0,0.75)",
-    justifyContent: "center",
-    padding: 10,
-  },
-  sheet: {
+  safeArea: {
     flex: 1,
     backgroundColor: "#111",
-    borderRadius: 12,
-    overflow: "hidden",
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: "#303030",
+  },
+  screen: {
+    flex: 1,
+    backgroundColor: "#111",
   },
   header: {
     paddingHorizontal: 12,
-    paddingTop: 12,
+    paddingTop: 8,
     paddingBottom: 8,
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: "#303030",
@@ -803,9 +888,14 @@ const styles = StyleSheet.create({
     padding: 8,
     gap: 8,
   },
-  toolRow: {
+  primaryToolsScroller: {
+    maxHeight: 40,
+  },
+  primaryToolsRow: {
     flexDirection: "row",
+    alignItems: "center",
     gap: 8,
+    paddingRight: 8,
   },
   toolButton: {
     width: 44,
@@ -874,6 +964,58 @@ const styles = StyleSheet.create({
   },
   clearButtonText: {
     color: "#ff8484",
+    fontWeight: "700",
+  },
+  confirmBackdrop: {
+    flex: 1,
+    backgroundColor: "rgba(0,0,0,0.56)",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 20,
+  },
+  confirmCard: {
+    width: "100%",
+    maxWidth: 360,
+    borderRadius: 12,
+    padding: 14,
+    gap: 12,
+    backgroundColor: "#191919",
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: "#3a3a3a",
+  },
+  confirmTitle: {
+    color: "#fff",
+    fontSize: 16,
+    fontWeight: "700",
+  },
+  confirmMessage: {
+    color: "#cbcbcb",
+    fontSize: 13,
+    lineHeight: 19,
+  },
+  confirmActions: {
+    flexDirection: "row",
+    gap: 8,
+    justifyContent: "flex-end",
+  },
+  confirmKeepButton: {
+    paddingVertical: 10,
+    paddingHorizontal: 12,
+    borderRadius: 8,
+    backgroundColor: "#2c2c2c",
+  },
+  confirmKeepText: {
+    color: "#ddd",
+    fontWeight: "600",
+  },
+  confirmDiscardButton: {
+    paddingVertical: 10,
+    paddingHorizontal: 12,
+    borderRadius: 8,
+    backgroundColor: "#862f2f",
+  },
+  confirmDiscardText: {
+    color: "#fff",
     fontWeight: "700",
   },
 });
