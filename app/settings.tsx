@@ -6,11 +6,11 @@ import { Pressable, StyleSheet, View } from "react-native";
 import MainHeader from "@/components/main_header/MainHeader";
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
-import { useColors } from "@/providers/UIProvider";
 import { clearAccessToken } from "@/lib/access-token";
 import { api } from "@/lib/axios";
 import { useCurrentAccount } from "@/providers/CurrentAccountProvider";
 import { useToast } from "@/providers/ToastProvider";
+import { useColors } from "@/providers/UIProvider";
 
 export default function SettingsScreen() {
   const borderColor = useColors().border_color;
@@ -111,6 +111,18 @@ export default function SettingsScreen() {
               </ThemedText>
             </>
           )}
+        </View>
+
+        <View style={styles.section}>
+          <ThemedText type="defaultSemiBold">プライバシー</ThemedText>
+          <Pressable
+            onPress={() =>
+              router.push("/onboarding-permission?from=settings" as any)
+            }
+            style={[styles.rowButton, { borderColor }]}
+          >
+            <ThemedText>トラッキング許可を確認・変更</ThemedText>
+          </Pressable>
         </View>
 
         <View style={styles.section}>

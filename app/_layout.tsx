@@ -5,7 +5,7 @@ import {
 } from "@react-navigation/native";
 import { router, Stack, usePathname } from "expo-router";
 import { StatusBar } from "expo-status-bar";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { BackHandler, Platform, StyleSheet, View } from "react-native";
 import "react-native-reanimated";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
@@ -14,6 +14,10 @@ import { InitOverlay } from "@/components/init-overlay";
 import { MainNav } from "@/components/main_nav";
 import { SideMenus } from "@/components/side-menus";
 import { emitHomeRefresh } from "@/lib/home-refresh";
+import {
+  addOnboardingCompletedListener,
+  getIsOnboardingCompleted,
+} from "@/lib/onboarding";
 import { AccountsProvider } from "@/providers/AccountsProvider";
 import { CurrentAccountProvider } from "@/providers/CurrentAccountProvider";
 import { FeedsProvider } from "@/providers/FeedsProvider";
@@ -40,7 +44,61 @@ function RootLayoutContent() {
   const colors = useColors();
   const pathname = usePathname();
   const pathnameRef = useRef(pathname);
+  const [isOnboardingReady, setIsOnboardingReady] = useState(false);
+  const [isOnboardingCompleted, setIsOnboardingCompleted] =
+    useState<boolean>(false);
   const backgroundColor = colors.background_color;
+  const isOnboardingRoute =
+    pathname === "/onboarding" || pathname === "/onboarding-permission";
+  const isOnboardingIntroRoute = pathname === "/onboarding";
+
+  useEffect(() => {
+    return addOnboardingCompletedListener((value) => {
+      setIsOnboardingCompleted(value);
+    });
+  }, []);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    const loadOnboardingState = async () => {
+      try {
+        const value = await getIsOnboardingCompleted();
+        if (!isMounted) return;
+        setIsOnboardingCompleted(value);
+      } catch (error) {
+        console.error("[RootLayout] Failed to read onboarding status:", error);
+      } finally {
+        if (isMounted) {
+          setIsOnboardingReady(true);
+        }
+      }
+    };
+
+    void loadOnboardingState();
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isOnboardingReady) return;
+
+    if (!isOnboardingCompleted && !isOnboardingRoute) {
+      router.replace("/onboarding" as any);
+      return;
+    }
+
+    if (isOnboardingCompleted && isOnboardingIntroRoute) {
+      router.replace("/" as any);
+    }
+  }, [
+    isOnboardingCompleted,
+    isOnboardingIntroRoute,
+    isOnboardingReady,
+    isOnboardingRoute,
+  ]);
 
   useEffect(() => {
     pathnameRef.current = pathname;
@@ -69,6 +127,10 @@ function RootLayoutContent() {
     return () => sub.remove();
   }, []);
 
+  if (!isOnboardingReady) {
+    return null;
+  }
+
   return (
     <ThemeProvider value={effectiveTheme === "dark" ? DarkTheme : DefaultTheme}>
       <OverlayProvider>
@@ -87,8 +149,8 @@ function RootLayoutContent() {
                           <View style={styles.contentWrap}>
                             <Stack screenOptions={{ headerShown: false }} />
                           </View>
-                          <MainNav />
-                          <SideMenus />
+                          {!isOnboardingRoute && <MainNav />}
+                          {!isOnboardingRoute && <SideMenus />}
                           <InitOverlay />
                           <ModalViewport />
                           <ToastViewport />

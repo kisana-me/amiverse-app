@@ -35,7 +35,7 @@
       [
         "expo-image-picker",
         {
-          "photosPermission": "画像を選択するために写真へのアクセスを許可してください。"
+          "photosPermission": "投稿への画像添付、プロフィールのアイコン・バナー変更のために写真へのアクセスを使用します。アップロードした画像は一般公開され、誰でも閲覧できる状態になります。"
         }
       ],
       [
@@ -54,7 +54,13 @@
       "expo-image",
       "expo-secure-store",
       "expo-web-browser",
-      "expo-video"
+      "expo-video",
+      [
+        "expo-tracking-transparency",
+        {
+          "userTrackingPermission": "あなたに合わせた情報・広告の表示、および効果測定のために、他社アプリやWebサイトをまたいだデータ追跡を求めています。"
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true,
