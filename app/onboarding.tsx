@@ -1,5 +1,7 @@
+import { Image } from "expo-image";
 import { router, useLocalSearchParams } from "expo-router";
-import React, { useMemo, useRef, useState } from "react";
+import { useVideoPlayer, VideoView } from "expo-video";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import {
   FlatList,
   NativeScrollEvent,
@@ -18,6 +20,8 @@ type SlideItem = {
   key: string;
   title: string;
   body: string;
+  mediaType: "image" | "video";
+  mediaSource: number;
 };
 
 const SLIDES: SlideItem[] = [
@@ -25,18 +29,67 @@ const SLIDES: SlideItem[] = [
     key: "1",
     title: "Amiverseへようこそ",
     body: "好きな投稿を見つけて、気になる人の投稿を追いかけられます。面白い投稿をしてみよう！",
+    mediaType: "image",
+    mediaSource: require("../assets/images/post.png"),
   },
   {
     key: "2",
     title: "ドット絵でコミュニケーション",
     body: "投稿に320×120の白黒ドット絵を描いて添付できます。手書きのやりとりを楽しもう！",
+    mediaType: "video",
+    mediaSource: require("../assets/videos/drawing.mp4"),
   },
   {
     key: "3",
     title: "リアクションで気軽に気持ちを伝えよう",
     body: "投稿には絵文字でリアクション出来ます。投稿にあった絵文字をいち早く選んで反応しよう！",
+    mediaType: "video",
+    mediaSource: require("../assets/videos/reaction.mp4"),
   },
 ];
+
+type OnboardingVideoProps = {
+  source: number;
+  active: boolean;
+};
+
+function OnboardingVideo({ source, active }: OnboardingVideoProps) {
+  const player = useVideoPlayer(source, (videoPlayer) => {
+    videoPlayer.loop = true;
+  });
+
+  useEffect(() => {
+    try {
+      if (active) {
+        player.play();
+        return;
+      }
+
+      player.pause();
+    } catch {
+      // Ignore transient native race conditions during setup.
+    }
+  }, [active, player]);
+
+  useEffect(() => {
+    return () => {
+      try {
+        player.pause();
+      } catch {
+        // Ignore race conditions during unmount.
+      }
+    };
+  }, [player]);
+
+  return (
+    <VideoView
+      player={player}
+      style={styles.media}
+      contentFit="contain"
+      nativeControls={false}
+    />
+  );
+}
 
 export default function OnboardingScreen() {
   const params = useLocalSearchParams<{ from?: string }>();
@@ -95,15 +148,31 @@ export default function OnboardingScreen() {
     <ThemedView style={styles.container}>
       <FlatList
         ref={listRef}
+        style={styles.slidesList}
         data={SLIDES}
+        extraData={index}
         horizontal
         pagingEnabled
         bounces={false}
         keyExtractor={(item) => item.key}
         showsHorizontalScrollIndicator={false}
         onMomentumScrollEnd={onMomentumEnd}
-        renderItem={({ item }) => (
+        renderItem={({ item, index: itemIndex }) => (
           <View style={[styles.slide, { width }]}>
+            <View style={styles.mediaWrapper}>
+              {item.mediaType === "image" ? (
+                <Image
+                  source={item.mediaSource}
+                  style={styles.media}
+                  contentFit="contain"
+                />
+              ) : (
+                <OnboardingVideo
+                  source={item.mediaSource}
+                  active={itemIndex === index}
+                />
+              )}
+            </View>
             <ThemedText type="title" style={styles.title}>
               {item.title}
             </ThemedText>
@@ -138,13 +207,28 @@ export default function OnboardingScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
+  },
+  slidesList: {
+    flex: 1,
   },
   slide: {
     flex: 1,
-    justifyContent: "center",
+    justifyContent: "flex-start",
     paddingHorizontal: 24,
+    paddingTop: 16,
+    paddingBottom: 16,
     gap: 14,
+  },
+  mediaWrapper: {
+    flex: 1,
+    width: "100%",
+    minHeight: 220,
+    borderRadius: 16,
+    overflow: "hidden",
+  },
+  media: {
+    width: "100%",
+    height: "100%",
   },
   title: {
     lineHeight: 42,
