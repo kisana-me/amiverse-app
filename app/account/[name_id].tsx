@@ -1,11 +1,15 @@
+import { Picker } from "@react-native-picker/picker";
 import { Image } from "expo-image";
 import { router, useLocalSearchParams } from "expo-router";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import {
   ActivityIndicator,
   FlatList,
+  Modal,
   Pressable,
+  ScrollView,
   StyleSheet,
+  TextInput,
   View,
 } from "react-native";
 
@@ -17,6 +21,7 @@ import {
   DisplayFeedPost,
   ListedFeedPost,
 } from "@/features/feed";
+import { REPORT_CATEGORIES } from "@/features/post/actions/menu";
 import ItemContent from "@/features/post/components/content";
 import { api } from "@/lib/axios";
 import { formatFullDate } from "@/lib/format_time";
@@ -45,6 +50,7 @@ function normalizeFeedResponse(data: unknown): {
 
 const FEED_CACHE_TTL_MS = 7000;
 const ACCOUNT_CACHE_TTL_MS = 7000;
+type ReportCategoryKey = (typeof REPORT_CATEGORIES)[number]["key"];
 
 export default function AccountDetailScreen() {
   const params = useLocalSearchParams<{ name_id?: string }>();
@@ -53,6 +59,7 @@ export default function AccountDetailScreen() {
   const borderColor = useColors().border_color;
   const backgroundColor = useColors().background_color;
   const tintColor = useColors().link_color;
+  const textColor = useColors().font_color;
 
   const { addToast } = useToast();
   const { currentAccount, currentAccountStatus } = useCurrentAccount();
@@ -90,6 +97,14 @@ export default function AccountDetailScreen() {
   );
   const [isLoadingMore, setIsLoadingMore] = useState(false);
   const [hasMore, setHasMore] = useState(true);
+  const [isMenuModalOpen, setIsMenuModalOpen] = useState(false);
+  const [isReportModalOpen, setIsReportModalOpen] = useState(false);
+  const [reportCategory, setReportCategory] = useState<ReportCategoryKey>(
+    REPORT_CATEGORIES[0].key,
+  );
+  const [reportDetail, setReportDetail] = useState("");
+  const [isBlockingSubmitting, setIsBlockingSubmitting] = useState(false);
+  const [isReportingSubmitting, setIsReportingSubmitting] = useState(false);
 
   const fetchAccountWithCacheControl = useCallback(async () => {
     if (!nameId) return;
@@ -273,6 +288,112 @@ export default function AccountDetailScreen() {
     }
   }, [account, addToast, isSelf, isSignedIn, nameId, updateAccount]);
 
+  const handleMenuPress = useCallback(() => {
+    setIsMenuModalOpen(true);
+  }, []);
+
+  const handleBlock = useCallback(async () => {
+    if (!account?.aid || !nameId) return;
+    if (!isSignedIn) {
+      addToast({
+        message: "操作できません",
+        detail: "サインインしてください",
+      });
+      router.push("/signin");
+      return;
+    }
+    if (isSelf || isBlockingSubmitting) return;
+
+    const isBlocking = !!account.is_blocking;
+    updateAccount(nameId, { is_blocking: !isBlocking });
+
+    setIsBlockingSubmitting(true);
+    try {
+      if (isBlocking) {
+        await api.delete(`/accounts/${account.aid}/block`);
+      } else {
+        await api.post(`/accounts/${account.aid}/block`);
+      }
+      addToast({
+        message: isBlocking ? "ブロックを解除しました" : "ブロックしました",
+      });
+      setIsMenuModalOpen(false);
+    } catch (error) {
+      updateAccount(nameId, { is_blocking: isBlocking });
+      addToast({
+        message: "エラー",
+        detail:
+          error instanceof Error
+            ? error.message
+            : isBlocking
+              ? "ブロック解除に失敗しました"
+              : "ブロックに失敗しました",
+      });
+    } finally {
+      setIsBlockingSubmitting(false);
+    }
+  }, [
+    account,
+    nameId,
+    isSignedIn,
+    addToast,
+    isSelf,
+    isBlockingSubmitting,
+    updateAccount,
+  ]);
+
+  const handleReportPress = useCallback(() => {
+    if (!account?.aid) return;
+    if (!isSignedIn) {
+      addToast({
+        message: "操作できません",
+        detail: "サインインしてください",
+      });
+      router.push("/signin");
+      return;
+    }
+    if (isSelf) return;
+    setIsReportModalOpen(true);
+  }, [account?.aid, addToast, isSignedIn, isSelf]);
+
+  const submitAccountReport = useCallback(async () => {
+    if (!account?.aid) return;
+    if (!isSignedIn || isSelf || isReportingSubmitting) return;
+
+    setIsReportingSubmitting(true);
+    try {
+      await api.post("/reports", {
+        report: {
+          target_type: "account",
+          target_aid: account.aid,
+          category: reportCategory,
+          description: reportDetail,
+        },
+      });
+
+      addToast({ message: "通報しました" });
+      setReportCategory(REPORT_CATEGORIES[0].key);
+      setReportDetail("");
+      setIsReportModalOpen(false);
+      setIsMenuModalOpen(false);
+    } catch (error) {
+      addToast({
+        message: "通報に失敗しました",
+        detail: error instanceof Error ? error.message : String(error),
+      });
+    } finally {
+      setIsReportingSubmitting(false);
+    }
+  }, [
+    account?.aid,
+    isSignedIn,
+    isSelf,
+    isReportingSubmitting,
+    reportCategory,
+    reportDetail,
+    addToast,
+  ]);
+
   const headerTitle = account?.name || "アカウント";
 
   const bannerSource = useMemo(() => {
@@ -381,43 +502,62 @@ export default function AccountDetailScreen() {
             </ThemedText>
           </View>
 
-          {isSelf ? (
-            <Pressable
-              onPress={() => router.push("/settings/account" as any)}
-              style={({ pressed }) => [
-                styles.followButton,
-                {
-                  borderColor,
-                  backgroundColor,
-                  opacity: pressed ? 0.8 : 1,
-                },
-              ]}
-            >
-              <ThemedText>プロフィール編集</ThemedText>
-            </Pressable>
-          ) : (
-            <Pressable
-              onPress={handleFollow}
-              style={({ pressed }) => [
-                styles.followButton,
-                {
-                  borderColor: account.is_following ? tintColor : borderColor,
-                  backgroundColor: account.is_following
-                    ? backgroundColor
-                    : tintColor,
-                  opacity: pressed ? 0.8 : 1,
-                },
-              ]}
-            >
-              <ThemedText
-                style={{
-                  color: account.is_following ? tintColor : backgroundColor,
-                }}
+          <View style={styles.actionButtons}>
+            {isSelf ? (
+              <Pressable
+                onPress={() => router.push("/settings/account" as any)}
+                style={({ pressed }) => [
+                  styles.followButton,
+                  {
+                    borderColor,
+                    backgroundColor,
+                    opacity: pressed ? 0.8 : 1,
+                  },
+                ]}
               >
-                {account.is_following ? "Following" : "Follow"}
-              </ThemedText>
-            </Pressable>
-          )}
+                <ThemedText>プロフィール編集</ThemedText>
+              </Pressable>
+            ) : (
+              <>
+                <Pressable
+                  onPress={handleFollow}
+                  style={({ pressed }) => [
+                    styles.followButton,
+                    {
+                      borderColor: account.is_following
+                        ? tintColor
+                        : borderColor,
+                      backgroundColor: account.is_following
+                        ? backgroundColor
+                        : tintColor,
+                      opacity: pressed ? 0.8 : 1,
+                    },
+                  ]}
+                >
+                  <ThemedText
+                    style={{
+                      color: account.is_following ? tintColor : backgroundColor,
+                    }}
+                  >
+                    {account.is_following ? "Following" : "Follow"}
+                  </ThemedText>
+                </Pressable>
+                <Pressable
+                  onPress={handleMenuPress}
+                  style={({ pressed }) => [
+                    styles.menuButton,
+                    {
+                      borderColor,
+                      backgroundColor,
+                      opacity: pressed ? 0.8 : 1,
+                    },
+                  ]}
+                >
+                  <ThemedText>Menu</ThemedText>
+                </Pressable>
+              </>
+            )}
+          </View>
         </View>
 
         {account.badges && account.badges.length > 0 && (
@@ -501,10 +641,10 @@ export default function AccountDetailScreen() {
     borderColor,
     currentAccountStatus,
     handleFollow,
+    handleMenuPress,
     iconSource,
     isAccountLoading,
     isSelf,
-    isSignedIn,
     nameId,
     tintColor,
   ]);
@@ -565,6 +705,139 @@ export default function AccountDetailScreen() {
           )
         }
       />
+
+      <Modal
+        visible={isMenuModalOpen}
+        transparent
+        animationType="fade"
+        onRequestClose={() => setIsMenuModalOpen(false)}
+      >
+        <Pressable
+          style={styles.modalBackdrop}
+          onPress={() => setIsMenuModalOpen(false)}
+        >
+          <Pressable
+            style={[styles.modalCard, { backgroundColor, borderColor }]}
+            onPress={() => undefined}
+          >
+            <ThemedText style={styles.modalTitle}>
+              アカウントメニュー
+            </ThemedText>
+            {account?.aid ? (
+              <ThemedText style={styles.menuMeta}>
+                アカウントID: {account.aid}
+              </ThemedText>
+            ) : null}
+
+            {account && !isSelf && isSignedIn ? (
+              <>
+                <Pressable
+                  onPress={handleBlock}
+                  disabled={isBlockingSubmitting}
+                  style={[styles.menuDangerButton, { borderColor: "#d93838" }]}
+                >
+                  <ThemedText style={styles.dangerText}>
+                    {account.is_blocking
+                      ? "アカウントのブロックを解除"
+                      : "アカウントをブロック"}
+                  </ThemedText>
+                </Pressable>
+
+                <Pressable
+                  onPress={handleReportPress}
+                  style={[styles.menuDangerButton, { borderColor: "#d93838" }]}
+                >
+                  <ThemedText style={styles.dangerText}>
+                    アカウントを通報
+                  </ThemedText>
+                </Pressable>
+              </>
+            ) : (
+              <ThemedText style={styles.menuMeta}>
+                {isSelf
+                  ? "自分のアカウントです"
+                  : "操作するにはサインインしてください"}
+              </ThemedText>
+            )}
+          </Pressable>
+        </Pressable>
+      </Modal>
+
+      <Modal
+        visible={isReportModalOpen}
+        transparent
+        animationType="fade"
+        onRequestClose={() => setIsReportModalOpen(false)}
+      >
+        <Pressable
+          style={styles.modalBackdrop}
+          onPress={() => setIsReportModalOpen(false)}
+        >
+          <Pressable
+            style={[styles.modalCard, { backgroundColor, borderColor }]}
+            onPress={() => undefined}
+          >
+            <ThemedText style={styles.modalTitle}>アカウントを通報</ThemedText>
+
+            <ScrollView style={styles.reportBody}>
+              <ThemedText style={styles.modalLabel}>通報の理由</ThemedText>
+              <View style={[styles.pickerWrap, { borderColor }]}>
+                <Picker
+                  selectedValue={reportCategory}
+                  onValueChange={(value) =>
+                    setReportCategory(value as ReportCategoryKey)
+                  }
+                  style={[styles.picker, { color: textColor }]}
+                >
+                  {REPORT_CATEGORIES.map((category) => (
+                    <Picker.Item
+                      key={category.key}
+                      label={category.label}
+                      value={category.key}
+                    />
+                  ))}
+                </Picker>
+              </View>
+
+              <ThemedText style={styles.modalLabel}>詳細（任意）</ThemedText>
+              <TextInput
+                value={reportDetail}
+                onChangeText={setReportDetail}
+                multiline
+                placeholder="詳細を入力してください"
+                placeholderTextColor="#888"
+                style={[
+                  styles.reportInput,
+                  {
+                    color: textColor,
+                    borderColor,
+                    backgroundColor,
+                  },
+                ]}
+              />
+            </ScrollView>
+
+            <View style={styles.modalActions}>
+              <Pressable
+                onPress={() => setIsReportModalOpen(false)}
+                style={[styles.modalActionButton, { borderColor }]}
+                disabled={isReportingSubmitting}
+              >
+                <ThemedText>キャンセル</ThemedText>
+              </Pressable>
+              <Pressable
+                onPress={submitAccountReport}
+                style={[styles.modalActionButton, styles.modalActionPrimary]}
+                disabled={isReportingSubmitting}
+              >
+                <ThemedText style={styles.modalActionPrimaryText}>
+                  {isReportingSubmitting ? "送信中..." : "通報する"}
+                </ThemedText>
+              </Pressable>
+            </View>
+          </Pressable>
+        </Pressable>
+      </Modal>
     </View>
   );
 }
@@ -604,7 +877,14 @@ const styles = StyleSheet.create({
   },
   avatar: { width: 56, height: 56, borderRadius: 28 },
   nameBlock: { flex: 1, minWidth: 0 },
+  actionButtons: { flexDirection: "row", alignItems: "center", gap: 8 },
   followButton: {
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    borderRadius: 16,
+    borderWidth: StyleSheet.hairlineWidth,
+  },
+  menuButton: {
     paddingHorizontal: 12,
     paddingVertical: 8,
     borderRadius: 16,
@@ -669,5 +949,82 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     paddingVertical: 10,
     paddingHorizontal: 16,
+  },
+  modalBackdrop: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "rgba(0,0,0,0.35)",
+    padding: 20,
+  },
+  modalCard: {
+    width: "100%",
+    maxWidth: 420,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderRadius: 12,
+    padding: 16,
+    gap: 10,
+  },
+  modalTitle: {
+    fontSize: 16,
+    fontWeight: "700",
+  },
+  menuMeta: {
+    fontSize: 12,
+    opacity: 0.7,
+  },
+  menuDangerButton: {
+    borderWidth: StyleSheet.hairlineWidth,
+    borderRadius: 8,
+    paddingVertical: 10,
+    paddingHorizontal: 12,
+  },
+  dangerText: {
+    color: "#d93838",
+  },
+  reportBody: {
+    maxHeight: 280,
+  },
+  modalLabel: {
+    fontSize: 13,
+    opacity: 0.8,
+    marginBottom: 4,
+  },
+  pickerWrap: {
+    borderWidth: StyleSheet.hairlineWidth,
+    borderRadius: 8,
+    marginBottom: 10,
+    overflow: "hidden",
+  },
+  picker: {
+    width: "100%",
+  },
+  reportInput: {
+    minHeight: 96,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderRadius: 10,
+    paddingHorizontal: 10,
+    paddingVertical: 8,
+    textAlignVertical: "top",
+    marginBottom: 8,
+  },
+  modalActions: {
+    marginTop: 4,
+    flexDirection: "row",
+    justifyContent: "flex-end",
+    gap: 8,
+  },
+  modalActionButton: {
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    borderRadius: 8,
+    borderWidth: StyleSheet.hairlineWidth,
+  },
+  modalActionPrimary: {
+    backgroundColor: "#d93838",
+    borderColor: "#d93838",
+  },
+  modalActionPrimaryText: {
+    color: "#fff",
   },
 });

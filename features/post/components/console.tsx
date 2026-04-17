@@ -1,8 +1,8 @@
+import { Picker } from "@react-native-picker/picker";
 import React, { useState } from "react";
 import {
   Modal,
   Pressable,
-  ScrollView,
   StyleSheet,
   TextInput,
   TouchableOpacity,
@@ -32,7 +32,6 @@ export default function PostConsole({ post }: { post: PostType }) {
   const cardBackground = useColors().background_color;
   const borderColor = useColors().border_color;
   const textColor = useColors().font_color;
-  const tintColor = useColors().link_color;
 
   const { currentAccountStatus, currentAccount } = useCurrentAccount();
   const { openSignInModal } = useModal();
@@ -389,25 +388,25 @@ export default function PostConsole({ post }: { post: PostType }) {
             <ThemedText style={styles.modalTitle}>投稿を通報</ThemedText>
 
             <ThemedText style={styles.label}>通報の理由</ThemedText>
-            <ScrollView style={styles.categoryList}>
-              {REPORT_CATEGORIES.map((category) => (
-                <TouchableOpacity
-                  key={category.key}
-                  style={[
-                    styles.categoryButton,
-                    {
-                      borderColor:
-                        reportCategory === category.key
-                          ? tintColor
-                          : borderColor,
-                    },
-                  ]}
-                  onPress={() => setReportCategory(category.key)}
-                >
-                  <ThemedText>{category.label}</ThemedText>
-                </TouchableOpacity>
-              ))}
-            </ScrollView>
+            <View style={[styles.pickerWrap, { borderColor }]}>
+              <Picker
+                selectedValue={reportCategory}
+                onValueChange={(value) =>
+                  setReportCategory(
+                    value as (typeof REPORT_CATEGORIES)[number]["key"],
+                  )
+                }
+                style={[styles.picker, { color: textColor }]}
+              >
+                {REPORT_CATEGORIES.map((category) => (
+                  <Picker.Item
+                    key={category.key}
+                    label={category.label}
+                    value={category.key}
+                  />
+                ))}
+              </Picker>
+            </View>
 
             <ThemedText style={styles.label}>詳細（任意）</ThemedText>
             <TextInput
@@ -516,15 +515,14 @@ const styles = StyleSheet.create({
   reportInput: {
     minHeight: 90,
   },
-  categoryList: {
-    maxHeight: 180,
-  },
-  categoryButton: {
+  pickerWrap: {
     borderWidth: StyleSheet.hairlineWidth,
     borderRadius: 8,
-    paddingVertical: 8,
-    paddingHorizontal: 10,
-    marginBottom: 6,
+    marginBottom: 10,
+    overflow: "hidden",
+  },
+  picker: {
+    width: "100%",
   },
   modalActions: {
     marginTop: 4,

@@ -1,4 +1,3 @@
-import { PostType } from "./post";
 
 export type AccountType = {
   aid: string;
@@ -19,6 +18,9 @@ export type AccountType = {
   is_following?: boolean;
   is_followed?: boolean;
 
+  is_blocking?: boolean;
+  is_blocked?: boolean;
+
   ring_color?: string;
   status_rb_color?: string;
 
@@ -28,4 +30,4 @@ export type AccountType = {
   }[];
 
   // posts: PostType[];
-}
+};
