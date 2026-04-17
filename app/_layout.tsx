@@ -3,7 +3,7 @@ import {
   DefaultTheme,
   ThemeProvider,
 } from "@react-navigation/native";
-import { router, Stack, usePathname } from "expo-router";
+import { router, Stack, useGlobalSearchParams, usePathname } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { useEffect, useRef, useState } from "react";
 import { BackHandler, Platform, StyleSheet, View } from "react-native";
@@ -43,6 +43,7 @@ function RootLayoutContent() {
   const { effectiveTheme } = useUI();
   const colors = useColors();
   const pathname = usePathname();
+  const globalParams = useGlobalSearchParams<{ from?: string | string[] }>();
   const pathnameRef = useRef(pathname);
   const [isOnboardingReady, setIsOnboardingReady] = useState(false);
   const [isOnboardingCompleted, setIsOnboardingCompleted] =
@@ -51,6 +52,11 @@ function RootLayoutContent() {
   const isOnboardingRoute =
     pathname === "/onboarding" || pathname === "/onboarding-permission";
   const isOnboardingIntroRoute = pathname === "/onboarding";
+  const fromParam = Array.isArray(globalParams.from)
+    ? globalParams.from[0]
+    : globalParams.from;
+  const canReplayOnboardingFromSettings =
+    isOnboardingIntroRoute && fromParam === "settings";
 
   useEffect(() => {
     return addOnboardingCompletedListener((value) => {
@@ -90,10 +96,15 @@ function RootLayoutContent() {
       return;
     }
 
-    if (isOnboardingCompleted && isOnboardingIntroRoute) {
+    if (
+      isOnboardingCompleted &&
+      isOnboardingIntroRoute &&
+      !canReplayOnboardingFromSettings
+    ) {
       router.replace("/" as any);
     }
   }, [
+    canReplayOnboardingFromSettings,
     isOnboardingCompleted,
     isOnboardingIntroRoute,
     isOnboardingReady,

@@ -1,4 +1,4 @@
-import { router } from "expo-router";
+import { router, useLocalSearchParams } from "expo-router";
 import React, { useMemo, useRef, useState } from "react";
 import {
   FlatList,
@@ -39,6 +39,8 @@ const SLIDES: SlideItem[] = [
 ];
 
 export default function OnboardingScreen() {
+  const params = useLocalSearchParams<{ from?: string }>();
+  const isFromSettings = params.from === "settings";
   const colors = useColors();
   const { width } = useWindowDimensions();
   const listRef = useRef<FlatList<SlideItem> | null>(null);
@@ -69,6 +71,10 @@ export default function OnboardingScreen() {
 
   const onPressNext = () => {
     if (isLast) {
+      if (isFromSettings) {
+        router.back();
+        return;
+      }
       router.push("/onboarding-permission" as any);
       return;
     }

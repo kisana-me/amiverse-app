@@ -116,6 +116,12 @@ export default function SettingsScreen() {
         <View style={styles.section}>
           <ThemedText type="defaultSemiBold">プライバシー</ThemedText>
           <Pressable
+            onPress={() => router.push("/onboarding?from=settings" as any)}
+            style={[styles.rowButton, { borderColor }]}
+          >
+            <ThemedText>オンボーディングを見る</ThemedText>
+          </Pressable>
+          <Pressable
             onPress={() =>
               router.push("/onboarding-permission?from=settings" as any)
             }
