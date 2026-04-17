@@ -1,5 +1,6 @@
 import { Image } from "expo-image";
 import { router, usePathname } from "expo-router";
+import { openBrowserAsync } from "expo-web-browser";
 import React, {
   useCallback,
   useEffect,
@@ -23,6 +24,7 @@ import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
 import { useCurrentAccount } from "@/providers/CurrentAccountProvider";
 import { useOverlay } from "@/providers/OverlayProvider";
+import { useToast } from "@/providers/ToastProvider";
 import { useTrends } from "@/providers/TrendsProvider";
 import { useColors } from "@/providers/UIProvider";
 
@@ -50,6 +52,7 @@ export function SideMenus() {
 
   const { currentAccount, currentAccountStatus } = useCurrentAccount();
   const { trends, trendsLoading } = useTrends();
+  const { addToast } = useToast();
   const {
     isHeaderMenuOpen,
     isAsideMenuOpen,
@@ -187,6 +190,21 @@ export function SideMenus() {
     outputRange: [drawerWidth, 0],
   });
 
+  const openExternal = useCallback(
+    async (url: string) => {
+      closeRightMenu();
+      try {
+        await openBrowserAsync(url);
+      } catch (error) {
+        addToast({
+          message: "エラー",
+          detail: error instanceof Error ? error.message : String(error),
+        });
+      }
+    },
+    [addToast, closeRightMenu],
+  );
+
   return (
     <>
       <Modal
@@ -314,15 +332,19 @@ export function SideMenus() {
 
                 <MenuItem
                   label="利用規約"
-                  onPress={() => router.push("/terms")}
+                  onPress={() =>
+                    void openExternal("https://anyur.com/terms-of-service")
+                  }
                 />
                 <MenuItem
                   label="プライバシーポリシー"
-                  onPress={() => router.push("/privacy")}
+                  onPress={() =>
+                    void openExternal("https://anyur.com/privacy-policy")
+                  }
                 />
                 <MenuItem
                   label="お問い合わせ"
-                  onPress={() => router.push("/contact")}
+                  onPress={() => void openExternal("https://anyur.com/contact")}
                 />
               </ScrollView>
             </SafeAreaView>
