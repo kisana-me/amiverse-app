@@ -1,0 +1,919 @@
+[
+  {
+    "name": "🍇",
+    "name_id": "grapes",
+    "description": "1F347\nE0.6",
+    "group": "Food & Drink",
+    "subgroup": "food-fruit"
+  },
+  {
+    "name": "🍈",
+    "name_id": "melon",
+    "description": "1F348\nE0.6",
+    "group": "Food & Drink",
+    "subgroup": "food-fruit"
+  },
+  {
+    "name": "🍉",
+    "name_id": "watermelon",
+    "description": "1F349\nE0.6",
+    "group": "Food & Drink",
+    "subgroup": "food-fruit"
+  },
+  {
+    "name": "🍊",
+    "name_id": "tangerine",
+    "description": "1F34A\nE0.6",
+    "group": "Food & Drink",
+    "subgroup": "food-fruit"
+  },
+  {
+    "name": "🍋",
+    "name_id": "lemon",
+    "description": "1F34B\nE1.0",
+    "group": "Food & Drink",
+    "subgroup": "food-fruit"
+  },
+  {
+    "name": "🍋‍🟩",
+    "name_id": "lime",
+    "description": "1F34B 200D 1F7E9\nE15.1",
+    "group": "Food & Drink",
+    "subgroup": "food-fruit"
+  },
+  {
+    "name": "🍌",
+    "name_id": "banana",
+    "description": "1F34C\nE0.6",
+    "group": "Food & Drink",
+    "subgroup": "food-fruit"
+  },
+  {
+    "name": "🍍",
+    "name_id": "pineapple",
+    "description": "1F34D\nE0.6",
+    "group": "Food & Drink",
+    "subgroup": "food-fruit"
+  },
+  {
+    "name": "🥭",
+    "name_id": "mango",
+    "description": "1F96D\nE11.0",
+    "group": "Food & Drink",
+    "subgroup": "food-fruit"
+  },
+  {
+    "name": "🍎",
+    "name_id": "red_apple",
+    "description": "1F34E\nE0.6",
+    "group": "Food & Drink",
+    "subgroup": "food-fruit"
+  },
+  {
+    "name": "🍏",
+    "name_id": "green_apple",
+    "description": "1F34F\nE0.6",
+    "group": "Food & Drink",
+    "subgroup": "food-fruit"
+  },
+  {
+    "name": "🍐",
+    "name_id": "pear",
+    "description": "1F350\nE1.0",
+    "group": "Food & Drink",
+    "subgroup": "food-fruit"
+  },
+  {
+    "name": "🍑",
+    "name_id": "peach",
+    "description": "1F351\nE0.6",
+    "group": "Food & Drink",
+    "subgroup": "food-fruit"
+  },
+  {
+    "name": "🍒",
+    "name_id": "cherries",
+    "description": "1F352\nE0.6",
+    "group": "Food & Drink",
+    "subgroup": "food-fruit"
+  },
+  {
+    "name": "🍓",
+    "name_id": "strawberry",
+    "description": "1F353\nE0.6",
+    "group": "Food & Drink",
+    "subgroup": "food-fruit"
+  },
+  {
+    "name": "🫐",
+    "name_id": "blueberries",
+    "description": "1FAD0\nE13.0",
+    "group": "Food & Drink",
+    "subgroup": "food-fruit"
+  },
+  {
+    "name": "🥝",
+    "name_id": "kiwi_fruit",
+    "description": "1F95D\nE3.0",
+    "group": "Food & Drink",
+    "subgroup": "food-fruit"
+  },
+  {
+    "name": "🍅",
+    "name_id": "tomato",
+    "description": "1F345\nE0.6",
+    "group": "Food & Drink",
+    "subgroup": "food-fruit"
+  },
+  {
+    "name": "🫒",
+    "name_id": "olive",
+    "description": "1FAD2\nE13.0",
+    "group": "Food & Drink",
+    "subgroup": "food-fruit"
+  },
+  {
+    "name": "🥥",
+    "name_id": "coconut",
+    "description": "1F965\nE5.0",
+    "group": "Food & Drink",
+    "subgroup": "food-fruit"
+  },
+  {
+    "name": "🥑",
+    "name_id": "avocado",
+    "description": "1F951\nE3.0",
+    "group": "Food & Drink",
+    "subgroup": "food-vegetable"
+  },
+  {
+    "name": "🍆",
+    "name_id": "eggplant",
+    "description": "1F346\nE0.6",
+    "group": "Food & Drink",
+    "subgroup": "food-vegetable"
+  },
+  {
+    "name": "🥔",
+    "name_id": "potato",
+    "description": "1F954\nE3.0",
+    "group": "Food & Drink",
+    "subgroup": "food-vegetable"
+  },
+  {
+    "name": "🥕",
+    "name_id": "carrot",
+    "description": "1F955\nE3.0",
+    "group": "Food & Drink",
+    "subgroup": "food-vegetable"
+  },
+  {
+    "name": "🌽",
+    "name_id": "ear_of_corn",
+    "description": "1F33D\nE0.6",
+    "group": "Food & Drink",
+    "subgroup": "food-vegetable"
+  },
+  {
+    "name": "🌶️",
+    "name_id": "hot_pepper",
+    "description": "1F336 FE0F\nE0.7",
+    "group": "Food & Drink",
+    "subgroup": "food-vegetable"
+  },
+  {
+    "name": "🫑",
+    "name_id": "bell_pepper",
+    "description": "1FAD1\nE13.0",
+    "group": "Food & Drink",
+    "subgroup": "food-vegetable"
+  },
+  {
+    "name": "🥒",
+    "name_id": "cucumber",
+    "description": "1F952\nE3.0",
+    "group": "Food & Drink",
+    "subgroup": "food-vegetable"
+  },
+  {
+    "name": "🥬",
+    "name_id": "leafy_green",
+    "description": "1F96C\nE11.0",
+    "group": "Food & Drink",
+    "subgroup": "food-vegetable"
+  },
+  {
+    "name": "🥦",
+    "name_id": "broccoli",
+    "description": "1F966\nE5.0",
+    "group": "Food & Drink",
+    "subgroup": "food-vegetable"
+  },
+  {
+    "name": "🧄",
+    "name_id": "garlic",
+    "description": "1F9C4\nE12.0",
+    "group": "Food & Drink",
+    "subgroup": "food-vegetable"
+  },
+  {
+    "name": "🧅",
+    "name_id": "onion",
+    "description": "1F9C5\nE12.0",
+    "group": "Food & Drink",
+    "subgroup": "food-vegetable"
+  },
+  {
+    "name": "🥜",
+    "name_id": "peanuts",
+    "description": "1F95C\nE3.0",
+    "group": "Food & Drink",
+    "subgroup": "food-vegetable"
+  },
+  {
+    "name": "🫘",
+    "name_id": "beans",
+    "description": "1FAD8\nE14.0",
+    "group": "Food & Drink",
+    "subgroup": "food-vegetable"
+  },
+  {
+    "name": "🌰",
+    "name_id": "chestnut",
+    "description": "1F330\nE0.6",
+    "group": "Food & Drink",
+    "subgroup": "food-vegetable"
+  },
+  {
+    "name": "🫚",
+    "name_id": "ginger_root",
+    "description": "1FADA\nE15.0",
+    "group": "Food & Drink",
+    "subgroup": "food-vegetable"
+  },
+  {
+    "name": "🫛",
+    "name_id": "pea_pod",
+    "description": "1FADB\nE15.0",
+    "group": "Food & Drink",
+    "subgroup": "food-vegetable"
+  },
+  {
+    "name": "🍄‍🟫",
+    "name_id": "brown_mushroom",
+    "description": "1F344 200D 1F7EB\nE15.1",
+    "group": "Food & Drink",
+    "subgroup": "food-vegetable"
+  },
+  {
+    "name": "🫜",
+    "name_id": "root_vegetable",
+    "description": "1FADC\nE16.0",
+    "group": "Food & Drink",
+    "subgroup": "food-vegetable"
+  },
+  {
+    "name": "🍞",
+    "name_id": "bread",
+    "description": "1F35E\nE0.6",
+    "group": "Food & Drink",
+    "subgroup": "food-prepared"
+  },
+  {
+    "name": "🥐",
+    "name_id": "croissant",
+    "description": "1F950\nE3.0",
+    "group": "Food & Drink",
+    "subgroup": "food-prepared"
+  },
+  {
+    "name": "🥖",
+    "name_id": "baguette_bread",
+    "description": "1F956\nE3.0",
+    "group": "Food & Drink",
+    "subgroup": "food-prepared"
+  },
+  {
+    "name": "🫓",
+    "name_id": "flatbread",
+    "description": "1FAD3\nE13.0",
+    "group": "Food & Drink",
+    "subgroup": "food-prepared"
+  },
+  {
+    "name": "🥨",
+    "name_id": "pretzel",
+    "description": "1F968\nE5.0",
+    "group": "Food & Drink",
+    "subgroup": "food-prepared"
+  },
+  {
+    "name": "🥯",
+    "name_id": "bagel",
+    "description": "1F96F\nE11.0",
+    "group": "Food & Drink",
+    "subgroup": "food-prepared"
+  },
+  {
+    "name": "🥞",
+    "name_id": "pancakes",
+    "description": "1F95E\nE3.0",
+    "group": "Food & Drink",
+    "subgroup": "food-prepared"
+  },
+  {
+    "name": "🧇",
+    "name_id": "waffle",
+    "description": "1F9C7\nE12.0",
+    "group": "Food & Drink",
+    "subgroup": "food-prepared"
+  },
+  {
+    "name": "🧀",
+    "name_id": "cheese_wedge",
+    "description": "1F9C0\nE1.0",
+    "group": "Food & Drink",
+    "subgroup": "food-prepared"
+  },
+  {
+    "name": "🍖",
+    "name_id": "meat_on_bone",
+    "description": "1F356\nE0.6",
+    "group": "Food & Drink",
+    "subgroup": "food-prepared"
+  },
+  {
+    "name": "🍗",
+    "name_id": "poultry_leg",
+    "description": "1F357\nE0.6",
+    "group": "Food & Drink",
+    "subgroup": "food-prepared"
+  },
+  {
+    "name": "🥩",
+    "name_id": "cut_of_meat",
+    "description": "1F969\nE5.0",
+    "group": "Food & Drink",
+    "subgroup": "food-prepared"
+  },
+  {
+    "name": "🥓",
+    "name_id": "bacon",
+    "description": "1F953\nE3.0",
+    "group": "Food & Drink",
+    "subgroup": "food-prepared"
+  },
+  {
+    "name": "🍔",
+    "name_id": "hamburger",
+    "description": "1F354\nE0.6",
+    "group": "Food & Drink",
+    "subgroup": "food-prepared"
+  },
+  {
+    "name": "🍟",
+    "name_id": "french_fries",
+    "description": "1F35F\nE0.6",
+    "group": "Food & Drink",
+    "subgroup": "food-prepared"
+  },
+  {
+    "name": "🍕",
+    "name_id": "pizza",
+    "description": "1F355\nE0.6",
+    "group": "Food & Drink",
+    "subgroup": "food-prepared"
+  },
+  {
+    "name": "🌭",
+    "name_id": "hot_dog",
+    "description": "1F32D\nE1.0",
+    "group": "Food & Drink",
+    "subgroup": "food-prepared"
+  },
+  {
+    "name": "🥪",
+    "name_id": "sandwich",
+    "description": "1F96A\nE5.0",
+    "group": "Food & Drink",
+    "subgroup": "food-prepared"
+  },
+  {
+    "name": "🌮",
+    "name_id": "taco",
+    "description": "1F32E\nE1.0",
+    "group": "Food & Drink",
+    "subgroup": "food-prepared"
+  },
+  {
+    "name": "🌯",
+    "name_id": "burrito",
+    "description": "1F32F\nE1.0",
+    "group": "Food & Drink",
+    "subgroup": "food-prepared"
+  },
+  {
+    "name": "🫔",
+    "name_id": "tamale",
+    "description": "1FAD4\nE13.0",
+    "group": "Food & Drink",
+    "subgroup": "food-prepared"
+  },
+  {
+    "name": "🥙",
+    "name_id": "stuffed_flatbread",
+    "description": "1F959\nE3.0",
+    "group": "Food & Drink",
+    "subgroup": "food-prepared"
+  },
+  {
+    "name": "🧆",
+    "name_id": "falafel",
+    "description": "1F9C6\nE12.0",
+    "group": "Food & Drink",
+    "subgroup": "food-prepared"
+  },
+  {
+    "name": "🥚",
+    "name_id": "egg",
+    "description": "1F95A\nE3.0",
+    "group": "Food & Drink",
+    "subgroup": "food-prepared"
+  },
+  {
+    "name": "🍳",
+    "name_id": "cooking",
+    "description": "1F373\nE0.6",
+    "group": "Food & Drink",
+    "subgroup": "food-prepared"
+  },
+  {
+    "name": "🥘",
+    "name_id": "shallow_pan_of_food",
+    "description": "1F958\nE3.0",
+    "group": "Food & Drink",
+    "subgroup": "food-prepared"
+  },
+  {
+    "name": "🍲",
+    "name_id": "pot_of_food",
+    "description": "1F372\nE0.6",
+    "group": "Food & Drink",
+    "subgroup": "food-prepared"
+  },
+  {
+    "name": "🫕",
+    "name_id": "fondue",
+    "description": "1FAD5\nE13.0",
+    "group": "Food & Drink",
+    "subgroup": "food-prepared"
+  },
+  {
+    "name": "🥣",
+    "name_id": "bowl_with_spoon",
+    "description": "1F963\nE5.0",
+    "group": "Food & Drink",
+    "subgroup": "food-prepared"
+  },
+  {
+    "name": "🥗",
+    "name_id": "green_salad",
+    "description": "1F957\nE3.0",
+    "group": "Food & Drink",
+    "subgroup": "food-prepared"
+  },
+  {
+    "name": "🍿",
+    "name_id": "popcorn",
+    "description": "1F37F\nE1.0",
+    "group": "Food & Drink",
+    "subgroup": "food-prepared"
+  },
+  {
+    "name": "🧈",
+    "name_id": "butter",
+    "description": "1F9C8\nE12.0",
+    "group": "Food & Drink",
+    "subgroup": "food-prepared"
+  },
+  {
+    "name": "🧂",
+    "name_id": "salt",
+    "description": "1F9C2\nE11.0",
+    "group": "Food & Drink",
+    "subgroup": "food-prepared"
+  },
+  {
+    "name": "🥫",
+    "name_id": "canned_food",
+    "description": "1F96B\nE5.0",
+    "group": "Food & Drink",
+    "subgroup": "food-prepared"
+  },
+  {
+    "name": "🍱",
+    "name_id": "bento_box",
+    "description": "1F371\nE0.6",
+    "group": "Food & Drink",
+    "subgroup": "food-asian"
+  },
+  {
+    "name": "🍘",
+    "name_id": "rice_cracker",
+    "description": "1F358\nE0.6",
+    "group": "Food & Drink",
+    "subgroup": "food-asian"
+  },
+  {
+    "name": "🍙",
+    "name_id": "rice_ball",
+    "description": "1F359\nE0.6",
+    "group": "Food & Drink",
+    "subgroup": "food-asian"
+  },
+  {
+    "name": "🍚",
+    "name_id": "cooked_rice",
+    "description": "1F35A\nE0.6",
+    "group": "Food & Drink",
+    "subgroup": "food-asian"
+  },
+  {
+    "name": "🍛",
+    "name_id": "curry_rice",
+    "description": "1F35B\nE0.6",
+    "group": "Food & Drink",
+    "subgroup": "food-asian"
+  },
+  {
+    "name": "🍜",
+    "name_id": "steaming_bowl",
+    "description": "1F35C\nE0.6",
+    "group": "Food & Drink",
+    "subgroup": "food-asian"
+  },
+  {
+    "name": "🍝",
+    "name_id": "spaghetti",
+    "description": "1F35D\nE0.6",
+    "group": "Food & Drink",
+    "subgroup": "food-asian"
+  },
+  {
+    "name": "🍠",
+    "name_id": "roasted_sweet_potato",
+    "description": "1F360\nE0.6",
+    "group": "Food & Drink",
+    "subgroup": "food-asian"
+  },
+  {
+    "name": "🍢",
+    "name_id": "oden",
+    "description": "1F362\nE0.6",
+    "group": "Food & Drink",
+    "subgroup": "food-asian"
+  },
+  {
+    "name": "🍣",
+    "name_id": "sushi",
+    "description": "1F363\nE0.6",
+    "group": "Food & Drink",
+    "subgroup": "food-asian"
+  },
+  {
+    "name": "🍤",
+    "name_id": "fried_shrimp",
+    "description": "1F364\nE0.6",
+    "group": "Food & Drink",
+    "subgroup": "food-asian"
+  },
+  {
+    "name": "🍥",
+    "name_id": "fish_cake_with_swirl",
+    "description": "1F365\nE0.6",
+    "group": "Food & Drink",
+    "subgroup": "food-asian"
+  },
+  {
+    "name": "🥮",
+    "name_id": "moon_cake",
+    "description": "1F96E\nE11.0",
+    "group": "Food & Drink",
+    "subgroup": "food-asian"
+  },
+  {
+    "name": "🍡",
+    "name_id": "dango",
+    "description": "1F361\nE0.6",
+    "group": "Food & Drink",
+    "subgroup": "food-asian"
+  },
+  {
+    "name": "🥟",
+    "name_id": "dumpling",
+    "description": "1F95F\nE5.0",
+    "group": "Food & Drink",
+    "subgroup": "food-asian"
+  },
+  {
+    "name": "🥠",
+    "name_id": "fortune_cookie",
+    "description": "1F960\nE5.0",
+    "group": "Food & Drink",
+    "subgroup": "food-asian"
+  },
+  {
+    "name": "🥡",
+    "name_id": "takeout_box",
+    "description": "1F961\nE5.0",
+    "group": "Food & Drink",
+    "subgroup": "food-asian"
+  },
+  {
+    "name": "🍦",
+    "name_id": "soft_ice_cream",
+    "description": "1F366\nE0.6",
+    "group": "Food & Drink",
+    "subgroup": "food-sweet"
+  },
+  {
+    "name": "🍧",
+    "name_id": "shaved_ice",
+    "description": "1F367\nE0.6",
+    "group": "Food & Drink",
+    "subgroup": "food-sweet"
+  },
+  {
+    "name": "🍨",
+    "name_id": "ice_cream",
+    "description": "1F368\nE0.6",
+    "group": "Food & Drink",
+    "subgroup": "food-sweet"
+  },
+  {
+    "name": "🍩",
+    "name_id": "doughnut",
+    "description": "1F369\nE0.6",
+    "group": "Food & Drink",
+    "subgroup": "food-sweet"
+  },
+  {
+    "name": "🍪",
+    "name_id": "cookie",
+    "description": "1F36A\nE0.6",
+    "group": "Food & Drink",
+    "subgroup": "food-sweet"
+  },
+  {
+    "name": "🎂",
+    "name_id": "birthday_cake",
+    "description": "1F382\nE0.6",
+    "group": "Food & Drink",
+    "subgroup": "food-sweet"
+  },
+  {
+    "name": "🍰",
+    "name_id": "shortcake",
+    "description": "1F370\nE0.6",
+    "group": "Food & Drink",
+    "subgroup": "food-sweet"
+  },
+  {
+    "name": "🧁",
+    "name_id": "cupcake",
+    "description": "1F9C1\nE11.0",
+    "group": "Food & Drink",
+    "subgroup": "food-sweet"
+  },
+  {
+    "name": "🥧",
+    "name_id": "pie",
+    "description": "1F967\nE5.0",
+    "group": "Food & Drink",
+    "subgroup": "food-sweet"
+  },
+  {
+    "name": "🍫",
+    "name_id": "chocolate_bar",
+    "description": "1F36B\nE0.6",
+    "group": "Food & Drink",
+    "subgroup": "food-sweet"
+  },
+  {
+    "name": "🍬",
+    "name_id": "candy",
+    "description": "1F36C\nE0.6",
+    "group": "Food & Drink",
+    "subgroup": "food-sweet"
+  },
+  {
+    "name": "🍭",
+    "name_id": "lollipop",
+    "description": "1F36D\nE0.6",
+    "group": "Food & Drink",
+    "subgroup": "food-sweet"
+  },
+  {
+    "name": "🍮",
+    "name_id": "custard",
+    "description": "1F36E\nE0.6",
+    "group": "Food & Drink",
+    "subgroup": "food-sweet"
+  },
+  {
+    "name": "🍯",
+    "name_id": "honey_pot",
+    "description": "1F36F\nE0.6",
+    "group": "Food & Drink",
+    "subgroup": "food-sweet"
+  },
+  {
+    "name": "🍼",
+    "name_id": "baby_bottle",
+    "description": "1F37C\nE1.0",
+    "group": "Food & Drink",
+    "subgroup": "drink"
+  },
+  {
+    "name": "🥛",
+    "name_id": "glass_of_milk",
+    "description": "1F95B\nE3.0",
+    "group": "Food & Drink",
+    "subgroup": "drink"
+  },
+  {
+    "name": "☕",
+    "name_id": "hot_beverage",
+    "description": "2615\nE0.6",
+    "group": "Food & Drink",
+    "subgroup": "drink"
+  },
+  {
+    "name": "🫖",
+    "name_id": "teapot",
+    "description": "1FAD6\nE13.0",
+    "group": "Food & Drink",
+    "subgroup": "drink"
+  },
+  {
+    "name": "🍵",
+    "name_id": "teacup_without_handle",
+    "description": "1F375\nE0.6",
+    "group": "Food & Drink",
+    "subgroup": "drink"
+  },
+  {
+    "name": "🍶",
+    "name_id": "sake",
+    "description": "1F376\nE0.6",
+    "group": "Food & Drink",
+    "subgroup": "drink"
+  },
+  {
+    "name": "🍾",
+    "name_id": "bottle_with_popping_cork",
+    "description": "1F37E\nE1.0",
+    "group": "Food & Drink",
+    "subgroup": "drink"
+  },
+  {
+    "name": "🍷",
+    "name_id": "wine_glass",
+    "description": "1F377\nE0.6",
+    "group": "Food & Drink",
+    "subgroup": "drink"
+  },
+  {
+    "name": "🍸",
+    "name_id": "cocktail_glass",
+    "description": "1F378\nE0.6",
+    "group": "Food & Drink",
+    "subgroup": "drink"
+  },
+  {
+    "name": "🍹",
+    "name_id": "tropical_drink",
+    "description": "1F379\nE0.6",
+    "group": "Food & Drink",
+    "subgroup": "drink"
+  },
+  {
+    "name": "🍺",
+    "name_id": "beer_mug",
+    "description": "1F37A\nE0.6",
+    "group": "Food & Drink",
+    "subgroup": "drink"
+  },
+  {
+    "name": "🍻",
+    "name_id": "clinking_beer_mugs",
+    "description": "1F37B\nE0.6",
+    "group": "Food & Drink",
+    "subgroup": "drink"
+  },
+  {
+    "name": "🥂",
+    "name_id": "clinking_glasses",
+    "description": "1F942\nE3.0",
+    "group": "Food & Drink",
+    "subgroup": "drink"
+  },
+  {
+    "name": "🥃",
+    "name_id": "tumbler_glass",
+    "description": "1F943\nE3.0",
+    "group": "Food & Drink",
+    "subgroup": "drink"
+  },
+  {
+    "name": "🫗",
+    "name_id": "pouring_liquid",
+    "description": "1FAD7\nE14.0",
+    "group": "Food & Drink",
+    "subgroup": "drink"
+  },
+  {
+    "name": "🥤",
+    "name_id": "cup_with_straw",
+    "description": "1F964\nE5.0",
+    "group": "Food & Drink",
+    "subgroup": "drink"
+  },
+  {
+    "name": "🧋",
+    "name_id": "bubble_tea",
+    "description": "1F9CB\nE13.0",
+    "group": "Food & Drink",
+    "subgroup": "drink"
+  },
+  {
+    "name": "🧃",
+    "name_id": "beverage_box",
+    "description": "1F9C3\nE12.0",
+    "group": "Food & Drink",
+    "subgroup": "drink"
+  },
+  {
+    "name": "🧉",
+    "name_id": "mate",
+    "description": "1F9C9\nE12.0",
+    "group": "Food & Drink",
+    "subgroup": "drink"
+  },
+  {
+    "name": "🧊",
+    "name_id": "ice",
+    "description": "1F9CA\nE12.0",
+    "group": "Food & Drink",
+    "subgroup": "drink"
+  },
+  {
+    "name": "🥢",
+    "name_id": "chopsticks",
+    "description": "1F962\nE5.0",
+    "group": "Food & Drink",
+    "subgroup": "dishware"
+  },
+  {
+    "name": "🍽️",
+    "name_id": "fork_and_knife_with_plate",
+    "description": "1F37D FE0F\nE0.7",
+    "group": "Food & Drink",
+    "subgroup": "dishware"
+  },
+  {
+    "name": "🍴",
+    "name_id": "fork_and_knife",
+    "description": "1F374\nE0.6",
+    "group": "Food & Drink",
+    "subgroup": "dishware"
+  },
+  {
+    "name": "🥄",
+    "name_id": "spoon",
+    "description": "1F944\nE3.0",
+    "group": "Food & Drink",
+    "subgroup": "dishware"
+  },
+  {
+    "name": "🔪",
+    "name_id": "kitchen_knife",
+    "description": "1F52A\nE0.6",
+    "group": "Food & Drink",
+    "subgroup": "dishware"
+  },
+  {
+    "name": "🫙",
+    "name_id": "jar",
+    "description": "1FAD9\nE14.0",
+    "group": "Food & Drink",
+    "subgroup": "dishware"
+  },
+  {
+    "name": "🏺",
+    "name_id": "amphora",
+    "description": "1F3FA\nE1.0",
+    "group": "Food & Drink",
+    "subgroup": "dishware"
+  }
+]

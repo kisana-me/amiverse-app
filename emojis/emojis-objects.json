@@ -1,0 +1,1864 @@
+[
+  {
+    "name": "👓",
+    "name_id": "glasses",
+    "description": "1F453\nE0.6",
+    "group": "Objects",
+    "subgroup": "clothing"
+  },
+  {
+    "name": "🕶️",
+    "name_id": "sunglasses",
+    "description": "1F576 FE0F\nE0.7",
+    "group": "Objects",
+    "subgroup": "clothing"
+  },
+  {
+    "name": "🥽",
+    "name_id": "goggles",
+    "description": "1F97D\nE11.0",
+    "group": "Objects",
+    "subgroup": "clothing"
+  },
+  {
+    "name": "🥼",
+    "name_id": "lab_coat",
+    "description": "1F97C\nE11.0",
+    "group": "Objects",
+    "subgroup": "clothing"
+  },
+  {
+    "name": "🦺",
+    "name_id": "safety_vest",
+    "description": "1F9BA\nE12.0",
+    "group": "Objects",
+    "subgroup": "clothing"
+  },
+  {
+    "name": "👔",
+    "name_id": "necktie",
+    "description": "1F454\nE0.6",
+    "group": "Objects",
+    "subgroup": "clothing"
+  },
+  {
+    "name": "👕",
+    "name_id": "t_shirt",
+    "description": "1F455\nE0.6",
+    "group": "Objects",
+    "subgroup": "clothing"
+  },
+  {
+    "name": "👖",
+    "name_id": "jeans",
+    "description": "1F456\nE0.6",
+    "group": "Objects",
+    "subgroup": "clothing"
+  },
+  {
+    "name": "🧣",
+    "name_id": "scarf",
+    "description": "1F9E3\nE5.0",
+    "group": "Objects",
+    "subgroup": "clothing"
+  },
+  {
+    "name": "🧤",
+    "name_id": "gloves",
+    "description": "1F9E4\nE5.0",
+    "group": "Objects",
+    "subgroup": "clothing"
+  },
+  {
+    "name": "🧥",
+    "name_id": "coat",
+    "description": "1F9E5\nE5.0",
+    "group": "Objects",
+    "subgroup": "clothing"
+  },
+  {
+    "name": "🧦",
+    "name_id": "socks",
+    "description": "1F9E6\nE5.0",
+    "group": "Objects",
+    "subgroup": "clothing"
+  },
+  {
+    "name": "👗",
+    "name_id": "dress",
+    "description": "1F457\nE0.6",
+    "group": "Objects",
+    "subgroup": "clothing"
+  },
+  {
+    "name": "👘",
+    "name_id": "kimono",
+    "description": "1F458\nE0.6",
+    "group": "Objects",
+    "subgroup": "clothing"
+  },
+  {
+    "name": "🥻",
+    "name_id": "sari",
+    "description": "1F97B\nE12.0",
+    "group": "Objects",
+    "subgroup": "clothing"
+  },
+  {
+    "name": "🩱",
+    "name_id": "one_piece_swimsuit",
+    "description": "1FA71\nE12.0",
+    "group": "Objects",
+    "subgroup": "clothing"
+  },
+  {
+    "name": "🩲",
+    "name_id": "briefs",
+    "description": "1FA72\nE12.0",
+    "group": "Objects",
+    "subgroup": "clothing"
+  },
+  {
+    "name": "🩳",
+    "name_id": "shorts",
+    "description": "1FA73\nE12.0",
+    "group": "Objects",
+    "subgroup": "clothing"
+  },
+  {
+    "name": "👙",
+    "name_id": "bikini",
+    "description": "1F459\nE0.6",
+    "group": "Objects",
+    "subgroup": "clothing"
+  },
+  {
+    "name": "👚",
+    "name_id": "woman_s_clothes",
+    "description": "1F45A\nE0.6",
+    "group": "Objects",
+    "subgroup": "clothing"
+  },
+  {
+    "name": "🪭",
+    "name_id": "folding_hand_fan",
+    "description": "1FAAD\nE15.0",
+    "group": "Objects",
+    "subgroup": "clothing"
+  },
+  {
+    "name": "👛",
+    "name_id": "purse",
+    "description": "1F45B\nE0.6",
+    "group": "Objects",
+    "subgroup": "clothing"
+  },
+  {
+    "name": "👜",
+    "name_id": "handbag",
+    "description": "1F45C\nE0.6",
+    "group": "Objects",
+    "subgroup": "clothing"
+  },
+  {
+    "name": "👝",
+    "name_id": "clutch_bag",
+    "description": "1F45D\nE0.6",
+    "group": "Objects",
+    "subgroup": "clothing"
+  },
+  {
+    "name": "🛍️",
+    "name_id": "shopping_bags",
+    "description": "1F6CD FE0F\nE0.7",
+    "group": "Objects",
+    "subgroup": "clothing"
+  },
+  {
+    "name": "🎒",
+    "name_id": "backpack",
+    "description": "1F392\nE0.6",
+    "group": "Objects",
+    "subgroup": "clothing"
+  },
+  {
+    "name": "🩴",
+    "name_id": "thong_sandal",
+    "description": "1FA74\nE13.0",
+    "group": "Objects",
+    "subgroup": "clothing"
+  },
+  {
+    "name": "👞",
+    "name_id": "man_s_shoe",
+    "description": "1F45E\nE0.6",
+    "group": "Objects",
+    "subgroup": "clothing"
+  },
+  {
+    "name": "👟",
+    "name_id": "running_shoe",
+    "description": "1F45F\nE0.6",
+    "group": "Objects",
+    "subgroup": "clothing"
+  },
+  {
+    "name": "🥾",
+    "name_id": "hiking_boot",
+    "description": "1F97E\nE11.0",
+    "group": "Objects",
+    "subgroup": "clothing"
+  },
+  {
+    "name": "🥿",
+    "name_id": "flat_shoe",
+    "description": "1F97F\nE11.0",
+    "group": "Objects",
+    "subgroup": "clothing"
+  },
+  {
+    "name": "👠",
+    "name_id": "high_heeled_shoe",
+    "description": "1F460\nE0.6",
+    "group": "Objects",
+    "subgroup": "clothing"
+  },
+  {
+    "name": "👡",
+    "name_id": "woman_s_sandal",
+    "description": "1F461\nE0.6",
+    "group": "Objects",
+    "subgroup": "clothing"
+  },
+  {
+    "name": "🩰",
+    "name_id": "ballet_shoes",
+    "description": "1FA70\nE12.0",
+    "group": "Objects",
+    "subgroup": "clothing"
+  },
+  {
+    "name": "👢",
+    "name_id": "woman_s_boot",
+    "description": "1F462\nE0.6",
+    "group": "Objects",
+    "subgroup": "clothing"
+  },
+  {
+    "name": "🪮",
+    "name_id": "hair_pick",
+    "description": "1FAAE\nE15.0",
+    "group": "Objects",
+    "subgroup": "clothing"
+  },
+  {
+    "name": "👑",
+    "name_id": "crown",
+    "description": "1F451\nE0.6",
+    "group": "Objects",
+    "subgroup": "clothing"
+  },
+  {
+    "name": "👒",
+    "name_id": "woman_s_hat",
+    "description": "1F452\nE0.6",
+    "group": "Objects",
+    "subgroup": "clothing"
+  },
+  {
+    "name": "🎩",
+    "name_id": "top_hat",
+    "description": "1F3A9\nE0.6",
+    "group": "Objects",
+    "subgroup": "clothing"
+  },
+  {
+    "name": "🎓",
+    "name_id": "graduation_cap",
+    "description": "1F393\nE0.6",
+    "group": "Objects",
+    "subgroup": "clothing"
+  },
+  {
+    "name": "🧢",
+    "name_id": "billed_cap",
+    "description": "1F9E2\nE5.0",
+    "group": "Objects",
+    "subgroup": "clothing"
+  },
+  {
+    "name": "🪖",
+    "name_id": "military_helmet",
+    "description": "1FA96\nE13.0",
+    "group": "Objects",
+    "subgroup": "clothing"
+  },
+  {
+    "name": "⛑️",
+    "name_id": "rescue_worker_s_helmet",
+    "description": "26D1 FE0F\nE0.7",
+    "group": "Objects",
+    "subgroup": "clothing"
+  },
+  {
+    "name": "📿",
+    "name_id": "prayer_beads",
+    "description": "1F4FF\nE1.0",
+    "group": "Objects",
+    "subgroup": "clothing"
+  },
+  {
+    "name": "💄",
+    "name_id": "lipstick",
+    "description": "1F484\nE0.6",
+    "group": "Objects",
+    "subgroup": "clothing"
+  },
+  {
+    "name": "💍",
+    "name_id": "ring",
+    "description": "1F48D\nE0.6",
+    "group": "Objects",
+    "subgroup": "clothing"
+  },
+  {
+    "name": "💎",
+    "name_id": "gem_stone",
+    "description": "1F48E\nE0.6",
+    "group": "Objects",
+    "subgroup": "clothing"
+  },
+  {
+    "name": "🔇",
+    "name_id": "muted_speaker",
+    "description": "1F507\nE1.0",
+    "group": "Objects",
+    "subgroup": "sound"
+  },
+  {
+    "name": "🔈",
+    "name_id": "speaker_low_volume",
+    "description": "1F508\nE0.7",
+    "group": "Objects",
+    "subgroup": "sound"
+  },
+  {
+    "name": "🔉",
+    "name_id": "speaker_medium_volume",
+    "description": "1F509\nE1.0",
+    "group": "Objects",
+    "subgroup": "sound"
+  },
+  {
+    "name": "🔊",
+    "name_id": "speaker_high_volume",
+    "description": "1F50A\nE0.6",
+    "group": "Objects",
+    "subgroup": "sound"
+  },
+  {
+    "name": "📢",
+    "name_id": "loudspeaker",
+    "description": "1F4E2\nE0.6",
+    "group": "Objects",
+    "subgroup": "sound"
+  },
+  {
+    "name": "📣",
+    "name_id": "megaphone",
+    "description": "1F4E3\nE0.6",
+    "group": "Objects",
+    "subgroup": "sound"
+  },
+  {
+    "name": "📯",
+    "name_id": "postal_horn",
+    "description": "1F4EF\nE1.0",
+    "group": "Objects",
+    "subgroup": "sound"
+  },
+  {
+    "name": "🔔",
+    "name_id": "bell",
+    "description": "1F514\nE0.6",
+    "group": "Objects",
+    "subgroup": "sound"
+  },
+  {
+    "name": "🔕",
+    "name_id": "bell_with_slash",
+    "description": "1F515\nE1.0",
+    "group": "Objects",
+    "subgroup": "sound"
+  },
+  {
+    "name": "🎼",
+    "name_id": "musical_score",
+    "description": "1F3BC\nE0.6",
+    "group": "Objects",
+    "subgroup": "music"
+  },
+  {
+    "name": "🎵",
+    "name_id": "musical_note",
+    "description": "1F3B5\nE0.6",
+    "group": "Objects",
+    "subgroup": "music"
+  },
+  {
+    "name": "🎶",
+    "name_id": "musical_notes",
+    "description": "1F3B6\nE0.6",
+    "group": "Objects",
+    "subgroup": "music"
+  },
+  {
+    "name": "🎙️",
+    "name_id": "studio_microphone",
+    "description": "1F399 FE0F\nE0.7",
+    "group": "Objects",
+    "subgroup": "music"
+  },
+  {
+    "name": "🎚️",
+    "name_id": "level_slider",
+    "description": "1F39A FE0F\nE0.7",
+    "group": "Objects",
+    "subgroup": "music"
+  },
+  {
+    "name": "🎛️",
+    "name_id": "control_knobs",
+    "description": "1F39B FE0F\nE0.7",
+    "group": "Objects",
+    "subgroup": "music"
+  },
+  {
+    "name": "🎤",
+    "name_id": "microphone",
+    "description": "1F3A4\nE0.6",
+    "group": "Objects",
+    "subgroup": "music"
+  },
+  {
+    "name": "🎧",
+    "name_id": "headphone",
+    "description": "1F3A7\nE0.6",
+    "group": "Objects",
+    "subgroup": "music"
+  },
+  {
+    "name": "📻",
+    "name_id": "radio",
+    "description": "1F4FB\nE0.6",
+    "group": "Objects",
+    "subgroup": "music"
+  },
+  {
+    "name": "🎷",
+    "name_id": "saxophone",
+    "description": "1F3B7\nE0.6",
+    "group": "Objects",
+    "subgroup": "musical-instrument"
+  },
+  {
+    "name": "🎺",
+    "name_id": "trumpet",
+    "description": "1F3BA\nE0.6",
+    "group": "Objects",
+    "subgroup": "musical-instrument"
+  },
+  {
+    "name": "🪊",
+    "name_id": "trombone",
+    "description": "1FA8A\nE17.0",
+    "group": "Objects",
+    "subgroup": "musical-instrument"
+  },
+  {
+    "name": "🪗",
+    "name_id": "accordion",
+    "description": "1FA97\nE13.0",
+    "group": "Objects",
+    "subgroup": "musical-instrument"
+  },
+  {
+    "name": "🎸",
+    "name_id": "guitar",
+    "description": "1F3B8\nE0.6",
+    "group": "Objects",
+    "subgroup": "musical-instrument"
+  },
+  {
+    "name": "🎹",
+    "name_id": "musical_keyboard",
+    "description": "1F3B9\nE0.6",
+    "group": "Objects",
+    "subgroup": "musical-instrument"
+  },
+  {
+    "name": "🎻",
+    "name_id": "violin",
+    "description": "1F3BB\nE0.6",
+    "group": "Objects",
+    "subgroup": "musical-instrument"
+  },
+  {
+    "name": "🪕",
+    "name_id": "banjo",
+    "description": "1FA95\nE12.0",
+    "group": "Objects",
+    "subgroup": "musical-instrument"
+  },
+  {
+    "name": "🥁",
+    "name_id": "drum",
+    "description": "1F941\nE3.0",
+    "group": "Objects",
+    "subgroup": "musical-instrument"
+  },
+  {
+    "name": "🪘",
+    "name_id": "long_drum",
+    "description": "1FA98\nE13.0",
+    "group": "Objects",
+    "subgroup": "musical-instrument"
+  },
+  {
+    "name": "🪇",
+    "name_id": "maracas",
+    "description": "1FA87\nE15.0",
+    "group": "Objects",
+    "subgroup": "musical-instrument"
+  },
+  {
+    "name": "🪈",
+    "name_id": "flute",
+    "description": "1FA88\nE15.0",
+    "group": "Objects",
+    "subgroup": "musical-instrument"
+  },
+  {
+    "name": "🪉",
+    "name_id": "harp",
+    "description": "1FA89\nE16.0",
+    "group": "Objects",
+    "subgroup": "musical-instrument"
+  },
+  {
+    "name": "📱",
+    "name_id": "mobile_phone",
+    "description": "1F4F1\nE0.6",
+    "group": "Objects",
+    "subgroup": "phone"
+  },
+  {
+    "name": "📲",
+    "name_id": "mobile_phone_with_arrow",
+    "description": "1F4F2\nE0.6",
+    "group": "Objects",
+    "subgroup": "phone"
+  },
+  {
+    "name": "☎️",
+    "name_id": "telephone",
+    "description": "260E FE0F\nE0.6",
+    "group": "Objects",
+    "subgroup": "phone"
+  },
+  {
+    "name": "📞",
+    "name_id": "telephone_receiver",
+    "description": "1F4DE\nE0.6",
+    "group": "Objects",
+    "subgroup": "phone"
+  },
+  {
+    "name": "📟",
+    "name_id": "pager",
+    "description": "1F4DF\nE0.6",
+    "group": "Objects",
+    "subgroup": "phone"
+  },
+  {
+    "name": "📠",
+    "name_id": "fax_machine",
+    "description": "1F4E0\nE0.6",
+    "group": "Objects",
+    "subgroup": "phone"
+  },
+  {
+    "name": "🔋",
+    "name_id": "battery",
+    "description": "1F50B\nE0.6",
+    "group": "Objects",
+    "subgroup": "computer"
+  },
+  {
+    "name": "🪫",
+    "name_id": "low_battery",
+    "description": "1FAAB\nE14.0",
+    "group": "Objects",
+    "subgroup": "computer"
+  },
+  {
+    "name": "🔌",
+    "name_id": "electric_plug",
+    "description": "1F50C\nE0.6",
+    "group": "Objects",
+    "subgroup": "computer"
+  },
+  {
+    "name": "💻",
+    "name_id": "laptop",
+    "description": "1F4BB\nE0.6",
+    "group": "Objects",
+    "subgroup": "computer"
+  },
+  {
+    "name": "🖥️",
+    "name_id": "desktop_computer",
+    "description": "1F5A5 FE0F\nE0.7",
+    "group": "Objects",
+    "subgroup": "computer"
+  },
+  {
+    "name": "🖨️",
+    "name_id": "printer",
+    "description": "1F5A8 FE0F\nE0.7",
+    "group": "Objects",
+    "subgroup": "computer"
+  },
+  {
+    "name": "⌨️",
+    "name_id": "keyboard",
+    "description": "2328 FE0F\nE1.0",
+    "group": "Objects",
+    "subgroup": "computer"
+  },
+  {
+    "name": "🖱️",
+    "name_id": "computer_mouse",
+    "description": "1F5B1 FE0F\nE0.7",
+    "group": "Objects",
+    "subgroup": "computer"
+  },
+  {
+    "name": "🖲️",
+    "name_id": "trackball",
+    "description": "1F5B2 FE0F\nE0.7",
+    "group": "Objects",
+    "subgroup": "computer"
+  },
+  {
+    "name": "💽",
+    "name_id": "computer_disk",
+    "description": "1F4BD\nE0.6",
+    "group": "Objects",
+    "subgroup": "computer"
+  },
+  {
+    "name": "💾",
+    "name_id": "floppy_disk",
+    "description": "1F4BE\nE0.6",
+    "group": "Objects",
+    "subgroup": "computer"
+  },
+  {
+    "name": "💿",
+    "name_id": "optical_disk",
+    "description": "1F4BF\nE0.6",
+    "group": "Objects",
+    "subgroup": "computer"
+  },
+  {
+    "name": "📀",
+    "name_id": "dvd",
+    "description": "1F4C0\nE0.6",
+    "group": "Objects",
+    "subgroup": "computer"
+  },
+  {
+    "name": "🧮",
+    "name_id": "abacus",
+    "description": "1F9EE\nE11.0",
+    "group": "Objects",
+    "subgroup": "computer"
+  },
+  {
+    "name": "🎥",
+    "name_id": "movie_camera",
+    "description": "1F3A5\nE0.6",
+    "group": "Objects",
+    "subgroup": "light & video"
+  },
+  {
+    "name": "🎞️",
+    "name_id": "film_frames",
+    "description": "1F39E FE0F\nE0.7",
+    "group": "Objects",
+    "subgroup": "light & video"
+  },
+  {
+    "name": "📽️",
+    "name_id": "film_projector",
+    "description": "1F4FD FE0F\nE0.7",
+    "group": "Objects",
+    "subgroup": "light & video"
+  },
+  {
+    "name": "🎬",
+    "name_id": "clapper_board",
+    "description": "1F3AC\nE0.6",
+    "group": "Objects",
+    "subgroup": "light & video"
+  },
+  {
+    "name": "📺",
+    "name_id": "television",
+    "description": "1F4FA\nE0.6",
+    "group": "Objects",
+    "subgroup": "light & video"
+  },
+  {
+    "name": "📷",
+    "name_id": "camera",
+    "description": "1F4F7\nE0.6",
+    "group": "Objects",
+    "subgroup": "light & video"
+  },
+  {
+    "name": "📸",
+    "name_id": "camera_with_flash",
+    "description": "1F4F8\nE1.0",
+    "group": "Objects",
+    "subgroup": "light & video"
+  },
+  {
+    "name": "📹",
+    "name_id": "video_camera",
+    "description": "1F4F9\nE0.6",
+    "group": "Objects",
+    "subgroup": "light & video"
+  },
+  {
+    "name": "📼",
+    "name_id": "videocassette",
+    "description": "1F4FC\nE0.6",
+    "group": "Objects",
+    "subgroup": "light & video"
+  },
+  {
+    "name": "🔍",
+    "name_id": "magnifying_glass_tilted_left",
+    "description": "1F50D\nE0.6",
+    "group": "Objects",
+    "subgroup": "light & video"
+  },
+  {
+    "name": "🔎",
+    "name_id": "magnifying_glass_tilted_right",
+    "description": "1F50E\nE0.6",
+    "group": "Objects",
+    "subgroup": "light & video"
+  },
+  {
+    "name": "🕯️",
+    "name_id": "candle",
+    "description": "1F56F FE0F\nE0.7",
+    "group": "Objects",
+    "subgroup": "light & video"
+  },
+  {
+    "name": "💡",
+    "name_id": "light_bulb",
+    "description": "1F4A1\nE0.6",
+    "group": "Objects",
+    "subgroup": "light & video"
+  },
+  {
+    "name": "🔦",
+    "name_id": "flashlight",
+    "description": "1F526\nE0.6",
+    "group": "Objects",
+    "subgroup": "light & video"
+  },
+  {
+    "name": "🏮",
+    "name_id": "red_paper_lantern",
+    "description": "1F3EE\nE0.6",
+    "group": "Objects",
+    "subgroup": "light & video"
+  },
+  {
+    "name": "🪔",
+    "name_id": "diya_lamp",
+    "description": "1FA94\nE12.0",
+    "group": "Objects",
+    "subgroup": "light & video"
+  },
+  {
+    "name": "📔",
+    "name_id": "notebook_with_decorative_cover",
+    "description": "1F4D4\nE0.6",
+    "group": "Objects",
+    "subgroup": "book-paper"
+  },
+  {
+    "name": "📕",
+    "name_id": "closed_book",
+    "description": "1F4D5\nE0.6",
+    "group": "Objects",
+    "subgroup": "book-paper"
+  },
+  {
+    "name": "📖",
+    "name_id": "open_book",
+    "description": "1F4D6\nE0.6",
+    "group": "Objects",
+    "subgroup": "book-paper"
+  },
+  {
+    "name": "📗",
+    "name_id": "green_book",
+    "description": "1F4D7\nE0.6",
+    "group": "Objects",
+    "subgroup": "book-paper"
+  },
+  {
+    "name": "📘",
+    "name_id": "blue_book",
+    "description": "1F4D8\nE0.6",
+    "group": "Objects",
+    "subgroup": "book-paper"
+  },
+  {
+    "name": "📙",
+    "name_id": "orange_book",
+    "description": "1F4D9\nE0.6",
+    "group": "Objects",
+    "subgroup": "book-paper"
+  },
+  {
+    "name": "📚",
+    "name_id": "books",
+    "description": "1F4DA\nE0.6",
+    "group": "Objects",
+    "subgroup": "book-paper"
+  },
+  {
+    "name": "📓",
+    "name_id": "notebook",
+    "description": "1F4D3\nE0.6",
+    "group": "Objects",
+    "subgroup": "book-paper"
+  },
+  {
+    "name": "📒",
+    "name_id": "ledger",
+    "description": "1F4D2\nE0.6",
+    "group": "Objects",
+    "subgroup": "book-paper"
+  },
+  {
+    "name": "📃",
+    "name_id": "page_with_curl",
+    "description": "1F4C3\nE0.6",
+    "group": "Objects",
+    "subgroup": "book-paper"
+  },
+  {
+    "name": "📜",
+    "name_id": "scroll",
+    "description": "1F4DC\nE0.6",
+    "group": "Objects",
+    "subgroup": "book-paper"
+  },
+  {
+    "name": "📄",
+    "name_id": "page_facing_up",
+    "description": "1F4C4\nE0.6",
+    "group": "Objects",
+    "subgroup": "book-paper"
+  },
+  {
+    "name": "📰",
+    "name_id": "newspaper",
+    "description": "1F4F0\nE0.6",
+    "group": "Objects",
+    "subgroup": "book-paper"
+  },
+  {
+    "name": "🗞️",
+    "name_id": "rolled_up_newspaper",
+    "description": "1F5DE FE0F\nE0.7",
+    "group": "Objects",
+    "subgroup": "book-paper"
+  },
+  {
+    "name": "📑",
+    "name_id": "bookmark_tabs",
+    "description": "1F4D1\nE0.6",
+    "group": "Objects",
+    "subgroup": "book-paper"
+  },
+  {
+    "name": "🔖",
+    "name_id": "bookmark",
+    "description": "1F516\nE0.6",
+    "group": "Objects",
+    "subgroup": "book-paper"
+  },
+  {
+    "name": "🏷️",
+    "name_id": "label",
+    "description": "1F3F7 FE0F\nE0.7",
+    "group": "Objects",
+    "subgroup": "book-paper"
+  },
+  {
+    "name": "🪙",
+    "name_id": "coin",
+    "description": "1FA99\nE13.0",
+    "group": "Objects",
+    "subgroup": "money"
+  },
+  {
+    "name": "💰",
+    "name_id": "money_bag",
+    "description": "1F4B0\nE0.6",
+    "group": "Objects",
+    "subgroup": "money"
+  },
+  {
+    "name": "🪎",
+    "name_id": "treasure_chest",
+    "description": "1FA8E\nE17.0",
+    "group": "Objects",
+    "subgroup": "money"
+  },
+  {
+    "name": "💴",
+    "name_id": "yen_banknote",
+    "description": "1F4B4\nE0.6",
+    "group": "Objects",
+    "subgroup": "money"
+  },
+  {
+    "name": "💵",
+    "name_id": "dollar_banknote",
+    "description": "1F4B5\nE0.6",
+    "group": "Objects",
+    "subgroup": "money"
+  },
+  {
+    "name": "💶",
+    "name_id": "euro_banknote",
+    "description": "1F4B6\nE1.0",
+    "group": "Objects",
+    "subgroup": "money"
+  },
+  {
+    "name": "💷",
+    "name_id": "pound_banknote",
+    "description": "1F4B7\nE1.0",
+    "group": "Objects",
+    "subgroup": "money"
+  },
+  {
+    "name": "💸",
+    "name_id": "money_with_wings",
+    "description": "1F4B8\nE0.6",
+    "group": "Objects",
+    "subgroup": "money"
+  },
+  {
+    "name": "💳",
+    "name_id": "credit_card",
+    "description": "1F4B3\nE0.6",
+    "group": "Objects",
+    "subgroup": "money"
+  },
+  {
+    "name": "🧾",
+    "name_id": "receipt",
+    "description": "1F9FE\nE11.0",
+    "group": "Objects",
+    "subgroup": "money"
+  },
+  {
+    "name": "💹",
+    "name_id": "chart_increasing_with_yen",
+    "description": "1F4B9\nE0.6",
+    "group": "Objects",
+    "subgroup": "money"
+  },
+  {
+    "name": "✉️",
+    "name_id": "envelope",
+    "description": "2709 FE0F\nE0.6",
+    "group": "Objects",
+    "subgroup": "mail"
+  },
+  {
+    "name": "📧",
+    "name_id": "e_mail",
+    "description": "1F4E7\nE0.6",
+    "group": "Objects",
+    "subgroup": "mail"
+  },
+  {
+    "name": "📨",
+    "name_id": "incoming_envelope",
+    "description": "1F4E8\nE0.6",
+    "group": "Objects",
+    "subgroup": "mail"
+  },
+  {
+    "name": "📩",
+    "name_id": "envelope_with_arrow",
+    "description": "1F4E9\nE0.6",
+    "group": "Objects",
+    "subgroup": "mail"
+  },
+  {
+    "name": "📤",
+    "name_id": "outbox_tray",
+    "description": "1F4E4\nE0.6",
+    "group": "Objects",
+    "subgroup": "mail"
+  },
+  {
+    "name": "📥",
+    "name_id": "inbox_tray",
+    "description": "1F4E5\nE0.6",
+    "group": "Objects",
+    "subgroup": "mail"
+  },
+  {
+    "name": "📦",
+    "name_id": "package",
+    "description": "1F4E6\nE0.6",
+    "group": "Objects",
+    "subgroup": "mail"
+  },
+  {
+    "name": "📫",
+    "name_id": "closed_mailbox_with_raised_flag",
+    "description": "1F4EB\nE0.6",
+    "group": "Objects",
+    "subgroup": "mail"
+  },
+  {
+    "name": "📪",
+    "name_id": "closed_mailbox_with_lowered_flag",
+    "description": "1F4EA\nE0.6",
+    "group": "Objects",
+    "subgroup": "mail"
+  },
+  {
+    "name": "📬",
+    "name_id": "open_mailbox_with_raised_flag",
+    "description": "1F4EC\nE0.7",
+    "group": "Objects",
+    "subgroup": "mail"
+  },
+  {
+    "name": "📭",
+    "name_id": "open_mailbox_with_lowered_flag",
+    "description": "1F4ED\nE0.7",
+    "group": "Objects",
+    "subgroup": "mail"
+  },
+  {
+    "name": "📮",
+    "name_id": "postbox",
+    "description": "1F4EE\nE0.6",
+    "group": "Objects",
+    "subgroup": "mail"
+  },
+  {
+    "name": "🗳️",
+    "name_id": "ballot_box_with_ballot",
+    "description": "1F5F3 FE0F\nE0.7",
+    "group": "Objects",
+    "subgroup": "mail"
+  },
+  {
+    "name": "✏️",
+    "name_id": "pencil",
+    "description": "270F FE0F\nE0.6",
+    "group": "Objects",
+    "subgroup": "writing"
+  },
+  {
+    "name": "✒️",
+    "name_id": "black_nib",
+    "description": "2712 FE0F\nE0.6",
+    "group": "Objects",
+    "subgroup": "writing"
+  },
+  {
+    "name": "🖋️",
+    "name_id": "fountain_pen",
+    "description": "1F58B FE0F\nE0.7",
+    "group": "Objects",
+    "subgroup": "writing"
+  },
+  {
+    "name": "🖊️",
+    "name_id": "pen",
+    "description": "1F58A FE0F\nE0.7",
+    "group": "Objects",
+    "subgroup": "writing"
+  },
+  {
+    "name": "🖌️",
+    "name_id": "paintbrush",
+    "description": "1F58C FE0F\nE0.7",
+    "group": "Objects",
+    "subgroup": "writing"
+  },
+  {
+    "name": "🖍️",
+    "name_id": "crayon",
+    "description": "1F58D FE0F\nE0.7",
+    "group": "Objects",
+    "subgroup": "writing"
+  },
+  {
+    "name": "📝",
+    "name_id": "memo",
+    "description": "1F4DD\nE0.6",
+    "group": "Objects",
+    "subgroup": "writing"
+  },
+  {
+    "name": "💼",
+    "name_id": "briefcase",
+    "description": "1F4BC\nE0.6",
+    "group": "Objects",
+    "subgroup": "office"
+  },
+  {
+    "name": "📁",
+    "name_id": "file_folder",
+    "description": "1F4C1\nE0.6",
+    "group": "Objects",
+    "subgroup": "office"
+  },
+  {
+    "name": "📂",
+    "name_id": "open_file_folder",
+    "description": "1F4C2\nE0.6",
+    "group": "Objects",
+    "subgroup": "office"
+  },
+  {
+    "name": "🗂️",
+    "name_id": "card_index_dividers",
+    "description": "1F5C2 FE0F\nE0.7",
+    "group": "Objects",
+    "subgroup": "office"
+  },
+  {
+    "name": "📅",
+    "name_id": "calendar",
+    "description": "1F4C5\nE0.6",
+    "group": "Objects",
+    "subgroup": "office"
+  },
+  {
+    "name": "📆",
+    "name_id": "tear_off_calendar",
+    "description": "1F4C6\nE0.6",
+    "group": "Objects",
+    "subgroup": "office"
+  },
+  {
+    "name": "🗒️",
+    "name_id": "spiral_notepad",
+    "description": "1F5D2 FE0F\nE0.7",
+    "group": "Objects",
+    "subgroup": "office"
+  },
+  {
+    "name": "🗓️",
+    "name_id": "spiral_calendar",
+    "description": "1F5D3 FE0F\nE0.7",
+    "group": "Objects",
+    "subgroup": "office"
+  },
+  {
+    "name": "📇",
+    "name_id": "card_index",
+    "description": "1F4C7\nE0.6",
+    "group": "Objects",
+    "subgroup": "office"
+  },
+  {
+    "name": "📈",
+    "name_id": "chart_increasing",
+    "description": "1F4C8\nE0.6",
+    "group": "Objects",
+    "subgroup": "office"
+  },
+  {
+    "name": "📉",
+    "name_id": "chart_decreasing",
+    "description": "1F4C9\nE0.6",
+    "group": "Objects",
+    "subgroup": "office"
+  },
+  {
+    "name": "📊",
+    "name_id": "bar_chart",
+    "description": "1F4CA\nE0.6",
+    "group": "Objects",
+    "subgroup": "office"
+  },
+  {
+    "name": "📋",
+    "name_id": "clipboard",
+    "description": "1F4CB\nE0.6",
+    "group": "Objects",
+    "subgroup": "office"
+  },
+  {
+    "name": "📌",
+    "name_id": "pushpin",
+    "description": "1F4CC\nE0.6",
+    "group": "Objects",
+    "subgroup": "office"
+  },
+  {
+    "name": "📍",
+    "name_id": "round_pushpin",
+    "description": "1F4CD\nE0.6",
+    "group": "Objects",
+    "subgroup": "office"
+  },
+  {
+    "name": "📎",
+    "name_id": "paperclip",
+    "description": "1F4CE\nE0.6",
+    "group": "Objects",
+    "subgroup": "office"
+  },
+  {
+    "name": "🖇️",
+    "name_id": "linked_paperclips",
+    "description": "1F587 FE0F\nE0.7",
+    "group": "Objects",
+    "subgroup": "office"
+  },
+  {
+    "name": "📏",
+    "name_id": "straight_ruler",
+    "description": "1F4CF\nE0.6",
+    "group": "Objects",
+    "subgroup": "office"
+  },
+  {
+    "name": "📐",
+    "name_id": "triangular_ruler",
+    "description": "1F4D0\nE0.6",
+    "group": "Objects",
+    "subgroup": "office"
+  },
+  {
+    "name": "✂️",
+    "name_id": "scissors",
+    "description": "2702 FE0F\nE0.6",
+    "group": "Objects",
+    "subgroup": "office"
+  },
+  {
+    "name": "🗃️",
+    "name_id": "card_file_box",
+    "description": "1F5C3 FE0F\nE0.7",
+    "group": "Objects",
+    "subgroup": "office"
+  },
+  {
+    "name": "🗄️",
+    "name_id": "file_cabinet",
+    "description": "1F5C4 FE0F\nE0.7",
+    "group": "Objects",
+    "subgroup": "office"
+  },
+  {
+    "name": "🗑️",
+    "name_id": "wastebasket",
+    "description": "1F5D1 FE0F\nE0.7",
+    "group": "Objects",
+    "subgroup": "office"
+  },
+  {
+    "name": "🔒",
+    "name_id": "locked",
+    "description": "1F512\nE0.6",
+    "group": "Objects",
+    "subgroup": "lock"
+  },
+  {
+    "name": "🔓",
+    "name_id": "unlocked",
+    "description": "1F513\nE0.6",
+    "group": "Objects",
+    "subgroup": "lock"
+  },
+  {
+    "name": "🔏",
+    "name_id": "locked_with_pen",
+    "description": "1F50F\nE0.6",
+    "group": "Objects",
+    "subgroup": "lock"
+  },
+  {
+    "name": "🔐",
+    "name_id": "locked_with_key",
+    "description": "1F510\nE0.6",
+    "group": "Objects",
+    "subgroup": "lock"
+  },
+  {
+    "name": "🔑",
+    "name_id": "key",
+    "description": "1F511\nE0.6",
+    "group": "Objects",
+    "subgroup": "lock"
+  },
+  {
+    "name": "🗝️",
+    "name_id": "old_key",
+    "description": "1F5DD FE0F\nE0.7",
+    "group": "Objects",
+    "subgroup": "lock"
+  },
+  {
+    "name": "🔨",
+    "name_id": "hammer",
+    "description": "1F528\nE0.6",
+    "group": "Objects",
+    "subgroup": "tool"
+  },
+  {
+    "name": "🪓",
+    "name_id": "axe",
+    "description": "1FA93\nE12.0",
+    "group": "Objects",
+    "subgroup": "tool"
+  },
+  {
+    "name": "⛏️",
+    "name_id": "pick",
+    "description": "26CF FE0F\nE0.7",
+    "group": "Objects",
+    "subgroup": "tool"
+  },
+  {
+    "name": "⚒️",
+    "name_id": "hammer_and_pick",
+    "description": "2692 FE0F\nE1.0",
+    "group": "Objects",
+    "subgroup": "tool"
+  },
+  {
+    "name": "🛠️",
+    "name_id": "hammer_and_wrench",
+    "description": "1F6E0 FE0F\nE0.7",
+    "group": "Objects",
+    "subgroup": "tool"
+  },
+  {
+    "name": "🗡️",
+    "name_id": "dagger",
+    "description": "1F5E1 FE0F\nE0.7",
+    "group": "Objects",
+    "subgroup": "tool"
+  },
+  {
+    "name": "⚔️",
+    "name_id": "crossed_swords",
+    "description": "2694 FE0F\nE1.0",
+    "group": "Objects",
+    "subgroup": "tool"
+  },
+  {
+    "name": "💣",
+    "name_id": "bomb",
+    "description": "1F4A3\nE0.6",
+    "group": "Objects",
+    "subgroup": "tool"
+  },
+  {
+    "name": "🪃",
+    "name_id": "boomerang",
+    "description": "1FA83\nE13.0",
+    "group": "Objects",
+    "subgroup": "tool"
+  },
+  {
+    "name": "🏹",
+    "name_id": "bow_and_arrow",
+    "description": "1F3F9\nE1.0",
+    "group": "Objects",
+    "subgroup": "tool"
+  },
+  {
+    "name": "🛡️",
+    "name_id": "shield",
+    "description": "1F6E1 FE0F\nE0.7",
+    "group": "Objects",
+    "subgroup": "tool"
+  },
+  {
+    "name": "🪚",
+    "name_id": "carpentry_saw",
+    "description": "1FA9A\nE13.0",
+    "group": "Objects",
+    "subgroup": "tool"
+  },
+  {
+    "name": "🔧",
+    "name_id": "wrench",
+    "description": "1F527\nE0.6",
+    "group": "Objects",
+    "subgroup": "tool"
+  },
+  {
+    "name": "🪛",
+    "name_id": "screwdriver",
+    "description": "1FA9B\nE13.0",
+    "group": "Objects",
+    "subgroup": "tool"
+  },
+  {
+    "name": "🔩",
+    "name_id": "nut_and_bolt",
+    "description": "1F529\nE0.6",
+    "group": "Objects",
+    "subgroup": "tool"
+  },
+  {
+    "name": "⚙️",
+    "name_id": "gear",
+    "description": "2699 FE0F\nE1.0",
+    "group": "Objects",
+    "subgroup": "tool"
+  },
+  {
+    "name": "🗜️",
+    "name_id": "clamp",
+    "description": "1F5DC FE0F\nE0.7",
+    "group": "Objects",
+    "subgroup": "tool"
+  },
+  {
+    "name": "⚖️",
+    "name_id": "balance_scale",
+    "description": "2696 FE0F\nE1.0",
+    "group": "Objects",
+    "subgroup": "tool"
+  },
+  {
+    "name": "🦯",
+    "name_id": "white_cane",
+    "description": "1F9AF\nE12.0",
+    "group": "Objects",
+    "subgroup": "tool"
+  },
+  {
+    "name": "🔗",
+    "name_id": "link",
+    "description": "1F517\nE0.6",
+    "group": "Objects",
+    "subgroup": "tool"
+  },
+  {
+    "name": "⛓️‍💥",
+    "name_id": "broken_chain",
+    "description": "26D3 FE0F 200D 1F4A5\nE15.1",
+    "group": "Objects",
+    "subgroup": "tool"
+  },
+  {
+    "name": "⛓️",
+    "name_id": "chains",
+    "description": "26D3 FE0F\nE0.7",
+    "group": "Objects",
+    "subgroup": "tool"
+  },
+  {
+    "name": "🪝",
+    "name_id": "hook",
+    "description": "1FA9D\nE13.0",
+    "group": "Objects",
+    "subgroup": "tool"
+  },
+  {
+    "name": "🧰",
+    "name_id": "toolbox",
+    "description": "1F9F0\nE11.0",
+    "group": "Objects",
+    "subgroup": "tool"
+  },
+  {
+    "name": "🧲",
+    "name_id": "magnet",
+    "description": "1F9F2\nE11.0",
+    "group": "Objects",
+    "subgroup": "tool"
+  },
+  {
+    "name": "🪜",
+    "name_id": "ladder",
+    "description": "1FA9C\nE13.0",
+    "group": "Objects",
+    "subgroup": "tool"
+  },
+  {
+    "name": "🪏",
+    "name_id": "shovel",
+    "description": "1FA8F\nE16.0",
+    "group": "Objects",
+    "subgroup": "tool"
+  },
+  {
+    "name": "⚗️",
+    "name_id": "alembic",
+    "description": "2697 FE0F\nE1.0",
+    "group": "Objects",
+    "subgroup": "science"
+  },
+  {
+    "name": "🧪",
+    "name_id": "test_tube",
+    "description": "1F9EA\nE11.0",
+    "group": "Objects",
+    "subgroup": "science"
+  },
+  {
+    "name": "🧫",
+    "name_id": "petri_dish",
+    "description": "1F9EB\nE11.0",
+    "group": "Objects",
+    "subgroup": "science"
+  },
+  {
+    "name": "🧬",
+    "name_id": "dna",
+    "description": "1F9EC\nE11.0",
+    "group": "Objects",
+    "subgroup": "science"
+  },
+  {
+    "name": "🔬",
+    "name_id": "microscope",
+    "description": "1F52C\nE1.0",
+    "group": "Objects",
+    "subgroup": "science"
+  },
+  {
+    "name": "🔭",
+    "name_id": "telescope",
+    "description": "1F52D\nE1.0",
+    "group": "Objects",
+    "subgroup": "science"
+  },
+  {
+    "name": "📡",
+    "name_id": "satellite_antenna",
+    "description": "1F4E1\nE0.6",
+    "group": "Objects",
+    "subgroup": "science"
+  },
+  {
+    "name": "💉",
+    "name_id": "syringe",
+    "description": "1F489\nE0.6",
+    "group": "Objects",
+    "subgroup": "medical"
+  },
+  {
+    "name": "🩸",
+    "name_id": "drop_of_blood",
+    "description": "1FA78\nE12.0",
+    "group": "Objects",
+    "subgroup": "medical"
+  },
+  {
+    "name": "💊",
+    "name_id": "pill",
+    "description": "1F48A\nE0.6",
+    "group": "Objects",
+    "subgroup": "medical"
+  },
+  {
+    "name": "🩹",
+    "name_id": "adhesive_bandage",
+    "description": "1FA79\nE12.0",
+    "group": "Objects",
+    "subgroup": "medical"
+  },
+  {
+    "name": "🩼",
+    "name_id": "crutch",
+    "description": "1FA7C\nE14.0",
+    "group": "Objects",
+    "subgroup": "medical"
+  },
+  {
+    "name": "🩺",
+    "name_id": "stethoscope",
+    "description": "1FA7A\nE12.0",
+    "group": "Objects",
+    "subgroup": "medical"
+  },
+  {
+    "name": "🩻",
+    "name_id": "x_ray",
+    "description": "1FA7B\nE14.0",
+    "group": "Objects",
+    "subgroup": "medical"
+  },
+  {
+    "name": "🚪",
+    "name_id": "door",
+    "description": "1F6AA\nE0.6",
+    "group": "Objects",
+    "subgroup": "household"
+  },
+  {
+    "name": "🛗",
+    "name_id": "elevator",
+    "description": "1F6D7\nE13.0",
+    "group": "Objects",
+    "subgroup": "household"
+  },
+  {
+    "name": "🪞",
+    "name_id": "mirror",
+    "description": "1FA9E\nE13.0",
+    "group": "Objects",
+    "subgroup": "household"
+  },
+  {
+    "name": "🪟",
+    "name_id": "window",
+    "description": "1FA9F\nE13.0",
+    "group": "Objects",
+    "subgroup": "household"
+  },
+  {
+    "name": "🛏️",
+    "name_id": "bed",
+    "description": "1F6CF FE0F\nE0.7",
+    "group": "Objects",
+    "subgroup": "household"
+  },
+  {
+    "name": "🛋️",
+    "name_id": "couch_and_lamp",
+    "description": "1F6CB FE0F\nE0.7",
+    "group": "Objects",
+    "subgroup": "household"
+  },
+  {
+    "name": "🪑",
+    "name_id": "chair",
+    "description": "1FA91\nE12.0",
+    "group": "Objects",
+    "subgroup": "household"
+  },
+  {
+    "name": "🚽",
+    "name_id": "toilet",
+    "description": "1F6BD\nE0.6",
+    "group": "Objects",
+    "subgroup": "household"
+  },
+  {
+    "name": "🪠",
+    "name_id": "plunger",
+    "description": "1FAA0\nE13.0",
+    "group": "Objects",
+    "subgroup": "household"
+  },
+  {
+    "name": "🚿",
+    "name_id": "shower",
+    "description": "1F6BF\nE1.0",
+    "group": "Objects",
+    "subgroup": "household"
+  },
+  {
+    "name": "🛁",
+    "name_id": "bathtub",
+    "description": "1F6C1\nE1.0",
+    "group": "Objects",
+    "subgroup": "household"
+  },
+  {
+    "name": "🪤",
+    "name_id": "mouse_trap",
+    "description": "1FAA4\nE13.0",
+    "group": "Objects",
+    "subgroup": "household"
+  },
+  {
+    "name": "🪒",
+    "name_id": "razor",
+    "description": "1FA92\nE12.0",
+    "group": "Objects",
+    "subgroup": "household"
+  },
+  {
+    "name": "🧴",
+    "name_id": "lotion_bottle",
+    "description": "1F9F4\nE11.0",
+    "group": "Objects",
+    "subgroup": "household"
+  },
+  {
+    "name": "🧷",
+    "name_id": "safety_pin",
+    "description": "1F9F7\nE11.0",
+    "group": "Objects",
+    "subgroup": "household"
+  },
+  {
+    "name": "🧹",
+    "name_id": "broom",
+    "description": "1F9F9\nE11.0",
+    "group": "Objects",
+    "subgroup": "household"
+  },
+  {
+    "name": "🧺",
+    "name_id": "basket",
+    "description": "1F9FA\nE11.0",
+    "group": "Objects",
+    "subgroup": "household"
+  },
+  {
+    "name": "🧻",
+    "name_id": "roll_of_paper",
+    "description": "1F9FB\nE11.0",
+    "group": "Objects",
+    "subgroup": "household"
+  },
+  {
+    "name": "🪣",
+    "name_id": "bucket",
+    "description": "1FAA3\nE13.0",
+    "group": "Objects",
+    "subgroup": "household"
+  },
+  {
+    "name": "🧼",
+    "name_id": "soap",
+    "description": "1F9FC\nE11.0",
+    "group": "Objects",
+    "subgroup": "household"
+  },
+  {
+    "name": "🫧",
+    "name_id": "bubbles",
+    "description": "1FAE7\nE14.0",
+    "group": "Objects",
+    "subgroup": "household"
+  },
+  {
+    "name": "🪥",
+    "name_id": "toothbrush",
+    "description": "1FAA5\nE13.0",
+    "group": "Objects",
+    "subgroup": "household"
+  },
+  {
+    "name": "🧽",
+    "name_id": "sponge",
+    "description": "1F9FD\nE11.0",
+    "group": "Objects",
+    "subgroup": "household"
+  },
+  {
+    "name": "🧯",
+    "name_id": "fire_extinguisher",
+    "description": "1F9EF\nE11.0",
+    "group": "Objects",
+    "subgroup": "household"
+  },
+  {
+    "name": "🛒",
+    "name_id": "shopping_cart",
+    "description": "1F6D2\nE3.0",
+    "group": "Objects",
+    "subgroup": "household"
+  },
+  {
+    "name": "🚬",
+    "name_id": "cigarette",
+    "description": "1F6AC\nE0.6",
+    "group": "Objects",
+    "subgroup": "other-object"
+  },
+  {
+    "name": "⚰️",
+    "name_id": "coffin",
+    "description": "26B0 FE0F\nE1.0",
+    "group": "Objects",
+    "subgroup": "other-object"
+  },
+  {
+    "name": "🪦",
+    "name_id": "headstone",
+    "description": "1FAA6\nE13.0",
+    "group": "Objects",
+    "subgroup": "other-object"
+  },
+  {
+    "name": "⚱️",
+    "name_id": "funeral_urn",
+    "description": "26B1 FE0F\nE1.0",
+    "group": "Objects",
+    "subgroup": "other-object"
+  },
+  {
+    "name": "🧿",
+    "name_id": "nazar_amulet",
+    "description": "1F9FF\nE11.0",
+    "group": "Objects",
+    "subgroup": "other-object"
+  },
+  {
+    "name": "🪬",
+    "name_id": "hamsa",
+    "description": "1FAAC\nE14.0",
+    "group": "Objects",
+    "subgroup": "other-object"
+  },
+  {
+    "name": "🗿",
+    "name_id": "moai",
+    "description": "1F5FF\nE0.6",
+    "group": "Objects",
+    "subgroup": "other-object"
+  },
+  {
+    "name": "🪧",
+    "name_id": "placard",
+    "description": "1FAA7\nE13.0",
+    "group": "Objects",
+    "subgroup": "other-object"
+  },
+  {
+    "name": "🪪",
+    "name_id": "identification_card",
+    "description": "1FAAA\nE14.0",
+    "group": "Objects",
+    "subgroup": "other-object"
+  }
+]

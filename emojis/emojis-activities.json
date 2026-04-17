@@ -1,0 +1,597 @@
+[
+  {
+    "name": "🎃",
+    "name_id": "jack_o_lantern",
+    "description": "1F383\nE0.6",
+    "group": "Activities",
+    "subgroup": "event"
+  },
+  {
+    "name": "🎄",
+    "name_id": "christmas_tree",
+    "description": "1F384\nE0.6",
+    "group": "Activities",
+    "subgroup": "event"
+  },
+  {
+    "name": "🎆",
+    "name_id": "fireworks",
+    "description": "1F386\nE0.6",
+    "group": "Activities",
+    "subgroup": "event"
+  },
+  {
+    "name": "🎇",
+    "name_id": "sparkler",
+    "description": "1F387\nE0.6",
+    "group": "Activities",
+    "subgroup": "event"
+  },
+  {
+    "name": "🧨",
+    "name_id": "firecracker",
+    "description": "1F9E8\nE11.0",
+    "group": "Activities",
+    "subgroup": "event"
+  },
+  {
+    "name": "✨",
+    "name_id": "sparkles",
+    "description": "2728\nE0.6",
+    "group": "Activities",
+    "subgroup": "event"
+  },
+  {
+    "name": "🎈",
+    "name_id": "balloon",
+    "description": "1F388\nE0.6",
+    "group": "Activities",
+    "subgroup": "event"
+  },
+  {
+    "name": "🎉",
+    "name_id": "party_popper",
+    "description": "1F389\nE0.6",
+    "group": "Activities",
+    "subgroup": "event"
+  },
+  {
+    "name": "🎊",
+    "name_id": "confetti_ball",
+    "description": "1F38A\nE0.6",
+    "group": "Activities",
+    "subgroup": "event"
+  },
+  {
+    "name": "🎋",
+    "name_id": "tanabata_tree",
+    "description": "1F38B\nE0.6",
+    "group": "Activities",
+    "subgroup": "event"
+  },
+  {
+    "name": "🎍",
+    "name_id": "pine_decoration",
+    "description": "1F38D\nE0.6",
+    "group": "Activities",
+    "subgroup": "event"
+  },
+  {
+    "name": "🎎",
+    "name_id": "japanese_dolls",
+    "description": "1F38E\nE0.6",
+    "group": "Activities",
+    "subgroup": "event"
+  },
+  {
+    "name": "🎏",
+    "name_id": "carp_streamer",
+    "description": "1F38F\nE0.6",
+    "group": "Activities",
+    "subgroup": "event"
+  },
+  {
+    "name": "🎐",
+    "name_id": "wind_chime",
+    "description": "1F390\nE0.6",
+    "group": "Activities",
+    "subgroup": "event"
+  },
+  {
+    "name": "🎑",
+    "name_id": "moon_viewing_ceremony",
+    "description": "1F391\nE0.6",
+    "group": "Activities",
+    "subgroup": "event"
+  },
+  {
+    "name": "🧧",
+    "name_id": "red_envelope",
+    "description": "1F9E7\nE11.0",
+    "group": "Activities",
+    "subgroup": "event"
+  },
+  {
+    "name": "🎀",
+    "name_id": "ribbon",
+    "description": "1F380\nE0.6",
+    "group": "Activities",
+    "subgroup": "event"
+  },
+  {
+    "name": "🎁",
+    "name_id": "wrapped_gift",
+    "description": "1F381\nE0.6",
+    "group": "Activities",
+    "subgroup": "event"
+  },
+  {
+    "name": "🎗️",
+    "name_id": "reminder_ribbon",
+    "description": "1F397 FE0F\nE0.7",
+    "group": "Activities",
+    "subgroup": "event"
+  },
+  {
+    "name": "🎟️",
+    "name_id": "admission_tickets",
+    "description": "1F39F FE0F\nE0.7",
+    "group": "Activities",
+    "subgroup": "event"
+  },
+  {
+    "name": "🎫",
+    "name_id": "ticket",
+    "description": "1F3AB\nE0.6",
+    "group": "Activities",
+    "subgroup": "event"
+  },
+  {
+    "name": "🎖️",
+    "name_id": "military_medal",
+    "description": "1F396 FE0F\nE0.7",
+    "group": "Activities",
+    "subgroup": "award-medal"
+  },
+  {
+    "name": "🏆",
+    "name_id": "trophy",
+    "description": "1F3C6\nE0.6",
+    "group": "Activities",
+    "subgroup": "award-medal"
+  },
+  {
+    "name": "🏅",
+    "name_id": "sports_medal",
+    "description": "1F3C5\nE1.0",
+    "group": "Activities",
+    "subgroup": "award-medal"
+  },
+  {
+    "name": "🥇",
+    "name_id": "1st_place_medal",
+    "description": "1F947\nE3.0",
+    "group": "Activities",
+    "subgroup": "award-medal"
+  },
+  {
+    "name": "🥈",
+    "name_id": "2nd_place_medal",
+    "description": "1F948\nE3.0",
+    "group": "Activities",
+    "subgroup": "award-medal"
+  },
+  {
+    "name": "🥉",
+    "name_id": "3rd_place_medal",
+    "description": "1F949\nE3.0",
+    "group": "Activities",
+    "subgroup": "award-medal"
+  },
+  {
+    "name": "⚽",
+    "name_id": "soccer_ball",
+    "description": "26BD\nE0.6",
+    "group": "Activities",
+    "subgroup": "sport"
+  },
+  {
+    "name": "⚾",
+    "name_id": "baseball",
+    "description": "26BE\nE0.6",
+    "group": "Activities",
+    "subgroup": "sport"
+  },
+  {
+    "name": "🥎",
+    "name_id": "softball",
+    "description": "1F94E\nE11.0",
+    "group": "Activities",
+    "subgroup": "sport"
+  },
+  {
+    "name": "🏀",
+    "name_id": "basketball",
+    "description": "1F3C0\nE0.6",
+    "group": "Activities",
+    "subgroup": "sport"
+  },
+  {
+    "name": "🏐",
+    "name_id": "volleyball",
+    "description": "1F3D0\nE1.0",
+    "group": "Activities",
+    "subgroup": "sport"
+  },
+  {
+    "name": "🏈",
+    "name_id": "american_football",
+    "description": "1F3C8\nE0.6",
+    "group": "Activities",
+    "subgroup": "sport"
+  },
+  {
+    "name": "🏉",
+    "name_id": "rugby_football",
+    "description": "1F3C9\nE1.0",
+    "group": "Activities",
+    "subgroup": "sport"
+  },
+  {
+    "name": "🎾",
+    "name_id": "tennis",
+    "description": "1F3BE\nE0.6",
+    "group": "Activities",
+    "subgroup": "sport"
+  },
+  {
+    "name": "🥏",
+    "name_id": "flying_disc",
+    "description": "1F94F\nE11.0",
+    "group": "Activities",
+    "subgroup": "sport"
+  },
+  {
+    "name": "🎳",
+    "name_id": "bowling",
+    "description": "1F3B3\nE0.6",
+    "group": "Activities",
+    "subgroup": "sport"
+  },
+  {
+    "name": "🏏",
+    "name_id": "cricket_game",
+    "description": "1F3CF\nE1.0",
+    "group": "Activities",
+    "subgroup": "sport"
+  },
+  {
+    "name": "🏑",
+    "name_id": "field_hockey",
+    "description": "1F3D1\nE1.0",
+    "group": "Activities",
+    "subgroup": "sport"
+  },
+  {
+    "name": "🏒",
+    "name_id": "ice_hockey",
+    "description": "1F3D2\nE1.0",
+    "group": "Activities",
+    "subgroup": "sport"
+  },
+  {
+    "name": "🥍",
+    "name_id": "lacrosse",
+    "description": "1F94D\nE11.0",
+    "group": "Activities",
+    "subgroup": "sport"
+  },
+  {
+    "name": "🏓",
+    "name_id": "ping_pong",
+    "description": "1F3D3\nE1.0",
+    "group": "Activities",
+    "subgroup": "sport"
+  },
+  {
+    "name": "🏸",
+    "name_id": "badminton",
+    "description": "1F3F8\nE1.0",
+    "group": "Activities",
+    "subgroup": "sport"
+  },
+  {
+    "name": "🥊",
+    "name_id": "boxing_glove",
+    "description": "1F94A\nE3.0",
+    "group": "Activities",
+    "subgroup": "sport"
+  },
+  {
+    "name": "🥋",
+    "name_id": "martial_arts_uniform",
+    "description": "1F94B\nE3.0",
+    "group": "Activities",
+    "subgroup": "sport"
+  },
+  {
+    "name": "🥅",
+    "name_id": "goal_net",
+    "description": "1F945\nE3.0",
+    "group": "Activities",
+    "subgroup": "sport"
+  },
+  {
+    "name": "⛳",
+    "name_id": "flag_in_hole",
+    "description": "26F3\nE0.6",
+    "group": "Activities",
+    "subgroup": "sport"
+  },
+  {
+    "name": "⛸️",
+    "name_id": "ice_skate",
+    "description": "26F8 FE0F\nE0.7",
+    "group": "Activities",
+    "subgroup": "sport"
+  },
+  {
+    "name": "🎣",
+    "name_id": "fishing_pole",
+    "description": "1F3A3\nE0.6",
+    "group": "Activities",
+    "subgroup": "sport"
+  },
+  {
+    "name": "🤿",
+    "name_id": "diving_mask",
+    "description": "1F93F\nE12.0",
+    "group": "Activities",
+    "subgroup": "sport"
+  },
+  {
+    "name": "🎽",
+    "name_id": "running_shirt",
+    "description": "1F3BD\nE0.6",
+    "group": "Activities",
+    "subgroup": "sport"
+  },
+  {
+    "name": "🎿",
+    "name_id": "skis",
+    "description": "1F3BF\nE0.6",
+    "group": "Activities",
+    "subgroup": "sport"
+  },
+  {
+    "name": "🛷",
+    "name_id": "sled",
+    "description": "1F6F7\nE5.0",
+    "group": "Activities",
+    "subgroup": "sport"
+  },
+  {
+    "name": "🥌",
+    "name_id": "curling_stone",
+    "description": "1F94C\nE5.0",
+    "group": "Activities",
+    "subgroup": "sport"
+  },
+  {
+    "name": "🎯",
+    "name_id": "bullseye",
+    "description": "1F3AF\nE0.6",
+    "group": "Activities",
+    "subgroup": "game"
+  },
+  {
+    "name": "🪀",
+    "name_id": "yo_yo",
+    "description": "1FA80\nE12.0",
+    "group": "Activities",
+    "subgroup": "game"
+  },
+  {
+    "name": "🪁",
+    "name_id": "kite",
+    "description": "1FA81\nE12.0",
+    "group": "Activities",
+    "subgroup": "game"
+  },
+  {
+    "name": "🔫",
+    "name_id": "water_pistol",
+    "description": "1F52B\nE0.6",
+    "group": "Activities",
+    "subgroup": "game"
+  },
+  {
+    "name": "🎱",
+    "name_id": "pool_8_ball",
+    "description": "1F3B1\nE0.6",
+    "group": "Activities",
+    "subgroup": "game"
+  },
+  {
+    "name": "🔮",
+    "name_id": "crystal_ball",
+    "description": "1F52E\nE0.6",
+    "group": "Activities",
+    "subgroup": "game"
+  },
+  {
+    "name": "🪄",
+    "name_id": "magic_wand",
+    "description": "1FA84\nE13.0",
+    "group": "Activities",
+    "subgroup": "game"
+  },
+  {
+    "name": "🎮",
+    "name_id": "video_game",
+    "description": "1F3AE\nE0.6",
+    "group": "Activities",
+    "subgroup": "game"
+  },
+  {
+    "name": "🕹️",
+    "name_id": "joystick",
+    "description": "1F579 FE0F\nE0.7",
+    "group": "Activities",
+    "subgroup": "game"
+  },
+  {
+    "name": "🎰",
+    "name_id": "slot_machine",
+    "description": "1F3B0\nE0.6",
+    "group": "Activities",
+    "subgroup": "game"
+  },
+  {
+    "name": "🎲",
+    "name_id": "game_die",
+    "description": "1F3B2\nE0.6",
+    "group": "Activities",
+    "subgroup": "game"
+  },
+  {
+    "name": "🧩",
+    "name_id": "puzzle_piece",
+    "description": "1F9E9\nE11.0",
+    "group": "Activities",
+    "subgroup": "game"
+  },
+  {
+    "name": "🧸",
+    "name_id": "teddy_bear",
+    "description": "1F9F8\nE11.0",
+    "group": "Activities",
+    "subgroup": "game"
+  },
+  {
+    "name": "🪅",
+    "name_id": "pi_ata",
+    "description": "1FA85\nE13.0",
+    "group": "Activities",
+    "subgroup": "game"
+  },
+  {
+    "name": "🪩",
+    "name_id": "mirror_ball",
+    "description": "1FAA9\nE14.0",
+    "group": "Activities",
+    "subgroup": "game"
+  },
+  {
+    "name": "🪆",
+    "name_id": "nesting_dolls",
+    "description": "1FA86\nE13.0",
+    "group": "Activities",
+    "subgroup": "game"
+  },
+  {
+    "name": "♠️",
+    "name_id": "spade_suit",
+    "description": "2660 FE0F\nE0.6",
+    "group": "Activities",
+    "subgroup": "game"
+  },
+  {
+    "name": "♥️",
+    "name_id": "heart_suit",
+    "description": "2665 FE0F\nE0.6",
+    "group": "Activities",
+    "subgroup": "game"
+  },
+  {
+    "name": "♦️",
+    "name_id": "diamond_suit",
+    "description": "2666 FE0F\nE0.6",
+    "group": "Activities",
+    "subgroup": "game"
+  },
+  {
+    "name": "♣️",
+    "name_id": "club_suit",
+    "description": "2663 FE0F\nE0.6",
+    "group": "Activities",
+    "subgroup": "game"
+  },
+  {
+    "name": "♟️",
+    "name_id": "chess_pawn",
+    "description": "265F FE0F\nE11.0",
+    "group": "Activities",
+    "subgroup": "game"
+  },
+  {
+    "name": "🃏",
+    "name_id": "joker",
+    "description": "1F0CF\nE0.6",
+    "group": "Activities",
+    "subgroup": "game"
+  },
+  {
+    "name": "🀄",
+    "name_id": "mahjong_red_dragon",
+    "description": "1F004\nE0.6",
+    "group": "Activities",
+    "subgroup": "game"
+  },
+  {
+    "name": "🎴",
+    "name_id": "flower_playing_cards",
+    "description": "1F3B4\nE0.6",
+    "group": "Activities",
+    "subgroup": "game"
+  },
+  {
+    "name": "🎭",
+    "name_id": "performing_arts",
+    "description": "1F3AD\nE0.6",
+    "group": "Activities",
+    "subgroup": "arts & crafts"
+  },
+  {
+    "name": "🖼️",
+    "name_id": "framed_picture",
+    "description": "1F5BC FE0F\nE0.7",
+    "group": "Activities",
+    "subgroup": "arts & crafts"
+  },
+  {
+    "name": "🎨",
+    "name_id": "artist_palette",
+    "description": "1F3A8\nE0.6",
+    "group": "Activities",
+    "subgroup": "arts & crafts"
+  },
+  {
+    "name": "🧵",
+    "name_id": "thread",
+    "description": "1F9F5\nE11.0",
+    "group": "Activities",
+    "subgroup": "arts & crafts"
+  },
+  {
+    "name": "🪡",
+    "name_id": "sewing_needle",
+    "description": "1FAA1\nE13.0",
+    "group": "Activities",
+    "subgroup": "arts & crafts"
+  },
+  {
+    "name": "🧶",
+    "name_id": "yarn",
+    "description": "1F9F6\nE11.0",
+    "group": "Activities",
+    "subgroup": "arts & crafts"
+  },
+  {
+    "name": "🪢",
+    "name_id": "knot",
+    "description": "1FAA2\nE13.0",
+    "group": "Activities",
+    "subgroup": "arts & crafts"
+  }
+]

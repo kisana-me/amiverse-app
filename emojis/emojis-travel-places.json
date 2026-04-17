@@ -1,0 +1,1535 @@
+[
+  {
+    "name": "🌍",
+    "name_id": "globe_showing_europe_africa",
+    "description": "1F30D\nE0.7",
+    "group": "Travel & Places",
+    "subgroup": "place-map"
+  },
+  {
+    "name": "🌎",
+    "name_id": "globe_showing_americas",
+    "description": "1F30E\nE0.7",
+    "group": "Travel & Places",
+    "subgroup": "place-map"
+  },
+  {
+    "name": "🌏",
+    "name_id": "globe_showing_asia_australia",
+    "description": "1F30F\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "place-map"
+  },
+  {
+    "name": "🌐",
+    "name_id": "globe_with_meridians",
+    "description": "1F310\nE1.0",
+    "group": "Travel & Places",
+    "subgroup": "place-map"
+  },
+  {
+    "name": "🗺️",
+    "name_id": "world_map",
+    "description": "1F5FA FE0F\nE0.7",
+    "group": "Travel & Places",
+    "subgroup": "place-map"
+  },
+  {
+    "name": "🗾",
+    "name_id": "map_of_japan",
+    "description": "1F5FE\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "place-map"
+  },
+  {
+    "name": "🧭",
+    "name_id": "compass",
+    "description": "1F9ED\nE11.0",
+    "group": "Travel & Places",
+    "subgroup": "place-map"
+  },
+  {
+    "name": "🏔️",
+    "name_id": "snow_capped_mountain",
+    "description": "1F3D4 FE0F\nE0.7",
+    "group": "Travel & Places",
+    "subgroup": "place-geographic"
+  },
+  {
+    "name": "⛰️",
+    "name_id": "mountain",
+    "description": "26F0 FE0F\nE0.7",
+    "group": "Travel & Places",
+    "subgroup": "place-geographic"
+  },
+  {
+    "name": "🛘",
+    "name_id": "landslide",
+    "description": "1F6D8\nE17.0",
+    "group": "Travel & Places",
+    "subgroup": "place-geographic"
+  },
+  {
+    "name": "🌋",
+    "name_id": "volcano",
+    "description": "1F30B\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "place-geographic"
+  },
+  {
+    "name": "🗻",
+    "name_id": "mount_fuji",
+    "description": "1F5FB\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "place-geographic"
+  },
+  {
+    "name": "🏕️",
+    "name_id": "camping",
+    "description": "1F3D5 FE0F\nE0.7",
+    "group": "Travel & Places",
+    "subgroup": "place-geographic"
+  },
+  {
+    "name": "🏖️",
+    "name_id": "beach_with_umbrella",
+    "description": "1F3D6 FE0F\nE0.7",
+    "group": "Travel & Places",
+    "subgroup": "place-geographic"
+  },
+  {
+    "name": "🏜️",
+    "name_id": "desert",
+    "description": "1F3DC FE0F\nE0.7",
+    "group": "Travel & Places",
+    "subgroup": "place-geographic"
+  },
+  {
+    "name": "🏝️",
+    "name_id": "desert_island",
+    "description": "1F3DD FE0F\nE0.7",
+    "group": "Travel & Places",
+    "subgroup": "place-geographic"
+  },
+  {
+    "name": "🏞️",
+    "name_id": "national_park",
+    "description": "1F3DE FE0F\nE0.7",
+    "group": "Travel & Places",
+    "subgroup": "place-geographic"
+  },
+  {
+    "name": "🏟️",
+    "name_id": "stadium",
+    "description": "1F3DF FE0F\nE0.7",
+    "group": "Travel & Places",
+    "subgroup": "place-building"
+  },
+  {
+    "name": "🏛️",
+    "name_id": "classical_building",
+    "description": "1F3DB FE0F\nE0.7",
+    "group": "Travel & Places",
+    "subgroup": "place-building"
+  },
+  {
+    "name": "🏗️",
+    "name_id": "building_construction",
+    "description": "1F3D7 FE0F\nE0.7",
+    "group": "Travel & Places",
+    "subgroup": "place-building"
+  },
+  {
+    "name": "🧱",
+    "name_id": "brick",
+    "description": "1F9F1\nE11.0",
+    "group": "Travel & Places",
+    "subgroup": "place-building"
+  },
+  {
+    "name": "🪨",
+    "name_id": "rock",
+    "description": "1FAA8\nE13.0",
+    "group": "Travel & Places",
+    "subgroup": "place-building"
+  },
+  {
+    "name": "🪵",
+    "name_id": "wood",
+    "description": "1FAB5\nE13.0",
+    "group": "Travel & Places",
+    "subgroup": "place-building"
+  },
+  {
+    "name": "🛖",
+    "name_id": "hut",
+    "description": "1F6D6\nE13.0",
+    "group": "Travel & Places",
+    "subgroup": "place-building"
+  },
+  {
+    "name": "🏘️",
+    "name_id": "houses",
+    "description": "1F3D8 FE0F\nE0.7",
+    "group": "Travel & Places",
+    "subgroup": "place-building"
+  },
+  {
+    "name": "🏚️",
+    "name_id": "derelict_house",
+    "description": "1F3DA FE0F\nE0.7",
+    "group": "Travel & Places",
+    "subgroup": "place-building"
+  },
+  {
+    "name": "🏠",
+    "name_id": "house",
+    "description": "1F3E0\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "place-building"
+  },
+  {
+    "name": "🏡",
+    "name_id": "house_with_garden",
+    "description": "1F3E1\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "place-building"
+  },
+  {
+    "name": "🏢",
+    "name_id": "office_building",
+    "description": "1F3E2\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "place-building"
+  },
+  {
+    "name": "🏣",
+    "name_id": "japanese_post_office",
+    "description": "1F3E3\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "place-building"
+  },
+  {
+    "name": "🏤",
+    "name_id": "post_office",
+    "description": "1F3E4\nE1.0",
+    "group": "Travel & Places",
+    "subgroup": "place-building"
+  },
+  {
+    "name": "🏥",
+    "name_id": "hospital",
+    "description": "1F3E5\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "place-building"
+  },
+  {
+    "name": "🏦",
+    "name_id": "bank",
+    "description": "1F3E6\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "place-building"
+  },
+  {
+    "name": "🏨",
+    "name_id": "hotel",
+    "description": "1F3E8\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "place-building"
+  },
+  {
+    "name": "🏩",
+    "name_id": "love_hotel",
+    "description": "1F3E9\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "place-building"
+  },
+  {
+    "name": "🏪",
+    "name_id": "convenience_store",
+    "description": "1F3EA\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "place-building"
+  },
+  {
+    "name": "🏫",
+    "name_id": "school",
+    "description": "1F3EB\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "place-building"
+  },
+  {
+    "name": "🏬",
+    "name_id": "department_store",
+    "description": "1F3EC\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "place-building"
+  },
+  {
+    "name": "🏭",
+    "name_id": "factory",
+    "description": "1F3ED\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "place-building"
+  },
+  {
+    "name": "🏯",
+    "name_id": "japanese_castle",
+    "description": "1F3EF\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "place-building"
+  },
+  {
+    "name": "🏰",
+    "name_id": "castle",
+    "description": "1F3F0\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "place-building"
+  },
+  {
+    "name": "💒",
+    "name_id": "wedding",
+    "description": "1F492\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "place-building"
+  },
+  {
+    "name": "🗼",
+    "name_id": "tokyo_tower",
+    "description": "1F5FC\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "place-building"
+  },
+  {
+    "name": "🗽",
+    "name_id": "statue_of_liberty",
+    "description": "1F5FD\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "place-building"
+  },
+  {
+    "name": "⛪",
+    "name_id": "church",
+    "description": "26EA\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "place-religious"
+  },
+  {
+    "name": "🕌",
+    "name_id": "mosque",
+    "description": "1F54C\nE1.0",
+    "group": "Travel & Places",
+    "subgroup": "place-religious"
+  },
+  {
+    "name": "🛕",
+    "name_id": "hindu_temple",
+    "description": "1F6D5\nE12.0",
+    "group": "Travel & Places",
+    "subgroup": "place-religious"
+  },
+  {
+    "name": "🕍",
+    "name_id": "synagogue",
+    "description": "1F54D\nE1.0",
+    "group": "Travel & Places",
+    "subgroup": "place-religious"
+  },
+  {
+    "name": "⛩️",
+    "name_id": "shinto_shrine",
+    "description": "26E9 FE0F\nE0.7",
+    "group": "Travel & Places",
+    "subgroup": "place-religious"
+  },
+  {
+    "name": "🕋",
+    "name_id": "kaaba",
+    "description": "1F54B\nE1.0",
+    "group": "Travel & Places",
+    "subgroup": "place-religious"
+  },
+  {
+    "name": "⛲",
+    "name_id": "fountain",
+    "description": "26F2\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "place-other"
+  },
+  {
+    "name": "⛺",
+    "name_id": "tent",
+    "description": "26FA\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "place-other"
+  },
+  {
+    "name": "🌁",
+    "name_id": "foggy",
+    "description": "1F301\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "place-other"
+  },
+  {
+    "name": "🌃",
+    "name_id": "night_with_stars",
+    "description": "1F303\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "place-other"
+  },
+  {
+    "name": "🏙️",
+    "name_id": "cityscape",
+    "description": "1F3D9 FE0F\nE0.7",
+    "group": "Travel & Places",
+    "subgroup": "place-other"
+  },
+  {
+    "name": "🌄",
+    "name_id": "sunrise_over_mountains",
+    "description": "1F304\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "place-other"
+  },
+  {
+    "name": "🌅",
+    "name_id": "sunrise",
+    "description": "1F305\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "place-other"
+  },
+  {
+    "name": "🌆",
+    "name_id": "cityscape_at_dusk",
+    "description": "1F306\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "place-other"
+  },
+  {
+    "name": "🌇",
+    "name_id": "sunset",
+    "description": "1F307\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "place-other"
+  },
+  {
+    "name": "🌉",
+    "name_id": "bridge_at_night",
+    "description": "1F309\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "place-other"
+  },
+  {
+    "name": "♨️",
+    "name_id": "hot_springs",
+    "description": "2668 FE0F\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "place-other"
+  },
+  {
+    "name": "🎠",
+    "name_id": "carousel_horse",
+    "description": "1F3A0\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "place-other"
+  },
+  {
+    "name": "🛝",
+    "name_id": "playground_slide",
+    "description": "1F6DD\nE14.0",
+    "group": "Travel & Places",
+    "subgroup": "place-other"
+  },
+  {
+    "name": "🎡",
+    "name_id": "ferris_wheel",
+    "description": "1F3A1\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "place-other"
+  },
+  {
+    "name": "🎢",
+    "name_id": "roller_coaster",
+    "description": "1F3A2\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "place-other"
+  },
+  {
+    "name": "💈",
+    "name_id": "barber_pole",
+    "description": "1F488\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "place-other"
+  },
+  {
+    "name": "🎪",
+    "name_id": "circus_tent",
+    "description": "1F3AA\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "place-other"
+  },
+  {
+    "name": "🚂",
+    "name_id": "locomotive",
+    "description": "1F682\nE1.0",
+    "group": "Travel & Places",
+    "subgroup": "transport-ground"
+  },
+  {
+    "name": "🚃",
+    "name_id": "railway_car",
+    "description": "1F683\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "transport-ground"
+  },
+  {
+    "name": "🚄",
+    "name_id": "high_speed_train",
+    "description": "1F684\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "transport-ground"
+  },
+  {
+    "name": "🚅",
+    "name_id": "bullet_train",
+    "description": "1F685\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "transport-ground"
+  },
+  {
+    "name": "🚆",
+    "name_id": "train",
+    "description": "1F686\nE1.0",
+    "group": "Travel & Places",
+    "subgroup": "transport-ground"
+  },
+  {
+    "name": "🚇",
+    "name_id": "metro",
+    "description": "1F687\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "transport-ground"
+  },
+  {
+    "name": "🚈",
+    "name_id": "light_rail",
+    "description": "1F688\nE1.0",
+    "group": "Travel & Places",
+    "subgroup": "transport-ground"
+  },
+  {
+    "name": "🚉",
+    "name_id": "station",
+    "description": "1F689\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "transport-ground"
+  },
+  {
+    "name": "🚊",
+    "name_id": "tram",
+    "description": "1F68A\nE1.0",
+    "group": "Travel & Places",
+    "subgroup": "transport-ground"
+  },
+  {
+    "name": "🚝",
+    "name_id": "monorail",
+    "description": "1F69D\nE1.0",
+    "group": "Travel & Places",
+    "subgroup": "transport-ground"
+  },
+  {
+    "name": "🚞",
+    "name_id": "mountain_railway",
+    "description": "1F69E\nE1.0",
+    "group": "Travel & Places",
+    "subgroup": "transport-ground"
+  },
+  {
+    "name": "🚋",
+    "name_id": "tram_car",
+    "description": "1F68B\nE1.0",
+    "group": "Travel & Places",
+    "subgroup": "transport-ground"
+  },
+  {
+    "name": "🚌",
+    "name_id": "bus",
+    "description": "1F68C\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "transport-ground"
+  },
+  {
+    "name": "🚍",
+    "name_id": "oncoming_bus",
+    "description": "1F68D\nE0.7",
+    "group": "Travel & Places",
+    "subgroup": "transport-ground"
+  },
+  {
+    "name": "🚎",
+    "name_id": "trolleybus",
+    "description": "1F68E\nE1.0",
+    "group": "Travel & Places",
+    "subgroup": "transport-ground"
+  },
+  {
+    "name": "🚐",
+    "name_id": "minibus",
+    "description": "1F690\nE1.0",
+    "group": "Travel & Places",
+    "subgroup": "transport-ground"
+  },
+  {
+    "name": "🚑",
+    "name_id": "ambulance",
+    "description": "1F691\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "transport-ground"
+  },
+  {
+    "name": "🚒",
+    "name_id": "fire_engine",
+    "description": "1F692\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "transport-ground"
+  },
+  {
+    "name": "🚓",
+    "name_id": "police_car",
+    "description": "1F693\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "transport-ground"
+  },
+  {
+    "name": "🚔",
+    "name_id": "oncoming_police_car",
+    "description": "1F694\nE0.7",
+    "group": "Travel & Places",
+    "subgroup": "transport-ground"
+  },
+  {
+    "name": "🚕",
+    "name_id": "taxi",
+    "description": "1F695\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "transport-ground"
+  },
+  {
+    "name": "🚖",
+    "name_id": "oncoming_taxi",
+    "description": "1F696\nE1.0",
+    "group": "Travel & Places",
+    "subgroup": "transport-ground"
+  },
+  {
+    "name": "🚗",
+    "name_id": "automobile",
+    "description": "1F697\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "transport-ground"
+  },
+  {
+    "name": "🚘",
+    "name_id": "oncoming_automobile",
+    "description": "1F698\nE0.7",
+    "group": "Travel & Places",
+    "subgroup": "transport-ground"
+  },
+  {
+    "name": "🚙",
+    "name_id": "sport_utility_vehicle",
+    "description": "1F699\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "transport-ground"
+  },
+  {
+    "name": "🛻",
+    "name_id": "pickup_truck",
+    "description": "1F6FB\nE13.0",
+    "group": "Travel & Places",
+    "subgroup": "transport-ground"
+  },
+  {
+    "name": "🚚",
+    "name_id": "delivery_truck",
+    "description": "1F69A\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "transport-ground"
+  },
+  {
+    "name": "🚛",
+    "name_id": "articulated_lorry",
+    "description": "1F69B\nE1.0",
+    "group": "Travel & Places",
+    "subgroup": "transport-ground"
+  },
+  {
+    "name": "🚜",
+    "name_id": "tractor",
+    "description": "1F69C\nE1.0",
+    "group": "Travel & Places",
+    "subgroup": "transport-ground"
+  },
+  {
+    "name": "🏎️",
+    "name_id": "racing_car",
+    "description": "1F3CE FE0F\nE0.7",
+    "group": "Travel & Places",
+    "subgroup": "transport-ground"
+  },
+  {
+    "name": "🏍️",
+    "name_id": "motorcycle",
+    "description": "1F3CD FE0F\nE0.7",
+    "group": "Travel & Places",
+    "subgroup": "transport-ground"
+  },
+  {
+    "name": "🛵",
+    "name_id": "motor_scooter",
+    "description": "1F6F5\nE3.0",
+    "group": "Travel & Places",
+    "subgroup": "transport-ground"
+  },
+  {
+    "name": "🦽",
+    "name_id": "manual_wheelchair",
+    "description": "1F9BD\nE12.0",
+    "group": "Travel & Places",
+    "subgroup": "transport-ground"
+  },
+  {
+    "name": "🦼",
+    "name_id": "motorized_wheelchair",
+    "description": "1F9BC\nE12.0",
+    "group": "Travel & Places",
+    "subgroup": "transport-ground"
+  },
+  {
+    "name": "🛺",
+    "name_id": "auto_rickshaw",
+    "description": "1F6FA\nE12.0",
+    "group": "Travel & Places",
+    "subgroup": "transport-ground"
+  },
+  {
+    "name": "🚲",
+    "name_id": "bicycle",
+    "description": "1F6B2\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "transport-ground"
+  },
+  {
+    "name": "🛴",
+    "name_id": "kick_scooter",
+    "description": "1F6F4\nE3.0",
+    "group": "Travel & Places",
+    "subgroup": "transport-ground"
+  },
+  {
+    "name": "🛹",
+    "name_id": "skateboard",
+    "description": "1F6F9\nE11.0",
+    "group": "Travel & Places",
+    "subgroup": "transport-ground"
+  },
+  {
+    "name": "🛼",
+    "name_id": "roller_skate",
+    "description": "1F6FC\nE13.0",
+    "group": "Travel & Places",
+    "subgroup": "transport-ground"
+  },
+  {
+    "name": "🚏",
+    "name_id": "bus_stop",
+    "description": "1F68F\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "transport-ground"
+  },
+  {
+    "name": "🛣️",
+    "name_id": "motorway",
+    "description": "1F6E3 FE0F\nE0.7",
+    "group": "Travel & Places",
+    "subgroup": "transport-ground"
+  },
+  {
+    "name": "🛤️",
+    "name_id": "railway_track",
+    "description": "1F6E4 FE0F\nE0.7",
+    "group": "Travel & Places",
+    "subgroup": "transport-ground"
+  },
+  {
+    "name": "🛢️",
+    "name_id": "oil_drum",
+    "description": "1F6E2 FE0F\nE0.7",
+    "group": "Travel & Places",
+    "subgroup": "transport-ground"
+  },
+  {
+    "name": "⛽",
+    "name_id": "fuel_pump",
+    "description": "26FD\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "transport-ground"
+  },
+  {
+    "name": "🛞",
+    "name_id": "wheel",
+    "description": "1F6DE\nE14.0",
+    "group": "Travel & Places",
+    "subgroup": "transport-ground"
+  },
+  {
+    "name": "🚨",
+    "name_id": "police_car_light",
+    "description": "1F6A8\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "transport-ground"
+  },
+  {
+    "name": "🚥",
+    "name_id": "horizontal_traffic_light",
+    "description": "1F6A5\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "transport-ground"
+  },
+  {
+    "name": "🚦",
+    "name_id": "vertical_traffic_light",
+    "description": "1F6A6\nE1.0",
+    "group": "Travel & Places",
+    "subgroup": "transport-ground"
+  },
+  {
+    "name": "🛑",
+    "name_id": "stop_sign",
+    "description": "1F6D1\nE3.0",
+    "group": "Travel & Places",
+    "subgroup": "transport-ground"
+  },
+  {
+    "name": "🚧",
+    "name_id": "construction",
+    "description": "1F6A7\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "transport-ground"
+  },
+  {
+    "name": "⚓",
+    "name_id": "anchor",
+    "description": "2693\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "transport-water"
+  },
+  {
+    "name": "🛟",
+    "name_id": "ring_buoy",
+    "description": "1F6DF\nE14.0",
+    "group": "Travel & Places",
+    "subgroup": "transport-water"
+  },
+  {
+    "name": "⛵",
+    "name_id": "sailboat",
+    "description": "26F5\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "transport-water"
+  },
+  {
+    "name": "🛶",
+    "name_id": "canoe",
+    "description": "1F6F6\nE3.0",
+    "group": "Travel & Places",
+    "subgroup": "transport-water"
+  },
+  {
+    "name": "🚤",
+    "name_id": "speedboat",
+    "description": "1F6A4\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "transport-water"
+  },
+  {
+    "name": "🛳️",
+    "name_id": "passenger_ship",
+    "description": "1F6F3 FE0F\nE0.7",
+    "group": "Travel & Places",
+    "subgroup": "transport-water"
+  },
+  {
+    "name": "⛴️",
+    "name_id": "ferry",
+    "description": "26F4 FE0F\nE0.7",
+    "group": "Travel & Places",
+    "subgroup": "transport-water"
+  },
+  {
+    "name": "🛥️",
+    "name_id": "motor_boat",
+    "description": "1F6E5 FE0F\nE0.7",
+    "group": "Travel & Places",
+    "subgroup": "transport-water"
+  },
+  {
+    "name": "🚢",
+    "name_id": "ship",
+    "description": "1F6A2\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "transport-water"
+  },
+  {
+    "name": "✈️",
+    "name_id": "airplane",
+    "description": "2708 FE0F\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "transport-air"
+  },
+  {
+    "name": "🛩️",
+    "name_id": "small_airplane",
+    "description": "1F6E9 FE0F\nE0.7",
+    "group": "Travel & Places",
+    "subgroup": "transport-air"
+  },
+  {
+    "name": "🛫",
+    "name_id": "airplane_departure",
+    "description": "1F6EB\nE1.0",
+    "group": "Travel & Places",
+    "subgroup": "transport-air"
+  },
+  {
+    "name": "🛬",
+    "name_id": "airplane_arrival",
+    "description": "1F6EC\nE1.0",
+    "group": "Travel & Places",
+    "subgroup": "transport-air"
+  },
+  {
+    "name": "🪂",
+    "name_id": "parachute",
+    "description": "1FA82\nE12.0",
+    "group": "Travel & Places",
+    "subgroup": "transport-air"
+  },
+  {
+    "name": "💺",
+    "name_id": "seat",
+    "description": "1F4BA\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "transport-air"
+  },
+  {
+    "name": "🚁",
+    "name_id": "helicopter",
+    "description": "1F681\nE1.0",
+    "group": "Travel & Places",
+    "subgroup": "transport-air"
+  },
+  {
+    "name": "🚟",
+    "name_id": "suspension_railway",
+    "description": "1F69F\nE1.0",
+    "group": "Travel & Places",
+    "subgroup": "transport-air"
+  },
+  {
+    "name": "🚠",
+    "name_id": "mountain_cableway",
+    "description": "1F6A0\nE1.0",
+    "group": "Travel & Places",
+    "subgroup": "transport-air"
+  },
+  {
+    "name": "🚡",
+    "name_id": "aerial_tramway",
+    "description": "1F6A1\nE1.0",
+    "group": "Travel & Places",
+    "subgroup": "transport-air"
+  },
+  {
+    "name": "🛰️",
+    "name_id": "satellite",
+    "description": "1F6F0 FE0F\nE0.7",
+    "group": "Travel & Places",
+    "subgroup": "transport-air"
+  },
+  {
+    "name": "🚀",
+    "name_id": "rocket",
+    "description": "1F680\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "transport-air"
+  },
+  {
+    "name": "🛸",
+    "name_id": "flying_saucer",
+    "description": "1F6F8\nE5.0",
+    "group": "Travel & Places",
+    "subgroup": "transport-air"
+  },
+  {
+    "name": "🛎️",
+    "name_id": "bellhop_bell",
+    "description": "1F6CE FE0F\nE0.7",
+    "group": "Travel & Places",
+    "subgroup": "hotel"
+  },
+  {
+    "name": "🧳",
+    "name_id": "luggage",
+    "description": "1F9F3\nE11.0",
+    "group": "Travel & Places",
+    "subgroup": "hotel"
+  },
+  {
+    "name": "⌛",
+    "name_id": "hourglass_done",
+    "description": "231B\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "time"
+  },
+  {
+    "name": "⏳",
+    "name_id": "hourglass_not_done",
+    "description": "23F3\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "time"
+  },
+  {
+    "name": "⌚",
+    "name_id": "watch",
+    "description": "231A\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "time"
+  },
+  {
+    "name": "⏰",
+    "name_id": "alarm_clock",
+    "description": "23F0\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "time"
+  },
+  {
+    "name": "⏱️",
+    "name_id": "stopwatch",
+    "description": "23F1 FE0F\nE1.0",
+    "group": "Travel & Places",
+    "subgroup": "time"
+  },
+  {
+    "name": "⏲️",
+    "name_id": "timer_clock",
+    "description": "23F2 FE0F\nE1.0",
+    "group": "Travel & Places",
+    "subgroup": "time"
+  },
+  {
+    "name": "🕰️",
+    "name_id": "mantelpiece_clock",
+    "description": "1F570 FE0F\nE0.7",
+    "group": "Travel & Places",
+    "subgroup": "time"
+  },
+  {
+    "name": "🕛",
+    "name_id": "twelve_o_clock",
+    "description": "1F55B\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "time"
+  },
+  {
+    "name": "🕧",
+    "name_id": "twelve_thirty",
+    "description": "1F567\nE0.7",
+    "group": "Travel & Places",
+    "subgroup": "time"
+  },
+  {
+    "name": "🕐",
+    "name_id": "one_o_clock",
+    "description": "1F550\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "time"
+  },
+  {
+    "name": "🕜",
+    "name_id": "one_thirty",
+    "description": "1F55C\nE0.7",
+    "group": "Travel & Places",
+    "subgroup": "time"
+  },
+  {
+    "name": "🕑",
+    "name_id": "two_o_clock",
+    "description": "1F551\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "time"
+  },
+  {
+    "name": "🕝",
+    "name_id": "two_thirty",
+    "description": "1F55D\nE0.7",
+    "group": "Travel & Places",
+    "subgroup": "time"
+  },
+  {
+    "name": "🕒",
+    "name_id": "three_o_clock",
+    "description": "1F552\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "time"
+  },
+  {
+    "name": "🕞",
+    "name_id": "three_thirty",
+    "description": "1F55E\nE0.7",
+    "group": "Travel & Places",
+    "subgroup": "time"
+  },
+  {
+    "name": "🕓",
+    "name_id": "four_o_clock",
+    "description": "1F553\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "time"
+  },
+  {
+    "name": "🕟",
+    "name_id": "four_thirty",
+    "description": "1F55F\nE0.7",
+    "group": "Travel & Places",
+    "subgroup": "time"
+  },
+  {
+    "name": "🕔",
+    "name_id": "five_o_clock",
+    "description": "1F554\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "time"
+  },
+  {
+    "name": "🕠",
+    "name_id": "five_thirty",
+    "description": "1F560\nE0.7",
+    "group": "Travel & Places",
+    "subgroup": "time"
+  },
+  {
+    "name": "🕕",
+    "name_id": "six_o_clock",
+    "description": "1F555\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "time"
+  },
+  {
+    "name": "🕡",
+    "name_id": "six_thirty",
+    "description": "1F561\nE0.7",
+    "group": "Travel & Places",
+    "subgroup": "time"
+  },
+  {
+    "name": "🕖",
+    "name_id": "seven_o_clock",
+    "description": "1F556\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "time"
+  },
+  {
+    "name": "🕢",
+    "name_id": "seven_thirty",
+    "description": "1F562\nE0.7",
+    "group": "Travel & Places",
+    "subgroup": "time"
+  },
+  {
+    "name": "🕗",
+    "name_id": "eight_o_clock",
+    "description": "1F557\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "time"
+  },
+  {
+    "name": "🕣",
+    "name_id": "eight_thirty",
+    "description": "1F563\nE0.7",
+    "group": "Travel & Places",
+    "subgroup": "time"
+  },
+  {
+    "name": "🕘",
+    "name_id": "nine_o_clock",
+    "description": "1F558\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "time"
+  },
+  {
+    "name": "🕤",
+    "name_id": "nine_thirty",
+    "description": "1F564\nE0.7",
+    "group": "Travel & Places",
+    "subgroup": "time"
+  },
+  {
+    "name": "🕙",
+    "name_id": "ten_o_clock",
+    "description": "1F559\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "time"
+  },
+  {
+    "name": "🕥",
+    "name_id": "ten_thirty",
+    "description": "1F565\nE0.7",
+    "group": "Travel & Places",
+    "subgroup": "time"
+  },
+  {
+    "name": "🕚",
+    "name_id": "eleven_o_clock",
+    "description": "1F55A\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "time"
+  },
+  {
+    "name": "🕦",
+    "name_id": "eleven_thirty",
+    "description": "1F566\nE0.7",
+    "group": "Travel & Places",
+    "subgroup": "time"
+  },
+  {
+    "name": "🌑",
+    "name_id": "new_moon",
+    "description": "1F311\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "sky & weather"
+  },
+  {
+    "name": "🌒",
+    "name_id": "waxing_crescent_moon",
+    "description": "1F312\nE1.0",
+    "group": "Travel & Places",
+    "subgroup": "sky & weather"
+  },
+  {
+    "name": "🌓",
+    "name_id": "first_quarter_moon",
+    "description": "1F313\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "sky & weather"
+  },
+  {
+    "name": "🌔",
+    "name_id": "waxing_gibbous_moon",
+    "description": "1F314\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "sky & weather"
+  },
+  {
+    "name": "🌕",
+    "name_id": "full_moon",
+    "description": "1F315\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "sky & weather"
+  },
+  {
+    "name": "🌖",
+    "name_id": "waning_gibbous_moon",
+    "description": "1F316\nE1.0",
+    "group": "Travel & Places",
+    "subgroup": "sky & weather"
+  },
+  {
+    "name": "🌗",
+    "name_id": "last_quarter_moon",
+    "description": "1F317\nE1.0",
+    "group": "Travel & Places",
+    "subgroup": "sky & weather"
+  },
+  {
+    "name": "🌘",
+    "name_id": "waning_crescent_moon",
+    "description": "1F318\nE1.0",
+    "group": "Travel & Places",
+    "subgroup": "sky & weather"
+  },
+  {
+    "name": "🌙",
+    "name_id": "crescent_moon",
+    "description": "1F319\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "sky & weather"
+  },
+  {
+    "name": "🌚",
+    "name_id": "new_moon_face",
+    "description": "1F31A\nE1.0",
+    "group": "Travel & Places",
+    "subgroup": "sky & weather"
+  },
+  {
+    "name": "🌛",
+    "name_id": "first_quarter_moon_face",
+    "description": "1F31B\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "sky & weather"
+  },
+  {
+    "name": "🌜",
+    "name_id": "last_quarter_moon_face",
+    "description": "1F31C\nE0.7",
+    "group": "Travel & Places",
+    "subgroup": "sky & weather"
+  },
+  {
+    "name": "🌡️",
+    "name_id": "thermometer",
+    "description": "1F321 FE0F\nE0.7",
+    "group": "Travel & Places",
+    "subgroup": "sky & weather"
+  },
+  {
+    "name": "☀️",
+    "name_id": "sun",
+    "description": "2600 FE0F\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "sky & weather"
+  },
+  {
+    "name": "🌝",
+    "name_id": "full_moon_face",
+    "description": "1F31D\nE1.0",
+    "group": "Travel & Places",
+    "subgroup": "sky & weather"
+  },
+  {
+    "name": "🌞",
+    "name_id": "sun_with_face",
+    "description": "1F31E\nE1.0",
+    "group": "Travel & Places",
+    "subgroup": "sky & weather"
+  },
+  {
+    "name": "🪐",
+    "name_id": "ringed_planet",
+    "description": "1FA90\nE12.0",
+    "group": "Travel & Places",
+    "subgroup": "sky & weather"
+  },
+  {
+    "name": "⭐",
+    "name_id": "star",
+    "description": "2B50\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "sky & weather"
+  },
+  {
+    "name": "🌟",
+    "name_id": "glowing_star",
+    "description": "1F31F\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "sky & weather"
+  },
+  {
+    "name": "🌠",
+    "name_id": "shooting_star",
+    "description": "1F320\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "sky & weather"
+  },
+  {
+    "name": "🌌",
+    "name_id": "milky_way",
+    "description": "1F30C\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "sky & weather"
+  },
+  {
+    "name": "☁️",
+    "name_id": "cloud",
+    "description": "2601 FE0F\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "sky & weather"
+  },
+  {
+    "name": "⛅",
+    "name_id": "sun_behind_cloud",
+    "description": "26C5\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "sky & weather"
+  },
+  {
+    "name": "⛈️",
+    "name_id": "cloud_with_lightning_and_rain",
+    "description": "26C8 FE0F\nE0.7",
+    "group": "Travel & Places",
+    "subgroup": "sky & weather"
+  },
+  {
+    "name": "🌤️",
+    "name_id": "sun_behind_small_cloud",
+    "description": "1F324 FE0F\nE0.7",
+    "group": "Travel & Places",
+    "subgroup": "sky & weather"
+  },
+  {
+    "name": "🌥️",
+    "name_id": "sun_behind_large_cloud",
+    "description": "1F325 FE0F\nE0.7",
+    "group": "Travel & Places",
+    "subgroup": "sky & weather"
+  },
+  {
+    "name": "🌦️",
+    "name_id": "sun_behind_rain_cloud",
+    "description": "1F326 FE0F\nE0.7",
+    "group": "Travel & Places",
+    "subgroup": "sky & weather"
+  },
+  {
+    "name": "🌧️",
+    "name_id": "cloud_with_rain",
+    "description": "1F327 FE0F\nE0.7",
+    "group": "Travel & Places",
+    "subgroup": "sky & weather"
+  },
+  {
+    "name": "🌨️",
+    "name_id": "cloud_with_snow",
+    "description": "1F328 FE0F\nE0.7",
+    "group": "Travel & Places",
+    "subgroup": "sky & weather"
+  },
+  {
+    "name": "🌩️",
+    "name_id": "cloud_with_lightning",
+    "description": "1F329 FE0F\nE0.7",
+    "group": "Travel & Places",
+    "subgroup": "sky & weather"
+  },
+  {
+    "name": "🌪️",
+    "name_id": "tornado",
+    "description": "1F32A FE0F\nE0.7",
+    "group": "Travel & Places",
+    "subgroup": "sky & weather"
+  },
+  {
+    "name": "🌫️",
+    "name_id": "fog",
+    "description": "1F32B FE0F\nE0.7",
+    "group": "Travel & Places",
+    "subgroup": "sky & weather"
+  },
+  {
+    "name": "🌬️",
+    "name_id": "wind_face",
+    "description": "1F32C FE0F\nE0.7",
+    "group": "Travel & Places",
+    "subgroup": "sky & weather"
+  },
+  {
+    "name": "🌀",
+    "name_id": "cyclone",
+    "description": "1F300\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "sky & weather"
+  },
+  {
+    "name": "🌈",
+    "name_id": "rainbow",
+    "description": "1F308\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "sky & weather"
+  },
+  {
+    "name": "🌂",
+    "name_id": "closed_umbrella",
+    "description": "1F302\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "sky & weather"
+  },
+  {
+    "name": "☂️",
+    "name_id": "umbrella",
+    "description": "2602 FE0F\nE0.7",
+    "group": "Travel & Places",
+    "subgroup": "sky & weather"
+  },
+  {
+    "name": "☔",
+    "name_id": "umbrella_with_rain_drops",
+    "description": "2614\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "sky & weather"
+  },
+  {
+    "name": "⛱️",
+    "name_id": "umbrella_on_ground",
+    "description": "26F1 FE0F\nE0.7",
+    "group": "Travel & Places",
+    "subgroup": "sky & weather"
+  },
+  {
+    "name": "⚡",
+    "name_id": "high_voltage",
+    "description": "26A1\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "sky & weather"
+  },
+  {
+    "name": "❄️",
+    "name_id": "snowflake",
+    "description": "2744 FE0F\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "sky & weather"
+  },
+  {
+    "name": "☃️",
+    "name_id": "snowman",
+    "description": "2603 FE0F\nE0.7",
+    "group": "Travel & Places",
+    "subgroup": "sky & weather"
+  },
+  {
+    "name": "⛄",
+    "name_id": "snowman_without_snow",
+    "description": "26C4\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "sky & weather"
+  },
+  {
+    "name": "☄️",
+    "name_id": "comet",
+    "description": "2604 FE0F\nE1.0",
+    "group": "Travel & Places",
+    "subgroup": "sky & weather"
+  },
+  {
+    "name": "🔥",
+    "name_id": "fire",
+    "description": "1F525\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "sky & weather"
+  },
+  {
+    "name": "💧",
+    "name_id": "droplet",
+    "description": "1F4A7\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "sky & weather"
+  },
+  {
+    "name": "🌊",
+    "name_id": "water_wave",
+    "description": "1F30A\nE0.6",
+    "group": "Travel & Places",
+    "subgroup": "sky & weather"
+  }
+]

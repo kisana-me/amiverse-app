@@ -1,0 +1,1892 @@
+[
+  {
+    "name": "🏁",
+    "name_id": "chequered_flag",
+    "description": "1F3C1\nE0.6",
+    "group": "Flags",
+    "subgroup": "flag"
+  },
+  {
+    "name": "🚩",
+    "name_id": "triangular_flag",
+    "description": "1F6A9\nE0.6",
+    "group": "Flags",
+    "subgroup": "flag"
+  },
+  {
+    "name": "🎌",
+    "name_id": "crossed_flags",
+    "description": "1F38C\nE0.6",
+    "group": "Flags",
+    "subgroup": "flag"
+  },
+  {
+    "name": "🏴",
+    "name_id": "black_flag",
+    "description": "1F3F4\nE1.0",
+    "group": "Flags",
+    "subgroup": "flag"
+  },
+  {
+    "name": "🏳️",
+    "name_id": "white_flag",
+    "description": "1F3F3 FE0F\nE0.7",
+    "group": "Flags",
+    "subgroup": "flag"
+  },
+  {
+    "name": "🏳️‍🌈",
+    "name_id": "rainbow_flag",
+    "description": "1F3F3 FE0F 200D 1F308\nE4.0",
+    "group": "Flags",
+    "subgroup": "flag"
+  },
+  {
+    "name": "🏳️‍⚧️",
+    "name_id": "transgender_flag",
+    "description": "1F3F3 FE0F 200D 26A7 FE0F\nE13.0",
+    "group": "Flags",
+    "subgroup": "flag"
+  },
+  {
+    "name": "🏴‍☠️",
+    "name_id": "pirate_flag",
+    "description": "1F3F4 200D 2620 FE0F\nE11.0",
+    "group": "Flags",
+    "subgroup": "flag"
+  },
+  {
+    "name": "🇦🇨",
+    "name_id": "flag_ascension_island",
+    "description": "1F1E6 1F1E8\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇦🇩",
+    "name_id": "flag_andorra",
+    "description": "1F1E6 1F1E9\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇦🇪",
+    "name_id": "flag_united_arab_emirates",
+    "description": "1F1E6 1F1EA\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇦🇫",
+    "name_id": "flag_afghanistan",
+    "description": "1F1E6 1F1EB\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇦🇬",
+    "name_id": "flag_antigua_barbuda",
+    "description": "1F1E6 1F1EC\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇦🇮",
+    "name_id": "flag_anguilla",
+    "description": "1F1E6 1F1EE\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇦🇱",
+    "name_id": "flag_albania",
+    "description": "1F1E6 1F1F1\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇦🇲",
+    "name_id": "flag_armenia",
+    "description": "1F1E6 1F1F2\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇦🇴",
+    "name_id": "flag_angola",
+    "description": "1F1E6 1F1F4\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇦🇶",
+    "name_id": "flag_antarctica",
+    "description": "1F1E6 1F1F6\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇦🇷",
+    "name_id": "flag_argentina",
+    "description": "1F1E6 1F1F7\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇦🇸",
+    "name_id": "flag_american_samoa",
+    "description": "1F1E6 1F1F8\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇦🇹",
+    "name_id": "flag_austria",
+    "description": "1F1E6 1F1F9\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇦🇺",
+    "name_id": "flag_australia",
+    "description": "1F1E6 1F1FA\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇦🇼",
+    "name_id": "flag_aruba",
+    "description": "1F1E6 1F1FC\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇦🇽",
+    "name_id": "flag_land_islands",
+    "description": "1F1E6 1F1FD\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇦🇿",
+    "name_id": "flag_azerbaijan",
+    "description": "1F1E6 1F1FF\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇧🇦",
+    "name_id": "flag_bosnia_herzegovina",
+    "description": "1F1E7 1F1E6\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇧🇧",
+    "name_id": "flag_barbados",
+    "description": "1F1E7 1F1E7\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇧🇩",
+    "name_id": "flag_bangladesh",
+    "description": "1F1E7 1F1E9\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇧🇪",
+    "name_id": "flag_belgium",
+    "description": "1F1E7 1F1EA\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇧🇫",
+    "name_id": "flag_burkina_faso",
+    "description": "1F1E7 1F1EB\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇧🇬",
+    "name_id": "flag_bulgaria",
+    "description": "1F1E7 1F1EC\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇧🇭",
+    "name_id": "flag_bahrain",
+    "description": "1F1E7 1F1ED\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇧🇮",
+    "name_id": "flag_burundi",
+    "description": "1F1E7 1F1EE\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇧🇯",
+    "name_id": "flag_benin",
+    "description": "1F1E7 1F1EF\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇧🇱",
+    "name_id": "flag_st_barth_lemy",
+    "description": "1F1E7 1F1F1\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇧🇲",
+    "name_id": "flag_bermuda",
+    "description": "1F1E7 1F1F2\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇧🇳",
+    "name_id": "flag_brunei",
+    "description": "1F1E7 1F1F3\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇧🇴",
+    "name_id": "flag_bolivia",
+    "description": "1F1E7 1F1F4\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇧🇶",
+    "name_id": "flag_caribbean_netherlands",
+    "description": "1F1E7 1F1F6\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇧🇷",
+    "name_id": "flag_brazil",
+    "description": "1F1E7 1F1F7\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇧🇸",
+    "name_id": "flag_bahamas",
+    "description": "1F1E7 1F1F8\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇧🇹",
+    "name_id": "flag_bhutan",
+    "description": "1F1E7 1F1F9\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇧🇻",
+    "name_id": "flag_bouvet_island",
+    "description": "1F1E7 1F1FB\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇧🇼",
+    "name_id": "flag_botswana",
+    "description": "1F1E7 1F1FC\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇧🇾",
+    "name_id": "flag_belarus",
+    "description": "1F1E7 1F1FE\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇧🇿",
+    "name_id": "flag_belize",
+    "description": "1F1E7 1F1FF\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇨🇦",
+    "name_id": "flag_canada",
+    "description": "1F1E8 1F1E6\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇨🇨",
+    "name_id": "flag_cocos_keeling_islands",
+    "description": "1F1E8 1F1E8\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇨🇩",
+    "name_id": "flag_congo_kinshasa",
+    "description": "1F1E8 1F1E9\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇨🇫",
+    "name_id": "flag_central_african_republic",
+    "description": "1F1E8 1F1EB\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇨🇬",
+    "name_id": "flag_congo_brazzaville",
+    "description": "1F1E8 1F1EC\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇨🇭",
+    "name_id": "flag_switzerland",
+    "description": "1F1E8 1F1ED\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇨🇮",
+    "name_id": "flag_c_te_d_ivoire",
+    "description": "1F1E8 1F1EE\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇨🇰",
+    "name_id": "flag_cook_islands",
+    "description": "1F1E8 1F1F0\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇨🇱",
+    "name_id": "flag_chile",
+    "description": "1F1E8 1F1F1\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇨🇲",
+    "name_id": "flag_cameroon",
+    "description": "1F1E8 1F1F2\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇨🇳",
+    "name_id": "flag_china",
+    "description": "1F1E8 1F1F3\nE0.6",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇨🇴",
+    "name_id": "flag_colombia",
+    "description": "1F1E8 1F1F4\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇨🇵",
+    "name_id": "flag_clipperton_island",
+    "description": "1F1E8 1F1F5\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇨🇶",
+    "name_id": "flag_sark",
+    "description": "1F1E8 1F1F6\nE16.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇨🇷",
+    "name_id": "flag_costa_rica",
+    "description": "1F1E8 1F1F7\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇨🇺",
+    "name_id": "flag_cuba",
+    "description": "1F1E8 1F1FA\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇨🇻",
+    "name_id": "flag_cape_verde",
+    "description": "1F1E8 1F1FB\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇨🇼",
+    "name_id": "flag_cura_ao",
+    "description": "1F1E8 1F1FC\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇨🇽",
+    "name_id": "flag_christmas_island",
+    "description": "1F1E8 1F1FD\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇨🇾",
+    "name_id": "flag_cyprus",
+    "description": "1F1E8 1F1FE\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇨🇿",
+    "name_id": "flag_czechia",
+    "description": "1F1E8 1F1FF\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇩🇪",
+    "name_id": "flag_germany",
+    "description": "1F1E9 1F1EA\nE0.6",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇩🇬",
+    "name_id": "flag_diego_garcia",
+    "description": "1F1E9 1F1EC\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇩🇯",
+    "name_id": "flag_djibouti",
+    "description": "1F1E9 1F1EF\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇩🇰",
+    "name_id": "flag_denmark",
+    "description": "1F1E9 1F1F0\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇩🇲",
+    "name_id": "flag_dominica",
+    "description": "1F1E9 1F1F2\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇩🇴",
+    "name_id": "flag_dominican_republic",
+    "description": "1F1E9 1F1F4\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇩🇿",
+    "name_id": "flag_algeria",
+    "description": "1F1E9 1F1FF\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇪🇦",
+    "name_id": "flag_ceuta_melilla",
+    "description": "1F1EA 1F1E6\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇪🇨",
+    "name_id": "flag_ecuador",
+    "description": "1F1EA 1F1E8\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇪🇪",
+    "name_id": "flag_estonia",
+    "description": "1F1EA 1F1EA\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇪🇬",
+    "name_id": "flag_egypt",
+    "description": "1F1EA 1F1EC\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇪🇭",
+    "name_id": "flag_western_sahara",
+    "description": "1F1EA 1F1ED\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇪🇷",
+    "name_id": "flag_eritrea",
+    "description": "1F1EA 1F1F7\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇪🇸",
+    "name_id": "flag_spain",
+    "description": "1F1EA 1F1F8\nE0.6",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇪🇹",
+    "name_id": "flag_ethiopia",
+    "description": "1F1EA 1F1F9\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇪🇺",
+    "name_id": "flag_european_union",
+    "description": "1F1EA 1F1FA\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇫🇮",
+    "name_id": "flag_finland",
+    "description": "1F1EB 1F1EE\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇫🇯",
+    "name_id": "flag_fiji",
+    "description": "1F1EB 1F1EF\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇫🇰",
+    "name_id": "flag_falkland_islands",
+    "description": "1F1EB 1F1F0\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇫🇲",
+    "name_id": "flag_micronesia",
+    "description": "1F1EB 1F1F2\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇫🇴",
+    "name_id": "flag_faroe_islands",
+    "description": "1F1EB 1F1F4\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇫🇷",
+    "name_id": "flag_france",
+    "description": "1F1EB 1F1F7\nE0.6",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇬🇦",
+    "name_id": "flag_gabon",
+    "description": "1F1EC 1F1E6\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇬🇧",
+    "name_id": "flag_united_kingdom",
+    "description": "1F1EC 1F1E7\nE0.6",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇬🇩",
+    "name_id": "flag_grenada",
+    "description": "1F1EC 1F1E9\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇬🇪",
+    "name_id": "flag_georgia",
+    "description": "1F1EC 1F1EA\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇬🇫",
+    "name_id": "flag_french_guiana",
+    "description": "1F1EC 1F1EB\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇬🇬",
+    "name_id": "flag_guernsey",
+    "description": "1F1EC 1F1EC\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇬🇭",
+    "name_id": "flag_ghana",
+    "description": "1F1EC 1F1ED\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇬🇮",
+    "name_id": "flag_gibraltar",
+    "description": "1F1EC 1F1EE\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇬🇱",
+    "name_id": "flag_greenland",
+    "description": "1F1EC 1F1F1\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇬🇲",
+    "name_id": "flag_gambia",
+    "description": "1F1EC 1F1F2\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇬🇳",
+    "name_id": "flag_guinea",
+    "description": "1F1EC 1F1F3\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇬🇵",
+    "name_id": "flag_guadeloupe",
+    "description": "1F1EC 1F1F5\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇬🇶",
+    "name_id": "flag_equatorial_guinea",
+    "description": "1F1EC 1F1F6\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇬🇷",
+    "name_id": "flag_greece",
+    "description": "1F1EC 1F1F7\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇬🇸",
+    "name_id": "flag_south_georgia_south_sandwich_islands",
+    "description": "1F1EC 1F1F8\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇬🇹",
+    "name_id": "flag_guatemala",
+    "description": "1F1EC 1F1F9\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇬🇺",
+    "name_id": "flag_guam",
+    "description": "1F1EC 1F1FA\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇬🇼",
+    "name_id": "flag_guinea_bissau",
+    "description": "1F1EC 1F1FC\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇬🇾",
+    "name_id": "flag_guyana",
+    "description": "1F1EC 1F1FE\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇭🇰",
+    "name_id": "flag_hong_kong_sar_china",
+    "description": "1F1ED 1F1F0\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇭🇲",
+    "name_id": "flag_heard_mcdonald_islands",
+    "description": "1F1ED 1F1F2\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇭🇳",
+    "name_id": "flag_honduras",
+    "description": "1F1ED 1F1F3\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇭🇷",
+    "name_id": "flag_croatia",
+    "description": "1F1ED 1F1F7\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇭🇹",
+    "name_id": "flag_haiti",
+    "description": "1F1ED 1F1F9\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇭🇺",
+    "name_id": "flag_hungary",
+    "description": "1F1ED 1F1FA\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇮🇨",
+    "name_id": "flag_canary_islands",
+    "description": "1F1EE 1F1E8\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇮🇩",
+    "name_id": "flag_indonesia",
+    "description": "1F1EE 1F1E9\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇮🇪",
+    "name_id": "flag_ireland",
+    "description": "1F1EE 1F1EA\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇮🇱",
+    "name_id": "flag_israel",
+    "description": "1F1EE 1F1F1\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇮🇲",
+    "name_id": "flag_isle_of_man",
+    "description": "1F1EE 1F1F2\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇮🇳",
+    "name_id": "flag_india",
+    "description": "1F1EE 1F1F3\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇮🇴",
+    "name_id": "flag_british_indian_ocean_territory",
+    "description": "1F1EE 1F1F4\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇮🇶",
+    "name_id": "flag_iraq",
+    "description": "1F1EE 1F1F6\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇮🇷",
+    "name_id": "flag_iran",
+    "description": "1F1EE 1F1F7\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇮🇸",
+    "name_id": "flag_iceland",
+    "description": "1F1EE 1F1F8\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇮🇹",
+    "name_id": "flag_italy",
+    "description": "1F1EE 1F1F9\nE0.6",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇯🇪",
+    "name_id": "flag_jersey",
+    "description": "1F1EF 1F1EA\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇯🇲",
+    "name_id": "flag_jamaica",
+    "description": "1F1EF 1F1F2\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇯🇴",
+    "name_id": "flag_jordan",
+    "description": "1F1EF 1F1F4\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇯🇵",
+    "name_id": "flag_japan",
+    "description": "1F1EF 1F1F5\nE0.6",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇰🇪",
+    "name_id": "flag_kenya",
+    "description": "1F1F0 1F1EA\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇰🇬",
+    "name_id": "flag_kyrgyzstan",
+    "description": "1F1F0 1F1EC\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇰🇭",
+    "name_id": "flag_cambodia",
+    "description": "1F1F0 1F1ED\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇰🇮",
+    "name_id": "flag_kiribati",
+    "description": "1F1F0 1F1EE\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇰🇲",
+    "name_id": "flag_comoros",
+    "description": "1F1F0 1F1F2\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇰🇳",
+    "name_id": "flag_st_kitts_nevis",
+    "description": "1F1F0 1F1F3\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇰🇵",
+    "name_id": "flag_north_korea",
+    "description": "1F1F0 1F1F5\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇰🇷",
+    "name_id": "flag_south_korea",
+    "description": "1F1F0 1F1F7\nE0.6",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇰🇼",
+    "name_id": "flag_kuwait",
+    "description": "1F1F0 1F1FC\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇰🇾",
+    "name_id": "flag_cayman_islands",
+    "description": "1F1F0 1F1FE\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇰🇿",
+    "name_id": "flag_kazakhstan",
+    "description": "1F1F0 1F1FF\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇱🇦",
+    "name_id": "flag_laos",
+    "description": "1F1F1 1F1E6\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇱🇧",
+    "name_id": "flag_lebanon",
+    "description": "1F1F1 1F1E7\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇱🇨",
+    "name_id": "flag_st_lucia",
+    "description": "1F1F1 1F1E8\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇱🇮",
+    "name_id": "flag_liechtenstein",
+    "description": "1F1F1 1F1EE\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇱🇰",
+    "name_id": "flag_sri_lanka",
+    "description": "1F1F1 1F1F0\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇱🇷",
+    "name_id": "flag_liberia",
+    "description": "1F1F1 1F1F7\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇱🇸",
+    "name_id": "flag_lesotho",
+    "description": "1F1F1 1F1F8\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇱🇹",
+    "name_id": "flag_lithuania",
+    "description": "1F1F1 1F1F9\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇱🇺",
+    "name_id": "flag_luxembourg",
+    "description": "1F1F1 1F1FA\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇱🇻",
+    "name_id": "flag_latvia",
+    "description": "1F1F1 1F1FB\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇱🇾",
+    "name_id": "flag_libya",
+    "description": "1F1F1 1F1FE\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇲🇦",
+    "name_id": "flag_morocco",
+    "description": "1F1F2 1F1E6\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇲🇨",
+    "name_id": "flag_monaco",
+    "description": "1F1F2 1F1E8\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇲🇩",
+    "name_id": "flag_moldova",
+    "description": "1F1F2 1F1E9\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇲🇪",
+    "name_id": "flag_montenegro",
+    "description": "1F1F2 1F1EA\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇲🇫",
+    "name_id": "flag_st_martin",
+    "description": "1F1F2 1F1EB\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇲🇬",
+    "name_id": "flag_madagascar",
+    "description": "1F1F2 1F1EC\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇲🇭",
+    "name_id": "flag_marshall_islands",
+    "description": "1F1F2 1F1ED\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇲🇰",
+    "name_id": "flag_north_macedonia",
+    "description": "1F1F2 1F1F0\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇲🇱",
+    "name_id": "flag_mali",
+    "description": "1F1F2 1F1F1\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇲🇲",
+    "name_id": "flag_myanmar_burma",
+    "description": "1F1F2 1F1F2\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇲🇳",
+    "name_id": "flag_mongolia",
+    "description": "1F1F2 1F1F3\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇲🇴",
+    "name_id": "flag_macao_sar_china",
+    "description": "1F1F2 1F1F4\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇲🇵",
+    "name_id": "flag_northern_mariana_islands",
+    "description": "1F1F2 1F1F5\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇲🇶",
+    "name_id": "flag_martinique",
+    "description": "1F1F2 1F1F6\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇲🇷",
+    "name_id": "flag_mauritania",
+    "description": "1F1F2 1F1F7\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇲🇸",
+    "name_id": "flag_montserrat",
+    "description": "1F1F2 1F1F8\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇲🇹",
+    "name_id": "flag_malta",
+    "description": "1F1F2 1F1F9\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇲🇺",
+    "name_id": "flag_mauritius",
+    "description": "1F1F2 1F1FA\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇲🇻",
+    "name_id": "flag_maldives",
+    "description": "1F1F2 1F1FB\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇲🇼",
+    "name_id": "flag_malawi",
+    "description": "1F1F2 1F1FC\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇲🇽",
+    "name_id": "flag_mexico",
+    "description": "1F1F2 1F1FD\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇲🇾",
+    "name_id": "flag_malaysia",
+    "description": "1F1F2 1F1FE\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇲🇿",
+    "name_id": "flag_mozambique",
+    "description": "1F1F2 1F1FF\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇳🇦",
+    "name_id": "flag_namibia",
+    "description": "1F1F3 1F1E6\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇳🇨",
+    "name_id": "flag_new_caledonia",
+    "description": "1F1F3 1F1E8\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇳🇪",
+    "name_id": "flag_niger",
+    "description": "1F1F3 1F1EA\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇳🇫",
+    "name_id": "flag_norfolk_island",
+    "description": "1F1F3 1F1EB\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇳🇬",
+    "name_id": "flag_nigeria",
+    "description": "1F1F3 1F1EC\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇳🇮",
+    "name_id": "flag_nicaragua",
+    "description": "1F1F3 1F1EE\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇳🇱",
+    "name_id": "flag_netherlands",
+    "description": "1F1F3 1F1F1\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇳🇴",
+    "name_id": "flag_norway",
+    "description": "1F1F3 1F1F4\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇳🇵",
+    "name_id": "flag_nepal",
+    "description": "1F1F3 1F1F5\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇳🇷",
+    "name_id": "flag_nauru",
+    "description": "1F1F3 1F1F7\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇳🇺",
+    "name_id": "flag_niue",
+    "description": "1F1F3 1F1FA\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇳🇿",
+    "name_id": "flag_new_zealand",
+    "description": "1F1F3 1F1FF\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇴🇲",
+    "name_id": "flag_oman",
+    "description": "1F1F4 1F1F2\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇵🇦",
+    "name_id": "flag_panama",
+    "description": "1F1F5 1F1E6\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇵🇪",
+    "name_id": "flag_peru",
+    "description": "1F1F5 1F1EA\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇵🇫",
+    "name_id": "flag_french_polynesia",
+    "description": "1F1F5 1F1EB\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇵🇬",
+    "name_id": "flag_papua_new_guinea",
+    "description": "1F1F5 1F1EC\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇵🇭",
+    "name_id": "flag_philippines",
+    "description": "1F1F5 1F1ED\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇵🇰",
+    "name_id": "flag_pakistan",
+    "description": "1F1F5 1F1F0\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇵🇱",
+    "name_id": "flag_poland",
+    "description": "1F1F5 1F1F1\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇵🇲",
+    "name_id": "flag_st_pierre_miquelon",
+    "description": "1F1F5 1F1F2\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇵🇳",
+    "name_id": "flag_pitcairn_islands",
+    "description": "1F1F5 1F1F3\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇵🇷",
+    "name_id": "flag_puerto_rico",
+    "description": "1F1F5 1F1F7\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇵🇸",
+    "name_id": "flag_palestinian_territories",
+    "description": "1F1F5 1F1F8\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇵🇹",
+    "name_id": "flag_portugal",
+    "description": "1F1F5 1F1F9\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇵🇼",
+    "name_id": "flag_palau",
+    "description": "1F1F5 1F1FC\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇵🇾",
+    "name_id": "flag_paraguay",
+    "description": "1F1F5 1F1FE\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇶🇦",
+    "name_id": "flag_qatar",
+    "description": "1F1F6 1F1E6\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇷🇪",
+    "name_id": "flag_r_union",
+    "description": "1F1F7 1F1EA\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇷🇴",
+    "name_id": "flag_romania",
+    "description": "1F1F7 1F1F4\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇷🇸",
+    "name_id": "flag_serbia",
+    "description": "1F1F7 1F1F8\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇷🇺",
+    "name_id": "flag_russia",
+    "description": "1F1F7 1F1FA\nE0.6",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇷🇼",
+    "name_id": "flag_rwanda",
+    "description": "1F1F7 1F1FC\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇸🇦",
+    "name_id": "flag_saudi_arabia",
+    "description": "1F1F8 1F1E6\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇸🇧",
+    "name_id": "flag_solomon_islands",
+    "description": "1F1F8 1F1E7\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇸🇨",
+    "name_id": "flag_seychelles",
+    "description": "1F1F8 1F1E8\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇸🇩",
+    "name_id": "flag_sudan",
+    "description": "1F1F8 1F1E9\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇸🇪",
+    "name_id": "flag_sweden",
+    "description": "1F1F8 1F1EA\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇸🇬",
+    "name_id": "flag_singapore",
+    "description": "1F1F8 1F1EC\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇸🇭",
+    "name_id": "flag_st_helena",
+    "description": "1F1F8 1F1ED\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇸🇮",
+    "name_id": "flag_slovenia",
+    "description": "1F1F8 1F1EE\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇸🇯",
+    "name_id": "flag_svalbard_jan_mayen",
+    "description": "1F1F8 1F1EF\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇸🇰",
+    "name_id": "flag_slovakia",
+    "description": "1F1F8 1F1F0\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇸🇱",
+    "name_id": "flag_sierra_leone",
+    "description": "1F1F8 1F1F1\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇸🇲",
+    "name_id": "flag_san_marino",
+    "description": "1F1F8 1F1F2\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇸🇳",
+    "name_id": "flag_senegal",
+    "description": "1F1F8 1F1F3\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇸🇴",
+    "name_id": "flag_somalia",
+    "description": "1F1F8 1F1F4\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇸🇷",
+    "name_id": "flag_suriname",
+    "description": "1F1F8 1F1F7\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇸🇸",
+    "name_id": "flag_south_sudan",
+    "description": "1F1F8 1F1F8\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇸🇹",
+    "name_id": "flag_s_o_tom_pr_ncipe",
+    "description": "1F1F8 1F1F9\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇸🇻",
+    "name_id": "flag_el_salvador",
+    "description": "1F1F8 1F1FB\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇸🇽",
+    "name_id": "flag_sint_maarten",
+    "description": "1F1F8 1F1FD\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇸🇾",
+    "name_id": "flag_syria",
+    "description": "1F1F8 1F1FE\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇸🇿",
+    "name_id": "flag_eswatini",
+    "description": "1F1F8 1F1FF\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇹🇦",
+    "name_id": "flag_tristan_da_cunha",
+    "description": "1F1F9 1F1E6\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇹🇨",
+    "name_id": "flag_turks_caicos_islands",
+    "description": "1F1F9 1F1E8\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇹🇩",
+    "name_id": "flag_chad",
+    "description": "1F1F9 1F1E9\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇹🇫",
+    "name_id": "flag_french_southern_territories",
+    "description": "1F1F9 1F1EB\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇹🇬",
+    "name_id": "flag_togo",
+    "description": "1F1F9 1F1EC\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇹🇭",
+    "name_id": "flag_thailand",
+    "description": "1F1F9 1F1ED\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇹🇯",
+    "name_id": "flag_tajikistan",
+    "description": "1F1F9 1F1EF\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇹🇰",
+    "name_id": "flag_tokelau",
+    "description": "1F1F9 1F1F0\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇹🇱",
+    "name_id": "flag_timor_leste",
+    "description": "1F1F9 1F1F1\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇹🇲",
+    "name_id": "flag_turkmenistan",
+    "description": "1F1F9 1F1F2\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇹🇳",
+    "name_id": "flag_tunisia",
+    "description": "1F1F9 1F1F3\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇹🇴",
+    "name_id": "flag_tonga",
+    "description": "1F1F9 1F1F4\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇹🇷",
+    "name_id": "flag_t_rkiye",
+    "description": "1F1F9 1F1F7\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇹🇹",
+    "name_id": "flag_trinidad_tobago",
+    "description": "1F1F9 1F1F9\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇹🇻",
+    "name_id": "flag_tuvalu",
+    "description": "1F1F9 1F1FB\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇹🇼",
+    "name_id": "flag_taiwan",
+    "description": "1F1F9 1F1FC\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇹🇿",
+    "name_id": "flag_tanzania",
+    "description": "1F1F9 1F1FF\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇺🇦",
+    "name_id": "flag_ukraine",
+    "description": "1F1FA 1F1E6\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇺🇬",
+    "name_id": "flag_uganda",
+    "description": "1F1FA 1F1EC\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇺🇲",
+    "name_id": "flag_u_s_outlying_islands",
+    "description": "1F1FA 1F1F2\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇺🇳",
+    "name_id": "flag_united_nations",
+    "description": "1F1FA 1F1F3\nE4.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇺🇸",
+    "name_id": "flag_united_states",
+    "description": "1F1FA 1F1F8\nE0.6",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇺🇾",
+    "name_id": "flag_uruguay",
+    "description": "1F1FA 1F1FE\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇺🇿",
+    "name_id": "flag_uzbekistan",
+    "description": "1F1FA 1F1FF\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇻🇦",
+    "name_id": "flag_vatican_city",
+    "description": "1F1FB 1F1E6\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇻🇨",
+    "name_id": "flag_st_vincent_grenadines",
+    "description": "1F1FB 1F1E8\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇻🇪",
+    "name_id": "flag_venezuela",
+    "description": "1F1FB 1F1EA\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇻🇬",
+    "name_id": "flag_british_virgin_islands",
+    "description": "1F1FB 1F1EC\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇻🇮",
+    "name_id": "flag_u_s_virgin_islands",
+    "description": "1F1FB 1F1EE\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇻🇳",
+    "name_id": "flag_vietnam",
+    "description": "1F1FB 1F1F3\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇻🇺",
+    "name_id": "flag_vanuatu",
+    "description": "1F1FB 1F1FA\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇼🇫",
+    "name_id": "flag_wallis_futuna",
+    "description": "1F1FC 1F1EB\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇼🇸",
+    "name_id": "flag_samoa",
+    "description": "1F1FC 1F1F8\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇽🇰",
+    "name_id": "flag_kosovo",
+    "description": "1F1FD 1F1F0\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇾🇪",
+    "name_id": "flag_yemen",
+    "description": "1F1FE 1F1EA\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇾🇹",
+    "name_id": "flag_mayotte",
+    "description": "1F1FE 1F1F9\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇿🇦",
+    "name_id": "flag_south_africa",
+    "description": "1F1FF 1F1E6\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇿🇲",
+    "name_id": "flag_zambia",
+    "description": "1F1FF 1F1F2\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🇿🇼",
+    "name_id": "flag_zimbabwe",
+    "description": "1F1FF 1F1FC\nE2.0",
+    "group": "Flags",
+    "subgroup": "country-flag"
+  },
+  {
+    "name": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+    "name_id": "flag_england",
+    "description": "1F3F4 E0067 E0062 E0065 E006E E0067 E007F\nE5.0",
+    "group": "Flags",
+    "subgroup": "subdivision-flag"
+  },
+  {
+    "name": "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
+    "name_id": "flag_scotland",
+    "description": "1F3F4 E0067 E0062 E0073 E0063 E0074 E007F\nE5.0",
+    "group": "Flags",
+    "subgroup": "subdivision-flag"
+  },
+  {
+    "name": "🏴󠁧󠁢󠁷󠁬󠁳󠁿",
+    "name_id": "flag_wales",
+    "description": "1F3F4 E0067 E0062 E0077 E006C E0073 E007F\nE5.0",
+    "group": "Flags",
+    "subgroup": "subdivision-flag"
+  }
+]

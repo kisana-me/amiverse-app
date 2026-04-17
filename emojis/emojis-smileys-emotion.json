@@ -1,0 +1,1199 @@
+[
+  {
+    "name": "😀",
+    "name_id": "grinning_face",
+    "description": "1F600\nE1.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-smiling"
+  },
+  {
+    "name": "😃",
+    "name_id": "grinning_face_with_big_eyes",
+    "description": "1F603\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-smiling"
+  },
+  {
+    "name": "😄",
+    "name_id": "grinning_face_with_smiling_eyes",
+    "description": "1F604\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-smiling"
+  },
+  {
+    "name": "😁",
+    "name_id": "beaming_face_with_smiling_eyes",
+    "description": "1F601\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-smiling"
+  },
+  {
+    "name": "😆",
+    "name_id": "grinning_squinting_face",
+    "description": "1F606\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-smiling"
+  },
+  {
+    "name": "😅",
+    "name_id": "grinning_face_with_sweat",
+    "description": "1F605\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-smiling"
+  },
+  {
+    "name": "🤣",
+    "name_id": "rolling_on_the_floor_laughing",
+    "description": "1F923\nE3.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-smiling"
+  },
+  {
+    "name": "😂",
+    "name_id": "face_with_tears_of_joy",
+    "description": "1F602\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-smiling"
+  },
+  {
+    "name": "🙂",
+    "name_id": "slightly_smiling_face",
+    "description": "1F642\nE1.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-smiling"
+  },
+  {
+    "name": "🙃",
+    "name_id": "upside_down_face",
+    "description": "1F643\nE1.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-smiling"
+  },
+  {
+    "name": "🫠",
+    "name_id": "melting_face",
+    "description": "1FAE0\nE14.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-smiling"
+  },
+  {
+    "name": "😉",
+    "name_id": "winking_face",
+    "description": "1F609\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-smiling"
+  },
+  {
+    "name": "😊",
+    "name_id": "smiling_face_with_smiling_eyes",
+    "description": "1F60A\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-smiling"
+  },
+  {
+    "name": "😇",
+    "name_id": "smiling_face_with_halo",
+    "description": "1F607\nE1.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-smiling"
+  },
+  {
+    "name": "🥰",
+    "name_id": "smiling_face_with_hearts",
+    "description": "1F970\nE11.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-affection"
+  },
+  {
+    "name": "😍",
+    "name_id": "smiling_face_with_heart_eyes",
+    "description": "1F60D\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-affection"
+  },
+  {
+    "name": "🤩",
+    "name_id": "star_struck",
+    "description": "1F929\nE5.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-affection"
+  },
+  {
+    "name": "😘",
+    "name_id": "face_blowing_a_kiss",
+    "description": "1F618\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-affection"
+  },
+  {
+    "name": "😗",
+    "name_id": "kissing_face",
+    "description": "1F617\nE1.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-affection"
+  },
+  {
+    "name": "☺️",
+    "name_id": "smiling_face",
+    "description": "263A FE0F\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-affection"
+  },
+  {
+    "name": "😚",
+    "name_id": "kissing_face_with_closed_eyes",
+    "description": "1F61A\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-affection"
+  },
+  {
+    "name": "😙",
+    "name_id": "kissing_face_with_smiling_eyes",
+    "description": "1F619\nE1.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-affection"
+  },
+  {
+    "name": "🥲",
+    "name_id": "smiling_face_with_tear",
+    "description": "1F972\nE13.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-affection"
+  },
+  {
+    "name": "😋",
+    "name_id": "face_savoring_food",
+    "description": "1F60B\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-tongue"
+  },
+  {
+    "name": "😛",
+    "name_id": "face_with_tongue",
+    "description": "1F61B\nE1.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-tongue"
+  },
+  {
+    "name": "😜",
+    "name_id": "winking_face_with_tongue",
+    "description": "1F61C\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-tongue"
+  },
+  {
+    "name": "🤪",
+    "name_id": "zany_face",
+    "description": "1F92A\nE5.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-tongue"
+  },
+  {
+    "name": "😝",
+    "name_id": "squinting_face_with_tongue",
+    "description": "1F61D\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-tongue"
+  },
+  {
+    "name": "🤑",
+    "name_id": "money_mouth_face",
+    "description": "1F911\nE1.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-tongue"
+  },
+  {
+    "name": "🤗",
+    "name_id": "smiling_face_with_open_hands",
+    "description": "1F917\nE1.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-hand"
+  },
+  {
+    "name": "🤭",
+    "name_id": "face_with_hand_over_mouth",
+    "description": "1F92D\nE5.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-hand"
+  },
+  {
+    "name": "🫢",
+    "name_id": "face_with_open_eyes_and_hand_over_mouth",
+    "description": "1FAE2\nE14.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-hand"
+  },
+  {
+    "name": "🫣",
+    "name_id": "face_with_peeking_eye",
+    "description": "1FAE3\nE14.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-hand"
+  },
+  {
+    "name": "🤫",
+    "name_id": "shushing_face",
+    "description": "1F92B\nE5.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-hand"
+  },
+  {
+    "name": "🤔",
+    "name_id": "thinking_face",
+    "description": "1F914\nE1.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-hand"
+  },
+  {
+    "name": "🫡",
+    "name_id": "saluting_face",
+    "description": "1FAE1\nE14.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-hand"
+  },
+  {
+    "name": "🤐",
+    "name_id": "zipper_mouth_face",
+    "description": "1F910\nE1.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-neutral-skeptical"
+  },
+  {
+    "name": "🤨",
+    "name_id": "face_with_raised_eyebrow",
+    "description": "1F928\nE5.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-neutral-skeptical"
+  },
+  {
+    "name": "😐",
+    "name_id": "neutral_face",
+    "description": "1F610\nE0.7",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-neutral-skeptical"
+  },
+  {
+    "name": "😑",
+    "name_id": "expressionless_face",
+    "description": "1F611\nE1.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-neutral-skeptical"
+  },
+  {
+    "name": "😶",
+    "name_id": "face_without_mouth",
+    "description": "1F636\nE1.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-neutral-skeptical"
+  },
+  {
+    "name": "🫥",
+    "name_id": "dotted_line_face",
+    "description": "1FAE5\nE14.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-neutral-skeptical"
+  },
+  {
+    "name": "😶‍🌫️",
+    "name_id": "face_in_clouds",
+    "description": "1F636 200D 1F32B FE0F\nE13.1",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-neutral-skeptical"
+  },
+  {
+    "name": "😏",
+    "name_id": "smirking_face",
+    "description": "1F60F\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-neutral-skeptical"
+  },
+  {
+    "name": "😒",
+    "name_id": "unamused_face",
+    "description": "1F612\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-neutral-skeptical"
+  },
+  {
+    "name": "🙄",
+    "name_id": "face_with_rolling_eyes",
+    "description": "1F644\nE1.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-neutral-skeptical"
+  },
+  {
+    "name": "😬",
+    "name_id": "grimacing_face",
+    "description": "1F62C\nE1.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-neutral-skeptical"
+  },
+  {
+    "name": "😮‍💨",
+    "name_id": "face_exhaling",
+    "description": "1F62E 200D 1F4A8\nE13.1",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-neutral-skeptical"
+  },
+  {
+    "name": "🤥",
+    "name_id": "lying_face",
+    "description": "1F925\nE3.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-neutral-skeptical"
+  },
+  {
+    "name": "🫨",
+    "name_id": "shaking_face",
+    "description": "1FAE8\nE15.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-neutral-skeptical"
+  },
+  {
+    "name": "🙂‍↔️",
+    "name_id": "head_shaking_horizontally",
+    "description": "1F642 200D 2194 FE0F\nE15.1",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-neutral-skeptical"
+  },
+  {
+    "name": "🙂‍↕️",
+    "name_id": "head_shaking_vertically",
+    "description": "1F642 200D 2195 FE0F\nE15.1",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-neutral-skeptical"
+  },
+  {
+    "name": "😌",
+    "name_id": "relieved_face",
+    "description": "1F60C\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-sleepy"
+  },
+  {
+    "name": "😔",
+    "name_id": "pensive_face",
+    "description": "1F614\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-sleepy"
+  },
+  {
+    "name": "😪",
+    "name_id": "sleepy_face",
+    "description": "1F62A\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-sleepy"
+  },
+  {
+    "name": "🤤",
+    "name_id": "drooling_face",
+    "description": "1F924\nE3.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-sleepy"
+  },
+  {
+    "name": "😴",
+    "name_id": "sleeping_face",
+    "description": "1F634\nE1.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-sleepy"
+  },
+  {
+    "name": "🫩",
+    "name_id": "face_with_bags_under_eyes",
+    "description": "1FAE9\nE16.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-sleepy"
+  },
+  {
+    "name": "😷",
+    "name_id": "face_with_medical_mask",
+    "description": "1F637\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-unwell"
+  },
+  {
+    "name": "🤒",
+    "name_id": "face_with_thermometer",
+    "description": "1F912\nE1.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-unwell"
+  },
+  {
+    "name": "🤕",
+    "name_id": "face_with_head_bandage",
+    "description": "1F915\nE1.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-unwell"
+  },
+  {
+    "name": "🤢",
+    "name_id": "nauseated_face",
+    "description": "1F922\nE3.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-unwell"
+  },
+  {
+    "name": "🤮",
+    "name_id": "face_vomiting",
+    "description": "1F92E\nE5.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-unwell"
+  },
+  {
+    "name": "🤧",
+    "name_id": "sneezing_face",
+    "description": "1F927\nE3.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-unwell"
+  },
+  {
+    "name": "🥵",
+    "name_id": "hot_face",
+    "description": "1F975\nE11.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-unwell"
+  },
+  {
+    "name": "🥶",
+    "name_id": "cold_face",
+    "description": "1F976\nE11.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-unwell"
+  },
+  {
+    "name": "🥴",
+    "name_id": "woozy_face",
+    "description": "1F974\nE11.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-unwell"
+  },
+  {
+    "name": "😵",
+    "name_id": "face_with_crossed_out_eyes",
+    "description": "1F635\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-unwell"
+  },
+  {
+    "name": "😵‍💫",
+    "name_id": "face_with_spiral_eyes",
+    "description": "1F635 200D 1F4AB\nE13.1",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-unwell"
+  },
+  {
+    "name": "🤯",
+    "name_id": "exploding_head",
+    "description": "1F92F\nE5.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-unwell"
+  },
+  {
+    "name": "🤠",
+    "name_id": "cowboy_hat_face",
+    "description": "1F920\nE3.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-hat"
+  },
+  {
+    "name": "🥳",
+    "name_id": "partying_face",
+    "description": "1F973\nE11.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-hat"
+  },
+  {
+    "name": "🥸",
+    "name_id": "disguised_face",
+    "description": "1F978\nE13.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-hat"
+  },
+  {
+    "name": "😎",
+    "name_id": "smiling_face_with_sunglasses",
+    "description": "1F60E\nE1.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-glasses"
+  },
+  {
+    "name": "🤓",
+    "name_id": "nerd_face",
+    "description": "1F913\nE1.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-glasses"
+  },
+  {
+    "name": "🧐",
+    "name_id": "face_with_monocle",
+    "description": "1F9D0\nE5.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-glasses"
+  },
+  {
+    "name": "😕",
+    "name_id": "confused_face",
+    "description": "1F615\nE1.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-concerned"
+  },
+  {
+    "name": "🫤",
+    "name_id": "face_with_diagonal_mouth",
+    "description": "1FAE4\nE14.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-concerned"
+  },
+  {
+    "name": "😟",
+    "name_id": "worried_face",
+    "description": "1F61F\nE1.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-concerned"
+  },
+  {
+    "name": "🙁",
+    "name_id": "slightly_frowning_face",
+    "description": "1F641\nE1.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-concerned"
+  },
+  {
+    "name": "☹️",
+    "name_id": "frowning_face",
+    "description": "2639 FE0F\nE0.7",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-concerned"
+  },
+  {
+    "name": "😮",
+    "name_id": "face_with_open_mouth",
+    "description": "1F62E\nE1.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-concerned"
+  },
+  {
+    "name": "😯",
+    "name_id": "hushed_face",
+    "description": "1F62F\nE1.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-concerned"
+  },
+  {
+    "name": "😲",
+    "name_id": "astonished_face",
+    "description": "1F632\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-concerned"
+  },
+  {
+    "name": "😳",
+    "name_id": "flushed_face",
+    "description": "1F633\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-concerned"
+  },
+  {
+    "name": "🫪",
+    "name_id": "distorted_face",
+    "description": "1FAEA\nE17.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-concerned"
+  },
+  {
+    "name": "🥺",
+    "name_id": "pleading_face",
+    "description": "1F97A\nE11.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-concerned"
+  },
+  {
+    "name": "🥹",
+    "name_id": "face_holding_back_tears",
+    "description": "1F979\nE14.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-concerned"
+  },
+  {
+    "name": "😦",
+    "name_id": "frowning_face_with_open_mouth",
+    "description": "1F626\nE1.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-concerned"
+  },
+  {
+    "name": "😧",
+    "name_id": "anguished_face",
+    "description": "1F627\nE1.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-concerned"
+  },
+  {
+    "name": "😨",
+    "name_id": "fearful_face",
+    "description": "1F628\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-concerned"
+  },
+  {
+    "name": "😰",
+    "name_id": "anxious_face_with_sweat",
+    "description": "1F630\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-concerned"
+  },
+  {
+    "name": "😥",
+    "name_id": "sad_but_relieved_face",
+    "description": "1F625\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-concerned"
+  },
+  {
+    "name": "😢",
+    "name_id": "crying_face",
+    "description": "1F622\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-concerned"
+  },
+  {
+    "name": "😭",
+    "name_id": "loudly_crying_face",
+    "description": "1F62D\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-concerned"
+  },
+  {
+    "name": "😱",
+    "name_id": "face_screaming_in_fear",
+    "description": "1F631\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-concerned"
+  },
+  {
+    "name": "😖",
+    "name_id": "confounded_face",
+    "description": "1F616\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-concerned"
+  },
+  {
+    "name": "😣",
+    "name_id": "persevering_face",
+    "description": "1F623\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-concerned"
+  },
+  {
+    "name": "😞",
+    "name_id": "disappointed_face",
+    "description": "1F61E\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-concerned"
+  },
+  {
+    "name": "😓",
+    "name_id": "downcast_face_with_sweat",
+    "description": "1F613\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-concerned"
+  },
+  {
+    "name": "😩",
+    "name_id": "weary_face",
+    "description": "1F629\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-concerned"
+  },
+  {
+    "name": "😫",
+    "name_id": "tired_face",
+    "description": "1F62B\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-concerned"
+  },
+  {
+    "name": "🥱",
+    "name_id": "yawning_face",
+    "description": "1F971\nE12.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-concerned"
+  },
+  {
+    "name": "😤",
+    "name_id": "face_with_steam_from_nose",
+    "description": "1F624\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-negative"
+  },
+  {
+    "name": "😡",
+    "name_id": "enraged_face",
+    "description": "1F621\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-negative"
+  },
+  {
+    "name": "😠",
+    "name_id": "angry_face",
+    "description": "1F620\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-negative"
+  },
+  {
+    "name": "🤬",
+    "name_id": "face_with_symbols_on_mouth",
+    "description": "1F92C\nE5.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-negative"
+  },
+  {
+    "name": "😈",
+    "name_id": "smiling_face_with_horns",
+    "description": "1F608\nE1.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-negative"
+  },
+  {
+    "name": "👿",
+    "name_id": "angry_face_with_horns",
+    "description": "1F47F\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-negative"
+  },
+  {
+    "name": "💀",
+    "name_id": "skull",
+    "description": "1F480\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-negative"
+  },
+  {
+    "name": "☠️",
+    "name_id": "skull_and_crossbones",
+    "description": "2620 FE0F\nE1.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-negative"
+  },
+  {
+    "name": "💩",
+    "name_id": "pile_of_poo",
+    "description": "1F4A9\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-costume"
+  },
+  {
+    "name": "🤡",
+    "name_id": "clown_face",
+    "description": "1F921\nE3.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-costume"
+  },
+  {
+    "name": "👹",
+    "name_id": "ogre",
+    "description": "1F479\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-costume"
+  },
+  {
+    "name": "👺",
+    "name_id": "goblin",
+    "description": "1F47A\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-costume"
+  },
+  {
+    "name": "👻",
+    "name_id": "ghost",
+    "description": "1F47B\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-costume"
+  },
+  {
+    "name": "👽",
+    "name_id": "alien",
+    "description": "1F47D\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-costume"
+  },
+  {
+    "name": "👾",
+    "name_id": "alien_monster",
+    "description": "1F47E\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-costume"
+  },
+  {
+    "name": "🤖",
+    "name_id": "robot",
+    "description": "1F916\nE1.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-costume"
+  },
+  {
+    "name": "😺",
+    "name_id": "grinning_cat",
+    "description": "1F63A\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "cat-face"
+  },
+  {
+    "name": "😸",
+    "name_id": "grinning_cat_with_smiling_eyes",
+    "description": "1F638\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "cat-face"
+  },
+  {
+    "name": "😹",
+    "name_id": "cat_with_tears_of_joy",
+    "description": "1F639\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "cat-face"
+  },
+  {
+    "name": "😻",
+    "name_id": "smiling_cat_with_heart_eyes",
+    "description": "1F63B\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "cat-face"
+  },
+  {
+    "name": "😼",
+    "name_id": "cat_with_wry_smile",
+    "description": "1F63C\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "cat-face"
+  },
+  {
+    "name": "😽",
+    "name_id": "kissing_cat",
+    "description": "1F63D\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "cat-face"
+  },
+  {
+    "name": "🙀",
+    "name_id": "weary_cat",
+    "description": "1F640\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "cat-face"
+  },
+  {
+    "name": "😿",
+    "name_id": "crying_cat",
+    "description": "1F63F\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "cat-face"
+  },
+  {
+    "name": "😾",
+    "name_id": "pouting_cat",
+    "description": "1F63E\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "cat-face"
+  },
+  {
+    "name": "🙈",
+    "name_id": "see_no_evil_monkey",
+    "description": "1F648\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "monkey-face"
+  },
+  {
+    "name": "🙉",
+    "name_id": "hear_no_evil_monkey",
+    "description": "1F649\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "monkey-face"
+  },
+  {
+    "name": "🙊",
+    "name_id": "speak_no_evil_monkey",
+    "description": "1F64A\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "monkey-face"
+  },
+  {
+    "name": "💌",
+    "name_id": "love_letter",
+    "description": "1F48C\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "heart"
+  },
+  {
+    "name": "💘",
+    "name_id": "heart_with_arrow",
+    "description": "1F498\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "heart"
+  },
+  {
+    "name": "💝",
+    "name_id": "heart_with_ribbon",
+    "description": "1F49D\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "heart"
+  },
+  {
+    "name": "💖",
+    "name_id": "sparkling_heart",
+    "description": "1F496\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "heart"
+  },
+  {
+    "name": "💗",
+    "name_id": "growing_heart",
+    "description": "1F497\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "heart"
+  },
+  {
+    "name": "💓",
+    "name_id": "beating_heart",
+    "description": "1F493\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "heart"
+  },
+  {
+    "name": "💞",
+    "name_id": "revolving_hearts",
+    "description": "1F49E\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "heart"
+  },
+  {
+    "name": "💕",
+    "name_id": "two_hearts",
+    "description": "1F495\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "heart"
+  },
+  {
+    "name": "💟",
+    "name_id": "heart_decoration",
+    "description": "1F49F\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "heart"
+  },
+  {
+    "name": "❣️",
+    "name_id": "heart_exclamation",
+    "description": "2763 FE0F\nE1.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "heart"
+  },
+  {
+    "name": "💔",
+    "name_id": "broken_heart",
+    "description": "1F494\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "heart"
+  },
+  {
+    "name": "❤️‍🔥",
+    "name_id": "heart_on_fire",
+    "description": "2764 FE0F 200D 1F525\nE13.1",
+    "group": "Smileys & Emotion",
+    "subgroup": "heart"
+  },
+  {
+    "name": "❤️‍🩹",
+    "name_id": "mending_heart",
+    "description": "2764 FE0F 200D 1FA79\nE13.1",
+    "group": "Smileys & Emotion",
+    "subgroup": "heart"
+  },
+  {
+    "name": "❤️",
+    "name_id": "red_heart",
+    "description": "2764 FE0F\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "heart"
+  },
+  {
+    "name": "🩷",
+    "name_id": "pink_heart",
+    "description": "1FA77\nE15.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "heart"
+  },
+  {
+    "name": "🧡",
+    "name_id": "orange_heart",
+    "description": "1F9E1\nE5.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "heart"
+  },
+  {
+    "name": "💛",
+    "name_id": "yellow_heart",
+    "description": "1F49B\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "heart"
+  },
+  {
+    "name": "💚",
+    "name_id": "green_heart",
+    "description": "1F49A\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "heart"
+  },
+  {
+    "name": "💙",
+    "name_id": "blue_heart",
+    "description": "1F499\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "heart"
+  },
+  {
+    "name": "🩵",
+    "name_id": "light_blue_heart",
+    "description": "1FA75\nE15.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "heart"
+  },
+  {
+    "name": "💜",
+    "name_id": "purple_heart",
+    "description": "1F49C\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "heart"
+  },
+  {
+    "name": "🤎",
+    "name_id": "brown_heart",
+    "description": "1F90E\nE12.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "heart"
+  },
+  {
+    "name": "🖤",
+    "name_id": "black_heart",
+    "description": "1F5A4\nE3.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "heart"
+  },
+  {
+    "name": "🩶",
+    "name_id": "grey_heart",
+    "description": "1FA76\nE15.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "heart"
+  },
+  {
+    "name": "🤍",
+    "name_id": "white_heart",
+    "description": "1F90D\nE12.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "heart"
+  },
+  {
+    "name": "💋",
+    "name_id": "kiss_mark",
+    "description": "1F48B\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "emotion"
+  },
+  {
+    "name": "💯",
+    "name_id": "hundred_points",
+    "description": "1F4AF\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "emotion"
+  },
+  {
+    "name": "💢",
+    "name_id": "anger_symbol",
+    "description": "1F4A2\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "emotion"
+  },
+  {
+    "name": "🫯",
+    "name_id": "fight_cloud",
+    "description": "1FAEF\nE17.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "emotion"
+  },
+  {
+    "name": "💥",
+    "name_id": "collision",
+    "description": "1F4A5\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "emotion"
+  },
+  {
+    "name": "💫",
+    "name_id": "dizzy",
+    "description": "1F4AB\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "emotion"
+  },
+  {
+    "name": "💦",
+    "name_id": "sweat_droplets",
+    "description": "1F4A6\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "emotion"
+  },
+  {
+    "name": "💨",
+    "name_id": "dashing_away",
+    "description": "1F4A8\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "emotion"
+  },
+  {
+    "name": "🕳️",
+    "name_id": "hole",
+    "description": "1F573 FE0F\nE0.7",
+    "group": "Smileys & Emotion",
+    "subgroup": "emotion"
+  },
+  {
+    "name": "💬",
+    "name_id": "speech_balloon",
+    "description": "1F4AC\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "emotion"
+  },
+  {
+    "name": "👁️‍🗨️",
+    "name_id": "eye_in_speech_bubble",
+    "description": "1F441 FE0F 200D 1F5E8 FE0F\nE2.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "emotion"
+  },
+  {
+    "name": "🗨️",
+    "name_id": "left_speech_bubble",
+    "description": "1F5E8 FE0F\nE2.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "emotion"
+  },
+  {
+    "name": "🗯️",
+    "name_id": "right_anger_bubble",
+    "description": "1F5EF FE0F\nE0.7",
+    "group": "Smileys & Emotion",
+    "subgroup": "emotion"
+  },
+  {
+    "name": "💭",
+    "name_id": "thought_balloon",
+    "description": "1F4AD\nE1.0",
+    "group": "Smileys & Emotion",
+    "subgroup": "emotion"
+  },
+  {
+    "name": "💤",
+    "name_id": "zzz",
+    "description": "1F4A4\nE0.6",
+    "group": "Smileys & Emotion",
+    "subgroup": "emotion"
+  }
+]

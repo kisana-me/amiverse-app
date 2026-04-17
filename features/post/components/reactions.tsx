@@ -11,6 +11,7 @@ import {
 import Svg, { Path } from "react-native-svg";
 
 import { ThemedText } from "@/components/themed-text";
+import { GroupedEmojiPicker } from "@/features/emoji_picker";
 import { useCurrentAccount } from "@/providers/CurrentAccountProvider";
 import { useModal } from "@/providers/ModalProvider";
 import { usePosts } from "@/providers/PostsProvider";
@@ -41,35 +42,10 @@ export default function PostReactions({ post }: { post: PostType }) {
     actionText: "解除する",
   });
 
-  const defaultEmojis = useMemo<EmojiType[]>(
-    () => [
-      { aid: "default-like", name: "👍", name_id: "thumbs_up" },
-      { aid: "default-love", name: "❤️", name_id: "heart" },
-      { aid: "default-laugh", name: "😂", name_id: "joy" },
-      { aid: "default-wow", name: "😮", name_id: "open_mouth" },
-      { aid: "default-sad", name: "😢", name_id: "cry" },
-      { aid: "default-fire", name: "🔥", name_id: "fire" },
-    ],
-    [],
+  const currentReactedNameId = useMemo(
+    () => post.reactions?.find((reaction) => reaction.reacted)?.name_id,
+    [post.reactions],
   );
-
-  const emojiMenuItems = useMemo(() => {
-    const merged = new Map<string, EmojiType>();
-
-    defaultEmojis.forEach((emoji) => {
-      merged.set(emoji.name_id, emoji);
-    });
-
-    post.reactions?.forEach((emoji) => {
-      merged.set(emoji.name_id, {
-        aid: emoji.aid,
-        name: emoji.name,
-        name_id: emoji.name_id,
-      });
-    });
-
-    return Array.from(merged.values());
-  }, [defaultEmojis, post.reactions]);
 
   const runProcessReaction = async (emojiInput: ReactionInput) => {
     await processReaction({
@@ -172,20 +148,10 @@ export default function PostReactions({ post }: { post: PostType }) {
             <ThemedText style={styles.modalTitle}>
               リアクションを選択
             </ThemedText>
-            <View style={styles.emojiMenuList}>
-              {emojiMenuItems.map((emoji) => (
-                <TouchableOpacity
-                  key={emoji.aid}
-                  style={styles.emojiMenuButton}
-                  onPress={() => handleEmojiReactionPressWithAuth(emoji)}
-                >
-                  <ThemedText style={styles.emoji}>{emoji.name}</ThemedText>
-                  <ThemedText style={styles.emojiLabel}>
-                    {emoji.name_id}
-                  </ThemedText>
-                </TouchableOpacity>
-              ))}
-            </View>
+            <GroupedEmojiPicker
+              onSelect={handleEmojiReactionPressWithAuth}
+              selectedNameId={currentReactedNameId}
+            />
           </Pressable>
         </Pressable>
       </Modal>
@@ -294,25 +260,6 @@ const styles = StyleSheet.create({
   },
   modalMessage: {
     fontSize: 14,
-  },
-  emojiMenuList: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    gap: 8,
-  },
-  emojiMenuButton: {
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: "#999",
-    borderRadius: 8,
-    paddingVertical: 8,
-    paddingHorizontal: 10,
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 6,
-  },
-  emojiLabel: {
-    fontSize: 10,
-    opacity: 0.6,
   },
   modalActions: {
     marginTop: 4,

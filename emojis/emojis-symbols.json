@@ -1,0 +1,1570 @@
+[
+  {
+    "name": "🏧",
+    "name_id": "atm_sign",
+    "description": "1F3E7\nE0.6",
+    "group": "Symbols",
+    "subgroup": "transport-sign"
+  },
+  {
+    "name": "🚮",
+    "name_id": "litter_in_bin_sign",
+    "description": "1F6AE\nE1.0",
+    "group": "Symbols",
+    "subgroup": "transport-sign"
+  },
+  {
+    "name": "🚰",
+    "name_id": "potable_water",
+    "description": "1F6B0\nE1.0",
+    "group": "Symbols",
+    "subgroup": "transport-sign"
+  },
+  {
+    "name": "♿",
+    "name_id": "wheelchair_symbol",
+    "description": "267F\nE0.6",
+    "group": "Symbols",
+    "subgroup": "transport-sign"
+  },
+  {
+    "name": "🚹",
+    "name_id": "men_s_room",
+    "description": "1F6B9\nE0.6",
+    "group": "Symbols",
+    "subgroup": "transport-sign"
+  },
+  {
+    "name": "🚺",
+    "name_id": "women_s_room",
+    "description": "1F6BA\nE0.6",
+    "group": "Symbols",
+    "subgroup": "transport-sign"
+  },
+  {
+    "name": "🚻",
+    "name_id": "restroom",
+    "description": "1F6BB\nE0.6",
+    "group": "Symbols",
+    "subgroup": "transport-sign"
+  },
+  {
+    "name": "🚼",
+    "name_id": "baby_symbol",
+    "description": "1F6BC\nE0.6",
+    "group": "Symbols",
+    "subgroup": "transport-sign"
+  },
+  {
+    "name": "🚾",
+    "name_id": "water_closet",
+    "description": "1F6BE\nE0.6",
+    "group": "Symbols",
+    "subgroup": "transport-sign"
+  },
+  {
+    "name": "🛂",
+    "name_id": "passport_control",
+    "description": "1F6C2\nE1.0",
+    "group": "Symbols",
+    "subgroup": "transport-sign"
+  },
+  {
+    "name": "🛃",
+    "name_id": "customs",
+    "description": "1F6C3\nE1.0",
+    "group": "Symbols",
+    "subgroup": "transport-sign"
+  },
+  {
+    "name": "🛄",
+    "name_id": "baggage_claim",
+    "description": "1F6C4\nE1.0",
+    "group": "Symbols",
+    "subgroup": "transport-sign"
+  },
+  {
+    "name": "🛅",
+    "name_id": "left_luggage",
+    "description": "1F6C5\nE1.0",
+    "group": "Symbols",
+    "subgroup": "transport-sign"
+  },
+  {
+    "name": "⚠️",
+    "name_id": "warning",
+    "description": "26A0 FE0F\nE0.6",
+    "group": "Symbols",
+    "subgroup": "warning"
+  },
+  {
+    "name": "🚸",
+    "name_id": "children_crossing",
+    "description": "1F6B8\nE1.0",
+    "group": "Symbols",
+    "subgroup": "warning"
+  },
+  {
+    "name": "⛔",
+    "name_id": "no_entry",
+    "description": "26D4\nE0.6",
+    "group": "Symbols",
+    "subgroup": "warning"
+  },
+  {
+    "name": "🚫",
+    "name_id": "prohibited",
+    "description": "1F6AB\nE0.6",
+    "group": "Symbols",
+    "subgroup": "warning"
+  },
+  {
+    "name": "🚳",
+    "name_id": "no_bicycles",
+    "description": "1F6B3\nE1.0",
+    "group": "Symbols",
+    "subgroup": "warning"
+  },
+  {
+    "name": "🚭",
+    "name_id": "no_smoking",
+    "description": "1F6AD\nE0.6",
+    "group": "Symbols",
+    "subgroup": "warning"
+  },
+  {
+    "name": "🚯",
+    "name_id": "no_littering",
+    "description": "1F6AF\nE1.0",
+    "group": "Symbols",
+    "subgroup": "warning"
+  },
+  {
+    "name": "🚱",
+    "name_id": "non_potable_water",
+    "description": "1F6B1\nE1.0",
+    "group": "Symbols",
+    "subgroup": "warning"
+  },
+  {
+    "name": "🚷",
+    "name_id": "no_pedestrians",
+    "description": "1F6B7\nE1.0",
+    "group": "Symbols",
+    "subgroup": "warning"
+  },
+  {
+    "name": "📵",
+    "name_id": "no_mobile_phones",
+    "description": "1F4F5\nE1.0",
+    "group": "Symbols",
+    "subgroup": "warning"
+  },
+  {
+    "name": "🔞",
+    "name_id": "no_one_under_eighteen",
+    "description": "1F51E\nE0.6",
+    "group": "Symbols",
+    "subgroup": "warning"
+  },
+  {
+    "name": "☢️",
+    "name_id": "radioactive",
+    "description": "2622 FE0F\nE1.0",
+    "group": "Symbols",
+    "subgroup": "warning"
+  },
+  {
+    "name": "☣️",
+    "name_id": "biohazard",
+    "description": "2623 FE0F\nE1.0",
+    "group": "Symbols",
+    "subgroup": "warning"
+  },
+  {
+    "name": "⬆️",
+    "name_id": "up_arrow",
+    "description": "2B06 FE0F\nE0.6",
+    "group": "Symbols",
+    "subgroup": "arrow"
+  },
+  {
+    "name": "↗️",
+    "name_id": "up_right_arrow",
+    "description": "2197 FE0F\nE0.6",
+    "group": "Symbols",
+    "subgroup": "arrow"
+  },
+  {
+    "name": "➡️",
+    "name_id": "right_arrow",
+    "description": "27A1 FE0F\nE0.6",
+    "group": "Symbols",
+    "subgroup": "arrow"
+  },
+  {
+    "name": "↘️",
+    "name_id": "down_right_arrow",
+    "description": "2198 FE0F\nE0.6",
+    "group": "Symbols",
+    "subgroup": "arrow"
+  },
+  {
+    "name": "⬇️",
+    "name_id": "down_arrow",
+    "description": "2B07 FE0F\nE0.6",
+    "group": "Symbols",
+    "subgroup": "arrow"
+  },
+  {
+    "name": "↙️",
+    "name_id": "down_left_arrow",
+    "description": "2199 FE0F\nE0.6",
+    "group": "Symbols",
+    "subgroup": "arrow"
+  },
+  {
+    "name": "⬅️",
+    "name_id": "left_arrow",
+    "description": "2B05 FE0F\nE0.6",
+    "group": "Symbols",
+    "subgroup": "arrow"
+  },
+  {
+    "name": "↖️",
+    "name_id": "up_left_arrow",
+    "description": "2196 FE0F\nE0.6",
+    "group": "Symbols",
+    "subgroup": "arrow"
+  },
+  {
+    "name": "↕️",
+    "name_id": "up_down_arrow",
+    "description": "2195 FE0F\nE0.6",
+    "group": "Symbols",
+    "subgroup": "arrow"
+  },
+  {
+    "name": "↔️",
+    "name_id": "left_right_arrow",
+    "description": "2194 FE0F\nE0.6",
+    "group": "Symbols",
+    "subgroup": "arrow"
+  },
+  {
+    "name": "↩️",
+    "name_id": "right_arrow_curving_left",
+    "description": "21A9 FE0F\nE0.6",
+    "group": "Symbols",
+    "subgroup": "arrow"
+  },
+  {
+    "name": "↪️",
+    "name_id": "left_arrow_curving_right",
+    "description": "21AA FE0F\nE0.6",
+    "group": "Symbols",
+    "subgroup": "arrow"
+  },
+  {
+    "name": "⤴️",
+    "name_id": "right_arrow_curving_up",
+    "description": "2934 FE0F\nE0.6",
+    "group": "Symbols",
+    "subgroup": "arrow"
+  },
+  {
+    "name": "⤵️",
+    "name_id": "right_arrow_curving_down",
+    "description": "2935 FE0F\nE0.6",
+    "group": "Symbols",
+    "subgroup": "arrow"
+  },
+  {
+    "name": "🔃",
+    "name_id": "clockwise_vertical_arrows",
+    "description": "1F503\nE0.6",
+    "group": "Symbols",
+    "subgroup": "arrow"
+  },
+  {
+    "name": "🔄",
+    "name_id": "counterclockwise_arrows_button",
+    "description": "1F504\nE1.0",
+    "group": "Symbols",
+    "subgroup": "arrow"
+  },
+  {
+    "name": "🔙",
+    "name_id": "back_arrow",
+    "description": "1F519\nE0.6",
+    "group": "Symbols",
+    "subgroup": "arrow"
+  },
+  {
+    "name": "🔚",
+    "name_id": "end_arrow",
+    "description": "1F51A\nE0.6",
+    "group": "Symbols",
+    "subgroup": "arrow"
+  },
+  {
+    "name": "🔛",
+    "name_id": "on_arrow",
+    "description": "1F51B\nE0.6",
+    "group": "Symbols",
+    "subgroup": "arrow"
+  },
+  {
+    "name": "🔜",
+    "name_id": "soon_arrow",
+    "description": "1F51C\nE0.6",
+    "group": "Symbols",
+    "subgroup": "arrow"
+  },
+  {
+    "name": "🔝",
+    "name_id": "top_arrow",
+    "description": "1F51D\nE0.6",
+    "group": "Symbols",
+    "subgroup": "arrow"
+  },
+  {
+    "name": "🛐",
+    "name_id": "place_of_worship",
+    "description": "1F6D0\nE1.0",
+    "group": "Symbols",
+    "subgroup": "religion"
+  },
+  {
+    "name": "⚛️",
+    "name_id": "atom_symbol",
+    "description": "269B FE0F\nE1.0",
+    "group": "Symbols",
+    "subgroup": "religion"
+  },
+  {
+    "name": "🕉️",
+    "name_id": "om",
+    "description": "1F549 FE0F\nE0.7",
+    "group": "Symbols",
+    "subgroup": "religion"
+  },
+  {
+    "name": "✡️",
+    "name_id": "star_of_david",
+    "description": "2721 FE0F\nE0.7",
+    "group": "Symbols",
+    "subgroup": "religion"
+  },
+  {
+    "name": "☸️",
+    "name_id": "wheel_of_dharma",
+    "description": "2638 FE0F\nE0.7",
+    "group": "Symbols",
+    "subgroup": "religion"
+  },
+  {
+    "name": "☯️",
+    "name_id": "yin_yang",
+    "description": "262F FE0F\nE0.7",
+    "group": "Symbols",
+    "subgroup": "religion"
+  },
+  {
+    "name": "✝️",
+    "name_id": "latin_cross",
+    "description": "271D FE0F\nE0.7",
+    "group": "Symbols",
+    "subgroup": "religion"
+  },
+  {
+    "name": "☦️",
+    "name_id": "orthodox_cross",
+    "description": "2626 FE0F\nE1.0",
+    "group": "Symbols",
+    "subgroup": "religion"
+  },
+  {
+    "name": "☪️",
+    "name_id": "star_and_crescent",
+    "description": "262A FE0F\nE0.7",
+    "group": "Symbols",
+    "subgroup": "religion"
+  },
+  {
+    "name": "☮️",
+    "name_id": "peace_symbol",
+    "description": "262E FE0F\nE1.0",
+    "group": "Symbols",
+    "subgroup": "religion"
+  },
+  {
+    "name": "🕎",
+    "name_id": "menorah",
+    "description": "1F54E\nE1.0",
+    "group": "Symbols",
+    "subgroup": "religion"
+  },
+  {
+    "name": "🔯",
+    "name_id": "dotted_six_pointed_star",
+    "description": "1F52F\nE0.6",
+    "group": "Symbols",
+    "subgroup": "religion"
+  },
+  {
+    "name": "🪯",
+    "name_id": "khanda",
+    "description": "1FAAF\nE15.0",
+    "group": "Symbols",
+    "subgroup": "religion"
+  },
+  {
+    "name": "♈",
+    "name_id": "aries",
+    "description": "2648\nE0.6",
+    "group": "Symbols",
+    "subgroup": "zodiac"
+  },
+  {
+    "name": "♉",
+    "name_id": "taurus",
+    "description": "2649\nE0.6",
+    "group": "Symbols",
+    "subgroup": "zodiac"
+  },
+  {
+    "name": "♊",
+    "name_id": "gemini",
+    "description": "264A\nE0.6",
+    "group": "Symbols",
+    "subgroup": "zodiac"
+  },
+  {
+    "name": "♋",
+    "name_id": "cancer",
+    "description": "264B\nE0.6",
+    "group": "Symbols",
+    "subgroup": "zodiac"
+  },
+  {
+    "name": "♌",
+    "name_id": "leo",
+    "description": "264C\nE0.6",
+    "group": "Symbols",
+    "subgroup": "zodiac"
+  },
+  {
+    "name": "♍",
+    "name_id": "virgo",
+    "description": "264D\nE0.6",
+    "group": "Symbols",
+    "subgroup": "zodiac"
+  },
+  {
+    "name": "♎",
+    "name_id": "libra",
+    "description": "264E\nE0.6",
+    "group": "Symbols",
+    "subgroup": "zodiac"
+  },
+  {
+    "name": "♏",
+    "name_id": "scorpio",
+    "description": "264F\nE0.6",
+    "group": "Symbols",
+    "subgroup": "zodiac"
+  },
+  {
+    "name": "♐",
+    "name_id": "sagittarius",
+    "description": "2650\nE0.6",
+    "group": "Symbols",
+    "subgroup": "zodiac"
+  },
+  {
+    "name": "♑",
+    "name_id": "capricorn",
+    "description": "2651\nE0.6",
+    "group": "Symbols",
+    "subgroup": "zodiac"
+  },
+  {
+    "name": "♒",
+    "name_id": "aquarius",
+    "description": "2652\nE0.6",
+    "group": "Symbols",
+    "subgroup": "zodiac"
+  },
+  {
+    "name": "♓",
+    "name_id": "pisces",
+    "description": "2653\nE0.6",
+    "group": "Symbols",
+    "subgroup": "zodiac"
+  },
+  {
+    "name": "⛎",
+    "name_id": "ophiuchus",
+    "description": "26CE\nE0.6",
+    "group": "Symbols",
+    "subgroup": "zodiac"
+  },
+  {
+    "name": "🔀",
+    "name_id": "shuffle_tracks_button",
+    "description": "1F500\nE1.0",
+    "group": "Symbols",
+    "subgroup": "av-symbol"
+  },
+  {
+    "name": "🔁",
+    "name_id": "repeat_button",
+    "description": "1F501\nE1.0",
+    "group": "Symbols",
+    "subgroup": "av-symbol"
+  },
+  {
+    "name": "🔂",
+    "name_id": "repeat_single_button",
+    "description": "1F502\nE1.0",
+    "group": "Symbols",
+    "subgroup": "av-symbol"
+  },
+  {
+    "name": "▶️",
+    "name_id": "play_button",
+    "description": "25B6 FE0F\nE0.6",
+    "group": "Symbols",
+    "subgroup": "av-symbol"
+  },
+  {
+    "name": "⏩",
+    "name_id": "fast_forward_button",
+    "description": "23E9\nE0.6",
+    "group": "Symbols",
+    "subgroup": "av-symbol"
+  },
+  {
+    "name": "⏭️",
+    "name_id": "next_track_button",
+    "description": "23ED FE0F\nE0.7",
+    "group": "Symbols",
+    "subgroup": "av-symbol"
+  },
+  {
+    "name": "⏯️",
+    "name_id": "play_or_pause_button",
+    "description": "23EF FE0F\nE1.0",
+    "group": "Symbols",
+    "subgroup": "av-symbol"
+  },
+  {
+    "name": "◀️",
+    "name_id": "reverse_button",
+    "description": "25C0 FE0F\nE0.6",
+    "group": "Symbols",
+    "subgroup": "av-symbol"
+  },
+  {
+    "name": "⏪",
+    "name_id": "fast_reverse_button",
+    "description": "23EA\nE0.6",
+    "group": "Symbols",
+    "subgroup": "av-symbol"
+  },
+  {
+    "name": "⏮️",
+    "name_id": "last_track_button",
+    "description": "23EE FE0F\nE0.7",
+    "group": "Symbols",
+    "subgroup": "av-symbol"
+  },
+  {
+    "name": "🔼",
+    "name_id": "upwards_button",
+    "description": "1F53C\nE0.6",
+    "group": "Symbols",
+    "subgroup": "av-symbol"
+  },
+  {
+    "name": "⏫",
+    "name_id": "fast_up_button",
+    "description": "23EB\nE0.6",
+    "group": "Symbols",
+    "subgroup": "av-symbol"
+  },
+  {
+    "name": "🔽",
+    "name_id": "downwards_button",
+    "description": "1F53D\nE0.6",
+    "group": "Symbols",
+    "subgroup": "av-symbol"
+  },
+  {
+    "name": "⏬",
+    "name_id": "fast_down_button",
+    "description": "23EC\nE0.6",
+    "group": "Symbols",
+    "subgroup": "av-symbol"
+  },
+  {
+    "name": "⏸️",
+    "name_id": "pause_button",
+    "description": "23F8 FE0F\nE0.7",
+    "group": "Symbols",
+    "subgroup": "av-symbol"
+  },
+  {
+    "name": "⏹️",
+    "name_id": "stop_button",
+    "description": "23F9 FE0F\nE0.7",
+    "group": "Symbols",
+    "subgroup": "av-symbol"
+  },
+  {
+    "name": "⏺️",
+    "name_id": "record_button",
+    "description": "23FA FE0F\nE0.7",
+    "group": "Symbols",
+    "subgroup": "av-symbol"
+  },
+  {
+    "name": "⏏️",
+    "name_id": "eject_button",
+    "description": "23CF FE0F\nE1.0",
+    "group": "Symbols",
+    "subgroup": "av-symbol"
+  },
+  {
+    "name": "🎦",
+    "name_id": "cinema",
+    "description": "1F3A6\nE0.6",
+    "group": "Symbols",
+    "subgroup": "av-symbol"
+  },
+  {
+    "name": "🔅",
+    "name_id": "dim_button",
+    "description": "1F505\nE1.0",
+    "group": "Symbols",
+    "subgroup": "av-symbol"
+  },
+  {
+    "name": "🔆",
+    "name_id": "bright_button",
+    "description": "1F506\nE1.0",
+    "group": "Symbols",
+    "subgroup": "av-symbol"
+  },
+  {
+    "name": "📶",
+    "name_id": "antenna_bars",
+    "description": "1F4F6\nE0.6",
+    "group": "Symbols",
+    "subgroup": "av-symbol"
+  },
+  {
+    "name": "🛜",
+    "name_id": "wireless",
+    "description": "1F6DC\nE15.0",
+    "group": "Symbols",
+    "subgroup": "av-symbol"
+  },
+  {
+    "name": "📳",
+    "name_id": "vibration_mode",
+    "description": "1F4F3\nE0.6",
+    "group": "Symbols",
+    "subgroup": "av-symbol"
+  },
+  {
+    "name": "📴",
+    "name_id": "mobile_phone_off",
+    "description": "1F4F4\nE0.6",
+    "group": "Symbols",
+    "subgroup": "av-symbol"
+  },
+  {
+    "name": "♀️",
+    "name_id": "female_sign",
+    "description": "2640 FE0F\nE4.0",
+    "group": "Symbols",
+    "subgroup": "gender"
+  },
+  {
+    "name": "♂️",
+    "name_id": "male_sign",
+    "description": "2642 FE0F\nE4.0",
+    "group": "Symbols",
+    "subgroup": "gender"
+  },
+  {
+    "name": "⚧️",
+    "name_id": "transgender_symbol",
+    "description": "26A7 FE0F\nE13.0",
+    "group": "Symbols",
+    "subgroup": "gender"
+  },
+  {
+    "name": "✖️",
+    "name_id": "multiply",
+    "description": "2716 FE0F\nE0.6",
+    "group": "Symbols",
+    "subgroup": "math"
+  },
+  {
+    "name": "➕",
+    "name_id": "plus",
+    "description": "2795\nE0.6",
+    "group": "Symbols",
+    "subgroup": "math"
+  },
+  {
+    "name": "➖",
+    "name_id": "minus",
+    "description": "2796\nE0.6",
+    "group": "Symbols",
+    "subgroup": "math"
+  },
+  {
+    "name": "➗",
+    "name_id": "divide",
+    "description": "2797\nE0.6",
+    "group": "Symbols",
+    "subgroup": "math"
+  },
+  {
+    "name": "🟰",
+    "name_id": "heavy_equals_sign",
+    "description": "1F7F0\nE14.0",
+    "group": "Symbols",
+    "subgroup": "math"
+  },
+  {
+    "name": "♾️",
+    "name_id": "infinity",
+    "description": "267E FE0F\nE11.0",
+    "group": "Symbols",
+    "subgroup": "math"
+  },
+  {
+    "name": "‼️",
+    "name_id": "double_exclamation_mark",
+    "description": "203C FE0F\nE0.6",
+    "group": "Symbols",
+    "subgroup": "punctuation"
+  },
+  {
+    "name": "⁉️",
+    "name_id": "exclamation_question_mark",
+    "description": "2049 FE0F\nE0.6",
+    "group": "Symbols",
+    "subgroup": "punctuation"
+  },
+  {
+    "name": "❓",
+    "name_id": "red_question_mark",
+    "description": "2753\nE0.6",
+    "group": "Symbols",
+    "subgroup": "punctuation"
+  },
+  {
+    "name": "❔",
+    "name_id": "white_question_mark",
+    "description": "2754\nE0.6",
+    "group": "Symbols",
+    "subgroup": "punctuation"
+  },
+  {
+    "name": "❕",
+    "name_id": "white_exclamation_mark",
+    "description": "2755\nE0.6",
+    "group": "Symbols",
+    "subgroup": "punctuation"
+  },
+  {
+    "name": "❗",
+    "name_id": "red_exclamation_mark",
+    "description": "2757\nE0.6",
+    "group": "Symbols",
+    "subgroup": "punctuation"
+  },
+  {
+    "name": "〰️",
+    "name_id": "wavy_dash",
+    "description": "3030 FE0F\nE0.6",
+    "group": "Symbols",
+    "subgroup": "punctuation"
+  },
+  {
+    "name": "💱",
+    "name_id": "currency_exchange",
+    "description": "1F4B1\nE0.6",
+    "group": "Symbols",
+    "subgroup": "currency"
+  },
+  {
+    "name": "💲",
+    "name_id": "heavy_dollar_sign",
+    "description": "1F4B2\nE0.6",
+    "group": "Symbols",
+    "subgroup": "currency"
+  },
+  {
+    "name": "⚕️",
+    "name_id": "medical_symbol",
+    "description": "2695 FE0F\nE4.0",
+    "group": "Symbols",
+    "subgroup": "other-symbol"
+  },
+  {
+    "name": "♻️",
+    "name_id": "recycling_symbol",
+    "description": "267B FE0F\nE0.6",
+    "group": "Symbols",
+    "subgroup": "other-symbol"
+  },
+  {
+    "name": "⚜️",
+    "name_id": "fleur_de_lis",
+    "description": "269C FE0F\nE1.0",
+    "group": "Symbols",
+    "subgroup": "other-symbol"
+  },
+  {
+    "name": "🔱",
+    "name_id": "trident_emblem",
+    "description": "1F531\nE0.6",
+    "group": "Symbols",
+    "subgroup": "other-symbol"
+  },
+  {
+    "name": "📛",
+    "name_id": "name_badge",
+    "description": "1F4DB\nE0.6",
+    "group": "Symbols",
+    "subgroup": "other-symbol"
+  },
+  {
+    "name": "🔰",
+    "name_id": "japanese_symbol_for_beginner",
+    "description": "1F530\nE0.6",
+    "group": "Symbols",
+    "subgroup": "other-symbol"
+  },
+  {
+    "name": "⭕",
+    "name_id": "hollow_red_circle",
+    "description": "2B55\nE0.6",
+    "group": "Symbols",
+    "subgroup": "other-symbol"
+  },
+  {
+    "name": "✅",
+    "name_id": "check_mark_button",
+    "description": "2705\nE0.6",
+    "group": "Symbols",
+    "subgroup": "other-symbol"
+  },
+  {
+    "name": "☑️",
+    "name_id": "check_box_with_check",
+    "description": "2611 FE0F\nE0.6",
+    "group": "Symbols",
+    "subgroup": "other-symbol"
+  },
+  {
+    "name": "✔️",
+    "name_id": "check_mark",
+    "description": "2714 FE0F\nE0.6",
+    "group": "Symbols",
+    "subgroup": "other-symbol"
+  },
+  {
+    "name": "❌",
+    "name_id": "cross_mark",
+    "description": "274C\nE0.6",
+    "group": "Symbols",
+    "subgroup": "other-symbol"
+  },
+  {
+    "name": "❎",
+    "name_id": "cross_mark_button",
+    "description": "274E\nE0.6",
+    "group": "Symbols",
+    "subgroup": "other-symbol"
+  },
+  {
+    "name": "➰",
+    "name_id": "curly_loop",
+    "description": "27B0\nE0.6",
+    "group": "Symbols",
+    "subgroup": "other-symbol"
+  },
+  {
+    "name": "➿",
+    "name_id": "double_curly_loop",
+    "description": "27BF\nE1.0",
+    "group": "Symbols",
+    "subgroup": "other-symbol"
+  },
+  {
+    "name": "〽️",
+    "name_id": "part_alternation_mark",
+    "description": "303D FE0F\nE0.6",
+    "group": "Symbols",
+    "subgroup": "other-symbol"
+  },
+  {
+    "name": "✳️",
+    "name_id": "eight_spoked_asterisk",
+    "description": "2733 FE0F\nE0.6",
+    "group": "Symbols",
+    "subgroup": "other-symbol"
+  },
+  {
+    "name": "✴️",
+    "name_id": "eight_pointed_star",
+    "description": "2734 FE0F\nE0.6",
+    "group": "Symbols",
+    "subgroup": "other-symbol"
+  },
+  {
+    "name": "❇️",
+    "name_id": "sparkle",
+    "description": "2747 FE0F\nE0.6",
+    "group": "Symbols",
+    "subgroup": "other-symbol"
+  },
+  {
+    "name": "©️",
+    "name_id": "copyright",
+    "description": "00A9 FE0F\nE0.6",
+    "group": "Symbols",
+    "subgroup": "other-symbol"
+  },
+  {
+    "name": "®️",
+    "name_id": "registered",
+    "description": "00AE FE0F\nE0.6",
+    "group": "Symbols",
+    "subgroup": "other-symbol"
+  },
+  {
+    "name": "™️",
+    "name_id": "trade_mark",
+    "description": "2122 FE0F\nE0.6",
+    "group": "Symbols",
+    "subgroup": "other-symbol"
+  },
+  {
+    "name": "🫟",
+    "name_id": "splatter",
+    "description": "1FADF\nE16.0",
+    "group": "Symbols",
+    "subgroup": "other-symbol"
+  },
+  {
+    "name": "#️⃣",
+    "name_id": "keycap",
+    "description": "0023 FE0F 20E3\nE0.6",
+    "group": "Symbols",
+    "subgroup": "keycap"
+  },
+  {
+    "name": "*️⃣",
+    "name_id": "keycap",
+    "description": "002A FE0F 20E3\nE2.0",
+    "group": "Symbols",
+    "subgroup": "keycap"
+  },
+  {
+    "name": "0️⃣",
+    "name_id": "keycap_0",
+    "description": "0030 FE0F 20E3\nE0.6",
+    "group": "Symbols",
+    "subgroup": "keycap"
+  },
+  {
+    "name": "1️⃣",
+    "name_id": "keycap_1",
+    "description": "0031 FE0F 20E3\nE0.6",
+    "group": "Symbols",
+    "subgroup": "keycap"
+  },
+  {
+    "name": "2️⃣",
+    "name_id": "keycap_2",
+    "description": "0032 FE0F 20E3\nE0.6",
+    "group": "Symbols",
+    "subgroup": "keycap"
+  },
+  {
+    "name": "3️⃣",
+    "name_id": "keycap_3",
+    "description": "0033 FE0F 20E3\nE0.6",
+    "group": "Symbols",
+    "subgroup": "keycap"
+  },
+  {
+    "name": "4️⃣",
+    "name_id": "keycap_4",
+    "description": "0034 FE0F 20E3\nE0.6",
+    "group": "Symbols",
+    "subgroup": "keycap"
+  },
+  {
+    "name": "5️⃣",
+    "name_id": "keycap_5",
+    "description": "0035 FE0F 20E3\nE0.6",
+    "group": "Symbols",
+    "subgroup": "keycap"
+  },
+  {
+    "name": "6️⃣",
+    "name_id": "keycap_6",
+    "description": "0036 FE0F 20E3\nE0.6",
+    "group": "Symbols",
+    "subgroup": "keycap"
+  },
+  {
+    "name": "7️⃣",
+    "name_id": "keycap_7",
+    "description": "0037 FE0F 20E3\nE0.6",
+    "group": "Symbols",
+    "subgroup": "keycap"
+  },
+  {
+    "name": "8️⃣",
+    "name_id": "keycap_8",
+    "description": "0038 FE0F 20E3\nE0.6",
+    "group": "Symbols",
+    "subgroup": "keycap"
+  },
+  {
+    "name": "9️⃣",
+    "name_id": "keycap_9",
+    "description": "0039 FE0F 20E3\nE0.6",
+    "group": "Symbols",
+    "subgroup": "keycap"
+  },
+  {
+    "name": "🔟",
+    "name_id": "keycap_10",
+    "description": "1F51F\nE0.6",
+    "group": "Symbols",
+    "subgroup": "keycap"
+  },
+  {
+    "name": "🔠",
+    "name_id": "input_latin_uppercase",
+    "description": "1F520\nE0.6",
+    "group": "Symbols",
+    "subgroup": "alphanum"
+  },
+  {
+    "name": "🔡",
+    "name_id": "input_latin_lowercase",
+    "description": "1F521\nE0.6",
+    "group": "Symbols",
+    "subgroup": "alphanum"
+  },
+  {
+    "name": "🔢",
+    "name_id": "input_numbers",
+    "description": "1F522\nE0.6",
+    "group": "Symbols",
+    "subgroup": "alphanum"
+  },
+  {
+    "name": "🔣",
+    "name_id": "input_symbols",
+    "description": "1F523\nE0.6",
+    "group": "Symbols",
+    "subgroup": "alphanum"
+  },
+  {
+    "name": "🔤",
+    "name_id": "input_latin_letters",
+    "description": "1F524\nE0.6",
+    "group": "Symbols",
+    "subgroup": "alphanum"
+  },
+  {
+    "name": "🅰️",
+    "name_id": "a_button_blood_type",
+    "description": "1F170 FE0F\nE0.6",
+    "group": "Symbols",
+    "subgroup": "alphanum"
+  },
+  {
+    "name": "🆎",
+    "name_id": "ab_button_blood_type",
+    "description": "1F18E\nE0.6",
+    "group": "Symbols",
+    "subgroup": "alphanum"
+  },
+  {
+    "name": "🅱️",
+    "name_id": "b_button_blood_type",
+    "description": "1F171 FE0F\nE0.6",
+    "group": "Symbols",
+    "subgroup": "alphanum"
+  },
+  {
+    "name": "🆑",
+    "name_id": "cl_button",
+    "description": "1F191\nE0.6",
+    "group": "Symbols",
+    "subgroup": "alphanum"
+  },
+  {
+    "name": "🆒",
+    "name_id": "cool_button",
+    "description": "1F192\nE0.6",
+    "group": "Symbols",
+    "subgroup": "alphanum"
+  },
+  {
+    "name": "🆓",
+    "name_id": "free_button",
+    "description": "1F193\nE0.6",
+    "group": "Symbols",
+    "subgroup": "alphanum"
+  },
+  {
+    "name": "ℹ️",
+    "name_id": "information",
+    "description": "2139 FE0F\nE0.6",
+    "group": "Symbols",
+    "subgroup": "alphanum"
+  },
+  {
+    "name": "🆔",
+    "name_id": "id_button",
+    "description": "1F194\nE0.6",
+    "group": "Symbols",
+    "subgroup": "alphanum"
+  },
+  {
+    "name": "Ⓜ️",
+    "name_id": "circled_m",
+    "description": "24C2 FE0F\nE0.6",
+    "group": "Symbols",
+    "subgroup": "alphanum"
+  },
+  {
+    "name": "🆕",
+    "name_id": "new_button",
+    "description": "1F195\nE0.6",
+    "group": "Symbols",
+    "subgroup": "alphanum"
+  },
+  {
+    "name": "🆖",
+    "name_id": "ng_button",
+    "description": "1F196\nE0.6",
+    "group": "Symbols",
+    "subgroup": "alphanum"
+  },
+  {
+    "name": "🅾️",
+    "name_id": "o_button_blood_type",
+    "description": "1F17E FE0F\nE0.6",
+    "group": "Symbols",
+    "subgroup": "alphanum"
+  },
+  {
+    "name": "🆗",
+    "name_id": "ok_button",
+    "description": "1F197\nE0.6",
+    "group": "Symbols",
+    "subgroup": "alphanum"
+  },
+  {
+    "name": "🅿️",
+    "name_id": "p_button",
+    "description": "1F17F FE0F\nE0.6",
+    "group": "Symbols",
+    "subgroup": "alphanum"
+  },
+  {
+    "name": "🆘",
+    "name_id": "sos_button",
+    "description": "1F198\nE0.6",
+    "group": "Symbols",
+    "subgroup": "alphanum"
+  },
+  {
+    "name": "🆙",
+    "name_id": "up_button",
+    "description": "1F199\nE0.6",
+    "group": "Symbols",
+    "subgroup": "alphanum"
+  },
+  {
+    "name": "🆚",
+    "name_id": "vs_button",
+    "description": "1F19A\nE0.6",
+    "group": "Symbols",
+    "subgroup": "alphanum"
+  },
+  {
+    "name": "🈁",
+    "name_id": "japanese_here_button",
+    "description": "1F201\nE0.6",
+    "group": "Symbols",
+    "subgroup": "alphanum"
+  },
+  {
+    "name": "🈂️",
+    "name_id": "japanese_service_charge_button",
+    "description": "1F202 FE0F\nE0.6",
+    "group": "Symbols",
+    "subgroup": "alphanum"
+  },
+  {
+    "name": "🈷️",
+    "name_id": "japanese_monthly_amount_button",
+    "description": "1F237 FE0F\nE0.6",
+    "group": "Symbols",
+    "subgroup": "alphanum"
+  },
+  {
+    "name": "🈶",
+    "name_id": "japanese_not_free_of_charge_button",
+    "description": "1F236\nE0.6",
+    "group": "Symbols",
+    "subgroup": "alphanum"
+  },
+  {
+    "name": "🈯",
+    "name_id": "japanese_reserved_button",
+    "description": "1F22F\nE0.6",
+    "group": "Symbols",
+    "subgroup": "alphanum"
+  },
+  {
+    "name": "🉐",
+    "name_id": "japanese_bargain_button",
+    "description": "1F250\nE0.6",
+    "group": "Symbols",
+    "subgroup": "alphanum"
+  },
+  {
+    "name": "🈹",
+    "name_id": "japanese_discount_button",
+    "description": "1F239\nE0.6",
+    "group": "Symbols",
+    "subgroup": "alphanum"
+  },
+  {
+    "name": "🈚",
+    "name_id": "japanese_free_of_charge_button",
+    "description": "1F21A\nE0.6",
+    "group": "Symbols",
+    "subgroup": "alphanum"
+  },
+  {
+    "name": "🈲",
+    "name_id": "japanese_prohibited_button",
+    "description": "1F232\nE0.6",
+    "group": "Symbols",
+    "subgroup": "alphanum"
+  },
+  {
+    "name": "🉑",
+    "name_id": "japanese_acceptable_button",
+    "description": "1F251\nE0.6",
+    "group": "Symbols",
+    "subgroup": "alphanum"
+  },
+  {
+    "name": "🈸",
+    "name_id": "japanese_application_button",
+    "description": "1F238\nE0.6",
+    "group": "Symbols",
+    "subgroup": "alphanum"
+  },
+  {
+    "name": "🈴",
+    "name_id": "japanese_passing_grade_button",
+    "description": "1F234\nE0.6",
+    "group": "Symbols",
+    "subgroup": "alphanum"
+  },
+  {
+    "name": "🈳",
+    "name_id": "japanese_vacancy_button",
+    "description": "1F233\nE0.6",
+    "group": "Symbols",
+    "subgroup": "alphanum"
+  },
+  {
+    "name": "㊗️",
+    "name_id": "japanese_congratulations_button",
+    "description": "3297 FE0F\nE0.6",
+    "group": "Symbols",
+    "subgroup": "alphanum"
+  },
+  {
+    "name": "㊙️",
+    "name_id": "japanese_secret_button",
+    "description": "3299 FE0F\nE0.6",
+    "group": "Symbols",
+    "subgroup": "alphanum"
+  },
+  {
+    "name": "🈺",
+    "name_id": "japanese_open_for_business_button",
+    "description": "1F23A\nE0.6",
+    "group": "Symbols",
+    "subgroup": "alphanum"
+  },
+  {
+    "name": "🈵",
+    "name_id": "japanese_no_vacancy_button",
+    "description": "1F235\nE0.6",
+    "group": "Symbols",
+    "subgroup": "alphanum"
+  },
+  {
+    "name": "🔴",
+    "name_id": "red_circle",
+    "description": "1F534\nE0.6",
+    "group": "Symbols",
+    "subgroup": "geometric"
+  },
+  {
+    "name": "🟠",
+    "name_id": "orange_circle",
+    "description": "1F7E0\nE12.0",
+    "group": "Symbols",
+    "subgroup": "geometric"
+  },
+  {
+    "name": "🟡",
+    "name_id": "yellow_circle",
+    "description": "1F7E1\nE12.0",
+    "group": "Symbols",
+    "subgroup": "geometric"
+  },
+  {
+    "name": "🟢",
+    "name_id": "green_circle",
+    "description": "1F7E2\nE12.0",
+    "group": "Symbols",
+    "subgroup": "geometric"
+  },
+  {
+    "name": "🔵",
+    "name_id": "blue_circle",
+    "description": "1F535\nE0.6",
+    "group": "Symbols",
+    "subgroup": "geometric"
+  },
+  {
+    "name": "🟣",
+    "name_id": "purple_circle",
+    "description": "1F7E3\nE12.0",
+    "group": "Symbols",
+    "subgroup": "geometric"
+  },
+  {
+    "name": "🟤",
+    "name_id": "brown_circle",
+    "description": "1F7E4\nE12.0",
+    "group": "Symbols",
+    "subgroup": "geometric"
+  },
+  {
+    "name": "⚫",
+    "name_id": "black_circle",
+    "description": "26AB\nE0.6",
+    "group": "Symbols",
+    "subgroup": "geometric"
+  },
+  {
+    "name": "⚪",
+    "name_id": "white_circle",
+    "description": "26AA\nE0.6",
+    "group": "Symbols",
+    "subgroup": "geometric"
+  },
+  {
+    "name": "🟥",
+    "name_id": "red_square",
+    "description": "1F7E5\nE12.0",
+    "group": "Symbols",
+    "subgroup": "geometric"
+  },
+  {
+    "name": "🟧",
+    "name_id": "orange_square",
+    "description": "1F7E7\nE12.0",
+    "group": "Symbols",
+    "subgroup": "geometric"
+  },
+  {
+    "name": "🟨",
+    "name_id": "yellow_square",
+    "description": "1F7E8\nE12.0",
+    "group": "Symbols",
+    "subgroup": "geometric"
+  },
+  {
+    "name": "🟩",
+    "name_id": "green_square",
+    "description": "1F7E9\nE12.0",
+    "group": "Symbols",
+    "subgroup": "geometric"
+  },
+  {
+    "name": "🟦",
+    "name_id": "blue_square",
+    "description": "1F7E6\nE12.0",
+    "group": "Symbols",
+    "subgroup": "geometric"
+  },
+  {
+    "name": "🟪",
+    "name_id": "purple_square",
+    "description": "1F7EA\nE12.0",
+    "group": "Symbols",
+    "subgroup": "geometric"
+  },
+  {
+    "name": "🟫",
+    "name_id": "brown_square",
+    "description": "1F7EB\nE12.0",
+    "group": "Symbols",
+    "subgroup": "geometric"
+  },
+  {
+    "name": "⬛",
+    "name_id": "black_large_square",
+    "description": "2B1B\nE0.6",
+    "group": "Symbols",
+    "subgroup": "geometric"
+  },
+  {
+    "name": "⬜",
+    "name_id": "white_large_square",
+    "description": "2B1C\nE0.6",
+    "group": "Symbols",
+    "subgroup": "geometric"
+  },
+  {
+    "name": "◼️",
+    "name_id": "black_medium_square",
+    "description": "25FC FE0F\nE0.6",
+    "group": "Symbols",
+    "subgroup": "geometric"
+  },
+  {
+    "name": "◻️",
+    "name_id": "white_medium_square",
+    "description": "25FB FE0F\nE0.6",
+    "group": "Symbols",
+    "subgroup": "geometric"
+  },
+  {
+    "name": "◾",
+    "name_id": "black_medium_small_square",
+    "description": "25FE\nE0.6",
+    "group": "Symbols",
+    "subgroup": "geometric"
+  },
+  {
+    "name": "◽",
+    "name_id": "white_medium_small_square",
+    "description": "25FD\nE0.6",
+    "group": "Symbols",
+    "subgroup": "geometric"
+  },
+  {
+    "name": "▪️",
+    "name_id": "black_small_square",
+    "description": "25AA FE0F\nE0.6",
+    "group": "Symbols",
+    "subgroup": "geometric"
+  },
+  {
+    "name": "▫️",
+    "name_id": "white_small_square",
+    "description": "25AB FE0F\nE0.6",
+    "group": "Symbols",
+    "subgroup": "geometric"
+  },
+  {
+    "name": "🔶",
+    "name_id": "large_orange_diamond",
+    "description": "1F536\nE0.6",
+    "group": "Symbols",
+    "subgroup": "geometric"
+  },
+  {
+    "name": "🔷",
+    "name_id": "large_blue_diamond",
+    "description": "1F537\nE0.6",
+    "group": "Symbols",
+    "subgroup": "geometric"
+  },
+  {
+    "name": "🔸",
+    "name_id": "small_orange_diamond",
+    "description": "1F538\nE0.6",
+    "group": "Symbols",
+    "subgroup": "geometric"
+  },
+  {
+    "name": "🔹",
+    "name_id": "small_blue_diamond",
+    "description": "1F539\nE0.6",
+    "group": "Symbols",
+    "subgroup": "geometric"
+  },
+  {
+    "name": "🔺",
+    "name_id": "red_triangle_pointed_up",
+    "description": "1F53A\nE0.6",
+    "group": "Symbols",
+    "subgroup": "geometric"
+  },
+  {
+    "name": "🔻",
+    "name_id": "red_triangle_pointed_down",
+    "description": "1F53B\nE0.6",
+    "group": "Symbols",
+    "subgroup": "geometric"
+  },
+  {
+    "name": "💠",
+    "name_id": "diamond_with_a_dot",
+    "description": "1F4A0\nE0.6",
+    "group": "Symbols",
+    "subgroup": "geometric"
+  },
+  {
+    "name": "🔘",
+    "name_id": "radio_button",
+    "description": "1F518\nE0.6",
+    "group": "Symbols",
+    "subgroup": "geometric"
+  },
+  {
+    "name": "🔳",
+    "name_id": "white_square_button",
+    "description": "1F533\nE0.6",
+    "group": "Symbols",
+    "subgroup": "geometric"
+  },
+  {
+    "name": "🔲",
+    "name_id": "black_square_button",
+    "description": "1F532\nE0.6",
+    "group": "Symbols",
+    "subgroup": "geometric"
+  }
+]

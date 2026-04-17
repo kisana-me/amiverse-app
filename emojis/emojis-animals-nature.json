@@ -1,0 +1,1122 @@
+[
+  {
+    "name": "🐵",
+    "name_id": "monkey_face",
+    "description": "1F435\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🐒",
+    "name_id": "monkey",
+    "description": "1F412\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🦍",
+    "name_id": "gorilla",
+    "description": "1F98D\nE3.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🦧",
+    "name_id": "orangutan",
+    "description": "1F9A7\nE12.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🐶",
+    "name_id": "dog_face",
+    "description": "1F436\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🐕",
+    "name_id": "dog",
+    "description": "1F415\nE0.7",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🦮",
+    "name_id": "guide_dog",
+    "description": "1F9AE\nE12.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🐕‍🦺",
+    "name_id": "service_dog",
+    "description": "1F415 200D 1F9BA\nE12.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🐩",
+    "name_id": "poodle",
+    "description": "1F429\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🐺",
+    "name_id": "wolf",
+    "description": "1F43A\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🦊",
+    "name_id": "fox",
+    "description": "1F98A\nE3.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🦝",
+    "name_id": "raccoon",
+    "description": "1F99D\nE11.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🐱",
+    "name_id": "cat_face",
+    "description": "1F431\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🐈",
+    "name_id": "cat",
+    "description": "1F408\nE0.7",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🐈‍⬛",
+    "name_id": "black_cat",
+    "description": "1F408 200D 2B1B\nE13.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🦁",
+    "name_id": "lion",
+    "description": "1F981\nE1.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🐯",
+    "name_id": "tiger_face",
+    "description": "1F42F\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🐅",
+    "name_id": "tiger",
+    "description": "1F405\nE1.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🐆",
+    "name_id": "leopard",
+    "description": "1F406\nE1.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🐴",
+    "name_id": "horse_face",
+    "description": "1F434\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🫎",
+    "name_id": "moose",
+    "description": "1FACE\nE15.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🫏",
+    "name_id": "donkey",
+    "description": "1FACF\nE15.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🐎",
+    "name_id": "horse",
+    "description": "1F40E\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🦄",
+    "name_id": "unicorn",
+    "description": "1F984\nE1.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🦓",
+    "name_id": "zebra",
+    "description": "1F993\nE5.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🦌",
+    "name_id": "deer",
+    "description": "1F98C\nE3.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🦬",
+    "name_id": "bison",
+    "description": "1F9AC\nE13.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🐮",
+    "name_id": "cow_face",
+    "description": "1F42E\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🐂",
+    "name_id": "ox",
+    "description": "1F402\nE1.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🐃",
+    "name_id": "water_buffalo",
+    "description": "1F403\nE1.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🐄",
+    "name_id": "cow",
+    "description": "1F404\nE1.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🐷",
+    "name_id": "pig_face",
+    "description": "1F437\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🐖",
+    "name_id": "pig",
+    "description": "1F416\nE1.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🐗",
+    "name_id": "boar",
+    "description": "1F417\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🐽",
+    "name_id": "pig_nose",
+    "description": "1F43D\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🐏",
+    "name_id": "ram",
+    "description": "1F40F\nE1.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🐑",
+    "name_id": "ewe",
+    "description": "1F411\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🐐",
+    "name_id": "goat",
+    "description": "1F410\nE1.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🐪",
+    "name_id": "camel",
+    "description": "1F42A\nE1.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🐫",
+    "name_id": "two_hump_camel",
+    "description": "1F42B\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🦙",
+    "name_id": "llama",
+    "description": "1F999\nE11.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🦒",
+    "name_id": "giraffe",
+    "description": "1F992\nE5.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🐘",
+    "name_id": "elephant",
+    "description": "1F418\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🦣",
+    "name_id": "mammoth",
+    "description": "1F9A3\nE13.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🦏",
+    "name_id": "rhinoceros",
+    "description": "1F98F\nE3.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🦛",
+    "name_id": "hippopotamus",
+    "description": "1F99B\nE11.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🐭",
+    "name_id": "mouse_face",
+    "description": "1F42D\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🐁",
+    "name_id": "mouse",
+    "description": "1F401\nE1.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🐀",
+    "name_id": "rat",
+    "description": "1F400\nE1.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🐹",
+    "name_id": "hamster",
+    "description": "1F439\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🐰",
+    "name_id": "rabbit_face",
+    "description": "1F430\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🐇",
+    "name_id": "rabbit",
+    "description": "1F407\nE1.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🐿️",
+    "name_id": "chipmunk",
+    "description": "1F43F FE0F\nE0.7",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🦫",
+    "name_id": "beaver",
+    "description": "1F9AB\nE13.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🦔",
+    "name_id": "hedgehog",
+    "description": "1F994\nE5.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🦇",
+    "name_id": "bat",
+    "description": "1F987\nE3.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🐻",
+    "name_id": "bear",
+    "description": "1F43B\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🐻‍❄️",
+    "name_id": "polar_bear",
+    "description": "1F43B 200D 2744 FE0F\nE13.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🐨",
+    "name_id": "koala",
+    "description": "1F428\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🐼",
+    "name_id": "panda",
+    "description": "1F43C\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🦥",
+    "name_id": "sloth",
+    "description": "1F9A5\nE12.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🦦",
+    "name_id": "otter",
+    "description": "1F9A6\nE12.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🦨",
+    "name_id": "skunk",
+    "description": "1F9A8\nE12.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🦘",
+    "name_id": "kangaroo",
+    "description": "1F998\nE11.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🦡",
+    "name_id": "badger",
+    "description": "1F9A1\nE11.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🐾",
+    "name_id": "paw_prints",
+    "description": "1F43E\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "animal-mammal"
+  },
+  {
+    "name": "🦃",
+    "name_id": "turkey",
+    "description": "1F983\nE1.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-bird"
+  },
+  {
+    "name": "🐔",
+    "name_id": "chicken",
+    "description": "1F414\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "animal-bird"
+  },
+  {
+    "name": "🐓",
+    "name_id": "rooster",
+    "description": "1F413\nE1.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-bird"
+  },
+  {
+    "name": "🐣",
+    "name_id": "hatching_chick",
+    "description": "1F423\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "animal-bird"
+  },
+  {
+    "name": "🐤",
+    "name_id": "baby_chick",
+    "description": "1F424\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "animal-bird"
+  },
+  {
+    "name": "🐥",
+    "name_id": "front_facing_baby_chick",
+    "description": "1F425\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "animal-bird"
+  },
+  {
+    "name": "🐦",
+    "name_id": "bird",
+    "description": "1F426\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "animal-bird"
+  },
+  {
+    "name": "🐧",
+    "name_id": "penguin",
+    "description": "1F427\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "animal-bird"
+  },
+  {
+    "name": "🕊️",
+    "name_id": "dove",
+    "description": "1F54A FE0F\nE0.7",
+    "group": "Animals & Nature",
+    "subgroup": "animal-bird"
+  },
+  {
+    "name": "🦅",
+    "name_id": "eagle",
+    "description": "1F985\nE3.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-bird"
+  },
+  {
+    "name": "🦆",
+    "name_id": "duck",
+    "description": "1F986\nE3.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-bird"
+  },
+  {
+    "name": "🦢",
+    "name_id": "swan",
+    "description": "1F9A2\nE11.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-bird"
+  },
+  {
+    "name": "🦉",
+    "name_id": "owl",
+    "description": "1F989\nE3.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-bird"
+  },
+  {
+    "name": "🦤",
+    "name_id": "dodo",
+    "description": "1F9A4\nE13.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-bird"
+  },
+  {
+    "name": "🪶",
+    "name_id": "feather",
+    "description": "1FAB6\nE13.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-bird"
+  },
+  {
+    "name": "🦩",
+    "name_id": "flamingo",
+    "description": "1F9A9\nE12.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-bird"
+  },
+  {
+    "name": "🦚",
+    "name_id": "peacock",
+    "description": "1F99A\nE11.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-bird"
+  },
+  {
+    "name": "🦜",
+    "name_id": "parrot",
+    "description": "1F99C\nE11.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-bird"
+  },
+  {
+    "name": "🪽",
+    "name_id": "wing",
+    "description": "1FABD\nE15.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-bird"
+  },
+  {
+    "name": "🐦‍⬛",
+    "name_id": "black_bird",
+    "description": "1F426 200D 2B1B\nE15.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-bird"
+  },
+  {
+    "name": "🪿",
+    "name_id": "goose",
+    "description": "1FABF\nE15.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-bird"
+  },
+  {
+    "name": "🐦‍🔥",
+    "name_id": "phoenix",
+    "description": "1F426 200D 1F525\nE15.1",
+    "group": "Animals & Nature",
+    "subgroup": "animal-bird"
+  },
+  {
+    "name": "🐸",
+    "name_id": "frog",
+    "description": "1F438\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "animal-amphibian"
+  },
+  {
+    "name": "🐊",
+    "name_id": "crocodile",
+    "description": "1F40A\nE1.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-reptile"
+  },
+  {
+    "name": "🐢",
+    "name_id": "turtle",
+    "description": "1F422\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "animal-reptile"
+  },
+  {
+    "name": "🦎",
+    "name_id": "lizard",
+    "description": "1F98E\nE3.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-reptile"
+  },
+  {
+    "name": "🐍",
+    "name_id": "snake",
+    "description": "1F40D\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "animal-reptile"
+  },
+  {
+    "name": "🐲",
+    "name_id": "dragon_face",
+    "description": "1F432\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "animal-reptile"
+  },
+  {
+    "name": "🐉",
+    "name_id": "dragon",
+    "description": "1F409\nE1.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-reptile"
+  },
+  {
+    "name": "🦕",
+    "name_id": "sauropod",
+    "description": "1F995\nE5.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-reptile"
+  },
+  {
+    "name": "🦖",
+    "name_id": "t_rex",
+    "description": "1F996\nE5.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-reptile"
+  },
+  {
+    "name": "🐳",
+    "name_id": "spouting_whale",
+    "description": "1F433\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "animal-marine"
+  },
+  {
+    "name": "🐋",
+    "name_id": "whale",
+    "description": "1F40B\nE1.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-marine"
+  },
+  {
+    "name": "🐬",
+    "name_id": "dolphin",
+    "description": "1F42C\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "animal-marine"
+  },
+  {
+    "name": "🫍",
+    "name_id": "orca",
+    "description": "1FACD\nE17.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-marine"
+  },
+  {
+    "name": "🦭",
+    "name_id": "seal",
+    "description": "1F9AD\nE13.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-marine"
+  },
+  {
+    "name": "🐟",
+    "name_id": "fish",
+    "description": "1F41F\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "animal-marine"
+  },
+  {
+    "name": "🐠",
+    "name_id": "tropical_fish",
+    "description": "1F420\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "animal-marine"
+  },
+  {
+    "name": "🐡",
+    "name_id": "blowfish",
+    "description": "1F421\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "animal-marine"
+  },
+  {
+    "name": "🦈",
+    "name_id": "shark",
+    "description": "1F988\nE3.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-marine"
+  },
+  {
+    "name": "🐙",
+    "name_id": "octopus",
+    "description": "1F419\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "animal-marine"
+  },
+  {
+    "name": "🐚",
+    "name_id": "spiral_shell",
+    "description": "1F41A\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "animal-marine"
+  },
+  {
+    "name": "🪸",
+    "name_id": "coral",
+    "description": "1FAB8\nE14.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-marine"
+  },
+  {
+    "name": "🪼",
+    "name_id": "jellyfish",
+    "description": "1FABC\nE15.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-marine"
+  },
+  {
+    "name": "🦀",
+    "name_id": "crab",
+    "description": "1F980\nE1.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-marine"
+  },
+  {
+    "name": "🦞",
+    "name_id": "lobster",
+    "description": "1F99E\nE11.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-marine"
+  },
+  {
+    "name": "🦐",
+    "name_id": "shrimp",
+    "description": "1F990\nE3.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-marine"
+  },
+  {
+    "name": "🦑",
+    "name_id": "squid",
+    "description": "1F991\nE3.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-marine"
+  },
+  {
+    "name": "🦪",
+    "name_id": "oyster",
+    "description": "1F9AA\nE12.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-marine"
+  },
+  {
+    "name": "🐌",
+    "name_id": "snail",
+    "description": "1F40C\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "animal-bug"
+  },
+  {
+    "name": "🦋",
+    "name_id": "butterfly",
+    "description": "1F98B\nE3.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-bug"
+  },
+  {
+    "name": "🐛",
+    "name_id": "bug",
+    "description": "1F41B\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "animal-bug"
+  },
+  {
+    "name": "🐜",
+    "name_id": "ant",
+    "description": "1F41C\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "animal-bug"
+  },
+  {
+    "name": "🐝",
+    "name_id": "honeybee",
+    "description": "1F41D\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "animal-bug"
+  },
+  {
+    "name": "🪲",
+    "name_id": "beetle",
+    "description": "1FAB2\nE13.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-bug"
+  },
+  {
+    "name": "🐞",
+    "name_id": "lady_beetle",
+    "description": "1F41E\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "animal-bug"
+  },
+  {
+    "name": "🦗",
+    "name_id": "cricket",
+    "description": "1F997\nE5.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-bug"
+  },
+  {
+    "name": "🪳",
+    "name_id": "cockroach",
+    "description": "1FAB3\nE13.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-bug"
+  },
+  {
+    "name": "🕷️",
+    "name_id": "spider",
+    "description": "1F577 FE0F\nE0.7",
+    "group": "Animals & Nature",
+    "subgroup": "animal-bug"
+  },
+  {
+    "name": "🕸️",
+    "name_id": "spider_web",
+    "description": "1F578 FE0F\nE0.7",
+    "group": "Animals & Nature",
+    "subgroup": "animal-bug"
+  },
+  {
+    "name": "🦂",
+    "name_id": "scorpion",
+    "description": "1F982\nE1.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-bug"
+  },
+  {
+    "name": "🦟",
+    "name_id": "mosquito",
+    "description": "1F99F\nE11.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-bug"
+  },
+  {
+    "name": "🪰",
+    "name_id": "fly",
+    "description": "1FAB0\nE13.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-bug"
+  },
+  {
+    "name": "🪱",
+    "name_id": "worm",
+    "description": "1FAB1\nE13.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-bug"
+  },
+  {
+    "name": "🦠",
+    "name_id": "microbe",
+    "description": "1F9A0\nE11.0",
+    "group": "Animals & Nature",
+    "subgroup": "animal-bug"
+  },
+  {
+    "name": "💐",
+    "name_id": "bouquet",
+    "description": "1F490\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "plant-flower"
+  },
+  {
+    "name": "🌸",
+    "name_id": "cherry_blossom",
+    "description": "1F338\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "plant-flower"
+  },
+  {
+    "name": "💮",
+    "name_id": "white_flower",
+    "description": "1F4AE\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "plant-flower"
+  },
+  {
+    "name": "🪷",
+    "name_id": "lotus",
+    "description": "1FAB7\nE14.0",
+    "group": "Animals & Nature",
+    "subgroup": "plant-flower"
+  },
+  {
+    "name": "🏵️",
+    "name_id": "rosette",
+    "description": "1F3F5 FE0F\nE0.7",
+    "group": "Animals & Nature",
+    "subgroup": "plant-flower"
+  },
+  {
+    "name": "🌹",
+    "name_id": "rose",
+    "description": "1F339\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "plant-flower"
+  },
+  {
+    "name": "🥀",
+    "name_id": "wilted_flower",
+    "description": "1F940\nE3.0",
+    "group": "Animals & Nature",
+    "subgroup": "plant-flower"
+  },
+  {
+    "name": "🌺",
+    "name_id": "hibiscus",
+    "description": "1F33A\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "plant-flower"
+  },
+  {
+    "name": "🌻",
+    "name_id": "sunflower",
+    "description": "1F33B\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "plant-flower"
+  },
+  {
+    "name": "🌼",
+    "name_id": "blossom",
+    "description": "1F33C\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "plant-flower"
+  },
+  {
+    "name": "🌷",
+    "name_id": "tulip",
+    "description": "1F337\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "plant-flower"
+  },
+  {
+    "name": "🪻",
+    "name_id": "hyacinth",
+    "description": "1FABB\nE15.0",
+    "group": "Animals & Nature",
+    "subgroup": "plant-flower"
+  },
+  {
+    "name": "🌱",
+    "name_id": "seedling",
+    "description": "1F331\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "plant-other"
+  },
+  {
+    "name": "🪴",
+    "name_id": "potted_plant",
+    "description": "1FAB4\nE13.0",
+    "group": "Animals & Nature",
+    "subgroup": "plant-other"
+  },
+  {
+    "name": "🌲",
+    "name_id": "evergreen_tree",
+    "description": "1F332\nE1.0",
+    "group": "Animals & Nature",
+    "subgroup": "plant-other"
+  },
+  {
+    "name": "🌳",
+    "name_id": "deciduous_tree",
+    "description": "1F333\nE1.0",
+    "group": "Animals & Nature",
+    "subgroup": "plant-other"
+  },
+  {
+    "name": "🌴",
+    "name_id": "palm_tree",
+    "description": "1F334\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "plant-other"
+  },
+  {
+    "name": "🌵",
+    "name_id": "cactus",
+    "description": "1F335\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "plant-other"
+  },
+  {
+    "name": "🌾",
+    "name_id": "sheaf_of_rice",
+    "description": "1F33E\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "plant-other"
+  },
+  {
+    "name": "🌿",
+    "name_id": "herb",
+    "description": "1F33F\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "plant-other"
+  },
+  {
+    "name": "☘️",
+    "name_id": "shamrock",
+    "description": "2618 FE0F\nE1.0",
+    "group": "Animals & Nature",
+    "subgroup": "plant-other"
+  },
+  {
+    "name": "🍀",
+    "name_id": "four_leaf_clover",
+    "description": "1F340\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "plant-other"
+  },
+  {
+    "name": "🍁",
+    "name_id": "maple_leaf",
+    "description": "1F341\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "plant-other"
+  },
+  {
+    "name": "🍂",
+    "name_id": "fallen_leaf",
+    "description": "1F342\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "plant-other"
+  },
+  {
+    "name": "🍃",
+    "name_id": "leaf_fluttering_in_wind",
+    "description": "1F343\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "plant-other"
+  },
+  {
+    "name": "🪹",
+    "name_id": "empty_nest",
+    "description": "1FAB9\nE14.0",
+    "group": "Animals & Nature",
+    "subgroup": "plant-other"
+  },
+  {
+    "name": "🪺",
+    "name_id": "nest_with_eggs",
+    "description": "1FABA\nE14.0",
+    "group": "Animals & Nature",
+    "subgroup": "plant-other"
+  },
+  {
+    "name": "🍄",
+    "name_id": "mushroom",
+    "description": "1F344\nE0.6",
+    "group": "Animals & Nature",
+    "subgroup": "plant-other"
+  },
+  {
+    "name": "🪾",
+    "name_id": "leafless_tree",
+    "description": "1FABE\nE16.0",
+    "group": "Animals & Nature",
+    "subgroup": "plant-other"
+  }
+]
