@@ -6,6 +6,7 @@ import {
   ActivityIndicator,
   FlatList,
   Modal,
+  Platform,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -99,12 +100,20 @@ export default function AccountDetailScreen() {
   const [hasMore, setHasMore] = useState(true);
   const [isMenuModalOpen, setIsMenuModalOpen] = useState(false);
   const [isReportModalOpen, setIsReportModalOpen] = useState(false);
+  const [pendingReportOpen, setPendingReportOpen] = useState(false);
   const [reportCategory, setReportCategory] = useState<ReportCategoryKey>(
     REPORT_CATEGORIES[0].key,
   );
   const [reportDetail, setReportDetail] = useState("");
   const [isBlockingSubmitting, setIsBlockingSubmitting] = useState(false);
   const [isReportingSubmitting, setIsReportingSubmitting] = useState(false);
+
+  useEffect(() => {
+    if (Platform.OS === "ios") return;
+    if (!pendingReportOpen || isMenuModalOpen) return;
+    setIsReportModalOpen(true);
+    setPendingReportOpen(false);
+  }, [pendingReportOpen, isMenuModalOpen]);
 
   const fetchAccountWithCacheControl = useCallback(async () => {
     if (!nameId) return;
@@ -353,7 +362,8 @@ export default function AccountDetailScreen() {
       return;
     }
     if (isSelf) return;
-    setIsReportModalOpen(true);
+    setPendingReportOpen(true);
+    setIsMenuModalOpen(false);
   }, [account?.aid, addToast, isSignedIn, isSelf]);
 
   const submitAccountReport = useCallback(async () => {
@@ -710,6 +720,11 @@ export default function AccountDetailScreen() {
         visible={isMenuModalOpen}
         transparent
         animationType="fade"
+        onDismiss={() => {
+          if (!pendingReportOpen) return;
+          setIsReportModalOpen(true);
+          setPendingReportOpen(false);
+        }}
         onRequestClose={() => setIsMenuModalOpen(false)}
       >
         <Pressable

@@ -1,7 +1,8 @@
 import { Picker } from "@react-native-picker/picker";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Modal,
+  Platform,
   Pressable,
   StyleSheet,
   TextInput,
@@ -43,10 +44,18 @@ export default function PostConsole({ post }: { post: PostType }) {
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
   const [isDiffuseConfirmOpen, setIsDiffuseConfirmOpen] = useState(false);
   const [isReportModalOpen, setIsReportModalOpen] = useState(false);
+  const [pendingReportOpen, setPendingReportOpen] = useState(false);
   const [reportCategory, setReportCategory] =
     useState<(typeof REPORT_CATEGORIES)[number]["key"]>("spam");
   const [reportDetail, setReportDetail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useEffect(() => {
+    if (Platform.OS === "ios") return;
+    if (!pendingReportOpen || isPostMenuOpen) return;
+    setIsReportModalOpen(true);
+    setPendingReportOpen(false);
+  }, [pendingReportOpen, isPostMenuOpen]);
 
   const handleQuotePress = () => {
     if (post.is_busy) return;
@@ -76,7 +85,8 @@ export default function PostConsole({ post }: { post: PostType }) {
 
   const handleReportPress = () => {
     runSignedInAction(currentAccountStatus, openSignInModal, () => {
-      setIsReportModalOpen(true);
+      setPendingReportOpen(true);
+      setIsPostMenuOpen(false);
     });
   };
 
@@ -324,6 +334,11 @@ export default function PostConsole({ post }: { post: PostType }) {
         visible={isPostMenuOpen}
         transparent
         animationType="fade"
+        onDismiss={() => {
+          if (!pendingReportOpen) return;
+          setIsReportModalOpen(true);
+          setPendingReportOpen(false);
+        }}
         onRequestClose={() => setIsPostMenuOpen(false)}
       >
         <Pressable
