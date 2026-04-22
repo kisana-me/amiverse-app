@@ -106,13 +106,24 @@ export default function OnboardingPermissionScreen() {
       const next = await requestTrackingPermissionIfNeeded();
       if (next === "granted") {
         await setPersonalizationConsent("allow");
+        setStatus("granted");
         addToast({ message: "許可が完了しました" });
-      } else if (next === "undetermined") {
-        addToast({ message: "まだ選択されていません" });
-      } else {
-        await setPersonalizationConsent("deny");
-        addToast({ message: "拒否を選択しました" });
+        await finishFlow();
+        return;
       }
+
+      if (next === "denied") {
+        await setPersonalizationConsent("deny");
+        setStatus("denied");
+        addToast({ message: "拒否を選択しました" });
+        await finishFlow();
+        return;
+      }
+
+      addToast({
+        message: "選択が必要です",
+        detail: "「許可」または「許可しない」を選択してください",
+      });
       await refreshStatus();
     } catch (error) {
       addToast({
@@ -185,17 +196,17 @@ export default function OnboardingPermissionScreen() {
               <ThemedText>端末の設定を開く</ThemedText>
             </Pressable>
 
-            <Pressable
-              onPress={handleContinue}
-              style={[
-                styles.secondaryButton,
-                { borderColor: colors.border_color },
-              ]}
-            >
-              <ThemedText>
-                {isFromSettings ? "設定に戻る" : "続ける"}
-              </ThemedText>
-            </Pressable>
+            {isFromSettings ? (
+              <Pressable
+                onPress={handleContinue}
+                style={[
+                  styles.secondaryButton,
+                  { borderColor: colors.border_color },
+                ]}
+              >
+                <ThemedText>設定に戻る</ThemedText>
+              </Pressable>
+            ) : null}
           </>
         ) : (
           <>
