@@ -23,6 +23,7 @@ type AccountsContextType = {
   ) => Promise<AccountType | null>;
   getAccount: (name_id: string) => CachedAccount | undefined;
   updateAccount: (name_id: string, data: Partial<AccountType>) => void;
+  clearAccounts: () => void;
 };
 
 const AccountsContext = createContext<AccountsContextType | null>(null);
@@ -56,6 +57,11 @@ export const AccountsProvider = ({ children }: { children: ReactNode }) => {
     [],
   );
 
+  const clearAccounts = useCallback(() => {
+    accountsRef.current = {};
+    setAccounts({});
+  }, []);
+
   const fetchAccount = useCallback(async (name_id: string, force = false) => {
     if (!force && accountsRef.current[name_id]) {
       return accountsRef.current[name_id];
@@ -86,6 +92,7 @@ export const AccountsProvider = ({ children }: { children: ReactNode }) => {
     fetchAccount,
     getAccount,
     updateAccount,
+    clearAccounts,
   };
 
   return (

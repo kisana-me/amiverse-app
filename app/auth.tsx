@@ -132,6 +132,11 @@ export default function AuthCallbackScreen() {
             message: "アカウントを作成しました",
             detail: "初回サインインとしてアカウントが自動作成されました",
           });
+        } else {
+          addToast({
+            message: "サインインしました",
+            detail: "Amiverseへようこそ！",
+          });
         }
 
         await setAccessToken(accessToken);

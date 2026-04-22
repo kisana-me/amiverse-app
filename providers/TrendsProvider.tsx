@@ -1,12 +1,12 @@
 import { api } from "@/lib/axios";
 import { TrendType } from "@/types/trend";
 import {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useState,
-  type ReactNode,
+    createContext,
+    useCallback,
+    useContext,
+    useEffect,
+    useState,
+    type ReactNode,
 } from "react";
 import { useCurrentAccount } from "./CurrentAccountProvider";
 import { useToast } from "./ToastProvider";
@@ -14,6 +14,7 @@ import { useToast } from "./ToastProvider";
 type TrendsContextType = {
   trends: TrendType[];
   trendsLoading: boolean;
+  clearTrends: () => void;
 };
 
 export const TrendsContext = createContext<TrendsContextType | null>(null);
@@ -56,6 +57,11 @@ export function TrendsProvider({ children }: { children: ReactNode }) {
     [addToast],
   );
 
+  const clearTrends = useCallback(() => {
+    setTrends([]);
+    setTrendsLoading(false);
+  }, []);
+
   useEffect(() => {
     if (currentAccountStatus === "loading") return;
 
@@ -68,6 +74,7 @@ export function TrendsProvider({ children }: { children: ReactNode }) {
   const value: TrendsContextType = {
     trends,
     trendsLoading,
+    clearTrends,
   };
   return (
     <TrendsContext.Provider value={value}>{children}</TrendsContext.Provider>

@@ -24,6 +24,7 @@ type FeedsContextType = {
   getFeed: (type: string) => FeedItemType[] | undefined;
   currentFeedType: FeedTypeKey;
   setCurrentFeedType: (type: FeedTypeKey) => void;
+  clearFeeds: () => void;
 };
 
 const FeedsContext = createContext<FeedsContextType | null>(null);
@@ -94,6 +95,11 @@ export const FeedsProvider = ({ children }: { children: ReactNode }) => {
     [feeds],
   );
 
+  const clearFeeds = useCallback(() => {
+    setFeeds({});
+    setCurrentFeedType("index");
+  }, []);
+
   const value: FeedsContextType = useMemo(
     () => ({
       feeds,
@@ -103,8 +109,17 @@ export const FeedsProvider = ({ children }: { children: ReactNode }) => {
       getFeed,
       currentFeedType,
       setCurrentFeedType,
+      clearFeeds,
     }),
-    [feeds, addFeed, appendFeed, prependFeedItem, getFeed, currentFeedType],
+    [
+      feeds,
+      addFeed,
+      appendFeed,
+      prependFeedItem,
+      getFeed,
+      currentFeedType,
+      clearFeeds,
+    ],
   );
 
   return (

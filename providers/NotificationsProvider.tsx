@@ -1,14 +1,14 @@
 import { api } from "@/lib/axios";
 import { NotificationType } from "@/types/notification";
 import React, {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-  type ReactNode,
+    createContext,
+    useCallback,
+    useContext,
+    useEffect,
+    useMemo,
+    useRef,
+    useState,
+    type ReactNode,
 } from "react";
 
 import { useCurrentAccount } from "./CurrentAccountProvider";
@@ -21,6 +21,7 @@ type NotificationsContextType = {
   fetchedAt: number | null;
   fetchNotifications: (reset?: boolean) => Promise<void>;
   markAsRead: () => Promise<void>;
+  clearNotifications: () => void;
 };
 
 const NotificationsContext = createContext<NotificationsContextType | null>(
@@ -127,6 +128,15 @@ export function NotificationsProvider({ children }: { children: ReactNode }) {
     }
   }, []);
 
+  const clearNotifications = useCallback(() => {
+    inFlightRef.current = false;
+    notificationsRef.current = [];
+    setIsLoading(false);
+    setNotifications([]);
+    setHasMore(true);
+    setFetchedAt(null);
+  }, []);
+
   const value: NotificationsContextType = useMemo(
     () => ({
       notifications,
@@ -135,6 +145,7 @@ export function NotificationsProvider({ children }: { children: ReactNode }) {
       fetchedAt,
       fetchNotifications,
       markAsRead,
+      clearNotifications,
     }),
     [
       notifications,
@@ -143,6 +154,7 @@ export function NotificationsProvider({ children }: { children: ReactNode }) {
       fetchedAt,
       fetchNotifications,
       markAsRead,
+      clearNotifications,
     ],
   );
 

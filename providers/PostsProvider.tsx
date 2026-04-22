@@ -1,10 +1,10 @@
 import { PostType } from "@/types/post";
 import React, {
-  createContext,
-  ReactNode,
-  useCallback,
-  useContext,
-  useState,
+    createContext,
+    ReactNode,
+    useCallback,
+    useContext,
+    useState,
 } from "react";
 
 export type CachedPost = PostType & {
@@ -16,6 +16,7 @@ type PostsContextType = {
   addPosts: (newPosts: PostType[]) => void;
   removePost: (aid: string) => void;
   getPost: (aid: string) => CachedPost | undefined;
+  clearPosts: () => void;
 };
 
 const PostsContext = createContext<PostsContextType | null>(null);
@@ -53,6 +54,10 @@ export const PostsProvider = ({ children }: { children: ReactNode }) => {
     });
   }, []);
 
+  const clearPosts = useCallback(() => {
+    setPosts({});
+  }, []);
+
   const getPost = useCallback(
     (aid: string) => {
       return posts[aid];
@@ -65,6 +70,7 @@ export const PostsProvider = ({ children }: { children: ReactNode }) => {
     addPosts,
     removePost,
     getPost,
+    clearPosts,
   };
 
   return (

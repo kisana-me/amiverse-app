@@ -16,6 +16,7 @@ export default function SettingsScreen() {
   const borderColor = useColors().border_color;
   const backgroundColor = useColors().background_color;
   const tintColor = useColors().link_color;
+  const dangerColor = useColors().accent_color;
   const { addToast } = useToast();
   const {
     currentAccount,
@@ -85,6 +86,21 @@ export default function SettingsScreen() {
                 style={[styles.rowButton, { borderColor }]}
               >
                 <ThemedText>アカウント設定</ThemedText>
+              </Pressable>
+              <Pressable
+                onPress={() => router.push("/settings/leave" as any)}
+                style={[
+                  styles.rowButton,
+                  {
+                    borderColor: dangerColor,
+                    backgroundColor,
+                    opacity: 1,
+                  },
+                ]}
+              >
+                <ThemedText style={{ color: dangerColor }}>
+                  アカウント削除
+                </ThemedText>
               </Pressable>
               <Pressable
                 onPress={handleSignout}
