@@ -11,6 +11,7 @@ import React, {
 import {
   Animated,
   Modal,
+  Platform,
   PanResponder,
   Pressable,
   ScrollView,
@@ -18,7 +19,7 @@ import {
   useWindowDimensions,
   View,
 } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
@@ -44,7 +45,10 @@ function MenuItem({ label, onPress }: { label: string; onPress: () => void }) {
 export function SideMenus() {
   const pathname = usePathname();
   const { width: windowWidth } = useWindowDimensions();
+  const insets = useSafeAreaInsets();
   const drawerWidth = Math.min(340, Math.round(windowWidth * 0.86));
+  const menuTopInset = Platform.OS === "ios" ? insets.top : 0;
+  const menuBottomInset = Platform.OS === "ios" ? insets.bottom : 0;
 
   const backdropColor = "rgba(0,0,0,0.4)";
   const borderColor = useColors().border_color;
@@ -215,10 +219,11 @@ export function SideMenus() {
         onRequestClose={closeLeftMenu}
       >
         <View style={styles.modalRoot}>
-          <View
+          <Pressable
             style={[styles.backdrop, { backgroundColor: backdropColor }]}
-            onStartShouldSetResponder={() => true}
-            onResponderRelease={closeLeftMenu}
+            onPress={closeLeftMenu}
+            accessibilityRole="button"
+            accessibilityLabel="メニューを閉じる"
           />
 
           <Animated.View
@@ -233,11 +238,10 @@ export function SideMenus() {
               },
             ]}
           >
-            <SafeAreaView
-              style={styles.drawerSafeArea}
-              edges={["top", "bottom"]}
-            >
-              <ThemedView style={styles.drawerHeader}>
+            <View style={styles.drawerSafeArea}>
+              <ThemedView
+                style={[styles.drawerHeader, { paddingTop: 18 + menuTopInset }]}
+              >
                 {currentAccountStatus === "signed_in" && currentAccount ? (
                   <View style={styles.profileRow}>
                     <Image
@@ -259,7 +263,12 @@ export function SideMenus() {
                 )}
               </ThemedView>
 
-              <ScrollView contentContainerStyle={styles.drawerBody}>
+              <ScrollView
+                contentContainerStyle={[
+                  styles.drawerBody,
+                  { paddingBottom: 24 + menuBottomInset },
+                ]}
+              >
                 {currentAccountStatus === "signed_in" && currentAccount ? (
                   <MenuItem
                     label="プロフィール編集"
@@ -276,7 +285,7 @@ export function SideMenus() {
                   onPress={() => router.push("/settings")}
                 />
               </ScrollView>
-            </SafeAreaView>
+            </View>
           </Animated.View>
         </View>
       </Modal>
@@ -289,10 +298,11 @@ export function SideMenus() {
         onRequestClose={closeRightMenu}
       >
         <View style={styles.modalRoot}>
-          <View
+          <Pressable
             style={[styles.backdrop, { backgroundColor: backdropColor }]}
-            onStartShouldSetResponder={() => true}
-            onResponderRelease={closeRightMenu}
+            onPress={closeRightMenu}
+            accessibilityRole="button"
+            accessibilityLabel="メニューを閉じる"
           />
 
           <Animated.View
@@ -308,18 +318,22 @@ export function SideMenus() {
               },
             ]}
           >
-            <SafeAreaView
-              style={styles.drawerSafeArea}
-              edges={["top", "bottom"]}
-            >
-              <ThemedView style={styles.drawerHeader}>
+            <View style={styles.drawerSafeArea}>
+              <ThemedView
+                style={[styles.drawerHeader, { paddingTop: 18 + menuTopInset }]}
+              >
                 <ThemedText type="defaultSemiBold">トレンド</ThemedText>
                 <ThemedText style={styles.subtle}>
                   {trendsLoading ? "取得中..." : "上位5位"}
                 </ThemedText>
               </ThemedView>
 
-              <ScrollView contentContainerStyle={styles.drawerBody}>
+              <ScrollView
+                contentContainerStyle={[
+                  styles.drawerBody,
+                  { paddingBottom: 24 + menuBottomInset },
+                ]}
+              >
                 {top5.map((t, index) => (
                   <MenuItem
                     key={`${t.word}:${index}`}
@@ -347,7 +361,7 @@ export function SideMenus() {
                   onPress={() => void openExternal("https://anyur.com/contact")}
                 />
               </ScrollView>
-            </SafeAreaView>
+            </View>
           </Animated.View>
         </View>
       </Modal>
@@ -380,12 +394,10 @@ const styles = StyleSheet.create({
   },
   drawerHeader: {
     paddingHorizontal: 16,
-    paddingTop: 18,
     paddingBottom: 12,
   },
   drawerBody: {
     paddingHorizontal: 0,
-    paddingBottom: 24,
   },
   profileRow: {
     flexDirection: "row",
