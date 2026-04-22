@@ -182,7 +182,7 @@ export default function OnboardingPermissionScreen() {
               <ThemedText
                 style={{ color: colors.button_font_color, fontWeight: "700" }}
               >
-                選択する
+                次へ
               </ThemedText>
             </Pressable>
 
